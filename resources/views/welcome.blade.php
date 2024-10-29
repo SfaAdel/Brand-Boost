@@ -28,6 +28,13 @@
                             <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
                         @endif
                     @endauth
+                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li>
+                        <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                        </a>
+                    </li>
+                @endforeach
                 </div>
             @endif
 
@@ -49,6 +56,8 @@
                                 </div>
 
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Documentation</h2>
+                                <h1 class="{{ app()->getLocale() == 'ar' ? 'text-right' : 'text-left' }}">{{ __('messages.welcome') }}</h1>
+                                <p class="{{ app()->getLocale() == 'ar' ? 'text-right' : 'text-left' }}">{{ __('messages.about') }}</p>
 
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                     Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
@@ -136,5 +145,18 @@
                 </div>
             </div>
         </div>
+
+
+        <ul>
+            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <li>
+                    <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        {{ $properties['native'] }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+
+
     </body>
 </html>

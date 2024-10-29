@@ -40,7 +40,23 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'freelancer' => [
+            'driver' => 'session',
+            'provider' => 'freelancers',
+        ],
+        'business_owner' => [
+            'driver' => 'session',
+            'provider' => 'business_owners',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,6 +80,22 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'freelancers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Freelancer::class,
+        ],
+        'business_owners' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\BusinessOwner::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
+
+
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -93,6 +125,24 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'freelancers' => [
+            'provider' => 'freelancers',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'business_owners' => [
+            'provider' => 'business_owners',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
