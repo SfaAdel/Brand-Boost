@@ -26,9 +26,9 @@
     <script src="{{ asset('admin/ltr/assets/js/apps/scrumboard.js') }}"></script>
     <script src="{{ asset('admin/ltr/assets/js/apps/todoList.js') }}"></script>
 
-    <!-- authentication Scripts files -->
+    {{-- <!-- authentication Scripts files -->
     <script src="{{ asset('admin/ltr/assets/js/authentication/form-1.js') }}"></script>
-    <script src="{{ asset('admin/ltr/assets/js/authentication/form-2.js') }}"></script>
+    <script src="{{ asset('admin/ltr/assets/js/authentication/form-2.js') }}"></script> --}}
 
     <!-- clipboard Scripts files -->
     <script src="{{ asset('admin/ltr/assets/js/clipboard/clipboard.min.js') }}"></script>

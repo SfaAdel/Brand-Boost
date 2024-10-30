@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->enum('role', ['super_admin', 'admin','data_entry']);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -40,9 +40,9 @@
     <link rel="stylesheet" href="{{ asset('admin/ltr/assets/css/apps/todolist.css') }}">
 
 
-    <!-- authentication css files -->
+    {{-- <!-- authentication css files -->
     <link rel="stylesheet" href="{{ asset('admin/ltr/assets/css/authentication/form-1.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/ltr/assets/css/authentication/form-2.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/ltr/assets/css/authentication/form-2.css') }}"> --}}
 
 
     <!-- components css files -> main -->

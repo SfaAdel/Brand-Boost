@@ -20,5 +20,5 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/login');    }
+        return redirect('/admin.login');    }
 }

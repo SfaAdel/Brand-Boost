@@ -21,10 +21,20 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                switch ($guard) {
+                    case 'admin':
+                        return redirect()->route('dashboard');
+                    case 'freelancer':
+                        return redirect()->route('welcome'); // Update as needed
+                    case 'business_owner':
+                        return redirect()->route('welcome'); // Update as needed
+                    default:
+                        return redirect(RouteServiceProvider::HOME);
+                }
             }
         }
 
         return $next($request);
     }
+
 }

@@ -1,20 +1,17 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
-    'failed' => 'بيانات الاعتماد هذه لا تتطابق مع سجلاتنا.',
-    'password' => 'كلمة المرور التي تم تقديمها غير صحيحة.',
-    'throttle' => 'عدد كبير جدًا من محاولات تسجيل الدخول. يرجى المحاولة مرة أخرى بعد :seconds ثانية.',
-
+    'login_title' => 'تسجيل الدخول',
+    'create_account' => 'إنشاء حساب',
+    'new_here' => 'جديد هنا؟',
+    'username_placeholder' => 'اسم المستخدم',
+    'password_placeholder' => 'كلمة المرور',
+    'show_password' => 'إظهار كلمة المرور',
+    'login_button' => 'تسجيل الدخول',
+    'keep_logged_in' => 'البقاء مسجل الدخول',
+    'forgot_password' => 'هل نسيت كلمة المرور؟',
+    'terms_conditions' => '© 2024 جميع الحقوق محفوظة.',
+    'cookie_preferences' => 'تفضيلات الكوكيز',
+    'privacy' => 'الخصوصية',
+    'terms' => 'الشروط',
 ];
