@@ -17,12 +17,19 @@ Route::group([
         return view('welcome');
     })->name('welcome');
 
-    Route::prefix('admin')->name('admin.')->group(function(){
-        Route::view('/', 'admin.index')->name('dashboard');
+    Route::prefix('admin')->group(function(){
+Route::middleware(['admin'])->group(function () {
+    Route::view('/', 'admin.index')->name('admin.index');
+});
+
+require __DIR__ . '/adminAuth.php';
+
+        Route::view('/login', 'admin.auth.login')->name('admin.login');
+
+
 
    });
-   Route::view('/login', 'admin.auth.login')->name('login');
-   Route::view('/register', 'admin.auth.register')->name('register');
+
 
 
 });

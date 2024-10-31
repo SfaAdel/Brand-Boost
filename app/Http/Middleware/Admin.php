@@ -20,5 +20,10 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/admin.login');    }
+        // Get the current locale
+        $locale = app()->getLocale();
+
+        // Redirect to the localized admin login page
+        return redirect("$locale/admin/login");
+    }
 }
