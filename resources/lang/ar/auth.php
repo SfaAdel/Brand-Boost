@@ -29,4 +29,5 @@ return [
     'terms' => 'الشروط',
 'confirm_password_label' => ' تأكيد كلمة المرور ',
 'confirm_password_placeholder' => 'أعد كتابة كلمة المرور',
+'remember_me'=>'تذكرني',
 ];

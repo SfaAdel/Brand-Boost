@@ -5,5 +5,6 @@ return [
     'about' => 'About Us',
     'dashboard' => 'Dashboard',
     'home' => 'Home',
+'admin_created_successfully' => 'Admin created successfully.',
 
 ];

@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 switch ($guard) {
                     case 'admin':
-                        return redirect()->route('dashboard');
+                        return redirect()->route('admin.index');
                     case 'freelancer':
                         return redirect()->route('welcome'); // Update as needed
                     case 'business_owner':

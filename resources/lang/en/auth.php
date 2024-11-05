@@ -29,4 +29,5 @@ return [
     'terms' => 'Terms',
 'confirm_password_label' => 'Confirm Password',
 'confirm_password_placeholder' => 'Re-enter your password',
+'remember_me'=>'Remember me',
 ];

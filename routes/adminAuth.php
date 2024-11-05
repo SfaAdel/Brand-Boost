@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('admin.register');
+                ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
@@ -35,7 +35,7 @@ Route::middleware('guest:admin')->group(function () {
                 ->name('password.store');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth:admin'])->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');
 
@@ -52,10 +52,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('password', [PasswordController::class, 'update'])->name('admin.password.update');
 
-
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->name('logout');
 });
 
-Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+

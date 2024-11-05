@@ -12,15 +12,24 @@
                 <div class="form-content">
 
                     <h1 class="mb-3">@lang('auth.login_title') </h1>
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                    <form class="text-left">
+                    <form class="text-left" action="{{route('admin.login')}}" method="post">
+                        @csrf
                         <div class="form">
-                            <div id="username-field" class="field-wrapper input">
-                                <input id="username" name="username" type="text" class="form-control" placeholder="@lang('auth.username_placeholder')">
+                            <div id="email-field" class="field-wrapper input">
+                                <label for="email" class="field-wrapper lable mx-3"> @lang('auth.email_placeholder')</label>
+                                <input id="email" name="email" type="text" class="form-control" placeholder="@lang('auth.email_placeholder')">
+                                <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
+
                             </div>
 
                             <div id="password-field" class="field-wrapper input mb-2">
+                            <label for="password" class="field-wrapper lable mx-3"> @lang('auth.password_placeholder')</label>
+
                                 <input id="password" name="password" type="password" class="form-control" placeholder="@lang('auth.password_placeholder')">
+                                <x-input-error :messages="$errors->get('password')" class="mt-2 text-danger" />
+
                             </div>
                             <div class="d-sm-flex justify-content-between">
                                 <div class="field-wrapper toggle-pass">
@@ -43,14 +52,10 @@
                             <div class="field-wrapper text-center keep-logged-in">
                                 <div class="n-chk new-checkbox checkbox-outline-primary">
                                     <label class="new-control new-checkbox checkbox-outline-primary">
-                                        <input type="checkbox" class="new-control-input">
-                                        <span class="new-control-indicator"></span>@lang('auth.keep_logged_in')
+                                        <input type="checkbox" class="new-control-input" name="remember" >
+                                        <span class="new-control-indicator"></span>@lang('auth.remember_me')
                                     </label>
                                 </div>
-                            </div>
-
-                            <div class="field-wrapper">
-                                <a href="auth_pass_recovery.html" class="forgot-pass-link">@lang('auth.forgot_password')</a>
                             </div>
                         </div>
                     </form>

@@ -17,21 +17,22 @@ Route::group([
         return view('welcome');
     })->name('welcome');
 
-    Route::prefix('admin')->group(function(){
-Route::middleware(['admin'])->group(function () {
-    Route::view('/', 'admin.index')->name('admin.index');
-});
+    Route::prefix('admin')->name('admin.')->group(function(){
 
-require __DIR__ . '/adminAuth.php';
+        require __DIR__ . '/adminAuth.php';
 
-        Route::view('/login', 'admin.auth.login')->name('admin.login');
+        // Route::view('/login', 'admin.auth.login')->name('login');
 
-
-
-   });
-
-
+        Route::middleware(['admin'])->group(function () {
+            Route::view('/', 'admin.index')->name('index');
+            // Admins
+            Route::resource('admins', AdminController::class, ['except' => 'show']);
+        });
 
 });
 
-require __DIR__ . '/auth.php';
+
+
+});
+
+// require __DIR__ . '/auth.php';
