@@ -39,8 +39,8 @@ class AdminController extends Controller
                 'password' => bcrypt($request->input('password'))
             ]);
 
-        return redirect()->route('admin.admins.index')->with('sucess', 'تم انشاء المدير');
-    }
+            return redirect()->route('admin.admins.index')->with('success', __('messages.admin_created'));
+        }
 
     /**
      * Display the specified resource.
@@ -63,19 +63,32 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AdminRequest $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        //
-        if ($request->filled('password') && $admin->password != $request->get('password')) {
-            $admin->update($request->except('password','_token', '_method') + [
-                    'password' => bcrypt($request->input('password')),
-                ]);
-        } else {
-            $admin->update($request->except('password','_method','_token'));
+        $admin = Admin::findOrFail($id);
+    
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:admins,email,' . $admin->id,
+            'password' => 'nullable|string|min:8|confirmed', // Make password nullable
+            'role' => 'required|in:admin,super_admin,data_entry',
+        ]);
+    
+        // Update admin details
+        $admin->name = $request->input('name');
+        $admin->email = $request->input('email');
+        $admin->role = $request->input('role');
+    
+        // Only update password if provided
+        if ($request->filled('password')) {
+            $admin->password = bcrypt($request->input('password'));
         }
-
-        return redirect()->route('admin.admins.index')->with('sucess', 'تم تعديل البيانات');
+    
+        $admin->save();
+    
+        return redirect()->route('admin.admins.index')->with('success', __('messages.admin_updated'));
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -84,6 +97,6 @@ class AdminController extends Controller
     {
         $admin->delete();
 
-        return redirect()->route('admin.admins.index')->with('sucess', 'تم حذف البيانات');
+        return redirect()->route('admin.admins.index')->with('success', __('messages.admin_deleted'));
     }
 }

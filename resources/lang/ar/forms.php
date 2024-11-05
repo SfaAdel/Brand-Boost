@@ -15,5 +15,18 @@ return [
     'data_entry' => 'مدخل بيانات',
     'save' => 'حفظ',
     'cancel' => 'إلغاء',
+    'update' => 'تعديل',
+    'admin_list' => 'قائمة المديرين',
+    'name' => 'الاسم',
+    'email' => 'البريد الإلكتروني',
+    'role' => 'الدور',
+    'created_at' => 'تاريخ الإنشاء',
+    'avatar' => 'الصورة',
+    'action' => 'الإجراء',
+    'edit' => 'تعديل',
+    'delete' => 'حذف',
+    'edit_admin' => 'تعديل المدير',
+    'leave_blank_to_keep_current_password' => 'اتركه فارغًا للاحتفاظ بكلمة المرور الحالية',
+'enter_new_password'=>'أدخل كلمة مرور جديدة',
 ];
 

@@ -5,6 +5,11 @@
 @section('content')
     <div class="card main-card m-1">
         <div class="container">
+
+            <div class="my-3">
+                @include('admin.includes.alerts')
+            </div>
+
             <div class="row layout-top-spacing">
                 <div class="col-lg-12 col-12 layout-spacing">
                     <div class="statbox widget box box-shadow">

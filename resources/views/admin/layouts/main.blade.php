@@ -16,6 +16,8 @@
         @include('admin.includes.css.ltr_css')
     @endif
 
+    @stack('custom-css')
+
 </head>
 
 <body class="@yield('body-class', 'dashboard-analytics')">
@@ -44,7 +46,7 @@
         <!--  END SIDEBAR  -->
 
         <!--  BEGIN CONTENT AREA  -->
-        <div id="content" class="main-content">
+        <div id="content" class="main-content mt-0">
             @yield('content')
 
             <!-- Footer -->
@@ -64,6 +66,7 @@
         @include('admin.includes.js.ltr_js')
     @endif
 
+    @stack('custom-js')
 
 
 </body>
