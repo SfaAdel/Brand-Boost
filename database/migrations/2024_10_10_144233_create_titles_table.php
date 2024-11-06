@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('titles', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->unique();
+            $table->string('short_description');
+            $table->text('long_description')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('banner')->nullable();
+            $table->enum('section',['about_us','services','stars','advantages','blogs','contacts','main','join'])->unique()->nullable();
             $table->timestamps();
         });
     }

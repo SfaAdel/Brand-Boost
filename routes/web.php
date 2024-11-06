@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +29,8 @@ Route::group([
             Route::view('/', 'admin.index')->name('index');
             // Admins
             Route::resource('admins', AdminController::class, ['except' => 'show']);
+            Route::resource('settings', SettingController::class);
+            Route::resource('titles', TitleController::class);
         });
 
 });

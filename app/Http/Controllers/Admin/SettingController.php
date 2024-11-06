@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -14,6 +13,9 @@ class SettingController extends Controller
     public function index()
     {
         //
+        $settings= Setting::first();
+        return view('admin.settings.index', compact('settings'));
+
     }
 
     /**
@@ -46,6 +48,9 @@ class SettingController extends Controller
     public function edit(Setting $setting)
     {
         //
+        
+        return view('admin.settings.edit', compact('setting'));
+
     }
 
     /**
@@ -54,6 +59,19 @@ class SettingController extends Controller
     public function update(Request $request, Setting $setting)
     {
         //
+        $setting->update($request->except('_token', '_method','logo','favicon'));
+        if ($request->hasFile('logo')) {
+            $LogoImageName = time() . '.' . $request->logo->extension();
+            $request->logo->move(('images/settings'), $LogoImageName);
+            $setting->update(['logo' => $LogoImageName]);
+        }
+        if ($request->hasFile('favicon')) {
+            $favIconName = time() . '.' . $request->favicon->extension();
+            $request->favicon->move(('images/settings'), $favIconName);
+            $setting->update(['favicon' => $favIconName]);
+        }
+        return redirect()->route('admin.settings.index')->with('success', 'تم تعديل بيانات الموقع بنجاح');
+
     }
 
     /**

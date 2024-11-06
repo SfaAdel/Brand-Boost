@@ -19,7 +19,7 @@
     <header class="header navbar navbar-expand-sm">
         <ul class="navbar-item flex-row">
             <li class="nav-item theme-logo">
-                <a href="index.html">
+                <a href="{{ route('admin.index') }}">
                     <img src="{{ asset('admin/ltr/assets/img/90x90.jpg') }}" class="navbar-logo" alt="logo">
                 </a>
             </li>

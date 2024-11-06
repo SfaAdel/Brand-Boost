@@ -1,180 +1,125 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.main')
 
-@section('page.title', 'تعديل اعدادات الموقع')
+@section('title', __('sidebar.dashboard') . ' - ' . __('messages.home'))
+
+@section('body-class', 'sidebar-noneoverflow')
 
 @section('content')
-    <div class="card main-card">
-        <div class="card-header">
-            <div>
-              <span class="icon is-small">
-            <i class="fa fa-cogs"></i>
-          </span>
-                <span> اعدادات الموقع</span>
-            </div>
+<div class="layout-px-spacing">
+    <div class="page-header">
+        <div class="page-title">
+            <h3>{{ __('forms.settings') }}</h3>
         </div>
-        <div class="card-content">
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label required">اسم الموقع</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <p> {{$setting->name}} </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label"> ايميل الموقع</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <p>{{$setting->email}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">الهاتف</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <p>{{$setting->phone}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Whatsapp</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <p>{{$setting->whatsapp}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">FaceBook</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                           <p>{{$setting->facebook}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">X</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <p>{{$setting->x}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">YouTube</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <p>{{$setting->youtube}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label required">العنوان</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control">
-                            <p>{{$setting->address}}</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label required">LinkedIn</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control">
-                            <p>{{$setting->linkedin}}</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label required">Instagram</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control">
-                            <p>{{$setting->instagram}}</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label required">Tiktok</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control">
-                            <p>{{$setting->tiktok}}</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label required">صورة الموقع</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <img src="{{ asset('images/settings/' . $setting->logo) }}" alt="Logo Image" style="max-width: 20rem;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <footer class="card-footer">
-            <div class="buttons has-addons">
-
-
-                <a class="button is-success " href="{{ route('admin.settings.edit', $setting->id) }}">
-                    تعديل </a>
-            </div>
-        </footer>
-
     </div>
+
+    <div class="row p-0">
+        <div class="col-xl-6 col-lg-6 col-md-5 col-sm-12 layout-top-spacing mx-auto">
+            <div class="user-profile ">
+                <div class="widget-content widget-content-area">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="">{{ __('forms.settings_info') }}</h3>
+                        <a href="{{ route('admin.settings.edit', 1) }}" class="mt-2 edit-profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="text-center user-info">
+                        <div class="d-flex justify-content-around">
+                            @if ($settings->logo)
+                            <div>
+                                <label for=""> {{ __('forms.logo') }}</label>
+                                <img src="{{ asset('images/settings/' . $settings->logo) }}" alt="Logo" class="m-2 p-2" style="max-width: 5rem;">
+    
+                            </div>
+                            @endif
+                            @if ($settings->favicon)
+                            <div>
+                                <label for="">{{ __('forms.favicon') }}</label>
+                                <img src="{{ asset('images/settings/' . $settings->favicon) }}" alt="Favicon" class="m-2 p-2" style="max-width: 5rem;">
+    
+                            </div>
+                        @endif
+                        </div>
+                       
+                        <p class="">{{ $settings->name }}</p>
+                    </div>
+                    <div class="user-info-list ">
+                        <div class="">
+                            <ul class="contacts-block list-unstyled">
+                                <li class="contacts-block__item">
+                                    <a href="tel:{{ $settings->phone }}" target="_blank">
+                                        <i class="fa-solid fa-phone"></i>
+                                        {{ $settings->whatsapp }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="mailto:{{ $settings->email }}">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        {{ $settings->email }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="#">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        {{ $settings->address }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="tel:{{ $settings->whatsapp }}" target="_blank">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                        {{ $settings->whatsapp }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="{{ $settings->facebook }}" target="_blank">
+                                        <i class="fa-brands fa-facebook"></i>
+                                        {{ $settings->facebook }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="{{ $settings->instagram }}" target="_blank">
+                                        <i class="fa-brands fa-instagram"></i>
+                                        {{ $settings->instagram }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="{{ $settings->youtube }}" target="_blank">
+                                        <i class="fa-brands fa-youtube"></i>
+                                       {{ $settings->youtube }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="{{ $settings->linkedin }}" target="_blank">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                        {{ $settings->linkedin }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="{{ $settings->tiktok }}" target="_blank">
+                                        <i class="fa-brands fa-tiktok"></i>
+                                        {{ $settings->tiktok }}
+                                    </a>
+                                </li>
+                                <li class="contacts-block__item">
+                                    <a href="{{ $settings->x }}" target="_blank">
+                                        <i class="fa-brands fa-x-twitter"></i>
+                                        {{ $settings->x }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <h5>{{ __('forms.other_information') }}</h5>
+                        <p><strong>{{ __('forms.created_at') }}: </strong>{{ $settings->created_at->format('Y-m-d') }}</p>
+                        <p><strong>{{ __('forms.updated_at') }}: </strong>{{ $settings->updated_at->format('Y-m-d') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
-
-

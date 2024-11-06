@@ -22,6 +22,8 @@ return [
     'role' => 'Role',
     'created_at' => 'Created At',
     'avatar' => 'Image',
+    'logo' => 'Logo',
+    'favicon' => 'Favicon',
     'action' => 'Actions',
     'edit' => 'Edit',
     'delete' => 'Delete',
@@ -29,6 +31,27 @@ return [
     'leave_blank_to_keep_current_password' => 'Leave blank to keep the existing password',
     'enter_new_password'=>'Enter New Password',
 
+    'settings_info'=>'Settings Info',
+    'other_information'=> 'Other Information',
 
+    'site_name' => 'Site Name',
+    'site_email' => 'Site Email',
+    'phone' => 'Phone',
+    'whatsapp' => 'WhatsApp',
+    'facebook' => 'Facebook',
+    'x' => 'X',
+    'youtube' => 'YouTube',
+    'address' => 'Address',
+    'linkedin' => 'LinkedIn',
+    'instagram' => 'Instagram',
+    'tiktok' => 'TikTok',
+    'enter' => 'Enter',
+    'update' => 'Update',
+    'cancel' => 'Cancel',
+    'edit_settings' => 'Update Settings',
+    'created_at'=>'Created At',
+    'updated_at'=>'Updated At',
+    'settings'=> 'Settings',
+    
 ];
 
