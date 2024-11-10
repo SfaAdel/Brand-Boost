@@ -16,9 +16,7 @@ class SettingSeeder extends Seeder
         //
 
         Setting::create([
-            'name' => 'منازل',
             'phone' => '00966542936554',
-            'address' => ' الرياض - المملكة العربية السعودية',
             'logo' => 'logo.png',
             'favicon' => 'logo.png',
             'whatsapp' => '00966542936554',

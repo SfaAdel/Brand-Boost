@@ -16,17 +16,18 @@ return new class extends Migration
             // $table->string('name')->unique();
             $table->string('logo')->unique();
             $table->string('favicon')->unique();
-            // $table->string('phone')->unique();
+            $table->string('phone')->unique();
             // $table->string('address')->unique();
-            // $table->string('whatsapp')->unique();
-            // $table->string('email')->unique();
-            // $table->string('facebook')->unique();
+            $table->string('whatsapp')->unique();
+            $table->string('email')->unique();
+            $table->string('facebook')->unique();
             $table->string('x')->unique();
             $table->string('tiktok')->unique();
-            // $table->string('youtube')->unique();
-            // $table->string('instagram')->unique();
-            // $table->string('linkedin')->unique();
+            $table->string('youtube')->unique();
+            $table->string('instagram')->unique();
+            $table->string('linkedin')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

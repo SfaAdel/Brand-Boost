@@ -37,33 +37,30 @@
                                        </tr>
                                    </thead>
                                    <tbody>
-                                       @foreach ($admins as $admin)
-                                           <tr>
-                                               <td>{{ $admin->name }}</td>
-                                               <td>{{ $admin->email }}</td>
-                                               <td>{{ __('forms.' . $admin->role) }}</td>
-                                               <td>{{ $admin->created_at->format('Y-m-d') }}</td>
-                                               {{-- <td>
-                                                   <div class="d-flex">
-                                                       <div class="usr-img-frame mr-2 rounded-circle">
-                                                           <img alt="avatar" class="img-fluid rounded-circle"
-                                                               src="{{ $admin->profile_img ?? 'assets/img/default-avatar.png' }}">
-                                                       </div>
-                                                   </div>
-                                               </td> --}}
-                                               <td>
-                                                   <a href="{{ route('admin.admins.edit', $admin->id) }}"
-                                                       class="btn btn-primary btn-sm">{{ __('forms.edit') }}</a>
-                                                   <form action="{{ route('admin.admins.destroy', $admin->id) }}"
-                                                       method="POST" style="display:inline-block;">
-                                                       @csrf
-                                                       @method('DELETE')
-                                                       <button type="submit"
-                                                           class="btn btn-danger btn-sm">{{ __('forms.delete') }}</button>
-                                                   </form>
-                                               </td>
-                                           </tr>
-                                       @endforeach
+                                    @foreach ($admins as $admin)
+    <tr>
+        <td>{{ $admin->name }}</td>
+        <td>{{ $admin->email }}</td>
+        <td>{{ __('forms.' . $admin->role) }}</td>
+        <td>{{ $admin->created_at->format('Y-m-d') }}</td>
+        <td>
+            <a href="{{ route('admin.admins.edit', $admin->id) }}" class="btn btn-primary mb-2 mr-2 btn-sm">{{ __('forms.edit') }}</a>
+
+            <!-- Button to open the modal, with a unique modal ID -->
+            <button type="button" class="btn btn-danger mb-2 mr-2 btn-sm" data-toggle="modal" data-target="#deleteModal{{ $admin->id }}">
+                {{ __('forms.delete') }}
+            </button>
+
+            <!-- Include the Delete Modal with a unique ID -->
+            @include('admin.components.delete-modal', [
+                'modalId' => 'deleteModal' . $admin->id,
+                'formAction' => route('admin.admins.destroy', $admin->id),
+                'itemName' => $admin->name,
+            ])
+        </td>
+    </tr>
+@endforeach
+
                                    </tbody>
                                </table>
                                <!-- Pagination Links -->
@@ -73,6 +70,8 @@
                    </div>
                </div>
            </div>
+
+
 
            <!--  END CONTENT AREA  -->
        @endsection
@@ -95,6 +94,8 @@
                <script src=" {{ asset('admin/rtl/plugins/table/datatable/button-ext/jszip.min.js') }}"></script>
                <script src=" {{ asset('admin/rtl/plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
                <script src=" {{ asset('admin/rtl/plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
+
+               <script src=" {{ asset('admin/rtl/plugins/highlight/highlight.pack.js') }}"></script>
 
                <script>
                    $('#html5-extension').DataTable({
@@ -154,6 +155,7 @@
                <script src=" {{ asset('admin/ltr/plugins/table/datatable/button-ext/jszip.min.js') }}"></script>
                <script src=" {{ asset('admin/ltr/plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
                <script src=" {{ asset('admin/ltr/plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
+               <script src=" {{ asset('admin/ltr/plugins/highlight/highlight.pack.js') }}"></script>
 
                <script>
                    $('#html5-extension').DataTable({

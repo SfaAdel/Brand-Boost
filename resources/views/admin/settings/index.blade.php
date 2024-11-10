@@ -12,6 +12,10 @@
         </div>
     </div>
 
+    <div class="my-3">
+        @include('admin.includes.alerts')
+    </div>
+
     <div class="row p-0">
         <div class="col-xl-6 col-lg-6 col-md-5 col-sm-12 layout-top-spacing mx-auto">
             <div class="user-profile ">

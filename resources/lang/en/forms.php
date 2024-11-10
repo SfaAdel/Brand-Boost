@@ -17,9 +17,7 @@ return [
     'cancel' => 'Cancel',
     'update' => 'Update',
     'admin_list' => 'Admins List',
-    'name' => 'Name',
     'email' => ' Email',
-    'role' => 'Role',
     'created_at' => 'Created At',
     'avatar' => 'Image',
     'logo' => 'Logo',
@@ -46,12 +44,14 @@ return [
     'instagram' => 'Instagram',
     'tiktok' => 'TikTok',
     'enter' => 'Enter',
-    'update' => 'Update',
-    'cancel' => 'Cancel',
     'edit_settings' => 'Update Settings',
-    'created_at'=>'Created At',
     'updated_at'=>'Updated At',
     'settings'=> 'Settings',
-    
+    'basic_info'=> 'Basic Info',
+    'translated_info'=> 'Translated Info',
+    'sure_of_delete'=> 'Are you sure you want to delete ',
+    '?'=> '?',
+    'confirm_delete'=> 'Confirm Delete',
+
 ];
 

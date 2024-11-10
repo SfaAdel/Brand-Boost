@@ -56,23 +56,57 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    // public function update(Request $request, Setting $setting)
+    // {
+    //     //
+    //     $setting->update($request->except('_token', '_method','logo','favicon'));
+    //     if ($request->hasFile('logo')) {
+    //         $LogoImageName = time() . '.' . $request->logo->extension();
+    //         $request->logo->move(('images/settings'), $LogoImageName);
+    //         $setting->update(['logo' => $LogoImageName]);
+    //     }
+    //     if ($request->hasFile('favicon')) {
+    //         $favIconName = time() . '.' . $request->favicon->extension();
+    //         $request->favicon->move(('images/settings'), $favIconName);
+    //         $setting->update(['favicon' => $favIconName]);
+    //     }
+    //     return redirect()->route('admin.settings.index')->with('success',  __('messages.setting_updated'));
+
+    // }
+    
+
     public function update(Request $request, Setting $setting)
     {
-        //
-        $setting->update($request->except('_token', '_method','logo','favicon'));
+        // Update the main settings table fields
+        $setting->update($request->except('_token', '_method', 'logo', 'favicon', 'en', 'ar')); // Exclude translation inputs
+    
+        // Handle logo upload
         if ($request->hasFile('logo')) {
             $LogoImageName = time() . '.' . $request->logo->extension();
             $request->logo->move(('images/settings'), $LogoImageName);
             $setting->update(['logo' => $LogoImageName]);
         }
+    
+        // Handle favicon upload
         if ($request->hasFile('favicon')) {
             $favIconName = time() . '.' . $request->favicon->extension();
             $request->favicon->move(('images/settings'), $favIconName);
             $setting->update(['favicon' => $favIconName]);
         }
-        return redirect()->route('admin.settings.index')->with('success', 'تم تعديل بيانات الموقع بنجاح');
-
+    
+        // Update the translations for each language
+        foreach (config('app.languages') as $locale => $language) {
+            $setting->translateOrNew($locale)->name = $request->input("$locale.name", '');
+            $setting->translateOrNew($locale)->address = $request->input("$locale.address", '');
+        }
+    
+        // Save the translations
+        $setting->save();
+    
+        return redirect()->route('admin.settings.index')->with('success', __('messages.setting_updated'));
     }
+    
+
 
     /**
      * Remove the specified resource from storage.
