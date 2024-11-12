@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\SettingTranslation;
+use App\Http\Controllers\Controller;
+use App\Models\Field;
 use Illuminate\Http\Request;
 
-class SettingTranslationController extends Controller
+class FieldController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class SettingTranslationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SettingTranslation $settingTranslation)
+    public function show(Field $field)
     {
         //
     }
@@ -42,7 +43,7 @@ class SettingTranslationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SettingTranslation $settingTranslation)
+    public function edit(Field $field)
     {
         //
     }
@@ -50,7 +51,7 @@ class SettingTranslationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SettingTranslation $settingTranslation)
+    public function update(Request $request, Field $field)
     {
         //
     }
@@ -58,7 +59,7 @@ class SettingTranslationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SettingTranslation $settingTranslation)
+    public function destroy(Field $field)
     {
         //
     }

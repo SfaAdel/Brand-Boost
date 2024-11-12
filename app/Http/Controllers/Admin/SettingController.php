@@ -56,24 +56,6 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, Setting $setting)
-    // {
-    //     //
-    //     $setting->update($request->except('_token', '_method','logo','favicon'));
-    //     if ($request->hasFile('logo')) {
-    //         $LogoImageName = time() . '.' . $request->logo->extension();
-    //         $request->logo->move(('images/settings'), $LogoImageName);
-    //         $setting->update(['logo' => $LogoImageName]);
-    //     }
-    //     if ($request->hasFile('favicon')) {
-    //         $favIconName = time() . '.' . $request->favicon->extension();
-    //         $request->favicon->move(('images/settings'), $favIconName);
-    //         $setting->update(['favicon' => $favIconName]);
-    //     }
-    //     return redirect()->route('admin.settings.index')->with('success',  __('messages.setting_updated'));
-
-    // }
-    
 
     public function update(Request $request, Setting $setting)
     {

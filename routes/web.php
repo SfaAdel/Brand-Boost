@@ -1,7 +1,17 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdvantageController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BusinessOwnerController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\FieldController;
+use App\Http\Controllers\Admin\FreelancerController;
+use App\Http\Controllers\Admin\JobTitleController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +41,18 @@ Route::group([
             Route::resource('admins', AdminController::class, ['except' => 'show']);
             Route::resource('settings', SettingController::class);
             Route::resource('titles', TitleController::class);
+            Route::resource('tags', TagController::class);
+
+            Route::resource('fields', FieldController::class);
+            Route::resource('job_titles', JobTitleController::class);
+            Route::resource('freelancers', FreelancerController::class);
+            Route::resource('business_owners', BusinessOwnerController::class);
+            Route::resource('orders', OrderController::class);
+            Route::resource('services', ServiceController::class);
+            Route::resource('advantages', AdvantageController::class);
+            Route::resource('blogs', BlogController::class);
+            Route::resource('contacts', ContactController::class);
+
         });
 
 });

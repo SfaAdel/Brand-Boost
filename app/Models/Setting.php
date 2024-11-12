@@ -17,19 +17,4 @@ class Setting extends Model implements TranslatableContract
     protected $guarded = ['id'];
 
 
-    public static function checkSettings()
-    {
-        $settings = Self::all();
-        if (count($settings) < 1) {
-            $data = [
-                'id' => 1,
-            ];
-            foreach (config('app.languages') as $key => $value) {
-                $data[$key]['title'] = $value;
-            }
-            Self::create($data);
-        }
-
-        return Self::first();
-    }
 }

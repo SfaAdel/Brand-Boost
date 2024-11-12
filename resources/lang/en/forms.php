@@ -53,5 +53,10 @@ return [
     '?'=> '?',
     'confirm_delete'=> 'Confirm Delete',
 
+    'tag_list'=> 'Tags List',
+    'add_new_tag'=> 'Add New Tag',
+   
+    'update_tag'=> 'Edit Tag',
+
 ];
 

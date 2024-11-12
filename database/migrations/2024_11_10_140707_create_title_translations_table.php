@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('titles', function (Blueprint $table) {
+        Schema::create('title_translations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('title_id')->constrained('titles')->onDelete('cascade');
+            $table->string('locale');
             $table->string('title')->unique();
             $table->string('short_description');
             $table->text('long_description')->nullable();
-            $table->string('icon')->nullable();
-            $table->string('banner')->nullable();
-            $table->enum('section',['about_us','services','stars','advantages','blogs','contacts','main','join'])->unique()->nullable();
+            $table->unique(['title_id', 'locale']);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('titles');
+        Schema::dropIfExists('title_translations');
     }
 };
