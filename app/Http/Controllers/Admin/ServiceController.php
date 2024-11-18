@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ServiceRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,9 @@ class ServiceController extends Controller
     public function index()
     {
         //
+        $services = Service::with('translations')->paginate(10);
+        return view('admin.services.index', compact('services'));
+    
     }
 
     /**
@@ -22,14 +26,29 @@ class ServiceController extends Controller
     public function create()
     {
         //
+        return view('admin.services.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
         //
+
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/services'), $ImageName);
+        }
+
+        Service::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
+
+
+
+        return redirect()->route('admin.services.index')->with('success', __('messages.service_created'));
+    
     }
 
     /**
@@ -46,14 +65,27 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         //
+        return view('admin.services.edit', compact('service'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service)
+    public function update(ServiceRequest $request, Service $service)
     {
         //
+        $service->update($request->except('_token', '_method' , 'icon')); 
+
+        // Handle logo upload
+        if ($request->hasFile('icon')) {
+            $iconImageName = time() . '.' . $request->icon->extension();
+            $request->logo->move(('images/services'), $iconImageName);
+            $service->update(['icon' => $iconImageName]);
+        }
+
+        return redirect()->route('admin.services.index')->with('success', __('messages.service_updated'));
+            
     }
 
     /**
@@ -62,5 +94,8 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         //
+        $service->delete();
+        return redirect()->route('admin.services.index')->with('success', __('messages.service_deleted'));
+    
     }
 }

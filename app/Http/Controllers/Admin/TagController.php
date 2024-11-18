@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::with('translations')->paginate(10); // Fetch tags with translations
+        $tags = Tag::with('translations')->paginate(10);
         return view('admin.tags.index', compact('tags'));
     }
 
@@ -29,15 +29,13 @@ class TagController extends Controller
     /**
      * Store a newly created tag in storage.
      */
-    public function store(Request $request)
-{
-  
+    public function store(TagRequest $request)
+    {
+        // Create a new Tag without translations
+        $tag = Tag::create($request->all());
 
-    // Create a new Tag without translations
-    $tag = Tag::create($request->all()); 
-
-    return redirect()->route('admin.tags.index')->with('success', __('messages.tag_created'));
-}
+        return redirect()->route('admin.tags.index')->with('success', __('messages.tag_created'));
+    }
 
 
     /**
@@ -51,20 +49,12 @@ class TagController extends Controller
     /**
      * Update the specified tag in storage.
      */
-    public function update(Request $request, Tag $tag)
+    public function update(TagRequest $request, Tag $tag)
     {
- // Update the main settings table fields
- $tag->update($request->except('_token', '_method', 'en', 'ar')); // Exclude translation inputs
-    
- 
+        // Update the main settings table fields
+        $tag->update($request->except('_token', '_method')); 
 
- // Update the translations for each language
- foreach (config('app.languages') as $locale => $language) {
-     $tag->translateOrNew($locale)->name = $request->input("$locale.name", '');
- }
 
- // Save the translations
- $tag->save();
 
         return redirect()->route('admin.tags.index')->with('success', __('messages.tag_updated'));
     }

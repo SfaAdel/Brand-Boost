@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\FieldRequest;
 use App\Models\Field;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,9 @@ class FieldController extends Controller
     public function index()
     {
         //
+        $fields = Field::with('translations')->paginate(10);
+        return view('admin.fields.index', compact('fields'));
+
     }
 
     /**
@@ -22,14 +26,23 @@ class FieldController extends Controller
     public function create()
     {
         //
+        return view('admin.fields.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FieldRequest $request)
     {
         //
+         $fields = Field::create($request->all());
+
+        // $fields = Field::create($request->except( '_token'));
+
+
+        return redirect()->route('admin.fields.index')->with('success', __('messages.field_created'));
+
     }
 
     /**
@@ -46,14 +59,20 @@ class FieldController extends Controller
     public function edit(Field $field)
     {
         //
+        return view('admin.fields.edit', compact('field'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Field $field)
+    public function update(FieldRequest $request, Field $field)
     {
         //
+        $field->update($request->except('_token', '_method'));
+
+        return redirect()->route('admin.fields.index')->with('success', __('messages.field_updated'));
+
     }
 
     /**
@@ -62,5 +81,8 @@ class FieldController extends Controller
     public function destroy(Field $field)
     {
         //
+        $field->delete();
+        return redirect()->route('admin.fields.index')->with('success', __('messages.field_deleted'));
+    
     }
 }

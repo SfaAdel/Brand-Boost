@@ -47,15 +47,43 @@ return [
     'enter' => 'أدخل',
     'edit_settings' => 'تحديث الإعدادات',
     'settings'=> 'الاعدادات',
+
     'translated_info' => 'البيانات التي تحتاج الي ترجمة',
     'basic_info'=> 'البيانات الأساسية',
     'sure_of_delete'=> 'هل أنت متأكد من انك تريد حذف ',
     '?'=> '؟',
     'confirm_delete'=> 'تأكيد الحذف',
+    'freelancer' => 'مستقل',
+    'business_owner' => 'صاحب عمل',
+    'both' => 'كلاهما',
+    'icon'=> 'الصورة',
+    'type' => 'النوع',
+    'en_name'=> 'الاسم باللغة الانجليزية ',
+    'ar_name'=> ' الاسم باللغة العربية',
+
+
     'tag_list'=> 'قائمة الوسوم',
     'add_new_tag'=> 'اضافة وسم جديد',
     'update_tag'=> 'تعديل الوسم',
 
+    'add_new_field' => 'إضافة مجال جديد',
+    'update_field'=> 'تعديل بيانات المجال',
+    'fields_list'=> 'قائمة المجالات',
+    'select_the_field_type' => 'اختر نوع المجال',
 
+    'job_titles_list'=> 'قائمة المسميات الوظيفية',
+    'add_new_job_title'=> 'اضافة مسمي وظيفي جديد',
+    'select_the_job_title_type'=> 'اختر نوع المسمي الوظيفي',
+    'update_job_title'=> 'تعديل المسمي الوظيفي',
+
+    'add_new_service'=> 'اضافة خدمة جديدة',
+    'update_service'=> 'تعديل الخدمة ',
+    'services_list'=> 'قائمة الخدمات',
+    'service_icon'=> 'صورة الخدمة',
+
+    'advantages_list'=> ' قائمة المميزات',
+    'add_new_advantage'=> 'اضافة ميزة جديدة  ',
+    'update_advantage'=> ' تعديل الميزة',
+    
 ];
 

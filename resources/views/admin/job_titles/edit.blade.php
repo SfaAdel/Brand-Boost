@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', __('sidebar.dashboard') . ' - ' . __('forms.update_tag'))
+@section('title', __('sidebar.dashboard') . ' - ' . __('forms.update_job_title'))
 
 @section('content')
    
@@ -14,12 +14,32 @@
                 <div class="col-lg-12 col-12 layout-spacing">
                     <div class="statbox widget box box-shadow">
                         <div class="widget-header">
-                            <h4>{{ __('forms.update_tag') }}</h4>
+                            <h4>{{ __('forms.update_job_titles') }}</h4>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form action="{{ route('admin.tags.update' , $tag->id) }}" method="POST" class="px-3">
+                            <form action="{{ route('admin.job_titles.update' , $jobTitle->id) }}" method="POST" class="px-3">
                                 @csrf
                                 @method('PATCH')
+
+
+                                <h5 class="my-3">{{ __('forms.basic_info') }}</h5>
+
+                                <div class="form-group mb-4">
+                                    <label for="logo">{{ __('forms.type') }}</label>
+                               
+
+                                    <select class="form-control  basic" name="type">
+                                        <option selected="selected" disabled>{{ __('forms.select_the_job_title_type') }}</option>
+                                        <option value="freelancer" {{ $jobTitle->type === 'freelancer' ? 'selected' : '' }}>{{ __('forms.freelancer') }}</option>
+                                        <option value="business_owner" {{ $jobTitle->type === 'business_owner' ? 'selected' : '' }}>{{ __('forms.business_owner') }}</option>
+                                        <option value="both" {{ $jobTitle->type === 'both' ? 'selected' : '' }}>{{ __('forms.both') }}</option>
+                                    </select>
+                                </div>
+
+                 
+
+                                <h5 class="my-3">{{ __('forms.translated_info') }} </h5>
+
 
                                 <ul class="nav nav-pills mb-1 mt-4" id="pills-tab" role="tablist">
 
@@ -43,7 +63,7 @@
                                                 <label>{{ __('forms.name') }} - {{ $lang }}</label>
                                                 <input type="text" name="{{ $key }}[name]" class="form-control"
                                                     placeholder="{{ __('forms.name') }}"
-                                                    value="{{ optional($tag->translate($key))->name }}">
+                                                    value="{{ optional($jobTitle->translate($key))->name }}">
                                             </div>
 
                                         </div>
@@ -51,7 +71,7 @@
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="submit" class="btn btn-success mx-2">{{ __('forms.save') }}</button>
-                                    <a href="{{ route('admin.tags.index') }}" class="btn btn-secondary ms-2">{{ __('forms.cancel') }}</a>
+                                    <a href="{{ route('admin.job_titles.index') }}" class="btn btn-secondary ms-2">{{ __('forms.cancel') }}</a>
                                 </div>
                             </form>
 

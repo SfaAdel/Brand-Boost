@@ -53,10 +53,36 @@ return [
     '?'=> '?',
     'confirm_delete'=> 'Confirm Delete',
 
+    'freelancer' => 'Freelancer',
+    'business_owner' => 'Business Owner',
+    'both' => 'Both',
+    'icon'=> 'Icon',
+    'type' => 'Type',
+    'en_name'=> 'English Name',
+    'ar_name'=> 'Arabic Name',
+
     'tag_list'=> 'Tags List',
     'add_new_tag'=> 'Add New Tag',
-   
     'update_tag'=> 'Edit Tag',
 
+    'add_new_field' => 'Add New Field',
+    'update_field'=> 'Update Field',
+    'fields_list'=> 'Fields List',
+    'select_the_field_type' => 'Select the field type',
+
+
+    'add_new_job_title'=> 'Add New Job Title',
+    'job_titles_list'=> 'Job Titles List',
+    'update_job_title'=> 'Update Job Title',
+
+    'select_the_job_title_type'=> 'Select The Job Title Type',
+    'add_new_service'=> 'Add New Service',
+    'update_service'=> 'Update Service',
+    'services_list'=> 'Services List',
+    'service_icon'=> 'Service Icon',
+
+    'advantages_list'=> 'Advantages List',
+    'add_new_advantage'=> 'Add New Advantage',
+    'update_advantage'=> 'Update Advantage',
 ];
 

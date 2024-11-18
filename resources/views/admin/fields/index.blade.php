@@ -1,21 +1,21 @@
        <!-- resources/views/dashboard.blade.php -->
        @extends('admin.layouts.main')
 
-       @section('title', __('sidebar.dashboard') . ' - ' . __('forms.tag_list'))
+       @section('title', __('sidebar.dashboard') . ' - ' . __('forms.fields_list'))
 
        @section('body-class', 'sidebar-noneoverflow')
 
        @section('content')
 
 
-        <a href="{{ route('admin.tags.create') }}" class="btn  m-3 btn-success ">{{ __('forms.add_new_tag') }}</a>
+           <a href="{{ route('admin.fields.create') }}" class="btn  m-3 btn-success ">{{ __('forms.add_new_field') }}</a>
 
-        <!--  BEGIN CONTENT AREA  -->
+           <!--  BEGIN CONTENT AREA  -->
 
            <div class="layout-px-spacing">
                <div class="page-header">
                    <div class="page-title">
-                       <h3>{{ __('forms.tag_list') }}</h3>
+                       <h3>{{ __('forms.fields_list') }}</h3>
                    </div>
                </div>
 
@@ -30,39 +30,43 @@
                                <table id="html5-extension" class="table table-hover non-hover" style="width:100%">
                                    <thead>
                                        <tr>
-                                           <th>{{ __('forms.name') }}</th>
-                                           <th>{{ __('forms.created_at') }}</th>
+                                        <th>{{ __('forms.name') }}</th>
+                                        <th>{{ __('forms.type') }}</th>
+                                        <th>{{ __('forms.created_at') }}</th>
                                            <th>{{ __('forms.action') }}</th>
                                        </tr>
                                    </thead>
                                    <tbody>
-                                    @foreach ($tags as $tag)
-    <tr>
-        <td>{{ $tag->name }}</td>
-        <td>{{ $tag->created_at->format('Y-m-d') }}</td>
+                                       @foreach ($fields as $field)
+                                           <tr>
+                                            <td>{{ $field->name }}</td>
+                                            <td>{{ __('forms.' . $field->type) }}</td>
+                                            <td>{{ $field->created_at->format('Y-m-d') }}</td>
 
-        <td>
-            <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-primary mb-2 mr-2 btn-sm">{{ __('forms.edit') }}</a>
+                                               <td>
+                                                   <a href="{{ route('admin.fields.edit', $field->id) }}"
+                                                       class="btn btn-primary mb-2 mr-2 btn-sm">{{ __('forms.edit') }}</a>
 
-            <!-- Button to open the modal, with a unique modal ID -->
-            <button type="button" class="btn btn-danger mb-2 mr-2 btn-sm" data-toggle="modal" data-target="#deleteModal{{ $tag->id }}">
-                {{ __('forms.delete') }}
-            </button>
+                                                   <!-- Button to open the modal, with a unique modal ID -->
+                                                   <button type="button" class="btn btn-danger mb-2 mr-2 btn-sm"
+                                                       data-toggle="modal" data-target="#deleteModal{{ $field->id }}">
+                                                       {{ __('forms.delete') }}
+                                                   </button>
 
-            <!-- Include the Delete Modal with a unique ID -->
-            @include('admin.components.delete-modal', [
-                'modalId' => 'deleteModal' . $tag->id,
-                'formAction' => route('admin.tags.destroy', $tag->id),
-                'itemName' => $tag->name,
-            ])
-        </td>
-    </tr>
-@endforeach
+                                                   <!-- Include the Delete Modal with a unique ID -->
+                                                   @include('admin.components.delete-modal', [
+                                                       'modalId' => 'deleteModal' . $field->id,
+                                                       'formAction' => route('admin.fields.destroy', $field->id),
+                                                       'itemName' => $field->name,
+                                                   ])
+                                               </td>
+                                           </tr>
+                                       @endforeach
 
                                    </tbody>
                                </table>
                                <!-- Pagination Links -->
-                               {{ $tags->links() }}
+                               {{ $fields->links() }}
                            </div>
                        </div>
                    </div>

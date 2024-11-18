@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TagRequest extends FormRequest
 {
@@ -21,18 +22,35 @@ class TagRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string', 
+        $tagId = $this->route('tag') ? $this->route('tag')->id : null; // Get job title ID if updating
+
+        $rules = [
+            'en.name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('job_title_translations', 'name')
+                    ->ignore($tagId, 'job_title_id')
+                    ->where('locale', 'en')
+            ],
+            'ar.name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('job_title_translations', 'name')
+                    ->ignore($tagId, 'job_title_id')
+                    ->where('locale', 'ar')
+            ],
         ];
+
+        return $rules;
     }
 
-    /**
-     * Get custom messages for validation errors.
-     */
-    public function messages(): array
+    public function attributes()
     {
         return [
-            'name.required' => __('validation.required', ['attribute' => __('validation.attributes.name')]),
+            'en.name' => __('forms.en_name'),
+            'ar.name' => __('forms.ar_name'),
         ];
     }
 }
