@@ -56,10 +56,20 @@ return [
     'freelancer' => 'Freelancer',
     'business_owner' => 'Business Owner',
     'both' => 'Both',
-    'icon'=> 'Icon',
+
+    'banner'=> 'Banner',
+    'icon'=> 'Image',
     'type' => 'Type',
+    'description'=> 'Description',
+    'unit_of_price'=> 'Unit Of Price  ',
+    'price_unit'=> 'Unit Of Price  ',
+
     'en_name'=> 'English Name',
     'ar_name'=> 'Arabic Name',
+    'en_description'=> 'English Description',
+    'ar_description'=> 'Arabic Description',
+    'en_unit_of_price'=> 'English Unit Of Price',
+    'ar_unit_of_price'=> 'Arabic Unit Of Price',
 
     'tag_list'=> 'Tags List',
     'add_new_tag'=> 'Add New Tag',
@@ -84,5 +94,49 @@ return [
     'advantages_list'=> 'Advantages List',
     'add_new_advantage'=> 'Add New Advantage',
     'update_advantage'=> 'Update Advantage',
+
+    'en_title' => 'Title (English)',
+    'ar_title' => 'Title (Arabic)',
+    'en_short_description' => 'Short Description (English)',
+    'ar_short_description' => 'Short Description (Arabic)',
+    'en_long_description' => 'Long Description (English)',
+    'ar_long_description' => 'Long Description (Arabic)',
+    'blog_icon' => 'Blog Icon',
+
+    'tags' => 'Tags',
+
+    'blogs_list' => 'Blogs List',
+    'blog'=> 'Blog',
+    'blog_info'=> 'Blog Info',
+    'blog_details'=> 'Blog Details',
+    'add_new_blog' => 'Add New Blog',
+    'update_blog' => 'Update Blog',
+
+    'long_description' => 'Long Description',
+    'short_description' => 'Short Description',
+    'main_title' => 'Main Title',
+
+    'section'=> 'Section',
+    'title'=> 'Title',
+
+    'titles_list' => 'Titles List ',
+    'title_info'=>  'Title Info',
+    'title_details'=> 'Title Details ',
+    'update_title' => 'Update Title ',
+
+    'about_us'=> 'About Us',
+    'services'=>  'Services',
+    'stars'=> 'Best Freelancers',
+    'advantages'=>  'Advantages',
+    'blogs'=> 'Blogs',
+    'contacts'=> 'Contacts',
+    'main'=> 'Main',
+    'join'=> 'Join Us',
+
+    'message'=> 'Message Content',
+    'message_title'=> 'Message Title',
+    'contacts_list'=> 'Contacts List',
+
+
 ];
 

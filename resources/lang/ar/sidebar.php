@@ -36,4 +36,7 @@ return [
     'blogs' => 'المدونات',
     'titles' => 'العناوين',
     'contacts' => ' الرسائل',
+    'titles_list' => 'قائمة العناوين',
+    'contacts_list'=> 'قائمة الرسائل',
+
 ];

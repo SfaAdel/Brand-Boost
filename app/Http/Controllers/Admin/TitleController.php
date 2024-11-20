@@ -15,7 +15,7 @@ class TitleController extends Controller
     public function index()
     {
         //
-        $titles = Title::latest()->paginate(10);
+        $titles = Title::latest()->paginate(15);
         return view('admin.titles.index', compact('titles'));
     }
 
@@ -89,7 +89,7 @@ class TitleController extends Controller
             $request->banner->move(('images/pages_banners/'), $BannerImageName);
             $title->update(['banner' => $BannerImageName]);
         }
-        return redirect()->route('admin.titles.index')->with('success', 'تم تعديل البيانات بنجاح');
+        return redirect()->route('admin.titles.index')->with('success',  __('messages.title_updated'));
 
     }
 

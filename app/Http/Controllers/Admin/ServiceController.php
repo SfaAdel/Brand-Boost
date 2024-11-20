@@ -80,7 +80,7 @@ class ServiceController extends Controller
         // Handle logo upload
         if ($request->hasFile('icon')) {
             $iconImageName = time() . '.' . $request->icon->extension();
-            $request->logo->move(('images/services'), $iconImageName);
+            $request->icon->move(('images/services'), $iconImageName);
             $service->update(['icon' => $iconImageName]);
         }
 

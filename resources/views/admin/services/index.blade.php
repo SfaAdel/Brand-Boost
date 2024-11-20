@@ -32,6 +32,8 @@
                                        <thead>
                                            <tr>
                                                <th>{{ __('forms.name') }}</th>
+                                               <th>{{ __('forms.description') }}</th>
+                                               <th>{{ __('forms.price_unit') }}</th>
                                                <th>{{ __('forms.service_icon') }}</th>
                                                <th>{{ __('forms.created_at') }}</th>
                                                <th>{{ __('forms.action') }}</th>
@@ -40,8 +42,10 @@
                                        <tbody>
                                            @foreach ($services as $service)
                                                <tr>
-                                                   <td>{{ $service->name }}</td>
-                                                   <td>
+                                                <td>{{ $service->name }}</td>
+                                                <td>{{ $service->description }}</td>
+                                                <td>{{ $service->unit_of_price }}</td>
+                                                <td>
                                                        @if ($service->icon)
                                                            <img src="{{ asset('images/services/' . $service->icon) }}"
                                                                alt="icon" class="mt-2" style="max-width: 5rem;">

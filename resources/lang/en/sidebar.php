@@ -36,5 +36,8 @@ return [
     'blogs' => 'Blogs',
     'titles' => 'Titles',
     'contacts' => 'Contacts',
+    'titles_list' => 'Titles List ',
+    'contacts_list'=> 'Contacts List',
+
     
 ];

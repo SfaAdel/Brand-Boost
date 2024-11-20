@@ -42,5 +42,13 @@ return [
     'field_updated'=> 'Field Updated successfully',
     'field_deleted'=> 'Field Deleted successfully',
 
+    'no_blogs_msg'=> 'No Blogs Available',
+    'blog_created'=>'Blog Created successfully',
+    'blog_updated'=> 'Blog Updated successfully',
+    'blog_deleted'=> 'Blog Deleted successfully',
+
+    'title_updated'=> 'Title Updated successfully',
+
+    'msg_sent'=> 'Your Message Sent successfully',
 
 ];

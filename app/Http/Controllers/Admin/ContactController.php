@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,8 @@ class ContactController extends Controller
     public function index()
     {
         //
+        $contacts = Contact::latest()->paginate(10);
+        return view('admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -27,9 +30,12 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
         //
+        Contact::create($request->except('_token'));
+        return redirect()->back()->with('success', __('messages.msg_sent'));
+
     }
 
     /**
@@ -38,6 +44,8 @@ class ContactController extends Controller
     public function show(Contact $contact)
     {
         //
+        return view('admin.contacts.show', compact('contact'));
+
     }
 
     /**
@@ -62,5 +70,8 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         //
+        $contact->delete();
+
+        return redirect()->route('admin.contacts.index')->with('success', 'تم الحذف بنجاح');
     }
 }

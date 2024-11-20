@@ -56,10 +56,20 @@ return [
     'freelancer' => 'مستقل',
     'business_owner' => 'صاحب عمل',
     'both' => 'كلاهما',
+
+    'banner'=> 'صورة البانر',
     'icon'=> 'الصورة',
     'type' => 'النوع',
+    'description'=> 'الوصف',
+    'unit_of_price'=> 'وحدة قياس السعر',
+    'price_unit'=> 'وحدة قياس السعر',
+
     'en_name'=> 'الاسم باللغة الانجليزية ',
     'ar_name'=> ' الاسم باللغة العربية',
+    'en_description'=> 'الوصف باللغة الانجليزية',
+    'ar_description'=> 'الوصف باللغة العربية',
+    'en_unit_of_price'=> 'وحدة قياس السعر ب اللغة الانجليزية',
+    'ar_unit_of_price'=> 'وحدة قياس السعر باللغة العربية',
 
 
     'tag_list'=> 'قائمة الوسوم',
@@ -85,5 +95,49 @@ return [
     'add_new_advantage'=> 'اضافة ميزة جديدة  ',
     'update_advantage'=> ' تعديل الميزة',
     
+    'en_title' => 'عنوان القسم (إنجليزي)',
+    'ar_title' => 'عنوان القسم (عربي)',
+    'en_short_description' => 'وصف قصير (إنجليزي)',
+    'ar_short_description' => 'وصف قصير (عربي)',
+    'en_long_description' => 'وصف طويل (إنجليزي)',
+    'ar_long_description' => 'وصف طويل (عربي)',
+    'blog_icon' => 'صورة المدونة',
+    'tags' => 'الوسوم',
+
+    'blogs_list' => 'قائمة المدونات',
+    'blog'=> ' مدونة',
+    'blog_info'=>  'تفاصيل مدونة',
+    'blog_details'=> 'تفاصيل مدونة',
+    'add_new_blog' => 'إضافة مدونة جديدة',
+    'update_blog' => 'تحديث المدونة',
+
+    'long_description' => 'الوصف الطويل',
+    'short_description' => 'الوصف القصير',
+    'main_title' => 'العنوان الرئيسي',
+
+    'section'=> 'القسم',
+    'title'=> 'العنوان',
+
+    'titles_list' => 'قائمة العناوين',
+    'title_info'=>  'تفاصيل العنوان',
+    'title_details'=> 'تفاصيل العنوان',
+    'update_title' => 'تحديث العنوان',
+
+    'about_us'=> 'من نحن',
+    'services'=>  'الخدمات',
+    'stars'=> 'ابرز المستقلين',
+    'advantages'=>  'المميزات',
+    'blogs'=> 'المدونة',
+    'contacts'=> 'تواصل معنا',
+    'main'=> 'الرئيسي',
+    'join'=> 'انضم لنا',
+
+
+    'message'=> 'محتوي الرسالة',
+    'message_title'=> 'عنوان الرسالة',
+
+    'contacts_list'=> 'قائمة الرسائل',
+
+
 ];
 
