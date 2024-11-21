@@ -25,11 +25,14 @@ Route::group([
 ], function () {
 
     // Welcome route as the main page
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // })->name('welcome');
     Route::get('/', function () {
-        return view('welcome');
+        return view('front-end.homepage');
     })->name('welcome');
 
-    Route::prefix('admin')->name('admin.')->group(function(){
+    Route::prefix('admin')->name('admin.')->group(function () {
 
         require __DIR__ . '/adminAuth.php';
 
@@ -55,7 +58,7 @@ Route::group([
 
         });
 
-});
+    });
 
 
 });
