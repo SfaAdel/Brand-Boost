@@ -220,7 +220,7 @@
                 </div>
 
                 <div id="horizontalContent"
-                    class="border-black border-t-4 h-[100vh] w-[100vw] bg-purple flex-shrink-0 flex items-center">
+                    class="border-black border-t-4 border-b-4 h-[100vh] w-[100vw] bg-purple flex-shrink-0 flex items-center">
                     <div class="flex items-center justify-between h-full px-20">
                         <div class="w-1/2 text-white">
                             <h1 class="text-7xl hepta font-bold">Achieve Success</h1>
@@ -236,7 +236,15 @@
             </div>
         </div>
 
-
+        <footer class="singleBackgrounded flex-col">
+            <div class="my-10">
+                <img src="{{ asset('front-end/logo/PNG/Artboard 27.png') }}" alt="Brand Boost Logo"
+                    class="w-full mx-auto">
+            </div>
+            <div class="bg-blue p-10 border-black border-t-4 border-b-4 w-full">
+                Footer goes here
+            </div>
+        </footer>
 
     </main>
 </body>
