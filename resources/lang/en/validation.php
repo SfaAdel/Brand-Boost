@@ -119,6 +119,8 @@ return [
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+    'no_email_or_phone' => 'The :attribute field cannot contain an email or phone number.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

@@ -119,6 +119,9 @@ return [
     'url' => 'تنسيق :attribute غير صالح.',
     'uuid' => 'يجب أن يكون :attribute UUID صالحًا.',
 
+    'no_email_or_phone' => 'لا يمكن لحقل :attribute أن يحتوي على بريد إلكتروني أو رقم هاتف.',
+
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

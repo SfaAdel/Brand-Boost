@@ -43,22 +43,38 @@
                                      </tr>
                                  </thead>
                                  <tbody>
-                                    @foreach ($contacts as $contact)
-                                     <tr>
-                                         <td class="checkbox-column"> 1 </td>
-                                         <td>{{ $contact->name }}</td>
-                                         <td>{{ $contact->title }}</td>
-                                         <td>{{ $contact->email }}</td>
-                                         <td>{{ $contact->phone }}</td>
-                                         <td>{{ $contact->status }}</td>
-                                         <td><span class="shadow-none badge badge-primary">{{ $contact->status }}</span></td>
-                                         <td class="text-center">
-                                            <a href="{{ route('admin.contacts.show', $contact->id) }} class="btn btn-outline-primary">View</button>
-                                        </td>
-                                     </tr>
+                                     @foreach ($contacts as $contact)
+                                         <tr>
+                                             <td class="checkbox-column"> 1 </td>
+                                             <td>{{ $contact->name }}</td>
+                                             <td>{{ $contact->title }}</td>
+                                             <td><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></td>
+                                             <td>{{ $contact->phone }}</td>
+                                             <td>
+                                                <span class="shadow-none badge {{ $contact->status === 'pending' ? 'badge-danger' : 'badge-primary' }}">
+                                                    
+                                                    {{ __('forms.'. $contact->status) }}
+                                                </span>
+                                            </td>
+                                            
+                                             <td class="text-center">
+                                                 <a href="{{ route('admin.contacts.show', $contact->id) }}" class="btn btn-outline-primary mb-2 mr-2 btn-sm">{{ __('forms.view') }}</a>
+                                                 <button type="button" class="btn btn-danger mb-2 mr-2 btn-sm" data-toggle="modal" data-target="#deleteModal{{ $contact->id }}">
+                                                    {{ __('forms.delete') }}
+                                                </button>
+                                    
+                                                <!-- Include the Delete Modal with a unique ID -->
+                                                @include('admin.components.delete-modal', [
+                                                    'modalId' => 'deleteModal' . $contact->id,
+                                                    'formAction' => route('admin.contacts.destroy', $contact->id),
+                                                    'itemName' => __('forms.message').' ' .$contact->name,
+                                                ])
+                               
+                                                </td>
+                                         </tr>
                                      @endforeach
                                  </tbody>
-                           
+
                              </table>
                          </div>
                      </div>

@@ -14,8 +14,20 @@ class Order extends Model
         return $this->belongsTo(BusinessOwner::class);
     }
 
-    public function freelancer()
+
+        public function freelancerService()
     {
-        return $this->belongsTo(Freelancer::class);
+        return $this->belongsTo(FreelancerService::class);
     }
+
+    // public function freelancer()
+    // {
+    //     return $this->freelancerService->freelancer;
+    // }
+
+    // public function service()
+    // {
+    //     return $this->freelancerService->service;
+    // }
+
 }

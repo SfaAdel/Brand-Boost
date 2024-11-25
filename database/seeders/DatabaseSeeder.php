@@ -24,6 +24,11 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingSeeder::class);
         $this->call(SettingTranslationSeeder::class);
         $this->call(TitleSeeder::class);
+        $this->call(jobTitleSeeder::class);
+        $this->call(FieldSeeder::class);
+        $this->call(BusinessOwnerSeeder::class);
+        $this->call(FreelancerSeeder::class);
+        $this->call(ServiceSeeder::class);
 
     }
 }

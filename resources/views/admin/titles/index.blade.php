@@ -53,9 +53,9 @@
  
                                                     <td>
                                                         <a href="{{ route('admin.titles.edit', $title->id) }}"
-                                                            class="btn btn-primary mb-2 mr-2 btn-sm">{{ __('forms.edit') }}</a>
+                                                            class="btn btn-primary mb-2 mr-1 btn-sm">{{ __('forms.edit') }}</a>
  
-                                                        <a href="{{ route('admin.titles.show', $title->id) }}" class="btn btn-warning  mb-2 mr-2 btn-sm">View</a>
+                                                        <a href="{{ route('admin.titles.show', $title->id) }}" class="btn btn-warning  mb-2 mr-1 btn-sm">{{ __('forms.view') }}</a>
                                                         {{-- <!-- Button to open the modal, with a unique modal ID -->
                                                         <button type="button" class="btn btn-danger mb-2 mr-2 btn-sm"
                                                             data-toggle="modal"

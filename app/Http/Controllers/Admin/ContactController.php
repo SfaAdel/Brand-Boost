@@ -59,10 +59,23 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+    
+        // Check if the request includes a status change
+        if ($request->has('status')) {
+            $contact->status = $request->input('status');
+        }
+    
+        // Handle other updates (if applicable)
+        // $contact->fill($request->except('status'));
+    
+        $contact->save();
+    
+        return redirect()->route('admin.contacts.index')->with('success', __('messages.contact_updated'));
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -72,6 +85,6 @@ class ContactController extends Controller
         //
         $contact->delete();
 
-        return redirect()->route('admin.contacts.index')->with('success', 'تم الحذف بنجاح');
+        return redirect()->route('admin.contacts.index')->with('success', __('messages.contact_deleted'));
     }
 }
