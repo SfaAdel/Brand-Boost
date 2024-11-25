@@ -32,6 +32,10 @@ Route::group([
         return view('front-end.homepage');
     })->name('welcome');
 
+    Route::get('/contact', function () {
+        return view('front-end.contactpage');
+    })->name('contact');
+
     Route::prefix('admin')->name('admin.')->group(function () {
 
         require __DIR__ . '/adminAuth.php';

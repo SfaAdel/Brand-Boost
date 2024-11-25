@@ -2,6 +2,7 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Appearance
 gsap.from("#leftImgs", {
     scrollTrigger: {
         trigger: "#leftImgs",
@@ -23,6 +24,7 @@ gsap.from("#rightImgs", {
     duration: 1,
 });
 
+// Horizontal
 const horizontalContents = gsap.utils.toArray("#horizontal #horizontalContent");
 gsap.to(horizontalContents, {
     xPercent: -100 * (horizontalContents.length - 1),
@@ -31,4 +33,17 @@ gsap.to(horizontalContents, {
         pin: true,
         scrub: 1,
     },
+});
+
+// Services
+const services = gsap.utils.toArray("#service");
+gsap.from(services, {
+    scrollTrigger: {
+        trigger: "#service",
+        toggleActions: "restart pause resume none",
+    },
+    y: "-50%",
+    opacity: 0,
+    duration: 1.5,
+    scrub: 1,
 });
