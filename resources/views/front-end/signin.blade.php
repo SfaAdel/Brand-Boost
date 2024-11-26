@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Talent Signup')
+@section('title', 'Signin')
 
 @section('content')
 <div class="hepta flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
