@@ -37,7 +37,7 @@ Route::group([
     })->name('talent-signup');
 
     Route::get('/visionary-signup', function () {
-        return view('front-end.talent-signup');
+        return view('front-end.visionary-signup');
     })->name('visionary-signup');
 
     Route::get('/contact', function () {
