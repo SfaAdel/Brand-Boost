@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Contact Us')
+@section('title', 'Talent Signup')
 
 @section('content')
 <div>

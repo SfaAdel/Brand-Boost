@@ -32,6 +32,14 @@ Route::group([
         return view('front-end.homepage');
     })->name('welcome');
 
+    Route::get('/talent-signup', function () {
+        return view('front-end.talent-signup');
+    })->name('talent-signup');
+
+    Route::get('/visionary-signup', function () {
+        return view('front-end.talent-signup');
+    })->name('visionary-signup');
+
     Route::get('/contact', function () {
         return view('front-end.contactpage');
     })->name('contact');
