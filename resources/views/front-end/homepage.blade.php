@@ -35,8 +35,41 @@
             <li class="px-4 py-4"><a href="#">about</a></li>
             <li class="px-4 py-4"><a href="/contact">contact</a></li>
         </ul>
-        <a href="#" class="bg-green px-4 py-4 border-black border-s-4 border-e-4">login</a>
+        <button data-modal-open="join-us-modal"
+            class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">Join
+            us</button>
     </nav>
+
+    <div id="join-us-modal" class="modal-overlay  fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
+        <div class="bg-white w-3/4 m-auto p-10 border-black border-4 acworth">
+            <h1 class="text-5xl font-bold">Choose who you are</h1>
+            <div class="my-10 flex gap-5 flex-wrap lg:flex-nowrap">
+                <div class="flex flex-col gap-3">
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Talents are creative individuals looking to showcase their skills and connect with projects that
+                        align with their expertise. Join the community to find opportunities, collaborate, and grow your
+                        portfolio while making a difference.
+                    </p>
+                    <a href="#" class="bg-green p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">I
+                        Have a
+                        Talent</a>
+                </div>
+                <hr class="border-black border bg-black rotate-90" />
+                <div class="flex flex-col gap-3">
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Visionaries are project leaders with innovative ideas seeking skilled individuals to bring their
+                        visions to life. Use our platform to connect with the right talent, streamline collaboration,
+                        and
+                        achieve your project's goals effectively.
+                    </p>
+                    <a href="#" class="bg-pink p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">I
+                        Have a
+                        Vision</a>
+                </div>
+            </div>
+            <button data-modal-close="join-us-modal" class="border-black border-2 p-2">Close</button>
+        </div>
+    </div>
 
     <main>
         <div class="backgrounded" id="hero">

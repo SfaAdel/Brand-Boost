@@ -47,3 +47,29 @@ gsap.from(services, {
     duration: 1.5,
     scrub: 1,
 });
+
+// //////////////////////////////////////////
+
+document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    // Open modal
+    if (target.dataset.modalOpen) {
+        const modalId = target.dataset.modalOpen;
+        document.getElementById(modalId).classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+    }
+
+    // Close modal
+    if (target.dataset.modalClose) {
+        const modalId = target.dataset.modalClose;
+        document.getElementById(modalId).classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+    }
+
+    // Close modal by clicking outside the modal content
+    if (target.classList.contains("modal-overlay")) {
+        target.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+    }
+});
