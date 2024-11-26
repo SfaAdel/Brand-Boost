@@ -81,7 +81,7 @@
 
             <div class="text-sm md:text-lg uppercase flex gap-5 items-center w-full justify-center">
                 <p class="rubikv">Do you have an account already?</p>
-                <a href="/login" class="hepta bg-fuchsia-700 text-white py-1 px-2 border-2 border-black">Login
+                <a href="/signin" class="hepta bg-fuchsia-700 text-white py-1 px-2 border-2 border-black">Login
                     here</a>
             </div>
         </form>

@@ -44,7 +44,7 @@
         </nav>
     @endunless
 
-    @if (request()->routeIs('talent-signup', 'visionary-signup', 'signin'))
+    @if (request()->routeIs('talent-signup', 'visionary-signup'))
         <nav class="border-black border-b-4 px-5 py-3 uppercase font-semibold flex justify-between hepta">
             <a href="/">
                 <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
@@ -122,9 +122,13 @@
                             <p class="text-deutziawhite font-inter text-[18px] font-medium leading-normal">Useful links
                             </p>
                             <ul>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/sing-up">Sign up</a>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/talent-singup">Talent
+                                        Signup</a>
                                 </li>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/sing-in">Sign in</a>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/visionary-singup">Visionary
+                                        Signup</a>
+                                </li>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/signin">Sign in</a>
                                 </li>
                                 <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/terms-and-conditions">Terms
                                         and conditions</a></li>
@@ -132,17 +136,6 @@
                                         policy</a></li>
                             </ul>
                         </div>
-                        <!-- <div class="mt-6 flex flex-col gap-4 sm:mt-0">
-                                                                                                    <p class="text-deutziawhite font-inter text-[18px] font-medium">Download the app</p>
-                                                                                                    <div class="flex gap-4 sm:flex-col">
-                                                                                                        <a target="_blank" href="#"><img alt="facebook icon" loading="lazy" width="168"
-                                                                                                                height="50" decoding="async" data-nimg="1" style="color:transparent"
-                                                                                                                src="https://www.englishyaari.com/img/google-store.svg" /></a><a target="_blank"
-                                                                                                            href="#"><img alt="facebook icon" loading="lazy" width="168" height="50"
-                                                                                                                decoding="async" data-nimg="1" style="color:transparent"
-                                                                                                                src="https://www.englishyaari.com/img/apple-store.svg" /></a>
-                                                                                                    </div>
-                                                                                                </div> -->
                     </div>
                 </div>
                 <hr class="mt-[30px] text-white" />

@@ -40,6 +40,10 @@ Route::group([
         return view('front-end.visionary-signup');
     })->name('visionary-signup');
 
+    Route::get('/signin', function () {
+        return view('front-end.signin');
+    })->name('signin');
+
     Route::get('/contact', function () {
         return view('front-end.contactpage');
     })->name('contact');
