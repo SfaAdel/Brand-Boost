@@ -25,11 +25,30 @@ Route::group([
 ], function () {
 
     // Welcome route as the main page
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // })->name('welcome');
     Route::get('/', function () {
-        return view('welcome');
+        return view('front-end.homepage');
     })->name('welcome');
 
-    Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/talent-signup', function () {
+        return view('front-end.talent-signup');
+    })->name('talent-signup');
+
+    Route::get('/visionary-signup', function () {
+        return view('front-end.visionary-signup');
+    })->name('visionary-signup');
+
+    Route::get('/signin', function () {
+        return view('front-end.signin');
+    })->name('signin');
+
+    Route::get('/contact', function () {
+        return view('front-end.contactpage');
+    })->name('contact');
+
+    Route::prefix('admin')->name('admin.')->group(function () {
 
         require __DIR__ . '/adminAuth.php';
 
@@ -55,7 +74,7 @@ Route::group([
 
         });
 
-});
+    });
 
 
 
