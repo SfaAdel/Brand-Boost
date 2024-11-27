@@ -30,7 +30,7 @@
                             <p><strong>{{ __('forms.phone') }}:</strong> <a
                                     href="tel:+2{{ $freelancer->phone }}">{{ $freelancer->phone }}</a></p>
                             <p><strong>{{ __('forms.bio') }}:</strong> {{ $freelancer->bio }}</p>
-                            <p><strong>{{ __('forms.total_orders') }}:</strong> {{ $freelancer->orders?->count() ?? 0 }}
+                            <p><strong>{{ __('forms.total_orders') }}:</strong> {{ $freelancer->orders ? ->count() ?? 0 }}
                             </p>
                             <p><strong>{{ __('forms.status') }}:</strong>
                                 <span class="{{ $freelancer->active ? 'text-success' : 'text-danger' }}">
