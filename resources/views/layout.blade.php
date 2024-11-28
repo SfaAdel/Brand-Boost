@@ -46,7 +46,8 @@
     @endunless
 
     @if (request()->routeIs('talent-signup', 'visionary-signup'))
-        <nav class="relative z-40 border-black border-b-4 px-5 py-3 uppercase font-semibold flex justify-between hepta">
+        <nav
+            class="sticky top-0 bg-white z-40 border-black border-b-4 px-5 py-3 uppercase font-semibold flex justify-between hepta">
             <a href="/">
                 <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
             </a>
