@@ -31,11 +31,12 @@
 <body>
     @unless(request()->routeIs('talent-signup', 'visionary-signup', 'signin'))
         <!-- Render the navbar unless the current route is "signup" -->
-        <nav class="relative z-40 border-black border-b-4 px-10 uppercase font-semibold flex justify-between hepta">
+        <nav
+            class="sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold flex justify-between hepta">
             <ul class="flex items-center">
                 <li class="p-4"><a href="/">home</a></li>
                 <li class="p-4"><a href="/services">services</a></li>
-                <li class="p-4"><a href="#">about</a></li>
+                <li class="p-4"><a href="about">about</a></li>
                 <li class="p-4"><a href="/contact">contact</a></li>
             </ul>
 

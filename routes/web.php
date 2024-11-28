@@ -52,6 +52,10 @@ Route::group([
         return view('front-end.servicespage');
     })->name('services');
 
+    Route::get('/about', function () {
+        return view('front-end.aboutpage');
+    })->name('about');
+
     Route::prefix('admin')->name('admin.')->group(function () {
 
         require __DIR__ . '/adminAuth.php';
