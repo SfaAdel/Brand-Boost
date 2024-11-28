@@ -48,6 +48,10 @@ Route::group([
         return view('front-end.contactpage');
     })->name('contact');
 
+    Route::get('/services', function () {
+        return view('front-end.servicespage');
+    })->name('services');
+
     Route::prefix('admin')->name('admin.')->group(function () {
 
         require __DIR__ . '/adminAuth.php';

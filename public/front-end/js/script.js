@@ -48,6 +48,18 @@ gsap.from(services, {
     scrub: 1,
 });
 
+const services_cards = gsap.utils.toArray("#service-card");
+gsap.from(services_cards, {
+    scrollTrigger: {
+        trigger: "#service-card",
+        toggleActions: "restart pause resume none",
+    },
+    y: "50%",
+    opacity: 0,
+    duration: 1.5,
+    scrub: 1,
+});
+
 // //////////////////////////////////////////
 
 document.addEventListener("click", (event) => {
