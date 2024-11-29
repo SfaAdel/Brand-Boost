@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -51,6 +52,14 @@ Route::group([
     Route::get('/services', function () {
         return view('front-end.servicespage');
     })->name('services');
+
+    // Route::get('/services/{offers}', function ($offers) {
+    //     $offers = Service::findOrFail($offers);
+    //     return view('front-end.service-offers', ['offers' => $offers]);
+    // })->name('serviceOffers');
+    Route::get('/services/offers', function () {
+        return view('front-end.service-offers', );
+    })->name('service-offers');
 
     Route::get('/about', function () {
         return view('front-end.aboutpage');

@@ -85,3 +85,20 @@ document.addEventListener("click", (event) => {
         document.body.classList.remove("overflow-hidden");
     }
 });
+
+//////////////////////////////////////
+
+function truncateText(paragraph, maxLength) {
+    const text = paragraph.textContent;
+    if (text.length > maxLength) {
+        paragraph.textContent = text.slice(0, maxLength) + "...";
+    }
+}
+
+document.querySelectorAll("#service-offer-description").forEach((paragraph) => {
+    truncateText(paragraph, 180);
+});
+
+document.querySelectorAll("#service-description").forEach((paragraph) => {
+    truncateText(paragraph, 300);
+});
