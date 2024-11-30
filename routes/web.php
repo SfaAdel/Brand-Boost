@@ -61,6 +61,10 @@ Route::group([
         return view('front-end.service-offers', );
     })->name('service-offers');
 
+    Route::get('/services/offers/offer', function () {
+        return view('front-end.offer', );
+    })->name('offer');
+
     Route::get('/about', function () {
         return view('front-end.aboutpage');
     })->name('about');

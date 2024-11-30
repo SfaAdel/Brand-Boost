@@ -30,7 +30,7 @@
                 </p>
             </div>
             <div class="px-4 pb-4 pt-0 mt-auto flex">
-                <a href="#"
+                <a href="/services/offers/offer"
                     class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                     type="button">
                     Offer Details
@@ -62,7 +62,7 @@
                 </p>
             </div>
             <div class="px-4 pb-4 pt-0 mt-auto flex">
-                <a href="#"
+                <a href="/services/offers/offer"
                     class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                     type="button">
                     Offer Details
@@ -94,7 +94,7 @@
                 </p>
             </div>
             <div class="px-4 pb-4 pt-0 mt-auto flex">
-                <a href="#"
+                <a href="/services/offers/offer"
                     class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                     type="button">
                     Offer Details
