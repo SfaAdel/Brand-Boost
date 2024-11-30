@@ -198,5 +198,7 @@ return [
     'freelancers_list'=>'قائمة المستقليين',
     'freelancer_details'=>'تفاصيل عن المستقل',
 
+    'business_owners_list'=>'قائمة اصحاب الاعمال',
+
 ];
 

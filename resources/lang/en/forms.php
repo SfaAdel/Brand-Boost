@@ -197,6 +197,8 @@ return [
         'job_title'=>'Job Title',
         'freelancers_list'=>'Freelancers List',
         'freelancer_details'=>'Freelancer Details  ',
+
+        'business_owners_list'=>'Business Owners List',
         
 ];
 
