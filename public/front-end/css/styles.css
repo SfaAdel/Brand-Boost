@@ -42,6 +42,34 @@
     font-family: "rubikv", sans-serif;
 }
 
+.bg-diagonal {
+    background: repeating-linear-gradient(
+        -55deg,
+        var(--bg-color, #222),
+        var(--bg-color, #222) 10px,
+        var(--bg-color, #333) 10px,
+        var(--bg-color, #333) 20px
+    );
+}
+
+.transparent-texture {
+    position: relative;
+}
+
+.transparent-texture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color, rgba(66, 37, 230, 0.514));
+    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+    background-position: center;
+    filter: opacity(0.6);
+    z-index: -1;
+}
+
 .backgrounded,
 .singleBackgrounded {
     position: relative;
@@ -146,3 +174,5 @@
         translate: translateX(0px);
     }
 }
+
+/* ////////////////////////////////// */

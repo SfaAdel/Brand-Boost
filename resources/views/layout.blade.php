@@ -31,11 +31,12 @@
 <body>
     @unless(request()->routeIs('talent-signup', 'visionary-signup', 'signin'))
         <!-- Render the navbar unless the current route is "signup" -->
-        <nav class="border-black border-b-4 px-10 uppercase font-semibold flex justify-between hepta">
+        <nav
+            class="sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold flex justify-between hepta">
             <ul class="flex items-center">
                 <li class="p-4"><a href="/">home</a></li>
                 <li class="p-4"><a href="/services">services</a></li>
-                <li class="p-4"><a href="#">about</a></li>
+                <li class="p-4"><a href="about">about</a></li>
                 <li class="p-4"><a href="/contact">contact</a></li>
             </ul>
 
@@ -45,14 +46,53 @@
     @endunless
 
     @if (request()->routeIs('talent-signup', 'visionary-signup'))
-        <nav class="border-black border-b-4 px-5 py-3 uppercase font-semibold flex justify-between hepta">
+        <nav
+            class="sticky top-0 bg-white z-40 border-black border-b-4 px-5 py-3 uppercase font-semibold flex justify-between hepta">
             <a href="/">
                 <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
             </a>
         </nav>
     @endif
 
-    <!-- Main content -->
+    <div id="join-us-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
+        <div class="bg-white w-3/4 m-auto p-10 border-black border-4 acworth">
+            <h1 class="text-5xl font-bold">Choose who you are</h1>
+            <div class="my-10 flex gap-5 flex-wrap lg:flex-nowrap">
+                <div class="flex flex-col gap-3">
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Talents are creative individuals looking to showcase their skills and connect with projects that
+                        align with their expertise. Join the community to find opportunities, collaborate, and grow your
+                        portfolio while making a difference.
+                    </p>
+                    <a href="/talent-signup"
+                        class="font-bold bg-green hover:bg-emerald-600 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">I
+                        Have a
+                        Talent</a>
+                </div>
+                <hr class="border-black border bg-black rotate-90" />
+                <div class="flex flex-col gap-3">
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Visionaries are project leaders with innovative ideas seeking skilled individuals to bring their
+                        visions to life. Use our platform to connect with the right talent, streamline collaboration,
+                        and
+                        achieve your project's goals effectively.
+                    </p>
+                    <a href="/visionary-signup"
+                        class="font-bold bg-pink hover:bg-fuchsia-400 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">I
+                        Have a
+                        Vision</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <a href="/signin"
+                    class="font-bold bg-blue hover:bg-sky-500 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">Login</a>
+                <button data-modal-close="join-us-modal"
+                    class="font-bold hepta border-black border-2 p-2 bg-red-400 hover:bg-red-500 transition">Close</button>
+            </div>
+        </div>
+    </div>
+
     <main>
         @yield('content')
     </main>

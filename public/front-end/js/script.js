@@ -48,6 +48,18 @@ gsap.from(services, {
     scrub: 1,
 });
 
+const services_cards = gsap.utils.toArray("#service-card");
+gsap.from(services_cards, {
+    scrollTrigger: {
+        trigger: "#service-card",
+        toggleActions: "restart pause resume none",
+    },
+    y: "50%",
+    opacity: 0,
+    duration: 1.5,
+    scrub: 1,
+});
+
 // //////////////////////////////////////////
 
 document.addEventListener("click", (event) => {
@@ -72,4 +84,21 @@ document.addEventListener("click", (event) => {
         target.classList.add("hidden");
         document.body.classList.remove("overflow-hidden");
     }
+});
+
+//////////////////////////////////////
+
+function truncateText(paragraph, maxLength) {
+    const text = paragraph.textContent;
+    if (text.length > maxLength) {
+        paragraph.textContent = text.slice(0, maxLength) + "...";
+    }
+}
+
+document.querySelectorAll("#service-offer-description").forEach((paragraph) => {
+    truncateText(paragraph, 180);
+});
+
+document.querySelectorAll("#service-description").forEach((paragraph) => {
+    truncateText(paragraph, 300);
 });

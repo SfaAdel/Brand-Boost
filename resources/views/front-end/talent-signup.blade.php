@@ -79,7 +79,7 @@
 
             <div class="w-full flex justify-center items-center py-5">
                 <button type="submit"
-                    class="text-3xl uppercase hepta w-1/2 mx-auto bg-emerald-400 font-semibold py-2 px-4 border-2 border-black"
+                    class="text-3xl uppercase hepta w-1/2 mx-auto bg-emerald-400 font-semibold py-2 px-4 border-2 border-black hover:bg-emerald-500 transition"
                     style="box-shadow: -5px 10px 0 black;">Sign
                     Up</button>
             </div>
