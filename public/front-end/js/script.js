@@ -102,3 +102,7 @@ document.querySelectorAll("#service-offer-description").forEach((paragraph) => {
 document.querySelectorAll("#service-description").forEach((paragraph) => {
     truncateText(paragraph, 300);
 });
+
+document.querySelectorAll("#freelancer-description").forEach((paragraph) => {
+    truncateText(paragraph, 150);
+});
