@@ -36,6 +36,7 @@
             <ul class="flex items-center">
                 <li class="p-4"><a href="/">home</a></li>
                 <li class="p-4"><a href="/services">services</a></li>
+                <li class="p-4"><a href="/freelancers">Talents</a></li>
                 <li class="p-4"><a href="about">about</a></li>
                 <li class="p-4"><a href="/contact">contact</a></li>
             </ul>

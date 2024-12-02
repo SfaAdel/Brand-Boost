@@ -305,7 +305,7 @@
             </div>
         </div>
         <div class="flex justify-center">
-            <a href="/services" style="box-shadow: 10px 10px 0 black;"
+            <a href="/freelancers" style="box-shadow: 10px 10px 0 black;"
                 class="border-black border-4 text-3xl bg-fuchsia-400 font-semibold py-3 px-6 capitalize">
                 Explore the talents
             </a>

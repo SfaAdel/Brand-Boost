@@ -15,10 +15,10 @@
                 <div class="flex items-center gap-3 mb-5">
                     <img src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}" alt="Offerer pic"
                         class="w-12 h-12 rounded-full">
-                    <div>
+                    <a href="/freelancers/freelancerName">
                         <p class="text-sm font-bold">Service Offer Offerer</p>
                         <p class="text-xs">Offerer Specialization</p>
-                    </div>
+                    </a>
                 </div>
                 <p class="text-sm font-light text-slate-700 my-5">Service Field</p>
                 <p id="offer-description" class="leading-normal text-md">
@@ -66,10 +66,10 @@
                 </p>
             </div>
             <div class="flex flex-col gap-3">
-                <a href="/visionary-signup"
+                <a href="#"
                     class="border-black border-2 uppercase flex w-full justify-center bg-pink px-3 py-1.5 text-sm/6 font-semibold text-black hover:bg-fuchsia-700 hover:text-white transition">
                     order me</a>
-                <a href="/visionary-signup"
+                <a href="/freelancers/freelancerName"
                     class="border-black border-2 uppercase flex w-full justify-center bg-green px-3 py-1.5 text-sm/6 font-semibold text-black hover:bg-emerald-600 hover:text-white transition">
                     See my work</a>
             </div>

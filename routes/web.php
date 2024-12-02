@@ -53,10 +53,18 @@ Route::group([
         return view('front-end.servicespage');
     })->name('services');
 
-    // Route::get('/services/{offers}', function ($offers) {
-    //     $offers = Service::findOrFail($offers);
-    //     return view('front-end.service-offers', ['offers' => $offers]);
-    // })->name('serviceOffers');
+    Route::get('/freelancers', function () {
+        return view('front-end.freelancerspage');
+    })->name('freelancers');
+
+    Route::get('/freelancers/freelancerName', function () {
+        return view('front-end.singlefreelancerpage');
+    })->name('freelancerName');
+
+    Route::get('/freelancers/freelancerName/projects', function () {
+        return view('front-end.singlefreelancerprojects');
+    })->name('freelancerNameProjects');
+
     Route::get('/services/offers', function () {
         return view('front-end.service-offers', );
     })->name('service-offers');
