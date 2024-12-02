@@ -32,7 +32,7 @@
             <div class="hepta font-bold text-4xl">Brand BOoOoOst</div>
         </div>
 
-        <div class="flex-1 flex flex-col gap-40">
+        <div class="hidden flex-1 md:flex flex-col gap-40">
             <div class="relative">
                 <div
                     class="hepta font-bold border-black border-t border-4 px-7 py-2 text-center bg-pink text-5xl absolute w-[30rem] h-[6rem] z-10 flex justify-center items-center right-0">
@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="mt-auto">
                 <img loading="lazy" src="{{ asset('front-end/logo/PNG/Artboard 33.png') }}" alt="Brand Boost Logo"
                     class="w-1/4 ms-auto">
                 <p
