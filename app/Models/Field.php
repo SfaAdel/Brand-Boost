@@ -26,6 +26,7 @@ class Field extends Model implements TranslatableContract
 
     public function businessOwners()
     {
-        return $this->belongsToMany(BusinessOwner::class, 'business_owner_field');
+        return $this->hasMany(BusinessOwner::class);
     }
+
 }

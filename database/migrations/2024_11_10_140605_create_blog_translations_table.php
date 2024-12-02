@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('locale');
             $table->string('main_title')->unique();
             $table->string('short_description')->nullable();
-            $table->string('second_title')->nullable();
             $table->text('long_description')->nullable();
             $table->unique(['blog_id', 'locale']);
             $table->timestamps();

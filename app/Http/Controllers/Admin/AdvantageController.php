@@ -81,7 +81,7 @@ class AdvantageController extends Controller
          // Handle logo upload
          if ($request->hasFile('icon')) {
              $iconImageName = time() . '.' . $request->icon->extension();
-             $request->logo->move(('images/advantages'), $iconImageName);
+             $request->icon->move(('images/advantages'), $iconImageName);
              $advantage->update(['icon' => $iconImageName]);
          }
  

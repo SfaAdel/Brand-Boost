@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Front\AuthController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
@@ -29,53 +31,73 @@ Route::group([
     // Route::get('/', function () {
     //     return view('welcome');
     // })->name('welcome');
-    Route::get('/', function () {
-        return view('front-end.homepage');
-    })->name('welcome');
+    // .....
+    // Route::get('/', function () {
+    //     return view('front-end.homepage');
+    // })->name('welcome');
 
-    Route::get('/talent-signup', function () {
-        return view('front-end.talent-signup');
-    })->name('talent-signup');
+    Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
-    Route::get('/visionary-signup', function () {
-        return view('front-end.visionary-signup');
-    })->name('visionary-signup');
+    Route::get('/talent-signup', [AuthController::class, 'talentSignUp'])->name('talent-signup');
+    Route::get('/visionary-signup', [AuthController::class, 'visionarySignUp'])->name('visionary-signup');
+    Route::get('/signin', [AuthController::class, 'signIn'])->name('signIn');
 
-    Route::get('/signin', function () {
-        return view('front-end.signin');
-    })->name('signin');
+    Route::post('/freelancerRegister', [AuthController::class, 'freelancerRegister'])->name('freelancer.register');
+    Route::post('/businessOwnerRegister', [AuthController::class, 'businessOwnerRegister'])->name('business_owner.register');
 
-    Route::get('/contact', function () {
-        return view('front-end.contactpage');
-    })->name('contact');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/services', [HomeController::class, 'services'])->name('services');
+    Route::get('/freelancers', [HomeController::class, 'freelancers'])->name('freelancers');
+    Route::get('/freelancers/{name}', [HomeController::class, 'freelancer_details'])->name('freelancerName');
+    Route::get('/freelancers/{name}/projects', [HomeController::class, 'freelancer_projects'])->name('freelancerNameProjects');
+    Route::get('/services/{id}/{name}/offers', [HomeController::class, 'service_details'])->name('service-offers');
+    Route::get('/services/offers/offer', [HomeController::class, 'freelancer_service_details'])->name('offer');
+    Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-    Route::get('/services', function () {
-        return view('front-end.servicespage');
-    })->name('services');
 
-    Route::get('/freelancers', function () {
-        return view('front-end.freelancerspage');
-    })->name('freelancers');
+    // Route::get('/talent-signup', function () {
+    //     return view('front-end.talent-signup');
+    // })->name('talent-signup');
 
-    Route::get('/freelancers/freelancerName', function () {
-        return view('front-end.singlefreelancerpage');
-    })->name('freelancerName');
+    // Route::get('/visionary-signup', function () {
+    //     return view('front-end.visionary-signup');
+    // })->name('visionary-signup');
 
-    Route::get('/freelancers/freelancerName/projects', function () {
-        return view('front-end.singlefreelancerprojects');
-    })->name('freelancerNameProjects');
+    // Route::get('/signin', function () {
+    //     return view('front-end.signin');
+    // })->name('signin');
 
-    Route::get('/services/offers', function () {
-        return view('front-end.service-offers', );
-    })->name('service-offers');
+    // Route::get('/contact', function () {
+    //     return view('front-end.contactpage');
+    // })->name('contact');
 
-    Route::get('/services/offers/offer', function () {
-        return view('front-end.offer', );
-    })->name('offer');
+    // Route::get('/services', function () {
+    //     return view('front-end.servicespage');
+    // })->name('services');
 
-    Route::get('/about', function () {
-        return view('front-end.aboutpage');
-    })->name('about');
+    // Route::get('/freelancers', function () {
+    //     return view('front-end.freelancerspage');
+    // })->name('freelancers');
+
+    // Route::get('/freelancers/freelancerName', function () {
+    //     return view('front-end.singlefreelancerpage');
+    // })->name('freelancerName');
+
+    // Route::get('/freelancers/freelancerName/projects', function () {
+    //     return view('front-end.singlefreelancerprojects');
+    // })->name('freelancerNameProjects');
+
+    // Route::get('/services/offers', function () {
+    //     return view('front-end.service-offers', );
+    // })->name('service-offers');
+
+    // Route::get('/services/offers/offer', function () {
+    //     return view('front-end.offer', );
+    // })->name('offer');
+
+    // Route::get('/about', function () {
+    //     return view('front-end.aboutpage');
+    // })->name('about');
 
     Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -104,6 +126,8 @@ Route::group([
         });
 
     });
+
+
 
 
 });

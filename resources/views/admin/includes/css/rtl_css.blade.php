@@ -118,3 +118,12 @@
 <link href=" {{ asset('admin/rtl/plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
 <link href=" {{ asset('admin/rtl/assets/css/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css"
     class="dashboard-analytics" />
+
+<!-- data table -->
+
+    <link href=" {{ asset('admin/rtl/plugins/table/datatable/datatables.css') }}" rel="stylesheet"
+    type="text/css">
+<link href=" {{ asset('admin/rtl/plugins/table/datatable/dcustom_dt_html5.css') }}" rel="stylesheet"
+    type="text/css">
+<link href=" {{ asset('admin/rtl/plugins/table/datatable/dt-global_style.css') }}" rel="stylesheet"
+    type="text/css">

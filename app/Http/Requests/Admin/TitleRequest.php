@@ -23,37 +23,66 @@ class TitleRequest extends FormRequest
     public function rules(): array
     {
 
-        $titleId = optional($this->route('title'))->id;
+        $titleId = $this->title ? $this->title->id : null;
 
-        return [
-            //
-            'title' => [
+        $rules = [
+            'en.title' => [
                 'required',
                 'string',
                 'min:3',
-                Rule::unique('titles', 'title')->ignore($titleId),
+                Rule::unique('title_translations', 'title')
+                    ->ignore($titleId, 'title_id')
+                    ->where('locale', 'en'),
             ],
-            'short_description' => 'required|string|min:3',
+            'ar.title' => [
+                'required',
+                'string',
+                'min:3',
+                Rule::unique('title_translations', 'title')
+                    ->ignore($titleId, 'title_id')
+                    ->where('locale', 'ar'),
+            ],
+            'en.short_description' => 'required|string|min:5',
+            'ar.short_description' => 'required|string|min:5',
+
+            'en.long_description' => 'required|string|min:10',
+            'ar.long_description' => 'required|string|min:10',
 
             'section' => [
                 'required',
                 'string',
                 Rule::unique('titles', 'section')->ignore($titleId),
             ],
-            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
-            'banner' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
 
+            // Only require 'icon' and 'banner' for store requests (POST method)
+            'icon' => $this->isMethod('post')
+                ? 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240'
+                : 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
+            'banner' => $this->isMethod('post')
+                ? 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240'
+                : 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ];
+
+        return $rules;
     }
+
+    /**
+     * Custom attribute names for validation errors.
+     *
+     * @return array
+     */
     public function attributes()
     {
         return [
-            'title' => ' العنوان',
-            'short_description' => 'وصف قصير',
-            'section' => 'القسم',
-            'icon' => 'صورة',
-            'banner' => 'صورة البانر',
-
+            'en.title' => __('forms.en_title'),
+            'ar.title' => __('forms.ar_title'),
+            'en.short_description' => __('forms.en_short_description'),
+            'ar.short_description' => __('forms.ar_short_description'),
+            'en.long_description' => __('forms.en_long_description'),
+            'ar.long_description' => __('forms.ar_long_description'),
+            'section' => __('forms.section'),
+            'icon' => __('forms.icon'),
+            'banner' => __('forms.banner'),
         ];
     }
 }

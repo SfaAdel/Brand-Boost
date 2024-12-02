@@ -41,6 +41,11 @@ class ServiceRequest extends FormRequest
                     ->ignore($this->service ? $this->service->id : null, 'service_id')
                     ->where('locale', 'ar')
             ],
+
+            'en.description' => 'required|string',
+            'ar.description' => 'required|string',
+            'en.unit_of_price' => 'required|string',
+            'ar.unit_of_price' => 'required|string',
         ];
 
         // Only require 'icon' for store requests (POST method)
@@ -58,6 +63,10 @@ class ServiceRequest extends FormRequest
         return [
             'en.name' => __('forms.en_name'),
             'ar.name' => __('forms.ar_name'),
+            'en.description' => __('forms.en_description'),
+            'ar.description' => __('forms.ar_description'),
+            'en.unit_of_price' => __('forms.en_unit_of_price'),
+            'ar.unit_of_price' => __('forms.ar_unit_of_price'),
             'icon' => __('forms.service_icon'),
         ];
     }

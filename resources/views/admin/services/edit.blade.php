@@ -65,6 +65,16 @@
                                                     value="{{ optional($service->translate($key))->name }}">
                                             </div>
 
+                                            <div class="form-group mt-3 col-md-12">
+                                                <label>{{ __('forms.description') }} - {{ $lang }}</label>
+                                                <textarea name="{{ $key }}[description]" class="form-control" rows="4" placeholder="{{ __('forms.description') }}"> {{ optional($service->translate($key))->description }}</textarea>
+                                            </div>
+                                
+                                            <div class="form-group mt-3 col-md-12">
+                                                <label>{{ __('forms.unit_of_price') }} - {{ $lang }}</label>
+                                                <input type="text" name="{{ $key }}[unit_of_price]" class="form-control" placeholder="{{ __('forms.unit_of_price') }}" value="{{ optional($service->translate($key))->unit_of_price }}">
+                                            </div>
+
                                         </div>
                                     @endforeach
                                 </div>

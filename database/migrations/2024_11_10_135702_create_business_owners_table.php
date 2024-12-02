@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('profile_image')->nullable();
             $table->string('phone')->unique();
+            $table->foreignId('field_id')->nullable()->constrained('fields')->onDelete('set null');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

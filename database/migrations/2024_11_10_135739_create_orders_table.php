@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('freelancer_service_id')->constrained('freelancer_services')->ca;            
             $table->foreignId('business_owner_id')->constrained('business_owners')->onDelete('cascade');
-            $table->foreignId('freelancer_id')->constrained('freelancers')->onDelete('cascade');
             $table->text('description');
             $table->date('expected_receive_date');
             $table->decimal('amount', 10, 2);

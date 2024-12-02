@@ -11,6 +11,10 @@
         </a>
         <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Welcome Back</h2>
     </div>
+    
+    <div class="my-3">
+        @include('front-end.includes.alerts')
+    </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form class="space-y-6" action="">

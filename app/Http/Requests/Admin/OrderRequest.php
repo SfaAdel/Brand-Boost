@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\NotEmailOrPhone;
 
 class OrderRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class OrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +24,19 @@ class OrderRequest extends FormRequest
     {
         return [
             //
+            'description' => ['required', 'string', 'min:5', new NotEmailOrPhone],
+            'expected_receive_date' => 'required|date',
+            'amount' => 'required|numeric|min:10',
+          
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'description' => __('forms.description'),
+            'expected_receive_date' => __('forms.date_of_receipt'),
+            'amount' => __('forms.amount'),
+      
         ];
     }
 }

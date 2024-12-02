@@ -14,6 +14,10 @@ class FreelancerController extends Controller
     public function index()
     {
         //
+        $freelancers = Freelancer::latest()->paginate(10);
+            
+        return view('admin.freelancers.index', compact('freelancers'));
+    
     }
 
     /**
@@ -22,6 +26,7 @@ class FreelancerController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -38,6 +43,8 @@ class FreelancerController extends Controller
     public function show(Freelancer $freelancer)
     {
         //
+        return view('admin.freelancers.show', compact('freelancer'));
+
     }
 
     /**
@@ -54,6 +61,20 @@ class FreelancerController extends Controller
     public function update(Request $request, Freelancer $freelancer)
     {
         //
+        $active = $request->input('active');
+
+        if ($request->has('fav')) {
+            $fav = $request->input('fav');
+
+        }else {
+            $fav = 0;
+        }
+    
+        // Update the order status
+        $freelancer->update(['fav' => $fav , 'active' => $active]);
+    
+        return redirect()->route('admin.freelancers.index')->with('success', __('messages.data_updated'));
+    
     }
 
     /**
@@ -62,5 +83,9 @@ class FreelancerController extends Controller
     public function destroy(Freelancer $freelancer)
     {
         //
+        $freelancer->delete();
+
+        return redirect()->route('admin.freelancers.index')->with('success', __('messages.freelancer_deleted'));
+    
     }
 }

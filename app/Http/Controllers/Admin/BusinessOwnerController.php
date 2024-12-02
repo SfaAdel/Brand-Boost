@@ -14,6 +14,10 @@ class BusinessOwnerController extends Controller
     public function index()
     {
         //
+        $businessOwners = BusinessOwner::latest()->paginate(10);
+            
+        return view('admin.business_owners.index', compact('businessOwners'));
+    
     }
 
     /**
@@ -22,6 +26,7 @@ class BusinessOwnerController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -30,6 +35,8 @@ class BusinessOwnerController extends Controller
     public function store(Request $request)
     {
         //
+
+   
     }
 
     /**
@@ -38,6 +45,8 @@ class BusinessOwnerController extends Controller
     public function show(BusinessOwner $businessOwner)
     {
         //
+        return view('admin.business_owners.show', compact('businessOwner'));
+
     }
 
     /**
@@ -54,6 +63,15 @@ class BusinessOwnerController extends Controller
     public function update(Request $request, BusinessOwner $businessOwner)
     {
         //
+        $active = $request->input('active');
+
+
+    
+        // Update the order status
+        $businessOwner->update(['active' => $active]);
+    
+        return redirect()->route('admin.business_owners.index')->with('success', __('messages.data_updated'));
+    
     }
 
     /**
@@ -62,5 +80,9 @@ class BusinessOwnerController extends Controller
     public function destroy(BusinessOwner $businessOwner)
     {
         //
+        $businessOwner->delete();
+
+        return redirect()->route('admin.business_owners.index')->with('success', __('messages.business_owner_deleted'));
+    
     }
 }

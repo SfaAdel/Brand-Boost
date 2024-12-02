@@ -68,7 +68,23 @@
 
     @stack('custom-js')
 
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            @foreach (config('app.languages') as $key => $lang)
+                ClassicEditor
+                    .create(document.querySelector('#long_description_{{ $key }}'), {
+                        toolbar: [
+                            'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', 'undo', 'redo'
+                        ]
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            @endforeach
+        });
+    </script>
 </body>
 
 </html>

@@ -42,5 +42,23 @@ return [
     'field_updated'=> 'Field Updated successfully',
     'field_deleted'=> 'Field Deleted successfully',
 
+    'no_blogs_msg'=> 'No Blogs Available',
+    'blog_created'=>'Blog Created successfully',
+    'blog_updated'=> 'Blog Updated successfully',
+    'blog_deleted'=> 'Blog Deleted successfully',
+
+    'title_updated'=> 'Title Updated successfully',
+
+    'msg_sent'=> 'Your Message Sent successfully',
+    'contact_updated'=>'Message Status Updated successfully',
+    'contact_deleted'=>'Message Deleted successfully',
+
+    'order_updated'=>'Order Status Updated successfully',
+    'order_deleted'=>'Order Deleted successfully',
+    'order_sent'=> 'Your Order Sent successfully',
+
+    'business_owner_deleted'=>'Business Owner Deleted successfully',
+    'freelancer_deleted'=>'Freelancer Deleted successfully',
+    'data_updated'=>'Data Updated successfully',
 
 ];

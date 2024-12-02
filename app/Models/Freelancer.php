@@ -46,8 +46,11 @@ class Freelancer extends Model implements TranslatableContract
         return $this->hasMany(FreelancerProject::class);
     }
 
+
+
     public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
+{
+    return $this->hasManyThrough(Order::class, FreelancerService::class, 'freelancer_id', 'freelancer_service_id');
+}
+
 }
