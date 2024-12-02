@@ -6,22 +6,22 @@
         <div class="flex-1 flex flex-col px-10 justify-around">
             <div class="relative py-10">
                 <img loading="lazy" src="{{ asset('front-end/assets/circ.svg') }}"
-                    class="w-1/2 absolute top-[-50px] left-0 -z-10">
+                    class="w-1/2 absolute left-[150px] top-[-50px] md:left-0 -z-10">
                 <img loading="lazy" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo"
-                    class="w-1/2 relative">
+                    class="w-1/2 mx-auto md:mx-0 relative">
             </div>
 
-            <div class="relative">
+            <div class="relative text-center md:text-left">
                 <img loading="lazy" src="{{ asset('front-end/assets/star.svg') }}"
                     class="w-1/2 absolute top-[-90px] left-[6rem] -z-10" style="transform: rotate(160deg);">
                 <h1 class="text-5xl font-bold hepta uppercase">Super Offer</h1>
-                <p class="text-md rubikv w-2/3 mt-10">
+                <p class="text-md rubikv md:w-2/3 w-full mt-10 mx-auto md:mx-0">
                     Whether you're a content creator, developer, or visionary, our platform gives you the space
                     to shine. Build your profile, share your work, and get discovered by businesses seeking
                     innovative solutions. Let your talent speak for itself and unlock endless opportunities.
                 </p>
             </div>
-            <div class="font-bold flex gap-10">
+            <div class="font-bold flex gap-10 mx-auto md:mx-0 my-4 md:my-0">
                 <a href="/talent-signup"
                     class="hepta block w-[150px] py-2 bg-green text-center border-black border-4">Yes,
                     I'm
@@ -29,7 +29,7 @@
                 <div class="rubikv block w-[150px] py-2 bg-white text-center border-black border-4 cursor-not-allowed">
                     No</div>
             </div>
-            <div class="hepta font-bold text-4xl">Brand BOoOoOst</div>
+            <div class="hepta font-bold text-4xl text-center md:text-left mt-5 md:mt-0">Brand BOoOoOst</div>
         </div>
 
         <div class="hidden flex-1 md:flex flex-col gap-40">
@@ -103,13 +103,13 @@
 </div>
 
 <div id="appearance"
-    class="flex justify-center items-center bg-purple text-white p-10 h-[65rem] overflow-hidden border-black border-b-4">
+    class="text-center md:text-left flex justify-center items-center bg-purple text-white p-10 h-[65rem] overflow-hidden border-black border-b-4">
     <div id="leftText" class="flex-1 flex flex-col font-extrabold items-between">
         <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">Your Talent</span>
         <span class="text-7xl hepta my-9" style="text-shadow: 10px 5px 0px black;">Their
             Vision</span>
         <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">Our Platform</span>
-        <div class="mt-10 flex flex-col w-1/2 gap-5">
+        <div class="mt-10 flex flex-col w-full md:w-1/2 gap-5">
             <a href="/talent-signup" class="bg-green px-4 py-4 border-black border-4 text-black hepta text-center"
                 style="box-shadow: 10px 10px 0 black;">I Have a
                 Talent</a>
@@ -118,7 +118,7 @@
                 Vision</a>
         </div>
     </div>
-    <div class="flex-1 flex justify-center gap-8">
+    <div class="hidden md:flex flex-1 justify-center gap-8">
         <div class="flex flex-col mt-6 gap-10 items-center" id="leftImgs">
             <img loading="lazy" src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}" class="rounded-xl">
             <img loading="lazy" src="{{ asset('front-end/SocialMedia/brand boost sm (2).jpg') }}" class="rounded-xl">
@@ -134,50 +134,52 @@
     <h2 class="text-6xl hepta font-bold text-center py-10">But, How it Works ?</h2>
     <div id="horizontal" class="flex overflow-x-hidden">
         <div id="horizontalContent"
-            class="border-black border-t-4 h-[100vh] w-[100vw] bg-green flex-shrink-0 flex items-center">
+            class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-green flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
-                <div class="w-1/2">
+                <div class="w-full text-center md:text-left md:w-1/2">
                     <h1 class="text-7xl hepta font-bold">Join The Community</h1>
                     <p class="text-2xl rubikv mt-10">Sign up as a creator or a company manager to access a
                         vibrant network of talent and opportunities. Becoming part of our platform is quick,
                         easy, and completely free!</p>
                 </div>
-                <img src="{{ asset('front-end/logo/PNG/Artboard 27.png') }}" alt="Brand Boost Logo" class="w-1/3">
+                <div class="absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
+                    <img src="{{ asset('front-end/logo/PNG/Artboard 37.png') }}" alt="Brand Boost Logo" class="w-full">
+                </div>
             </div>
         </div>
 
         <div id="horizontalContent"
-            class="border-black border-t-4 h-[100vh] w-[100vw] bg-pink flex-shrink-0 flex items-center">
+            class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-pink flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
-                <div class="w-1/2">
+                <div class="w-full text-center md:text-left md:w-1/2">
                     <h1 class="text-7xl hepta font-bold">Showcase Your Work</h1>
                     <p class="text-2xl rubikv mt-10">Creators can upload projects, add descriptions, and present
                         their skills in the best light. Build an impressive portfolio that stands out to
                         potential collaborators.</p>
                 </div>
-                <div class="bg-white rounded-[60px]">
+                <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/assets/world.svg') }}" alt="Brand Boost Logo" class="w-full">
                 </div>
             </div>
         </div>
 
         <div id="horizontalContent"
-            class="border-black border-t-4 h-[100vh] w-[100vw] bg-blue flex-shrink-0 flex items-center">
+            class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-blue flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
-                <div class="w-1/2">
+                <div class="w-full text-center md:text-left md:w-1/2">
                     <h1 class="text-7xl hepta font-bold">Connect and Collaborate</h1>
                     <p class="text-2xl rubikv mt-10">Managers can explore projects, favorite creators, and
                         initiate conversations directly. Discover the perfect fit for your project needs and
                         bring your ideas to life.</p>
                 </div>
-                <div class="bg-white rounded-[60px]">
+                <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/assets/at.svg') }}" alt="Brand Boost Logo" class="w-full">
                 </div>
             </div>
         </div>
 
         <div id="horizontalContent"
-            class="border-black border-t-4 border-b-4 h-[100vh] w-[100vw] bg-purple flex-shrink-0 flex items-center">
+            class="relative md:static border-black border-t-4 border-b-4 h-[100vh] w-[100vw] bg-purple flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-1/2 text-white">
                     <h1 class="text-7xl hepta font-bold">Achieve Success</h1>
@@ -185,7 +187,7 @@
                         outstanding projects, gain recognition, and grow your network. Your success story starts
                         here.</p>
                 </div>
-                <div class="bg-white rounded-[60px]">
+                <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/assets/star.svg') }}" alt="Brand Boost Logo" class="w-full">
                 </div>
             </div>

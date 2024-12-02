@@ -32,7 +32,7 @@
     @unless(request()->routeIs('talent-signup', 'visionary-signup', 'signin'))
         <!-- Render the navbar unless the current route is "signup" -->
         <nav
-            class="sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold flex justify-between hepta">
+            class="hidden md:flex sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold justify-between hepta">
             <ul class="flex items-center">
                 <li class="p-4"><a href="/">home</a></li>
                 <li class="p-4"><a href="/services">services</a></li>
@@ -44,6 +44,15 @@
             <button data-modal-open="join-us-modal"
                 class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">Join us</button>
         </nav>
+
+        <nav
+            class="flex md:hidden sticky top-0 bg-white z-40 border-black border-b-4 px-5 items-center font-semibold justify-between hepta">
+            <a href="/">
+                <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
+            </a>
+            <button data-modal-open="nav-modal"
+                class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">Menu</button>
+        </nav>
     @endunless
 
     @if (request()->routeIs('talent-signup', 'visionary-signup'))
@@ -54,6 +63,29 @@
             </a>
         </nav>
     @endif
+
+    <div id="nav-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
+        <ul class="flex flex-col bg-purple uppercase text-center font-bold text-md p-5 border-black border-4">
+            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/"
+                    class="w-full block">home</a>
+            </li>
+            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/services"
+                    class="w-full block">services</a></li>
+            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+                    href="/freelancers" class="w-full block">Talents</a></li>
+            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="about"
+                    class="w-full block">about</a>
+            </li>
+            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/contact"
+                    class="w-full block">contact</a></li>
+            <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a href="/signin"
+                    class="w-full block">login</a></li>
+            <li class="border-black border-2 p-4 bg-pink hover:bg-fuchsia-400 my-2 text-black hepta"><a
+                    href="/visionary-signup" class="w-full block">join as a visionary</a></li>
+            <li class="border-black border-2 p-4 bg-green hover:bg-emerald-600 my-2 text-black hepta"><a
+                    href="/talent-signup" class="w-full block">join as a talent</a></li>
+        </ul>
+    </div>
 
     <div id="join-us-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
         <div class="bg-white w-3/4 m-auto p-10 border-black border-4 acworth">

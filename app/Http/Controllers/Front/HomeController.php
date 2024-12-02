@@ -38,17 +38,17 @@ class HomeController extends Controller
 
         $blogs = Blog::latest()->limit(4)->get();
         $blogSection = Title::where('section', 'blogs')->first();
-        
+
         $favFreelancersSection = Title::where('section', 'stars')->first();
-        $favFreelancers =  Freelancer::where('fav', 1)->get();
+        $favFreelancers = Freelancer::where('fav', 1)->get();
 
         $contactSection = Title::where('section', 'contacts')->first();
         $aboutSection = Title::where('section', 'about_us')->first();
         $mainSection = Title::where('section', 'main')->first();
 
-        $setting= Setting::first();
+        $setting = Setting::first();
 
-        return view('front-end.homepage', compact('services','favFreelancersSection','favFreelancers','setting','mainSection','contactSection', 'aboutSection','blogSection','advantageSection','serviceSection','titles','advantages','blogs'));
+        return view('front-end.homepage', compact('services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
     }
 
 
@@ -56,10 +56,10 @@ class HomeController extends Controller
     {
         // Fetch the specified service
         $services = Service::all();
-    
+
         // Fetch settings
         $setting = Setting::first();
-    
+
         return view('front-end.servicespage', compact('setting', 'services'));
     }
 
@@ -67,18 +67,18 @@ class HomeController extends Controller
     {
         // Fetch the specified service
         $service = Service::findOrFail($id);
-    
+
         // Fetch freelancers providing this service
         $freelancers = Freelancer::whereHas('services', function ($query) use ($id) {
             $query->where('id', $id);
         })->get();
-    
+
         // Fetch settings
         $setting = Setting::first();
-    
+
         return view('front-end.service-offers', compact('setting', 'service', 'freelancers'));
     }
-    
+
     public function freelancers()
     {
         // Fetch the specified service
@@ -87,19 +87,19 @@ class HomeController extends Controller
         $jobTitles = JobTitle::all();
         // Fetch settings
         $setting = Setting::first();
-    
-        return view('front-end.servicespage', compact('jobTitles','fields','setting', 'freelancers'));
+
+        return view('front-end.freelancerspage', compact('jobTitles', 'fields', 'setting', 'freelancers'));
     }
 
     public function freelancer_details($id)
     {
         // Fetch the specified service
         $freelancer = Freelancer::findOrFail($id);
-    
-    
+
+
         // Fetch settings
         $setting = Setting::first();
-    
+
         return view('front-end.singlefreelancerpage', compact('setting', 'freelancer'));
     }
 
@@ -107,24 +107,24 @@ class HomeController extends Controller
     {
         // Fetch the specified service
         $freelancer = Freelancer::findOrFail($id);
-    
-    
+
+
         // Fetch settings
         $setting = Setting::first();
-    
+
         return view('front-end.singlefreelancerprojects', compact('setting', 'freelancer'));
     }
 
-    
+
     public function freelancer_service_details($id)
     {
         // Fetch the specified service
         $freelancerService = FreelancerService::findOrFail($id);
-    
-    
+
+
         // Fetch settings
         $setting = Setting::first();
-    
+
         return view('front-end.offer', compact('setting', 'freelancerService'));
     }
 
@@ -154,9 +154,9 @@ class HomeController extends Controller
     {
 
         $contactSection = Title::where('section', 'contacts')->first();
-        $setting= Setting::first();
+        $setting = Setting::first();
 
-        return view('front-end.contactpage', compact('setting','contactSection'));
+        return view('front-end.contactpage', compact('setting', 'contactSection'));
     }
 
     public function about()
@@ -171,10 +171,10 @@ class HomeController extends Controller
         $services = Service::latest()->limit(6)->get();
         $serviceSection = Title::where('section', 'services')->first();
 
-        $setting= Setting::first();
+        $setting = Setting::first();
 
 
-        return view('front-end.aboutpage', compact('setting', 'advantages','advantageSection','contactSection','aboutSection'));
+        return view('front-end.aboutpage', compact('setting', 'advantages', 'advantageSection', 'contactSection', 'aboutSection'));
     }
 
     public function blog()
@@ -183,18 +183,18 @@ class HomeController extends Controller
 
         $blogs = Blog::latest()->get();
         $blogSection = Title::where('section', 'blogs')->first();
-        $setting= Setting::first();
+        $setting = Setting::first();
         $tags = Tag::all();
 
-        return view('front.blogs', compact('tags','setting','blogs','blogSection'));
+        return view('front.blogs', compact('tags', 'setting', 'blogs', 'blogSection'));
     }
 
     public function blog_details($id)
     {
         $blog = Blog::find($id);
-        $setting= Setting::first();
+        $setting = Setting::first();
 
-        return view('front.blog_details', compact('setting','blog'));
+        return view('front.blog_details', compact('setting', 'blog'));
     }
 
     public function filterByTag($tagId = null)
@@ -205,16 +205,16 @@ class HomeController extends Controller
         $setting = Setting::first();
         $tags = Tag::all(); // Make sure this line is present in all relevant methods
 
-          if ($tagId) {
-        $blogs = Blog::where('tag_id', $tagId)->get();
-        $selectedTag = Tag::find($tagId);
-    } else {
-        $blogs = Blog::all();
-        $selectedTag = null;
-    }
+        if ($tagId) {
+            $blogs = Blog::where('tag_id', $tagId)->get();
+            $selectedTag = Tag::find($tagId);
+        } else {
+            $blogs = Blog::all();
+            $selectedTag = null;
+        }
 
-    $noBlogsMessage = $blogs->isEmpty() ? 'لا يوجد مدونات في هذه الفئة' : '';
-        return view('front.blogs', compact('setting', 'blogs', 'blogSection','tags' , 'noBlogsMessage' , 'selectedTag'));
+        $noBlogsMessage = $blogs->isEmpty() ? 'لا يوجد مدونات في هذه الفئة' : '';
+        return view('front.blogs', compact('setting', 'blogs', 'blogSection', 'tags', 'noBlogsMessage', 'selectedTag'));
     }
 
 
