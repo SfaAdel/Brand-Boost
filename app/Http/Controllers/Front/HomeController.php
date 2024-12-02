@@ -7,6 +7,9 @@ use App\Models\Advantage;
 use App\Models\Blog;
 use App\Models\Freelancer;
 use App\Models\BusinessOwner;
+use App\Models\Field;
+use App\Models\FreelancerService;
+use App\Models\JobTitle;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Tag;
@@ -45,7 +48,7 @@ class HomeController extends Controller
 
         $setting= Setting::first();
 
-        return view('front.index', compact('services','favFreelancersSection','favFreelancers','setting','mainSection','contactSection', 'aboutSection','blogSection','advantageSection','serviceSection','titles','advantages','blogs'));
+        return view('front-end.homepage', compact('services','favFreelancersSection','favFreelancers','setting','mainSection','contactSection', 'aboutSection','blogSection','advantageSection','serviceSection','titles','advantages','blogs'));
     }
 
 
@@ -57,7 +60,7 @@ class HomeController extends Controller
         // Fetch settings
         $setting = Setting::first();
     
-        return view('front.service_details', compact('setting', 'services'));
+        return view('front-end.servicespage', compact('setting', 'services'));
     }
 
     public function service_details($id)
@@ -73,10 +76,57 @@ class HomeController extends Controller
         // Fetch settings
         $setting = Setting::first();
     
-        return view('front.service_details', compact('setting', 'service', 'freelancers'));
+        return view('front-end.service-offers', compact('setting', 'service', 'freelancers'));
     }
     
+    public function freelancers()
+    {
+        // Fetch the specified service
+        $freelancers = Freelancer::all();
+        $fields = Field::all();
+        $jobTitles = JobTitle::all();
+        // Fetch settings
+        $setting = Setting::first();
+    
+        return view('front-end.servicespage', compact('jobTitles','fields','setting', 'freelancers'));
+    }
 
+    public function freelancer_details($id)
+    {
+        // Fetch the specified service
+        $freelancer = Freelancer::findOrFail($id);
+    
+    
+        // Fetch settings
+        $setting = Setting::first();
+    
+        return view('front-end.singlefreelancerpage', compact('setting', 'freelancer'));
+    }
+
+    public function freelancer_projects($id)
+    {
+        // Fetch the specified service
+        $freelancer = Freelancer::findOrFail($id);
+    
+    
+        // Fetch settings
+        $setting = Setting::first();
+    
+        return view('front-end.singlefreelancerprojects', compact('setting', 'freelancer'));
+    }
+
+    
+    public function freelancer_service_details($id)
+    {
+        // Fetch the specified service
+        $freelancerService = FreelancerService::findOrFail($id);
+    
+    
+        // Fetch settings
+        $setting = Setting::first();
+    
+        return view('front-end.offer', compact('setting', 'freelancerService'));
+    }
 
     // public function submit_review(Request $request, $id)
     // {
@@ -106,7 +156,7 @@ class HomeController extends Controller
         $contactSection = Title::where('section', 'contacts')->first();
         $setting= Setting::first();
 
-        return view('front.contact', compact('setting','contactSection'));
+        return view('front-end.contactpage', compact('setting','contactSection'));
     }
 
     public function about()
@@ -124,7 +174,7 @@ class HomeController extends Controller
         $setting= Setting::first();
 
 
-        return view('front.about', compact('setting', 'advantages','advantageSection','contactSection','aboutSection'));
+        return view('front-end.aboutpage', compact('setting', 'advantages','advantageSection','contactSection','aboutSection'));
     }
 
     public function blog()

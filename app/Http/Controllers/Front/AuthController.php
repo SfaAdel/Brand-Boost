@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\Freelancer;
+use App\Http\Requests\Admin\BusinessOwnerRequest;
+// use App\Http\Middleware\Freelancer;
 use App\Http\Requests\Admin\CustomerRequest;
 use App\Http\Requests\Admin\FreelancerRequest;
 use App\Http\Requests\Front\LoginRequest;
+use App\Models\BusinessOwner;
 use App\Models\Customer;
+use App\Models\Field;
+use App\Models\JobTitle;
+use App\Models\Freelancer;
+
 use App\Notifications\SendVerificationCode;
 use App\Notifications\SendVerifySMS;
 use App\Providers\RouteServiceProvider;
@@ -38,52 +44,29 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
 
-    protected $whatsAppService;
-
-    public function __construct(WhatsAppService $whatsAppService)
+    public function signIn(): View
     {
-        $this->whatsAppService = $whatsAppService;
+        return view('front-end.signin');
     }
 
-    public function loginForm(): View
+    public function visionarySignUp(): View
     {
-        return view('front.auth.login');
+        $fields = Field::whereIn('type', ['business_owner', 'both'])->get();
+        $jobTitles = JobTitle::all();
+
+        return view('front-end.visionary-signup',  compact('fields', 'jobTitles'));
     }
 
-    public function verifyForm(): View
+    public function talentSignUp(): View
     {
-        return view('front.auth.Verification');
+        $fields = Field::whereIn('type', ['freelancer', 'both'])->get();
+        $jobTitles = JobTitle::whereIn('type', ['freelancer', 'both'])->get();
+
+        return view('front-end.talent-signup',  compact('fields', 'jobTitles'));
     }
 
-    public function login(LoginRequest $request)
+    public function freelancerRegister(FreelancerRequest $request)
     {
-            // Log the customer in
-            $request->authenticate();
-            $request->session()->regenerate();
-            return redirect()->route('home');
-
-    }
-
-    public function registerForm(): View
-    {
-        return view('front.auth.register');
-    }
-
-    public function logout(Request $request)
-    {
-        Auth::guard('customer')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        // return view('front.auth.login');
-        return redirect()->route('home');
-
-    }
-
-
-    public function register(FreelancerRequest $request)
-    {
-
-
         // Check if phone already exists
         if (Freelancer::where('phone', $request->phone)->exists()) {
             throw ValidationException::withMessages([
@@ -91,74 +74,58 @@ class AuthController extends Controller
             ]);
         }
 
-        // Create a new customer entry
+        // Save Freelancer details
         $freelancer = new Freelancer();
-        $freelancer->phone = $request->phone;
-        $freelancer->name = $request->name;
+        $freelancer->email = $request->email;
         $freelancer->password = bcrypt($request->password);
-        $freelancer->generateOTP($freelancer); // Generate OTP here
+        $freelancer->phone = $request->phone;
+        $freelancer->cash_number = $request->cash_number;
+        $freelancer->job_title_id = $request->job_title_id;
+        $freelancer->date_of_birth = $request->date_of_birth;
+
+        // Save translations
+        $freelancer->translateOrNew('en')->name = $request->input('en.name');
+        $freelancer->translateOrNew('en')->bio = $request->input('en.bio');
+        $freelancer->translateOrNew('ar')->name = $request->input('ar.name');
+        $freelancer->translateOrNew('ar')->bio = $request->input('ar.bio');
         $freelancer->save();
 
-        // ****** Send OTP via WhatsApp using ShrinkIt ******
-        try {
-            // Send OTP via WhatsApp using ShrinkIt
-            $result = $this->whatsAppService->sendMessage($freelancer->phone, $freelancer->otp);
-
-            // Check if the response is false (meaning it failed)
-            if ($result === false) {
-                throw new \Exception('Failed to send OTP');
-            }
-
-
-        } catch (\Exception $e) {
-            // Log the error and return with a message to the user
-            Log::error($e->getMessage());
-            return back()->withErrors(['otp' => 'لم نتمكن من ارسال رمز التحقق ، من فضلك حاول مجددا في وقت لاحق']);
+        // Attach fields
+        if ($request->filled('fields')) {
+            $freelancer->fields()->sync($request->fields);
         }
 
-        // Redirect to the OTP verification page with success message
-        return redirect()->route('verify_code', ['phone' => $request->phone])
-                         ->with('success', 'تم ارسال رمز التحقق الى رقم الهاتف الخاص بك');
+        return redirect()->route('signIn')
+            ->with('success', __('messages.freelancer_registered_successfully'));
     }
 
-    /**
-     * Display the OTP verification form.
-     */
-
-    /**
-     * Handle OTP verification.
-     */
-    public function verify(Request $request)
+    public function businessOwnerRegister(BusinessOwnerRequest $request)
     {
-        // Validate phone and OTP
-        $request->validate([
-            // 'phone' => ['required', 'regex:/^\+9665[0-9]{8}$/'],
-            'otp' => ['required'],
-        ]);
-
-        // Check if phone exists in database
-        $customer = Customer::where('phone', $request->phone)->first();
-
-        // If not exists -> throw validation error
-        if (!$customer) {
+        // Check if phone already exists
+        if (BusinessOwner::where('phone', $request->phone)->exists()) {
             throw ValidationException::withMessages([
-                'phone' => trans('auth.failed'),
+                'phone' => 'هذا الرقم موجود بالفعل',
             ]);
         }
 
-         // Verify OTP
-         if ($customer->otp == $request->otp) {
-            if (now() < $customer->otp_till) {
-                $customer->resetOTP();
-                Auth::guard('customer')->login($customer);
-                $request->session()->regenerate();
-                return redirect()->route('home');
-            } else {
-                return back()->withErrors(['otp' => 'انتهت صلاحية هذا الرمز']);
-            }
-        } else {
-            return back()->withErrors(['otp' => ' الرمز الذي ادخلته غير صحيح']);
+        // Save Freelancer details
+        $businessOwner = new BusinessOwner();
+        $businessOwner->email = $request->email;
+        $businessOwner->password = bcrypt($request->password);
+        $businessOwner->phone = $request->phone;
+        $businessOwner->field_id = $request->field_id;
+      
 
-        }
+        // Save translations
+        $businessOwner->translateOrNew('en')->name = $request->input('en.name');
+        $businessOwner->translateOrNew('en')->company_name = $request->input('en.company_name');
+        $businessOwner->translateOrNew('ar')->name = $request->input('ar.name');
+        $businessOwner->translateOrNew('ar')->company_name = $request->input('ar.company_name');
+        $businessOwner->save();
+
+
+
+        return redirect()->route('signIn')
+            ->with('success', __('messages.business_owner_registered_successfully'));
     }
 }

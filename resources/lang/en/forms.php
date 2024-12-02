@@ -199,6 +199,10 @@ return [
         'freelancer_details'=>'Freelancer Details  ',
 
         'business_owners_list'=>'Business Owners List',
-        
+
+    'gender' => 'Gender',
+    'cash_number' => 'Cash Number',
+    'fields' => 'Skills',
+
 ];
 

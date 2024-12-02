@@ -51,7 +51,7 @@ class FreelancerRequest extends FormRequest
                 'min:5',
                 new NotEmailOrPhone,
             ],
-            'ar.bio' => [
+            'en.bio' => [
                 'required',
                 'min:5',
                 new NotEmailOrPhone,
@@ -61,25 +61,31 @@ class FreelancerRequest extends FormRequest
                 'required',
                 'string',
                 'regex:/^01[0-2,5]{1}[0-9]{8}$/', 
-                Rule::unique('business_owners', 'phone')->ignore($businessOwnerId),
+                Rule::unique('freelancers', 'phone')->ignore($freelancerId),
             ],
             'email' => [
                 'required',
                 'string',
                 'email', 
-                Rule::unique('business_owners', 'email')->ignore($businessOwnerId),
+                Rule::unique('freelancers', 'email')->ignore($freelancerId),
+            ],
+            'cash_number' => [
+                'required',
+                'string',
+                'max:25', 
+                Rule::unique('freelancers', 'cash_number')->ignore($freelancerId),
             ],
 
             'password' => $this->method() === 'POST' ? 'required|string|min:6' : 'nullable|string|min:6',
             
             'job_title_id' => 'required|numeric|exists:job_titles,id',
             'date_of_birth' => ['required', 'date', 'before:' . now()->subYears(12)->format('Y-m-d')],
-
-
+            'gender' => 'required|in:male,female', 
+            'fields' => 'required|array|min:1', 
+            'fields.*' => 'exists:fields,id', 
+            
             // Only require 'icon' and 'banner' for store requests (POST method)
-            'profile_image' => $this->isMethod('post')
-                ? 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240'
-                : 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240' ,
         ];
 
         return $rules;
@@ -102,6 +108,10 @@ class FreelancerRequest extends FormRequest
             'password' => __('forms.password'),
             'profile_image' => __('forms.icon'),
             'date_of_birth' => __('forms.date_of_birth'),
+            'gender' => __('forms.gender'), 
+            'cash_number' => __('forms.cash_number'),  
+            'fields' => __('forms.fields'),
+
         ];
     }
 }

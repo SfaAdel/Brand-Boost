@@ -200,5 +200,9 @@ return [
 
     'business_owners_list'=>'قائمة اصحاب الاعمال',
 
+    'gender' => 'الجنس',
+    'cash_number' => 'رقم الحساب',
+    'fields' => 'المهارات',
+
 ];
 

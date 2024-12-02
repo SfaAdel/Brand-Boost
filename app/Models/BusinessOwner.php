@@ -17,9 +17,14 @@ class BusinessOwner extends Model implements TranslatableContract
     // Guard the primary key field and other fields as needed
     protected $guarded = ['id'];
 
+    // public function fields()
+    // {
+    //     return $this->belongsToMany(Field::class, 'field_business_owner');
+    // }
+
     public function fields()
     {
-        return $this->belongsToMany(Field::class, 'field_business_owner');
+        return $this->belongsTo(Field::class);
     }
 
     public function favorites()

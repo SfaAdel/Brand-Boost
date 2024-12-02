@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('password');
             $table->string('profile_image')->nullable();
             $table->string('phone')->unique();
+            $table->string('cash_number')->nullable();
             $table->boolean('active')->default(true);
+            $table->enum('gender', ['male', 'female']);
             $table->boolean('fav')->default(false);
-            $table->foreignId('job_title_id')->constrained('job_titles');
+            $table->foreignId('job_title_id')->nullable()->constrained('job_titles')->onDelete('set null');
             $table->date('date_of_birth')->nullable();
             $table->timestamps();
         });

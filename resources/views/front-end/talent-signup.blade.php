@@ -1,94 +1,122 @@
 @extends('layout')
 
-@section('title', 'Talent Signup')
+@section('title', __('website.talent_signup_title'))
 
 @section('content')
 <div class="bg-green acworth px-5 bg-green">
     <div class="py-5 text-center md:text-justify">
-        <h1 class="text-5xl font-bold hepta uppercase">Hello, Talent</h1>
-        <p class="text-md rubikv text-gray-800">Please fill out the form below to get started.</p>
+        <h1 class="text-5xl font-bold hepta uppercase">{{ __('website.talent_signup_header') }}</h1>
+        <p class="text-md rubikv text-gray-800">{{ __('website.talent_signup_subheader') }}</p>
     </div>
 
+    <div class="my-3">
+        @include('front-end.includes.alerts')
+    </div>
+    
+
+
+
     <div>
-        <form action="">
+        <form action="{{ route('freelancer.register') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="flex justify-between gap-5 flex-wrap">
                 <div class="flex-1">
                     <div class="flex flex-col my-2">
-                        <label for="name" class="text-gray-600 text-md rubikv leading-relaxed">Name</label>
-                        <input type="text" name="name" id="name" class="p-2 border-black border-2 outline-none">
+                        <label for="name_en" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.name_in_english') }}</label>
+                        <input type="text" name="en[name]" id="name_en" class="p-2 border-black border-2 outline-none">
                     </div>
 
                     <div class="flex flex-col my-2">
-                        <label for="arabic-name" class="text-gray-600 text-md rubikv leading-relaxed">Name in
-                            Arabic</label>
-                        <input type="text" name="arabic-name" id="arabic-name"
-                            class="p-2 border-black border-2 outline-none">
+                        <label for="name_ar" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.name_in_arabic') }}</label>
+                        <input type="text" name="ar[name]" id="name_ar" class="p-2 border-black border-2 outline-none">
                     </div>
 
                     <div class="flex flex-col my-2">
-                        <label for="email" class="text-gray-600 text-md rubikv leading-relaxed">Email</label>
+                        <label for="email" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.email_label') }}</label>
                         <input type="email" name="email" id="email" class="p-2 border-black border-2 outline-none">
                     </div>
 
                     <div class="flex flex-col my-2">
-                        <label for="password" class="text-gray-600 text-md rubikv leading-relaxed">Password</label>
-                        <input type="password" name="password" id="password"
-                            class="p-2 border-black border-2 outline-none">
+                        <label for="password" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.password_label') }}</label>
+                        <input type="password" name="password" id="password" class="p-2 border-black border-2 outline-none">
                     </div>
                 </div>
                 <div class="flex-1">
                     <div class="flex flex-col my-2">
-                        <label for="cash-number" class="text-gray-600 text-md rubikv leading-relaxed">Bank account
-                            number /
-                            Wallet
-                            cash number</label>
-                        <input type="text" name="cash-number" id="cash-number"
-                            class="p-2 border-black border-2 outline-none">
+                        <label for="cash-number" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.cash_number_label') }}</label>
+                        <input type="text" name="cash_number" id="cash-number" class="p-2 border-black border-2 outline-none">
                     </div>
 
                     <div class="flex flex-col my-2">
-                        <label for="phone-number" class="text-gray-600 text-md rubikv leading-relaxed">Phone
-                            number</label>
-                        <input type="text" name="phone-number" id="phone-number"
-                            class="p-2 border-black border-2 outline-none">
+                        <label for="phone-number" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.phone_number_label') }}</label>
+                        <input type="text" name="phone" id="phone-number" class="p-2 border-black border-2 outline-none">
                     </div>
 
+                    
                     <div class="flex flex-col my-2">
-                        <label for="gender" class="text-gray-600 text-md rubikv leading-relaxed">Gender</label>
-                        <input type="text" name="gender" id="gender" class="p-2 border-black border-2 outline-none">
+                        <label for="date_of_birth" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.date_of_birth_label') }}</label>
+                        <input type="date" name="date_of_birth" id="date_of_birth" class="p-2 border-black border-2 outline-none" required>
                     </div>
 
+                    
+
                     <div class="flex flex-col my-2">
-                        <label for="job-title" class="text-gray-600 text-md rubikv leading-relaxed">Job Title</label>
-                        <select name="job-title" id="job-title" class="p-2 border-black border-2 outline-none">
-                            <option value="job-title-default">Choose yours</option>
-                            <option value="Developer">Developer</option>
-                            <option value="Desginer">Desginer</option>
-                            <option value="Content-Creator">Content Creator</option>
+                        <label for="job-title" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.job_title_label') }}</label>
+                        <select name="job_title_id" id="job-title" class="p-2 border-black border-2 outline-none">
+                            <option selected disabled>{{ __('website.job_title_placeholder') }}</option>
+                            @foreach ($jobTitles as $jobTitle)
+                                <option value="{{ $jobTitle->id }}">{{ $jobTitle->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
             </div>
 
             <div class="flex flex-col my-2">
-                <label for="name" class="text-gray-600 text-md rubikv leading-relaxed">Brief Describtion about
-                    yourself</label>
-                <textarea rows="3" cols="50" resize="none" name="bio" id="bio"
-                    class="p-2 border-black border-2 outline-none"></textarea>
+                <label for="gender" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.gender_label') }}</label>
+                <div class="flex gap-5">
+                    <div class="flex items-center">
+                        <input type="radio" id="male" name="gender" value="male" class="p-2 border-black border-2 outline-none">
+                        <label for="male" class="text-md rubikv leading-relaxed">{{ __('website.male') }}</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="female" name="gender" value="female" class="p-2 border-black border-2 outline-none">
+                        <label for="female" class="text-md rubikv leading-relaxed">{{ __('website.female') }}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col my-2">
+                <label for="fields" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.fields_label') }}</label>
+                <select name="fields[]" id="skills" multiple class="p-2 border-black border-2 outline-none">
+                    @foreach ($fields as $field)
+                        <option value="{{ $field->id }}">{{ $field->name }}</option>
+                    @endforeach
+                </select>
+                <small class="text-gray-500">{{ __('website.fields_help') }}</small>
+            </div>
+
+            <div class="flex flex-col my-2">
+                <label for="en_bio" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.bio_en_label') }}</label>
+                <textarea rows="3" cols="50" name="en[bio]" id="en_bio" class="p-2 border-black border-2 outline-none"></textarea>
+            </div>
+            <div class="flex flex-col my-2">
+                <label for="ar_bio" class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.bio_ar_label') }}</label>
+                <textarea rows="3" cols="50" name="ar[bio]" id="ar_bio" class="p-2 border-black border-2 outline-none"></textarea>
             </div>
 
             <div class="w-full flex justify-center items-center py-5">
                 <button type="submit"
                     class="text-3xl uppercase hepta w-1/2 mx-auto bg-emerald-400 font-semibold py-2 px-4 border-2 border-black hover:bg-emerald-500 transition"
-                    style="box-shadow: -5px 10px 0 black;">Sign
-                    Up</button>
+                    style="box-shadow: -5px 10px 0 black;">{{ __('website.signup_button') }}</button>
             </div>
 
-            <div class="text-sm md:text-lg  uppercase flex gap-5 items-center w-full justify-center">
-                <p class="rubikv">Do you have an account already?</p>
-                <a href="/signin" class="hepta bg-emerald-400 py-1 px-2 border-2 border-black">Login here</a>
-            </div>
+          
         </form>
+        <div class="text-sm md:text-lg uppercase flex gap-5 items-center w-full justify-center">
+            <p class="rubikv">{{ __('website.already_have_account') }}</p>
+            <a href="/signin" class="hepta bg-emerald-400 py-1 px-2 border-2 border-black">{{ __('website.login_link') }}</a>
+        </div>
     </div>
 </div>
 @endsection

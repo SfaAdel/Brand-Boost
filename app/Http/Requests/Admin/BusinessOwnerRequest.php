@@ -71,11 +71,10 @@ class BusinessOwnerRequest extends FormRequest
             ],
 
             'password' => $this->method() === 'POST' ? 'required|string|min:6' : 'nullable|string|min:6',
+            'field_id' => 'required|numeric|exists:fields,id',
 
             // Only require 'icon' and 'banner' for store requests (POST method)
-            'profile_image' => $this->isMethod('post')
-                ? 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240'
-                : 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ];
 
         return $rules;
