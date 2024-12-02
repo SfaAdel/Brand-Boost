@@ -41,8 +41,14 @@
                 <li class="p-4"><a href="/contact">contact</a></li>
             </ul>
 
-            <button data-modal-open="join-us-modal"
-                class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">Join us</button>
+            <div class="flex">
+                <select class="bg-white m-0 px-4 py-4 uppercase outline-none">
+                    <option value="en">EN</option>
+                    <option value="ar">العربية</option>
+                </select>
+                <button data-modal-open="join-us-modal"
+                    class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">Join us</button>
+            </div>
         </nav>
 
         <nav
@@ -50,8 +56,14 @@
             <a href="/">
                 <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
             </a>
-            <button data-modal-open="nav-modal"
-                class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">Menu</button>
+            <div>
+                <select class="bg-white m-0 px-4 py-4 uppercase outline-none">
+                    <option value="en">EN</option>
+                    <option value="ar">العربية</option>
+                </select>
+                <button data-modal-open="nav-modal"
+                    class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">Menu</button>
+            </div>
         </nav>
     @endunless
 
@@ -61,6 +73,10 @@
             <a href="/">
                 <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
             </a>
+            <select class="bg-white m-0 px-4 py-4 uppercase outline-none">
+                <option value="en">EN</option>
+                <option value="ar">العربية</option>
+            </select>
         </nav>
     @endif
 

@@ -48,12 +48,15 @@ Route::group([
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
     Route::get('/services', [HomeController::class, 'services'])->name('services');
     Route::get('/freelancers', [HomeController::class, 'freelancers'])->name('freelancers');
-    Route::get('/freelancers/{name}', [HomeController::class, 'freelancer_details'])->name('freelancerName');
-    Route::get('/freelancers/{name}/projects', [HomeController::class, 'freelancer_projects'])->name('freelancerNameProjects');
-    Route::get('/services/{id}/{name}/offers', [HomeController::class, 'service_details'])->name('service-offers');
+    Route::get('/freelancers/{id}', [HomeController::class, 'freelancer_details'])->name('freelancerName');
+    Route::get('/freelancers/{id}/projects', [HomeController::class, 'freelancer_projects'])->name('freelancerNameProjects');
+    Route::get('/services/{id}/offers', [HomeController::class, 'service_details'])->name('service-offers');
     Route::get('/services/offers/offer', [HomeController::class, 'freelancer_service_details'])->name('offer');
     Route::get('/about', [HomeController::class, 'about'])->name('about');
 
+    Route::get('/business-area', function () {
+        return view('front-end.businessarea');
+    })->name('business-area');
 
     // Route::get('/talent-signup', function () {
     //     return view('front-end.talent-signup');
