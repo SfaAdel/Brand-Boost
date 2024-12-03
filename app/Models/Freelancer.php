@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 
-class Freelancer extends Model implements TranslatableContract
+class Freelancer extends Authenticatable  implements TranslatableContract
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable, Translatable;
 
     use HasFactory, Translatable;
 

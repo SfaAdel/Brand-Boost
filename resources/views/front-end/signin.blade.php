@@ -17,7 +17,9 @@
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" action="">
+        <form class="space-y-6" action="{{ route('signin.store') }}" method="POST">
+            @csrf
+        
             <div>
                 <label for="email" class="rubikv block text-sm font-bold text-gray-900">Email address</label>
                 <div class="mt-2">
@@ -25,23 +27,35 @@
                         class="outline-none border-black border-2 block w-full py-1.5 text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
                 </div>
             </div>
-
+        
             <div>
-                <div class="flex items-center justify-between">
-                    <label for="password" class="rubikv block text-sm font-bold text-gray-900">Password</label>
-                </div>
+                <label for="password" class="rubikv block text-sm font-bold text-gray-900">Password</label>
                 <div class="mt-2">
                     <input id="password" name="password" type="password" autocomplete="current-password" required
                         class="outline-none border-black border-2 block w-full py-1.5 text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
                 </div>
             </div>
-
+        
+            <div class="mt-4">
+                <label class="block text-sm font-bold text-gray-900">Sign in as:</label>
+                <div class="flex items-center space-x-4 mt-2">
+                    <label class="flex items-center">
+                        <input type="radio" name="user_type" value="freelancer" required class="mr-2"> Freelancer
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="user_type" value="business_owner" required class="mr-2"> Business Owner
+                    </label>
+                </div>
+            </div>
+        
             <div>
                 <button type="submit"
-                    class="border-black border-2 uppercase flex w-full justify-center bg-blue px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-500">Sign
-                    in</button>
+                    class="border-black border-2 uppercase flex w-full justify-center bg-blue px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-500">
+                    Sign in
+                </button>
             </div>
         </form>
+        
 
         <p class="mt-10 text-center text-sm/6 text-gray-900 font-bold">
             Not a member?
