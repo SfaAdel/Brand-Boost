@@ -4,7 +4,7 @@
 
 @php
     $currentUrl = request()->url();
-    $isProjectsActive = str_contains($currentUrl, '/freelancers/freelancerName/projects');
+    $isProjectsActive = str_contains($currentUrl, 'projects');
 @endphp
 
 @section('content')

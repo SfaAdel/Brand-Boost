@@ -142,8 +142,11 @@
                         vibrant network of talent and opportunities. Becoming part of our platform is quick,
                         easy, and completely free!</p>
                 </div>
-                <div class="absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
+                <div class="block md:hidden absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/logo/PNG/Artboard 37.png') }}" alt="Brand Boost Logo" class="w-full">
+                </div>
+                <div class="hidden md:block absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
+                    <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-full">
                 </div>
             </div>
         </div>
