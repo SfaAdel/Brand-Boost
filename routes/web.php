@@ -36,6 +36,11 @@ Route::group([
     //     return view('front-end.homepage');
     // })->name('welcome');
 
+
+
+    Route::post('signin', [AuthController::class, 'store'])->name('signin.store');
+    Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
+
     Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
     Route::get('/talent-signup', [AuthController::class, 'talentSignUp'])->name('talent-signup');
@@ -125,14 +130,8 @@ Route::group([
             Route::resource('advantages', AdvantageController::class);
             Route::resource('blogs', BlogController::class);
             Route::resource('contacts', ContactController::class);
-
         });
-
     });
-
-
-
-
 });
 
 // require __DIR__ . '/auth.php';

@@ -16,7 +16,7 @@ class SettingTranslationSeeder extends Seeder
         //
         SettingTranslation::create([
             'name' => 'براند بوست',
-            'address' => ' الرياض - المملكة العربية السعودية',
+            'address' => ' مكان ما -   جمهورية مصر العربية',
             'setting_id' => 1,
             'locale'=> 'ar',
 
@@ -24,7 +24,7 @@ class SettingTranslationSeeder extends Seeder
 
         SettingTranslation::create([
             'name' => 'Brand Boost',
-            'address' => 'Egypt , cairo ',
+            'address' => 'Makan Ma, Egypt',
             'setting_id' => 1,
             'locale'=> 'en',
 

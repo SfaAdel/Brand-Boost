@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+
 <div class="backgrounded" id="hero">
     <section class="flex justify-center px-10">
         <div class="flex-1 flex flex-col px-10 justify-around">

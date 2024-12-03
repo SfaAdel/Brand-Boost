@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 
-class BusinessOwner extends Model implements TranslatableContract
+
+class BusinessOwner extends Authenticatable  implements TranslatableContract
 {
-    use HasFactory, Translatable;
+    use HasApiTokens, HasFactory, Notifiable, Translatable;
 
     // Specify translatable attributes
     public $translatedAttributes = ['name', 'company_name'];

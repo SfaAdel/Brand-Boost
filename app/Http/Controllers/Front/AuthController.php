@@ -13,31 +13,12 @@ use App\Models\Customer;
 use App\Models\Field;
 use App\Models\JobTitle;
 use App\Models\Freelancer;
-
-use App\Notifications\SendVerificationCode;
-use App\Notifications\SendVerifySMS;
-use App\Providers\RouteServiceProvider;
-
-use App\Services\Vonage as ServicesVonage;
-use App\Services\WhatsAppService;
-use App\Services\ShrinkItService;
-
-use Illuminate\Http\RedirectResponse;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Notifications\Facades\Vonage;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Log;
-use Vonage\Client;
-use Vonage\Client\Credentials\Basic;
-use Vonage\SMS\Message\SMS;
-use Vonage\Client\Credentials\Basic as VonageCredentials;
-use Vonage\SMS\Message\SentSMS;
+
 use Illuminate\Validation\ValidationException;
 
 
@@ -46,23 +27,64 @@ class AuthController extends Controller
 
     public function signIn(): View
     {
-        return view('front-end.signin');
+        $setting = Setting::first();
+
+        return view('front-end.signin', compact('setting'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'user_type' => 'required|in:freelancer,business_owner',
+        ]);
+
+        $guard = $request->user_type; // 'freelancer' or 'business_owner'
+
+        if (Auth::guard($guard)->attempt($request->only('email', 'password'), $request->has('remember'))) {
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('welcome'))
+                ->with('success', __('messages.' . $guard . '_login_successfully'));
+        }
+
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ])->onlyInput('email');
+    }
+
+    /**
+     * Handle logout.
+     */
+    public function destroy(Request $request)
+    {
+        $guard = $request->user_type ?? (Auth::guard('freelancer')->check() ? 'freelancer' : 'business_owner');
+        Auth::guard($guard)->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('welcome'))
+            ->with('success', __('messages.' . $guard . '_logout_successfully'));
     }
 
     public function visionarySignUp(): View
     {
         $fields = Field::whereIn('type', ['business_owner', 'both'])->get();
         $jobTitles = JobTitle::all();
+        $setting = Setting::first();
 
-        return view('front-end.visionary-signup',  compact('fields', 'jobTitles'));
+        return view('front-end.visionary-signup',  compact('setting','fields', 'jobTitles'));
     }
 
     public function talentSignUp(): View
     {
         $fields = Field::whereIn('type', ['freelancer', 'both'])->get();
         $jobTitles = JobTitle::whereIn('type', ['freelancer', 'both'])->get();
+        $setting = Setting::first();
 
-        return view('front-end.talent-signup',  compact('fields', 'jobTitles'));
+        return view('front-end.talent-signup',  compact('setting','fields', 'jobTitles'));
     }
 
     public function freelancerRegister(FreelancerRequest $request)

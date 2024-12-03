@@ -16,11 +16,11 @@ class SettingSeeder extends Seeder
         //
 
         Setting::create([
-            'phone' => '00966542936554',
+            'phone' => '+20 1003391697',
             'logo' => 'logo.png',
             'favicon' => 'logo.png',
-            'whatsapp' => '00966542936554',
-            'email' => 'Info@mnazel.com',
+            'whatsapp' => '+20 1003391697',
+            'email' => 'help@brandboost.com',
             'facebook' => '#',
             'x' => 'https://x.com/Mnazel_KSA',
             'tiktok' => '#',

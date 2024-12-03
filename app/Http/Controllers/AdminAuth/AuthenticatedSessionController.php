@@ -25,11 +25,22 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate('admin');
-        $request->session()->regenerate();
+        // Authenticate with "remember me" option
+        $remember = $request->filled('remember');
+        $credentials = $request->only('email', 'password');
     
-        return redirect()->intended(route('admin.index', app()->getLocale()));
+        if (Auth::guard('admin')->attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+    
+            return redirect()->intended(route('admin.index'));
+        }
+    
+        // If authentication fails
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
     }
+    
     
     public function destroy(Request $request): RedirectResponse
     {
@@ -38,7 +49,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
     
-        return redirect(route('admin.login', app()->getLocale()));
+        return redirect(route('admin.login'));
     }
     
 }
