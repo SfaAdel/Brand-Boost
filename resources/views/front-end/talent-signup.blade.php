@@ -47,14 +47,14 @@
                     <div class="flex flex-col my-2">
                         <label for="cash-number"
                             class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.cash_number_label') }}</label>
-                        <input type="text" name="cash_number" id="cash-number"
+                        <input type="number" name="cash_number" id="cash-number"
                             class="p-2 border-black border-2 outline-none">
                     </div>
 
                     <div class="flex flex-col my-2">
                         <label for="phone-number"
                             class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.phone_number_label') }}</label>
-                        <input type="text" name="phone" id="phone-number"
+                        <input type="number" name="phone" id="phone-number"
                             class="p-2 border-black border-2 outline-none">
                     </div>
 

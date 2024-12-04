@@ -60,8 +60,12 @@ Route::group([
     Route::get('/about', [HomeController::class, 'about'])->name('about');
 
     Route::get('/business-area', function () {
-        return view('front-end.businessarea');
+        return view('front-end.dashboard.dashboard');
     })->name('business-area');
+
+    Route::get('/business-area/talent-profile', function () {
+        return view('front-end.dashboard.dashboard-talent-profile');
+    })->name('dashboard-talent-profile');
 
     // Route::get('/talent-signup', function () {
     //     return view('front-end.talent-signup');
