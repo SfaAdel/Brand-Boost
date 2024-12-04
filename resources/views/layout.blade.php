@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
+@php
+$setting = App\Models\Setting::first();
+@endphp
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', $setting->name)</title>
+    <title>@yield('title', $setting->name ?? 'Brand Boost')</title>
     <link rel="stylesheet" href="{{ asset('front-end/css/styles.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -168,7 +172,7 @@
         @yield('content')
     </main>
 
-    @unless (request()->routeIs('talent-signup', 'visionary-signup', 'signin'))
+    @unless (request()->routeIs('talent-signup', 'visionary-signup', 'signin','business-area'))
         <footer class="bg-purple pt-9 rubikv">
             <div class="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
                 <div class="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">
