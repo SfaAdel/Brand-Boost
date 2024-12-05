@@ -10,6 +10,7 @@ $setting = App\Models\Setting::first();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', $setting->name ?? 'Brand Boost')</title>
     <link rel="stylesheet" href="{{ asset('front-end/css/styles.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('front-end/logo/PNG/favicon-32x32.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script type="module" src="{{ asset('front-end/js/script.js') }}" defer></script>
