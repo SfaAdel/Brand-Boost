@@ -59,6 +59,8 @@ Route::group([
     Route::get('/services/offers/offer', [HomeController::class, 'freelancer_service_details'])->name('offer');
     Route::get('/about', [HomeController::class, 'about'])->name('about');
 
+    Route::middleware(['freelancer'])->group(function () {
+
     Route::get('/business-area', function () {
         return view('front-end.dashboard.dashboard');
     })->name('business-area');
@@ -98,7 +100,10 @@ Route::group([
     Route::get('/business-area/talent-orders/order', function () {
         return view('front-end.dashboard.dashboard-talent-orders-order');
     })->name('dashboard-talent-orders-order');
+});
 
+Route::middleware(['freelancer'])->group(function () {
+});
     // Route::get('/talent-signup', function () {
     //     return view('front-end.talent-signup');
     // })->name('talent-signup');
