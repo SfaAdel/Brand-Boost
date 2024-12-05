@@ -176,3 +176,15 @@
 }
 
 /* ////////////////////////////////// */
+
+.translationSelection {
+    /* background-image: url(https://coothead.co.uk/images/world.png); */
+    background-image: url("/front-end/SVGs/world.svg");
+    background-repeat: no-repeat;
+    background-size: 1.5em auto;
+    background-position: left center;
+    margin: 0;
+    padding: 1rem;
+    padding-left: 25px;
+    outline: none;
+}

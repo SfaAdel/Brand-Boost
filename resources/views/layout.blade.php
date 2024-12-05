@@ -46,29 +46,28 @@ $setting = App\Models\Setting::first();
             </ul>
 
             <div class="flex">
-                <select class="bg-white m-0 px-4 py-4 uppercase outline-none" id="language-switcher">
-                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <div class="relative ">
+                    <!-- <label for="language-switcher">&#127760;</label> -->
+                    <select class="uppercase translationSelection" id="language-switcher">
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <option value="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"
-                            {{ app()->getLocale() == $localeCode ? 'selected' : '' }}>
+                        {{ app()->getLocale() == $localeCode ? 'selected' : '' }}>
                             {{ $properties['native'] }}
                         </option>
                     @endforeach
-                </select>
-
-
+                    </select>
+                </div>
+                
 
                 @if (!auth()->guard('business_owner')->check() && !auth()->guard('freelancer')->check())
-                <button data-modal-open="join-us-modal"
+                    <button data-modal-open="join-us-modal"
                         class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">{{ __('website.join_us') }}</button>
                 @else
                     <div class="dropdown">
-
-
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase" title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
                         </form>
-
                     </div>
                 @endif
             </div>
