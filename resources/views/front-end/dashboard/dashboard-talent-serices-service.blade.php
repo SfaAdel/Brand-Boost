@@ -1,6 +1,6 @@
 @extends('businessarea')
 
-@section('title', 'Services')
+@section('title', 'Service Name')
 
 @section('business-area-content')
 <div class="border-black border-2 bg-slate-50 h-full pb-5">

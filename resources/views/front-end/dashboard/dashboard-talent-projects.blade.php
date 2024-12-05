@@ -46,11 +46,28 @@
                             adipisicing elit. Eaque ullam culpa ut suscipit deleniti ratione quos beatae quia quisquam!
                             Fugiat expedita quae fugit hic, molestiae nemo odio animi velit quisquam.</p>
                     </td>
-                    <td class="py-3 px-5 "><a href="#"
-                            class="block antialiased text-xs font-semibold capitalize">open</a></td>
+                    <td class="py-3 px-5 ">
+                        <a href="/business-area/talent-projects/project"
+                            class="inline mx-1 antialiased text-xs font-semibold capitalize">open</a>
+                        <button data-modal-open="delete-project-modal"
+                            class="inline mx-1 antialiased text-xs font-semibold capitalize text-red-500">delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
+
+        <div id="delete-project-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
+            <div class="bg-white w-3/4 m-auto p-10 border-black border-4 acworth">
+                <h1 class="text-2xl font-bold">Sure you want to delete this project ?</h1>
+
+                <div class="flex flex-col gap-3">
+                    <a href="#"
+                        class="font-bold bg-red-400 hover:bg-red-500 transition text-md p-2 mt-5 border-black border-2 text-black hepta text-center text-sm capitalize">Delete</a>
+                    <button data-modal-close="delete-service-modal"
+                        class="font-bold hepta border-black border-2 text-md p-2 bg-gray-200 hover:bg-gray-50 transition">{{ __('website.close') }}</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

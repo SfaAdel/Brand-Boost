@@ -48,7 +48,6 @@
                         <span>|</span>
                         <button data-modal-open="edit-service-modal"
                             class="inline mx-1 antialiased text-xs font-semibold capitalize">Edit</button>
-                        <span>|</span>
                         <button data-modal-open="delete-service-modal"
                             class="inline mx-1 antialiased text-xs font-semibold capitalize text-red-500">Delete</button>
                     </td>

@@ -56,8 +56,8 @@
                             <span class="">active</span>
                         </div>
                     </td>
-                    <td class="py-3 px-5 "><a href="#"
-                            class="block antialiased text-xs font-semibold capitalize">span</a></td>
+                    <td class="py-3 px-5 "><a href="/business-area/talent-orders/order"
+                            class="block antialiased text-xs font-semibold capitalize">open</a></td>
                 </tr>
             </tbody>
         </table>
