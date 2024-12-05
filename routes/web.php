@@ -99,6 +99,25 @@ Route::group([
         return view('front-end.dashboard.dashboard-talent-orders-order');
     })->name('dashboard-talent-orders-order');
 
+    // ////////////////////////////////////////
+
+    Route::get('/business-area/visionary', function () {
+        return view('front-end.dashboard.visionary.dashboard-visionary');
+    })->name('dashboard-visionary');
+
+    Route::get('/business-area/visionary-profile', function () {
+        return view('front-end.dashboard.visionary.dashboard-visionary-profile');
+    })->name('dashboard-visionary-profile');
+
+    Route::get('/business-area/visionary-fav-freelancers', function () {
+        return view('front-end.dashboard.visionary.dashboard-visionary-fav-freelancers');
+    })->name('dashboard-visionary-fav-freelancers');
+
+    Route::get('/business-area/visionary-orders', function () {
+        return view('front-end.dashboard.visionary.dashboard-visionary-orders');
+    })->name('dashboard-visionary-orders');
+
+
     // Route::get('/talent-signup', function () {
     //     return view('front-end.talent-signup');
     // })->name('talent-signup');

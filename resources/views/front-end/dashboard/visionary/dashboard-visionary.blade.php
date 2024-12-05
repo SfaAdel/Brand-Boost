@@ -34,33 +34,16 @@
             </svg>
         </div>
         <div class="text-right">
-            <h3 class="text-sm">Followers</h3>
+            <h3 class="text-sm">Following</h3>
             <h1 class="font-bold text-3xl">5</h1>
         </div>
     </div>
-
-    <div class="w-full sm:w-[10rem] md:w-[13rem] bg-white p-5 border-black border-2 flex justify-between items-center">
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-star">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-            </svg>
-        </div>
-        <div class="text-right">
-            <h3 class="text-sm">Projects</h3>
-            <h1 class="font-bold text-3xl">8</h1>
-        </div>
-    </div>
-
 </div>
 
 <div class="p-10 text-center">
-    <h2 class="text-5xl font-bold my-2 capitalize">Welcome, Talent</h2>
-    <p class="">Here is your dashboard, you can see your balance, projects, services, and orders.</p>
-    <p class="">It's your own Business are, feel free to create, edit or delete.</p>
+    <h2 class="text-5xl font-bold my-2 capitalize">Welcome, Business Owner</h2>
+    <p class="">Here is your dashboard, you can see your balance, services, favourite talents, and orders.</p>
+    <p class="">It's your own Business area, feel free to create, edit or delete.</p>
     <p class="">If you have any question, please contact us.</p>
 </div>
 @endsection
