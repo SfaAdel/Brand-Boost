@@ -101,9 +101,9 @@ Route::group([
 
     // ////////////////////////////////////////
 
-    Route::get('/business-area/visionary', function () {
-        return view('front-end.dashboard.visionary.dashboard-visionary');
-    })->name('dashboard-visionary');
+    // Route::get('/business-area/visionary', function () {
+    //     return view('front-end.dashboard.visionary.dashboard-visionary');
+    // })->name('dashboard-visionary');
 
     Route::get('/business-area/visionary-profile', function () {
         return view('front-end.dashboard.visionary.dashboard-visionary-profile');
