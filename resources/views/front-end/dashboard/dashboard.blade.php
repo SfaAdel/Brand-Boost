@@ -57,7 +57,10 @@
 
 </div>
 
-<div class="">
-    <!-- rest of the content -->
+<div class="p-10 text-center">
+    <h2 class="text-5xl font-bold my-2">Welcome, Talent</h2>
+    <p class="">Here is your dashboard, you can see your balance, projects, services, and orders.</p>
+    <p class="">It's your own Business are, feel free to create, edit or delete.</p>
+    <p class="">If you have any question, please contact us.</p>
 </div>
 @endsection
