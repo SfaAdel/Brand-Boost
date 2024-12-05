@@ -71,9 +71,21 @@ Route::group([
         return view('front-end.dashboard.dashboard-talent-services');
     })->name('dashboard-talent-services');
 
+    Route::get('business-area/talent-services/new-service', function () {
+        return view('front-end.dashboard.dashboard-talent-services-new');
+    })->name('dashboard-talent-services-new');
+
+    Route::get('business-area/talent-services/service', function () {
+        return view('front-end.dashboard.dashboard-talent-serices-service');
+    })->name('dashboard-talent-serices-service');
+
     Route::get('/business-area/talent-projects', function () {
         return view('front-end.dashboard.dashboard-talent-projects');
     })->name('dashboard-talent-projects');
+
+    Route::get('/business-area/talent-projects/new-project', function () {
+        return view('front-end.dashboard.dashboard-talent-projects-new');
+    })->name('dashboard-talent-projects-new');
 
     Route::get('/business-area/talent-orders', function () {
         return view('front-end.dashboard.dashboard-talent-orders');
