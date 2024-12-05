@@ -106,3 +106,21 @@ document.querySelectorAll("#service-description").forEach((paragraph) => {
 document.querySelectorAll("#freelancer-description").forEach((paragraph) => {
     truncateText(paragraph, 150);
 });
+
+document.querySelectorAll("#dashboardOrderDescription").forEach((paragraph) => {
+    truncateText(paragraph, 100);
+});
+
+document
+    .querySelectorAll("#dashboardProjectDescription")
+    .forEach((paragraph) => {
+        truncateText(paragraph, 100);
+    });
+
+document.querySelectorAll("#dashboardProjectName").forEach((paragraph) => {
+    truncateText(paragraph, 100);
+});
+
+document.querySelectorAll("#dashboardServiceName").forEach((paragraph) => {
+    truncateText(paragraph, 100);
+});

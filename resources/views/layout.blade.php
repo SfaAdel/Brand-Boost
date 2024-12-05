@@ -172,7 +172,11 @@ $setting = App\Models\Setting::first();
         @yield('content')
     </main>
 
-    @unless (request()->routeIs('talent-signup', 'visionary-signup', 'signin','business-area'))
+    @php
+        use Illuminate\Support\Str;
+    @endphp
+
+    @unless (Str::contains(request()->path(), ['talent-signup', 'visionary-signup', 'signin', 'business-area']))
         <footer class="bg-purple pt-9 rubikv">
             <div class="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
                 <div class="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">

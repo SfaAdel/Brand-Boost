@@ -2,13 +2,21 @@
 
 @section('title', 'Business Area')
 
+@php
+    $dashboardLink = Request::is('en/business-area') ? 'bg-green border-y-2 border-black' : '';
+    $editProfileLink = Request::is('en/business-area/talent-profile') ? 'bg-green border-y-2 border-black' : '';
+    $servicesLink = Request::is('en/business-area/talent-services') ? 'bg-green border-y-2 border-black' : '';
+    $projectsLink = Request::is('en/business-area/talent-projects') ? 'bg-green border-y-2 border-black' : '';
+    $ordersLink = Request::is('en/business-area/talent-orders') ? 'bg-green border-y-2 border-black' : '';
+@endphp
+
 @section('content')
 <div class="min-h-[calc(100vh-60px)] grid grid-cols-[18rem,_1fr] bg-gray-200 hepta">
     <aside>
         <div class="fixed h-full border-black border-r-4 bg-white w-72">
             <ul class="">
-                <li class="capitalize my-4 hover:bg-green transition bg-green border-y-2 border-black">
-                    <a href="#" class="flex items-center gap-3 h-full w-full p-5">
+                <li class="capitalize my-4 hover:bg-green transition {{$dashboardLink}}">
+                    <a href="/business-area" class="flex items-center gap-3 h-full w-full p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-home">
@@ -19,8 +27,8 @@
                     </a>
                 </li>
 
-                <li class="capitalize my-4 hover:bg-green transition">
-                    <a href="#" class="flex items-center gap-3 p-5">
+                <li class="capitalize my-4 hover:bg-green transition {{$editProfileLink}}">
+                    <a href="/business-area/talent-profile" class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -30,8 +38,8 @@
                     </a>
                 </li>
 
-                <li class="capitalize my-4 hover:bg-green transition">
-                    <a href="#" class="flex items-center gap-3 p-5">
+                <li class="capitalize my-4 hover:bg-green transition {{$servicesLink}}">
+                    <a href="/business-area/talent-services" class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake">
@@ -46,8 +54,8 @@
                     </a>
                 </li>
 
-                <li class="capitalize my-4 hover:bg-green transition">
-                    <a href="#" class="flex items-center gap-3 p-5">
+                <li class="capitalize my-4 hover:bg-green transition {{$projectsLink}}">
+                    <a href="/business-area/talent-projects" class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-star">
@@ -59,8 +67,8 @@
                     </a>
                 </li>
 
-                <li class="capitalize my-4 hover:bg-green transition">
-                    <a href="#" class="flex items-center gap-3 p-5">
+                <li class="capitalize my-4 hover:bg-green transition {{$ordersLink}}">
+                    <a href="/business-area/talent-orders" class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
