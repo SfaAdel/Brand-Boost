@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FreelancerProjectController;
 use App\Http\Controllers\Admin\FreelancerServiceController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\FreelancerProfileController;
@@ -113,15 +114,16 @@ Route::middleware(['freelancer'])->group(function () {
     Route::patch('/business-area/talent-profile/{id}/update', [FreelancerProfileController::class, 'updateTalentProfile'])->name('dashboard-talent-profile.update');
 
     Route::resource('freelancer-services', FreelancerServiceController::class);
-
-
     Route::get('/business-area/talent-services/{id}', [FreelancerProfileController::class, 'talentServices'])->name('dashboard-talent-services');
     // Route::get('/business-area/talent-services/new-service', [FreelancerProfileController::class, 'newService'])->name('dashboard-talent-services-new');
-    Route::get('/business-area/talent-services/service', [FreelancerProfileController::class, 'service'])->name('dashboard-talent-serices-service');
+    // Route::get('/business-area/talent-services/service', [FreelancerProfileController::class, 'service'])->name('dashboard-talent-serices-service');
    
     Route::get('/business-area/talent-projects/{id}', [FreelancerProfileController::class, 'talentProjects'])->name('dashboard-talent-projects');
-    Route::get('/business-area/talent-projects/project', [FreelancerProfileController::class, 'project'])->name('dashboard-talent-projects-project');
-    Route::get('/business-area/talent-projects/new-project', [FreelancerProfileController::class, 'newProject'])->name('dashboard-talent-projects-new');
+    Route::resource('freelancer-projects', FreelancerProjectController::class);
+
+    // Route::get('/business-area/talent-projects/project', [FreelancerProfileController::class, 'project'])->name('dashboard-talent-projects-project');
+    // Route::get('/business-area/talent-projects/new-project', [FreelancerProfileController::class, 'newProject'])->name('dashboard-talent-projects-new');
+    
     Route::get('/business-area/talent-orders/{id}', [FreelancerProfileController::class, 'talentOrders'])->name('dashboard-talent-orders');
     Route::get('/business-area/talent-orders/order', [FreelancerProfileController::class, 'order'])->name('dashboard-talent-orders-order');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\FreelancerProjectRequest;
 use App\Models\FreelancerService;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -85,6 +86,7 @@ class FreelancerServiceController extends Controller
     
         $freelancerService->update([
             'price_per_unit' => $request->price_per_unit,
+            'active' => $request->active,
         ]);
     
         return redirect()->back()->with('success', 'Service updated successfully.');
@@ -96,6 +98,15 @@ class FreelancerServiceController extends Controller
      */
     public function destroy(FreelancerService $freelancerService)
     {
+        // Check if the service has associated orders
+        if ($freelancerService->orders()->exists()) {
+            // If there are orders, set the service to inactive
+            $freelancerService->update(['active' => false]);
+    
+            return redirect()->back()->with('error', 'This service has associated orders and cannot be deleted. It has been set to Not active.');
+        }
+    
+        // If no orders, delete the service
         $freelancerService->delete();
     
         return redirect()->back()->with('success', 'Service deleted successfully.');

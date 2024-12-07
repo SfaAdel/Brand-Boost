@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FreelancerRequest;
 use App\Models\Freelancer;
 use App\Models\Field;
+use App\Models\FreelancerProject;
 use App\Models\FreelancerService;
 use App\Models\JobTitle;
 use App\Models\Service;
@@ -151,30 +152,34 @@ class FreelancerProfileController extends Controller
         return view('front-end.dashboard.dashboard-talent-services' , compact('freelancerServices'));
     }
 
-    public function newService()
-    {
-        return view('front-end.dashboard.dashboard-talent-services-new');
-    }
+    // public function newService()
+    // {
+    //     return view('front-end.dashboard.dashboard-talent-services-new');
+    // }
 
-    public function service()
-    {
-        return view('front-end.dashboard.dashboard-talent-serices-service');
-    }
+    // public function service()
+    // {
+    //     return view('front-end.dashboard.dashboard-talent-serices-service');
+    // }
 
     public function talentProjects($id)
     {
-        return view('front-end.dashboard.dashboard-talent-projects');
+        $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
+            $query->where('freelancer_id', $id);
+        })->get();
+        
+        return view('front-end.dashboard.dashboard-talent-projects', compact('freelancerProjects'));
     }
 
-    public function project()
-    {
-        return view('front-end.dashboard.dashboard-talent-projects-project');
-    }
+    // public function project()
+    // {
+    //     return view('front-end.dashboard.dashboard-talent-projects-project');
+    // }
 
-    public function newProject()
-    {
-        return view('front-end.dashboard.dashboard-talent-projects-new');
-    }
+    // public function newProject()
+    // {
+    //     return view('front-end.dashboard.dashboard-talent-projects-new');
+    // }
 
     public function talentOrders($id)
     {

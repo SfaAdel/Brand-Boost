@@ -8,7 +8,7 @@
     <div class="my-3">
         @include('front-end.includes.alerts')
     </div>
-    
+
     <form action="{{ route('freelancer-services.store') }}" method="POST">
         @csrf
          <div class="flex flex-col gap-5">
@@ -25,6 +25,14 @@
             <div class="flex flex-col gap-2">
                 <label for="price" class="text-xs font-semibold uppercase">service price per unit</label>
                 <input type="number" name="price_per_unit" id="price" class="border-2 border-black px-3 py-2">
+            </div>
+            <div class="control">
+                <label class="radio">
+                    <input type="radio" name="active" value="1"> Active
+                </label>
+                <label class="radio">
+                    <input type="radio" name="active" value="0">  Not Active
+                </label>
             </div>
         </div>
         <div class="flex justify-center mt-5">

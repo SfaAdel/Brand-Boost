@@ -63,6 +63,16 @@
                                         <input type="number" name="price_per_unit" id="price_per_unit_{{ $service->id }}"
                                             value="{{ $service->price_per_unit }}" class="border-2 border-black px-3 py-2">
                                     </div>
+                                    <div class="flex flex-col gap-2">
+                                        <label class="radio">
+                                            <input type="radio" name="active" value="1"
+                                                @if (isset($service) && $service->active) checked @else checked @endif> Active
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="active" value="0"
+                                                @if (isset($service) && !$service->active) checked @endif> Not Active 
+                                        </label>
+                                    </div>
                                     <div class="flex flex-col gap-3">
                                         <button type="submit"
                                             class="font-bold bg-blue hover:bg-sky-500 transition text-md p-2 mt-5 border-black border-2 text-black hepta text-center text-sm capitalize">

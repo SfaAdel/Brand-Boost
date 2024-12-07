@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('freelancer_projects', function (Blueprint $table) {
             $table->id();
             $table->string('video')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('freelancer_service_id')->constrained('freelancer_services')->onDelete('cascade');        
             $table->timestamps();
         });
