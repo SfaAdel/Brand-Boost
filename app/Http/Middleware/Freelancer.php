@@ -20,6 +20,6 @@ class Freelancer
             return $next($request);
         }
 
-        return redirect('/login');
+        return redirect()->route('signIn');
     }
 }

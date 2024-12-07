@@ -59,45 +59,48 @@ Route::group([
     Route::get('/services/offers/offer', [HomeController::class, 'freelancer_service_details'])->name('offer');
     Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-    Route::get('/business-area', function () {
-        return view('front-end.dashboard.dashboard');
-    })->name('business-area');
+    Route::middleware(['freelancer'])->group(function () {
 
-    Route::get('/business-area/talent-profile', function () {
-        return view('front-end.dashboard.dashboard-talent-profile');
-    })->name('dashboard-talent-profile');
+        Route::get('/business-area', function () {
+            return view('front-end.dashboard.dashboard');
+        })->name('business-area');
 
-    Route::get('/business-area/talent-services', function () {
-        return view('front-end.dashboard.dashboard-talent-services');
-    })->name('dashboard-talent-services');
+        Route::get('/business-area/talent-profile', function () {
+            return view('front-end.dashboard.dashboard-talent-profile');
+        })->name('dashboard-talent-profile');
 
-    Route::get('business-area/talent-services/new-service', function () {
-        return view('front-end.dashboard.dashboard-talent-services-new');
-    })->name('dashboard-talent-services-new');
+        Route::get('/business-area/talent-services', function () {
+            return view('front-end.dashboard.dashboard-talent-services');
+        })->name('dashboard-talent-services');
 
-    Route::get('business-area/talent-services/service', function () {
-        return view('front-end.dashboard.dashboard-talent-serices-service');
-    })->name('dashboard-talent-serices-service');
+        Route::get('business-area/talent-services/new-service', function () {
+            return view('front-end.dashboard.dashboard-talent-services-new');
+        })->name('dashboard-talent-services-new');
 
-    Route::get('/business-area/talent-projects', function () {
-        return view('front-end.dashboard.dashboard-talent-projects');
-    })->name('dashboard-talent-projects');
+        Route::get('business-area/talent-services/service', function () {
+            return view('front-end.dashboard.dashboard-talent-serices-service');
+        })->name('dashboard-talent-serices-service');
 
-    Route::get('/business-area/talent-projects/project', function () {
-        return view('front-end.dashboard.dashboard-talent-projects-project');
-    })->name('dashboard-talent-projects-project');
+        Route::get('/business-area/talent-projects', function () {
+            return view('front-end.dashboard.dashboard-talent-projects');
+        })->name('dashboard-talent-projects');
 
-    Route::get('/business-area/talent-projects/new-project', function () {
-        return view('front-end.dashboard.dashboard-talent-projects-new');
-    })->name('dashboard-talent-projects-new');
+        Route::get('/business-area/talent-projects/project', function () {
+            return view('front-end.dashboard.dashboard-talent-projects-project');
+        })->name('dashboard-talent-projects-project');
 
-    Route::get('/business-area/talent-orders', function () {
-        return view('front-end.dashboard.dashboard-talent-orders');
-    })->name('dashboard-talent-orders');
+        Route::get('/business-area/talent-projects/new-project', function () {
+            return view('front-end.dashboard.dashboard-talent-projects-new');
+        })->name('dashboard-talent-projects-new');
 
-    Route::get('/business-area/talent-orders/order', function () {
-        return view('front-end.dashboard.dashboard-talent-orders-order');
-    })->name('dashboard-talent-orders-order');
+        Route::get('/business-area/talent-orders', function () {
+            return view('front-end.dashboard.dashboard-talent-orders');
+        })->name('dashboard-talent-orders');
+
+        Route::get('/business-area/talent-orders/order', function () {
+            return view('front-end.dashboard.dashboard-talent-orders-order');
+        })->name('dashboard-talent-orders-order');
+    });
 
     // ////////////////////////////////////////
 
@@ -118,6 +121,8 @@ Route::group([
     })->name('dashboard-visionary-orders');
 
 
+    Route::middleware(['freelancer'])->group(function () {
+    });
     // Route::get('/talent-signup', function () {
     //     return view('front-end.talent-signup');
     // })->name('talent-signup');
