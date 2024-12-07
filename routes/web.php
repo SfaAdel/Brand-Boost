@@ -125,7 +125,7 @@ Route::middleware(['freelancer'])->group(function () {
     // Route::get('/business-area/talent-projects/new-project', [FreelancerProfileController::class, 'newProject'])->name('dashboard-talent-projects-new');
     
     Route::get('/business-area/talent-orders/{id}', [FreelancerProfileController::class, 'talentOrders'])->name('dashboard-talent-orders');
-    Route::get('/business-area/talent-orders/order', [FreelancerProfileController::class, 'order'])->name('dashboard-talent-orders-order');
+    Route::get('/business-area/talent-orders/order/{id}', [FreelancerProfileController::class, 'order'])->name('dashboard-talent-orders-order');
 });
 
 

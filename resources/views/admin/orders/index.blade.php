@@ -30,7 +30,7 @@
                                             <tr>
                                                 <th>{{ __('forms.business_owner') }}</th>
                                                 <th>{{ __('forms.freelancer') }}</th>
-                                                <th>{{ __('forms.price') }}</th>
+                                                <th>{{ __('forms.total_price') }}</th>
                                                 <th>{{ __('forms.service') }}</th>
                                                 <th>{{ __('forms.date_of_receipt') }}</th>
                                                 {{-- <th>{{ __('forms.ordered_at') }}</th> --}}

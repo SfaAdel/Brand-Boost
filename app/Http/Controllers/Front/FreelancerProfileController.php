@@ -9,6 +9,7 @@ use App\Models\Field;
 use App\Models\FreelancerProject;
 use App\Models\FreelancerService;
 use App\Models\JobTitle;
+use App\Models\Order;
 use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -183,12 +184,21 @@ class FreelancerProfileController extends Controller
 
     public function talentOrders($id)
     {
-        return view('front-end.dashboard.dashboard-talent-orders');
+        // Get the freelancer's orders
+        $orders = Order::whereHas('freelancerService', function ($query) use ($id) {
+            $query->where('freelancer_id', $id);
+        })->with(['freelancerService.service', 'businessOwner'])->get();
+    
+        return view('front-end.dashboard.dashboard-talent-orders', compact('orders'));
     }
+    
 
-    public function order()
+    public function order($id)
     {
-        return view('front-end.dashboard.dashboard-talent-orders-order');
+        $order = Order::with(['freelancerService.service', 'businessOwner'])->findOrFail($id);
+        $remainingTime = now()->diff($order->expected_receive_date);
+
+        return view('front-end.dashboard.dashboard-talent-orders-order', compact('order','remainingTime'));
     }
 
 }

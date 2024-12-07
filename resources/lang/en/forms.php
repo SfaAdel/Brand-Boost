@@ -203,6 +203,7 @@ return [
     'gender' => 'Gender',
     'cash_number' => 'Cash Number',
     'fields' => 'Skills',
+    'total_price'=>'Total Price',
 
 ];
 
