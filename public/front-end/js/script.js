@@ -125,6 +125,10 @@ document.querySelectorAll("#dashboardServiceName").forEach((paragraph) => {
     truncateText(paragraph, 100);
 });
 
+document.querySelectorAll("#blogDescription").forEach((paragraph) => {
+    truncateText(paragraph, 100);
+});
+
 ////////////////////////////////////
 
 const button = document.getElementById("follow-button");

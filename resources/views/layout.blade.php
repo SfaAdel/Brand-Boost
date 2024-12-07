@@ -38,13 +38,14 @@ $setting = App\Models\Setting::first();
     @unless (request()->routeIs('talent-signup', 'visionary-signup', 'signin'))
         <!-- Render the navbar unless the current route is "signup" -->
         <nav
-            class="hidden md:flex sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold justify-between hepta">
+            class="hidden lg:flex sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold justify-between hepta">
             <ul class="flex items-center">
                 <li class="p-4"><a href="/">{{ __('website.home') }}</a></li>
                 <li class="p-4"><a href="/services">{{ __('website.services') }}</a></li>
                 <li class="p-4"><a href="/freelancers">{{ __('website.talents') }}</a></li>
                 <li class="p-4"><a href="about">{{ __('website.about') }}</a></li>
                 <li class="p-4"><a href="/contact">{{ __('website.contact') }}</a></li>
+                <li class="p-4"><a href="/blogs">Blogs</a></li>
             </ul>
 
             <div class="flex">
@@ -86,11 +87,11 @@ $setting = App\Models\Setting::first();
         </nav>
 
         <nav
-            class="flex md:hidden sticky top-0 bg-white z-40 border-black border-b-4 px-5 items-center font-semibold justify-between hepta">
+            class="flex lg:hidden sticky top-0 bg-white z-40 border-black border-b-4 px-5 items-center font-semibold justify-between hepta">
             <a href="/">
                 <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
             </a>
-            <div>
+            <div class="flex items-center">
                 <select class="bg-white m-0 px-4 py-4 uppercase outline-none" id="language-switcher">
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <option value="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"
@@ -124,18 +125,20 @@ $setting = App\Models\Setting::first();
 
     <div id="nav-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
         <ul class="flex flex-col bg-purple uppercase text-center font-bold text-md p-5 border-black border-4">
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/"
                     class="w-full block"> {{ __('website.home') }}</a>
             </li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/services"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/services"
                     class="w-full block"> {{ __('website.services') }}</a></li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
                     href="/freelancers" class="w-full block">{{ __('website.talents') }}</a></li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="about"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="about"
                     class="w-full block"> {{ __('website.about') }}</a>
             </li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/contact"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/contact"
                     class="w-full block"> {{ __('website.contact') }}</a></li>
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/blogs"
+                class="w-full block">Blogs</a></li>
             @if (!auth()->guard('business_owner')->check() && !auth()->guard('freelancer')->check())
                 <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a href="/signin"
                     class="w-full block"> {{ __('website.login') }} </a></li>

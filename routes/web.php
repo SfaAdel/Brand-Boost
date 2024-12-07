@@ -58,6 +58,12 @@ Route::group([
     Route::get('/services/{id}/offers', [HomeController::class, 'service_details'])->name('service-offers');
     Route::get('/services/offers/offer', [HomeController::class, 'freelancer_service_details'])->name('offer');
     Route::get('/about', [HomeController::class, 'about'])->name('about');
+    Route::get('/blogs', function () {
+        return view('front-end.blogs');
+    });
+    Route::get('/blogs/blog', function () {
+        return view('front-end.blog');
+    });
 
     Route::middleware(['freelancer'])->group(function () {
 
