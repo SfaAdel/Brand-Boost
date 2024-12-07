@@ -10,6 +10,8 @@ $setting = App\Models\Setting::first();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', $setting->name ?? 'Brand Boost')</title>
     <link rel="stylesheet" href="{{ asset('front-end/css/styles.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('front-end/logo/PNG/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('front-end/logo/PNG/favicon-16x16.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script type="module" src="{{ asset('front-end/js/script.js') }}" defer></script>
@@ -36,50 +38,60 @@ $setting = App\Models\Setting::first();
     @unless (request()->routeIs('talent-signup', 'visionary-signup', 'signin'))
         <!-- Render the navbar unless the current route is "signup" -->
         <nav
-            class="hidden md:flex sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold justify-between hepta">
+            class="hidden lg:flex sticky top-0 bg-white z-40 border-black border-b-4 px-10 uppercase font-semibold justify-between hepta">
             <ul class="flex items-center">
                 <li class="p-4"><a href="/">{{ __('website.home') }}</a></li>
                 <li class="p-4"><a href="/services">{{ __('website.services') }}</a></li>
                 <li class="p-4"><a href="/freelancers">{{ __('website.talents') }}</a></li>
                 <li class="p-4"><a href="about">{{ __('website.about') }}</a></li>
                 <li class="p-4"><a href="/contact">{{ __('website.contact') }}</a></li>
+                <li class="p-4"><a href="/blogs">Blogs</a></li>
             </ul>
 
             <div class="flex">
-                <select class="bg-white m-0 px-4 py-4 uppercase outline-none" id="language-switcher">
-                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <div class="relative ">
+                    <!-- <label for="language-switcher">&#127760;</label> -->
+                    <select class="uppercase translationSelection" id="language-switcher">
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <option value="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"
-                            {{ app()->getLocale() == $localeCode ? 'selected' : '' }}>
+                        {{ app()->getLocale() == $localeCode ? 'selected' : '' }}>
                             {{ $properties['native'] }}
                         </option>
                     @endforeach
-                </select>
-
+                    </select>
+                </div>
 
 
                 @if (!auth()->guard('business_owner')->check() && !auth()->guard('freelancer')->check())
-                <button data-modal-open="join-us-modal"
+                    <button data-modal-open="join-us-modal"
                         class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">{{ __('website.join_us') }}</button>
                 @else
-                    <div class="dropdown">
-
-
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase" title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
-                        </form>
-
+                    <div id="dropdown-container" class="relative">
+                        <button id="dropdown-btn" 
+                            class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase"
+                            aria-expanded="false" aria-haspopup="true">my area</button>
+                        <ul id="dropdown-menu" class="hidden absolute border-black border-4 bg-white right-0 z-[1] w-52 capitalize transition duration-300 ease-in-out">
+                            <li class="my-2 hover:bg-green transition">
+                                <a href="/business-area" class="block w-full h-full px-3 py-2">Dashboard</a>
+                            </li>
+                            <li class="my-2 hover:bg-green transition">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="w-full h-full px-3 py-2 text-left text-red-500 hover:text-white hover:bg-red-500" title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
+                                </form>
+                            </li>
+                        </ul>
                     </div>
                 @endif
             </div>
         </nav>
 
         <nav
-            class="flex md:hidden sticky top-0 bg-white z-40 border-black border-b-4 px-5 items-center font-semibold justify-between hepta">
+            class="flex lg:hidden sticky top-0 bg-white z-40 border-black border-b-4 px-5 items-center font-semibold justify-between hepta">
             <a href="/">
                 <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-[6rem]">
             </a>
-            <div>
+            <div class="flex items-center">
                 <select class="bg-white m-0 px-4 py-4 uppercase outline-none" id="language-switcher">
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <option value="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"
@@ -113,24 +125,37 @@ $setting = App\Models\Setting::first();
 
     <div id="nav-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
         <ul class="flex flex-col bg-purple uppercase text-center font-bold text-md p-5 border-black border-4">
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/"
                     class="w-full block"> {{ __('website.home') }}</a>
             </li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/services"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/services"
                     class="w-full block"> {{ __('website.services') }}</a></li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
-                    href="/freelancers" class="w-full block">Talents {{ __('website.have_vision') }}</a></li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="about"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+                    href="/freelancers" class="w-full block">{{ __('website.talents') }}</a></li>
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="about"
                     class="w-full block"> {{ __('website.about') }}</a>
             </li>
-            <li class="border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/contact"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/contact"
                     class="w-full block"> {{ __('website.contact') }}</a></li>
-            <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a href="/signin"
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/blogs"
+                class="w-full block">Blogs</a></li>
+            @if (!auth()->guard('business_owner')->check() && !auth()->guard('freelancer')->check())
+                <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a href="/signin"
                     class="w-full block"> {{ __('website.login') }} </a></li>
-            <li class="border-black border-2 p-4 bg-pink hover:bg-fuchsia-400 my-2 text-black hepta"><a
+                <li class="border-black border-2 p-4 bg-pink hover:bg-fuchsia-400 my-2 text-black hepta"><a
                     href="/visionary-signup" class="w-full block"> {{ __('website.have_vision') }}</a></li>
-            <li class="border-black border-2 p-4 bg-green hover:bg-emerald-600 my-2 text-black hepta"><a
+                <li class="border-black border-2 p-4 bg-green hover:bg-emerald-600 my-2 text-black hepta"><a
                     href="/talent-signup" class="w-full block"> {{ __('website.have_talent') }}</a></li>
+            @else
+            <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a href="/signin"
+                    class="w-full block">My place</a></li>
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full block border-black border-2 p-4 bg-red-400 hover:bg-red-500 my-2 text-black hepta" title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
+                </form>
+            </li>
+            @endif
         </ul>
     </div>
 
@@ -166,6 +191,29 @@ $setting = App\Models\Setting::first();
                     class="font-bold hepta border-black border-2 p-2 bg-red-400 hover:bg-red-500 transition">{{ __('website.close') }}</button>
             </div>
         </div>
+
+        <script>
+            
+            document.addEventListener("DOMContentLoaded", () => {
+                const dropdownBtn = document.getElementById("dropdown-btn");
+                const dropdownMenu = document.getElementById("dropdown-menu");
+
+                if (dropdownBtn && dropdownMenu) {
+                    dropdownBtn.addEventListener("click", function () {
+                        dropdownMenu.classList.toggle("hidden");
+                    });
+
+                    document.addEventListener("click", function (event) {
+                        if (
+                            !dropdownBtn.contains(event.target) &&
+                            !dropdownMenu.contains(event.target)
+                        ) {
+                            dropdownMenu.classList.add("hidden");
+                        }
+                    });
+                }
+            });
+        </script>
     </div>
 
     <main>

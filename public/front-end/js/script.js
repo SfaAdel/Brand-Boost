@@ -124,3 +124,28 @@ document.querySelectorAll("#dashboardProjectName").forEach((paragraph) => {
 document.querySelectorAll("#dashboardServiceName").forEach((paragraph) => {
     truncateText(paragraph, 100);
 });
+
+document.querySelectorAll("#blogDescription").forEach((paragraph) => {
+    truncateText(paragraph, 100);
+});
+
+////////////////////////////////////
+
+const button = document.getElementById("follow-button");
+const followText = document.getElementById("follow-text");
+const followIcon = document.getElementById("follow-icon");
+
+button.addEventListener("click", async function () {
+    const isFollowing = button.getAttribute("data-following") === "true";
+
+    if (isFollowing) {
+        followText.textContent = "Follow";
+        followIcon.src = "/front-end/SVGs/heart.svg";
+        button.setAttribute("data-following", "false");
+    } else {
+        followText.textContent = "Unfollow";
+        followIcon.classList.add("animate-ping");
+        followIcon.src = "/front-end/SVGs/heart-fill.svg";
+        button.setAttribute("data-following", "true");
+    }
+});
