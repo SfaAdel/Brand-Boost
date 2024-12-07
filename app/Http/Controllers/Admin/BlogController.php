@@ -94,7 +94,7 @@ class BlogController extends Controller
         // Handle logo upload
         if ($request->hasFile('icon')) {
             $iconImageName = time() . '.' . $request->icon->extension();
-            $request->logo->move(('images/blogs'), $iconImageName);
+            $request->icon->move(('images/blogs'), $iconImageName);
             $blog->update(['icon' => $iconImageName]);
         }
 

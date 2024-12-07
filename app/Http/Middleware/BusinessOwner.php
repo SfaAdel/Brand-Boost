@@ -20,5 +20,6 @@ class BusinessOwner
             return $next($request);
         }
 
-        return redirect('/login');    }
+        return redirect()->route('signIn');
+    }
 }

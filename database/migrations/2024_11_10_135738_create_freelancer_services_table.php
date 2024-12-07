@@ -16,7 +16,9 @@ return new class extends Migration
             $table->foreignId('freelancer_id')->constrained('freelancers')->onDelete('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->decimal('price_per_unit', 10, 2);
+            $table->unique(['freelancer_id', 'service_id']);
             $table->timestamps();
+
         });
     }
 

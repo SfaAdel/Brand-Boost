@@ -4,23 +4,27 @@
 
 @section('business-area-content')
 <div class="border-black border-2 bg-slate-50 h-full p-5">
-    <form action="">
-        <div class="flex flex-col gap-5">
+
+    <div class="my-3">
+        @include('front-end.includes.alerts')
+    </div>
+    
+    <form action="{{ route('freelancer-services.store') }}" method="POST">
+        @csrf
+         <div class="flex flex-col gap-5">
             <div class="flex flex-col gap-2">
-                <label for="picture" class="text-xs font-semibold uppercase">service picture</label>
-                <input type="file" name="picture" id="picture" class="border-2 border-black px-3 py-2">
-            </div>
-            <div class="flex flex-col gap-2">
-                <label for="title" class="text-xs font-semibold uppercase">service title</label>
-                <select name="title" id="title" class="border-2 border-black px-3 py-2">
-                    <option value="1">Service no. 1</option>
-                    <option value="2">Service no. 2</option>
-                    <option value="3">Service no. 3</option>
+                <label for="title" class="text-xs font-semibold uppercase">service</label>
+                <select name="service_id" id="title" class="border-2 border-black px-3 py-2">
+                    <option value="" selected disabled>Select Service</option>
+
+                    @foreach($services as $service)
+                    <option value="{{$service->id}}">{{$service->name}} - Its unit is : {{$service->unit_of_price}} </option>
+                    @endforeach
                 </select>
             </div>
             <div class="flex flex-col gap-2">
                 <label for="price" class="text-xs font-semibold uppercase">service price per unit</label>
-                <input type="number" name="price" id="price" class="border-2 border-black px-3 py-2">
+                <input type="number" name="price_per_unit" id="price" class="border-2 border-black px-3 py-2">
             </div>
         </div>
         <div class="flex justify-center mt-5">

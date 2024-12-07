@@ -23,10 +23,16 @@ class Freelancer extends Authenticatable  implements TranslatableContract
     protected $guarded = ['id'];
 
 
+    // public function fields()
+    // {
+    //     return $this->belongsToMany(Field::class, 'field_freelancer');
+    // }
+
     public function fields()
-    {
-        return $this->belongsToMany(Field::class, 'field_freelancer');
-    }
+{
+    return $this->belongsToMany(Field::class, 'field_freelancer');
+}
+
 
     public function jobTitle()
     {
@@ -35,7 +41,7 @@ class Freelancer extends Authenticatable  implements TranslatableContract
 
     public function favoriteByOwners()
     {
-        return $this->belongsToMany(BusinessOwner::class, 'fav_freelancers');
+        return $this->belongsToMany(BusinessOwner::class, 'favorite_freelancers');
     }
 
     public function services()
@@ -46,8 +52,16 @@ class Freelancer extends Authenticatable  implements TranslatableContract
 
     public function projects()
     {
-        return $this->hasMany(FreelancerProject::class);
+        return $this->hasManyThrough(
+            FreelancerProject::class,
+            FreelancerService::class,
+            'freelancer_id',       // Foreign key on FreelancerService table
+            'freelancer_service_id', // Foreign key on FreelancerProject table
+            'id',                  // Local key on Freelancer table
+            'id'                   // Local key on FreelancerService table
+        );
     }
+    
 
 
 

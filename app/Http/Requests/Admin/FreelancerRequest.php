@@ -23,7 +23,7 @@ class FreelancerRequest extends FormRequest
      */
     public function rules(): array
     {
-        $freelancerId = $this->freelancer ? $this->freelancer->id : null;
+        $freelancerId = $this->route('id');        
 
         $rules = [
             'en.name' => [

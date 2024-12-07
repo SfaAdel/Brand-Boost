@@ -19,7 +19,11 @@ class FreelancerService extends Model
         return $this->belongsTo(Service::class);
     }
 
-
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'freelancer_service_id');
+    }
+    
 
 
 

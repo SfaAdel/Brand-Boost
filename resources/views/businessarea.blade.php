@@ -16,7 +16,7 @@
         <div class="fixed h-full border-black border-r-4 bg-white w-72">
             <ul class="">
                 <li class="capitalize my-4 hover:bg-green transition {{$dashboardLink}}">
-                    <a href="/business-area" class="flex items-center gap-3 h-full w-full p-5">
+                    <a href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}" class="flex items-center gap-3 h-full w-full p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-home">
@@ -28,7 +28,7 @@
                 </li>
 
                 <li class="capitalize my-4 hover:bg-green transition {{$editProfileLink}}">
-                    <a href="/business-area/talent-profile" class="flex items-center gap-3 p-5">
+                    <a href="{{ route('dashboard-talent-profile', Auth::guard('freelancer')->user()->id) }}" class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="capitalize my-4 hover:bg-green transition {{$servicesLink}}">
-                    <a href="/business-area/talent-services" class="flex items-center gap-3 p-5">
+                    <a href="{{ route('dashboard-talent-services', Auth::guard('freelancer')->user()->id) }}" class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake">
@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="capitalize my-4 hover:bg-green transition {{$projectsLink}}">
-                    <a href="/business-area/talent-projects" class="flex items-center gap-3 p-5">
+                    <a href=" {{ route('dashboard-talent-projects', Auth::guard('freelancer')->user()->id) }} " class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-star">
@@ -68,7 +68,7 @@
                 </li>
 
                 <li class="capitalize my-4 hover:bg-green transition {{$ordersLink}}">
-                    <a href="/business-area/talent-orders" class="flex items-center gap-3 p-5">
+                    <a href="{{ route('dashboard-talent-orders', Auth::guard('freelancer')->user()->id) }}" class="flex items-center gap-3 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">

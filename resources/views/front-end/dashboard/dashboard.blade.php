@@ -17,7 +17,7 @@
         </div>
         <div class="text-right">
             <h3 class="text-sm">Total Balance</h3>
-            <h1 class="font-bold text-3xl">$684.75</h1>
+            <h1 class="font-bold text-3xl"> Egp {{$totalBalance}}</h1>
         </div>
     </div>
 
@@ -35,7 +35,7 @@
         </div>
         <div class="text-right">
             <h3 class="text-sm">Followers</h3>
-            <h1 class="font-bold text-3xl">5</h1>
+            <h1 class="font-bold text-3xl">{{$followers ?? 'null'}}</h1>
         </div>
     </div>
 
@@ -51,14 +51,14 @@
         </div>
         <div class="text-right">
             <h3 class="text-sm">Projects</h3>
-            <h1 class="font-bold text-3xl">8</h1>
+            <h1 class="font-bold text-3xl">{{$projects}}</h1>
         </div>
     </div>
 
 </div>
 
 <div class="p-10 text-center">
-    <h2 class="text-5xl font-bold my-2">Welcome, Talent</h2>
+    <h2 class="text-5xl font-bold my-2">Welcome, {{Auth::guard('freelancer')->user()->name}}</h2>
     <p class="">Here is your dashboard, you can see your balance, projects, services, and orders.</p>
     <p class="">It's your own Business are, feel free to create, edit or delete.</p>
     <p class="">If you have any question, please contact us.</p>

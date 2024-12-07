@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\FreelancerService;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class FreelancerServiceController extends Controller
 {
@@ -22,6 +25,8 @@ class FreelancerServiceController extends Controller
     public function create()
     {
         //
+        $services = Service::get();
+        return view('front-end.dashboard.dashboard-talent-services-new', compact('services'));
     }
 
     /**
@@ -29,8 +34,26 @@ class FreelancerServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the input
+        $request->validate([
+            'service_id' => 'required|exists:services,id|unique:freelancer_services,service_id,NULL,id,freelancer_id,' . Auth::guard('freelancer')->user()->id,
+            'price_per_unit' => 'required|numeric|min:0',
+        ]);
+    
+        // Create the new freelancer service
+        FreelancerService::create([
+            'freelancer_id' => Auth::guard('freelancer')->user()->id, 
+            'service_id' => $request->service_id,
+            'price_per_unit' => $request->price_per_unit,
+        ]);
+    
+        $freelancerId = Auth::guard('freelancer')->user()->id; 
+    
+        return redirect()->route('dashboard-talent-services', $freelancerId)
+                         ->with('success', __('messages.service_created'));
     }
+    
+    
 
     /**
      * Display the specified resource.
@@ -38,6 +61,9 @@ class FreelancerServiceController extends Controller
     public function show(FreelancerService $freelancerService)
     {
         //
+        
+        return view('front-end.dashboard.dashboard-talent-serices-service', compact('freelancerService'));
+
     }
 
     /**
@@ -53,14 +79,26 @@ class FreelancerServiceController extends Controller
      */
     public function update(Request $request, FreelancerService $freelancerService)
     {
-        //
+        $request->validate([
+            'price_per_unit' => 'required|numeric|min:0',
+        ]);
+    
+        $freelancerService->update([
+            'price_per_unit' => $request->price_per_unit,
+        ]);
+    
+        return redirect()->back()->with('success', 'Service updated successfully.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(FreelancerService $freelancerService)
     {
-        //
+        $freelancerService->delete();
+    
+        return redirect()->back()->with('success', 'Service deleted successfully.');
     }
+    
 }

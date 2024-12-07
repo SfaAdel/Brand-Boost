@@ -23,6 +23,7 @@ class Field extends Model implements TranslatableContract
     {
         return $this->belongsToMany(Freelancer::class, 'field_freelancer');
     }
+    
 
     public function businessOwners()
     {

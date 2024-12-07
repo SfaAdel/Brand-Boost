@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('freelancer_service_id')->constrained('freelancer_services')->ca;            
+            $table->foreignId('freelancer_service_id')->nullable()->constrained('freelancer_services')->onDelete('set null');
             $table->foreignId('business_owner_id')->constrained('business_owners')->onDelete('cascade');
             $table->text('description');
             $table->date('expected_receive_date');
             $table->decimal('amount', 10, 2);
+            $table->decimal('total_price', 10, 2)->default(0);
             $table->enum('status', ['complete', 'pending'])->default('pending');
             $table->enum('payment_status', ['complete', 'pending'])->default('pending');
             $table->timestamps();
