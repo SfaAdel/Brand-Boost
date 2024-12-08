@@ -72,7 +72,7 @@ $setting = App\Models\Setting::first();
                             aria-expanded="false" aria-haspopup="true">my area</button>
                         <ul id="dropdown-menu" class="hidden absolute border-black border-4 bg-white right-0 z-[1] w-52 capitalize transition duration-300 ease-in-out">
                             <li class="my-2 hover:bg-green transition">
-                                <a href="/business-area" class="block w-full h-full px-3 py-2">Dashboard</a>
+                                <a href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}" class="block w-full h-full px-3 py-2">Dashboard</a>
                             </li>
                             <li class="my-2 hover:bg-green transition">
                                 <form method="POST" action="{{ route('logout') }}">

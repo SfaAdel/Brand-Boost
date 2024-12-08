@@ -56,6 +56,8 @@ Route::group([
     Route::post('/businessOwnerRegister', [AuthController::class, 'businessOwnerRegister'])->name('business_owner.register');
 
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
+
     Route::get('/services', [HomeController::class, 'services'])->name('services');
     Route::get('/freelancers', [HomeController::class, 'freelancers'])->name('freelancers');
     Route::get('/freelancers/{id}', [HomeController::class, 'freelancer_details'])->name('freelancerName');
