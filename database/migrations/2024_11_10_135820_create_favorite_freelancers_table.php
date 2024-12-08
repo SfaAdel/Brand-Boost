@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('freelancer_id')->constrained('freelancers')->onDelete('cascade');
             $table->foreignId('business_owner_id')->constrained('business_owners')->onDelete('cascade');        
+            $table->unique(['business_owner_id', 'freelancer_id']);
             $table->timestamps();
         });
     }

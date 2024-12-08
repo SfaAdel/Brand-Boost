@@ -45,11 +45,12 @@
                     
                     <!-- Status -->
                     <td class="py-3 px-5">
-                        <div class="relative grid items-center uppercase whitespace-nowrap select-none
-                            {{ $order->status === 'complete' ? 'bg-gradient-to-tr from-green-600 to-green-400' : 'bg-gradient-to-tr from-yellow-600 to-yellow-400' }} 
+                        <div
+                        class="relative grid items-center uppercase whitespace-nowrap select-none 
+                            {{ $order->status === 'complete' ? 'bg-gradient-to-tr from-emerald-600 to-emerald-400' : 'bg-gradient-to-tr from-yellow-600 to-yellow-400' }} 
                             text-white py-0.5 px-2 text-[11px] font-medium w-fit">
-                            <span class="">{{ $order->status }}</span>
-                        </div>
+                        <span>{{ $order->status }}</span>
+                    </div>
                     </td>
 
                     <!-- Actions -->

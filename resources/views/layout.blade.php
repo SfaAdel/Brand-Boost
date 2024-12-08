@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 
 @php
-$setting = App\Models\Setting::first();
+    $setting = App\Models\Setting::first();
 @endphp
 
 <head>
@@ -53,11 +53,11 @@ $setting = App\Models\Setting::first();
                     <!-- <label for="language-switcher">&#127760;</label> -->
                     <select class="uppercase translationSelection" id="language-switcher">
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <option value="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"
-                        {{ app()->getLocale() == $localeCode ? 'selected' : '' }}>
-                            {{ $properties['native'] }}
-                        </option>
-                    @endforeach
+                            <option value="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"
+                                {{ app()->getLocale() == $localeCode ? 'selected' : '' }}>
+                                {{ $properties['native'] }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -67,17 +67,25 @@ $setting = App\Models\Setting::first();
                         class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase">{{ __('website.join_us') }}</button>
                 @else
                     <div id="dropdown-container" class="relative">
-                        <button id="dropdown-btn" 
-                            class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase"
+                        <button id="dropdown-btn" class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase"
                             aria-expanded="false" aria-haspopup="true">my area</button>
-                        <ul id="dropdown-menu" class="hidden absolute border-black border-4 bg-white right-0 z-[1] w-52 capitalize transition duration-300 ease-in-out">
+                        <ul id="dropdown-menu"
+                            class="hidden absolute border-black border-4 bg-white right-0 z-[1] w-52 capitalize transition duration-300 ease-in-out">
                             <li class="my-2 hover:bg-green transition">
-                                <a href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}" class="block w-full h-full px-3 py-2">Dashboard</a>
+                                @if (auth()->guard('business_owner')->check())
+                                    <a href="{{ route('business-area-b', Auth::guard('business_owner')->user()->id) }}"
+                                        class="block w-full h-full px-3 py-2">Dashboard</a>
+                                @elseif (auth()->guard('freelancer')->check())
+                                    <a href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}"
+                                        class="block w-full h-full px-3 py-2">Dashboard</a>
+                                @endif
                             </li>
                             <li class="my-2 hover:bg-green transition">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="w-full h-full px-3 py-2 text-left text-red-500 hover:text-white hover:bg-red-500" title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
+                                    <button type="submit"
+                                        class="w-full h-full px-3 py-2 text-left text-red-500 hover:text-white hover:bg-red-500"
+                                        title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
                                 </form>
                             </li>
                         </ul>
@@ -125,36 +133,47 @@ $setting = App\Models\Setting::first();
 
     <div id="nav-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
         <ul class="flex flex-col bg-purple uppercase text-center font-bold text-md p-5 border-black border-4">
-            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/"
-                    class="w-full block"> {{ __('website.home') }}</a>
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+                    href="/" class="w-full block"> {{ __('website.home') }}</a>
             </li>
-            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/services"
-                    class="w-full block"> {{ __('website.services') }}</a></li>
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+                    href="/services" class="w-full block"> {{ __('website.services') }}</a></li>
             <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
                     href="/freelancers" class="w-full block">{{ __('website.talents') }}</a></li>
-            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="about"
-                    class="w-full block"> {{ __('website.about') }}</a>
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+                    href="about" class="w-full block"> {{ __('website.about') }}</a>
             </li>
-            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/contact"
-                    class="w-full block"> {{ __('website.contact') }}</a></li>
-            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a href="/blogs"
-                class="w-full block">Blogs</a></li>
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+                    href="/contact" class="w-full block"> {{ __('website.contact') }}</a></li>
+            <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
+                    href="/blogs" class="w-full block">Blogs</a></li>
             @if (!auth()->guard('business_owner')->check() && !auth()->guard('freelancer')->check())
-                <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a href="/signin"
-                    class="w-full block"> {{ __('website.login') }} </a></li>
+                <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a
+                        href="/signin" class="w-full block"> {{ __('website.login') }} </a></li>
                 <li class="border-black border-2 p-4 bg-pink hover:bg-fuchsia-400 my-2 text-black hepta"><a
-                    href="/visionary-signup" class="w-full block"> {{ __('website.have_vision') }}</a></li>
+                        href="/visionary-signup" class="w-full block"> {{ __('website.have_vision') }}</a></li>
                 <li class="border-black border-2 p-4 bg-green hover:bg-emerald-600 my-2 text-black hepta"><a
-                    href="/talent-signup" class="w-full block"> {{ __('website.have_talent') }}</a></li>
+                        href="/talent-signup" class="w-full block"> {{ __('website.have_talent') }}</a></li>
             @else
-            <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a href="/signin"
-                    class="w-full block">My place</a></li>
-            <li>
+                @if (auth()->guard('business_owner')->check())
+                    <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a
+                            href="{{ route('business-area-b', Auth::guard('business_owner')->user()->id) }}"
+                            class="w-full block">My place</a></li>
+                    <li>
+                    @elseif (auth()->guard('freelancer')->check())
+                    <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a
+                            href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}"
+                            class="w-full block">My place</a></li>
+                    <li>
+                @endif
+
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="w-full block border-black border-2 p-4 bg-red-400 hover:bg-red-500 my-2 text-black hepta" title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
+                    <button type="submit"
+                        class="w-full block border-black border-2 p-4 bg-red-400 hover:bg-red-500 my-2 text-black hepta"
+                        title=" {{ __('website.logout') }}">{{ __('website.logout') }} </button>
                 </form>
-            </li>
+                </li>
             @endif
         </ul>
     </div>
@@ -193,17 +212,16 @@ $setting = App\Models\Setting::first();
         </div>
 
         <script>
-            
             document.addEventListener("DOMContentLoaded", () => {
                 const dropdownBtn = document.getElementById("dropdown-btn");
                 const dropdownMenu = document.getElementById("dropdown-menu");
 
                 if (dropdownBtn && dropdownMenu) {
-                    dropdownBtn.addEventListener("click", function () {
+                    dropdownBtn.addEventListener("click", function() {
                         dropdownMenu.classList.toggle("hidden");
                     });
 
-                    document.addEventListener("click", function (event) {
+                    document.addEventListener("click", function(event) {
                         if (
                             !dropdownBtn.contains(event.target) &&
                             !dropdownMenu.contains(event.target)
@@ -242,10 +260,12 @@ $setting = App\Models\Setting::first();
                                 <img src="{{ asset('front-end/assets/phone.svg') }}" alt="call">
                             </div>
                             <div class="ml-[18px]">
-                                <a href="tel:{{$setting->phone}}" class="font-Inter text-[14px] font-medium text-white">
-                                    {{$setting->phone}}
+                                <a href="tel:{{ $setting->phone }}"
+                                    class="font-Inter text-[14px] font-medium text-white">
+                                    {{ $setting->phone }}
                                 </a>
-                                <p class="font-Inter text-[12px] font-medium text-white">{{ __('website.support_number') }}</p>
+                                <p class="font-Inter text-[12px] font-medium text-white">
+                                    {{ __('website.support_number') }}</p>
                             </div>
                         </div>
                         <div class="mt-[23px] flex">
@@ -254,9 +274,10 @@ $setting = App\Models\Setting::first();
                                 <img src="{{ asset('front-end/assets/mail.svg') }}" alt="call">
                             </div>
                             <div class="ml-[18px]">
-                                <a href="mailto:{{$setting->email}}"
-                                    class="font-Inter text-[14px] font-medium text-[#fff]">{{$setting->email}}</a>
-                                <p class="font-Inter text-[12px] font-medium text-[#fff]">{{ __('website.support_email') }}</p>
+                                <a href="mailto:{{ $setting->email }}"
+                                    class="font-Inter text-[14px] font-medium text-[#fff]">{{ $setting->email }}</a>
+                                <p class="font-Inter text-[12px] font-medium text-[#fff]">
+                                    {{ __('website.support_email') }}</p>
                             </div>
                         </div>
                         <div class="mt-[23px] flex">
@@ -264,9 +285,8 @@ $setting = App\Models\Setting::first();
                                 <img src="{{ asset('front-end/assets/location.svg') }}" alt="call">
                             </div>
                             <div class="ml-[18px]">
-                                <a href="#"
-                                    class="font-Inter text-[14px] font-medium text-[#fff]">
-                                    {{$setting->address}}
+                                <a href="#" class="font-Inter text-[14px] font-medium text-[#fff]">
+                                    {{ $setting->address }}
                                 </a>
                                 <p class="font-Inter text-[12px] font-medium text-white">{{ __('website.address') }}</p>
                             </div>
@@ -276,18 +296,24 @@ $setting = App\Models\Setting::first();
                         <div class="">
                             <p class="text-[18px] font-medium leading-normal">{{ __('website.pages') }}</p>
                             <ul>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/"> {{ __('website.home') }}</a></li>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/services"> {{ __('website.services') }}</a>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/">
+                                        {{ __('website.home') }}</a></li>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/services">
+                                        {{ __('website.services') }}</a>
                                 </li>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/about"> {{ __('website.about') }}</a></li>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/talents"> {{ __('website.talents') }}</a>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/about">
+                                        {{ __('website.about') }}</a></li>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/talents">
+                                        {{ __('website.talents') }}</a>
                                 </li>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/contact"> {{ __('website.contact') }}</a>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/contact">
+                                        {{ __('website.contact') }}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="">
-                            <p class="text-deutziawhite font-inter text-[18px] font-medium leading-normal"> {{ __('website.useful_links') }}
+                            <p class="text-deutziawhite font-inter text-[18px] font-medium leading-normal">
+                                {{ __('website.useful_links') }}
                             </p>
                             <ul>
                                 <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/talent-singup">
@@ -297,11 +323,13 @@ $setting = App\Models\Setting::first();
                                 <li class="mt-[15px]"><a class="text-[15px] font-normal"
                                         href="/visionary-singup">{{ __('website.visionary_signup') }}</a>
                                 </li>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/signin">{{ __('website.login') }}</a>
-                                </li>
                                 <li class="mt-[15px]"><a class="text-[15px] font-normal"
-                                        href="/terms-and-conditions"> {{ __('website.terms_and_conditions') }}</a></li>
-                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/privacy-policy">{{ __('website.privacy_policy') }}</a></li>
+                                        href="/signin">{{ __('website.login') }}</a>
+                                </li>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal" href="/terms-and-conditions">
+                                        {{ __('website.terms_and_conditions') }}</a></li>
+                                <li class="mt-[15px]"><a class="text-[15px] font-normal"
+                                        href="/privacy-policy">{{ __('website.privacy_policy') }}</a></li>
                             </ul>
                         </div>
                     </div>

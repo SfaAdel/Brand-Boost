@@ -206,6 +206,7 @@ return [
 
     'total_price'=>'السعر الاجمالى',
 
+    'expected_receive_date'=>'تاريخ الاستلام المتوقع',
 
 ];
 

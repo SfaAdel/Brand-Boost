@@ -24,29 +24,36 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse ($favFreelancers as $favFreelancer)
                 <tr>
                     <td class="py-3 px-5 ">
                         <div class="flex items-center gap-4">
-                            <img src="{{ asset('front-end/SocialMedia/brand boost sm (6).png') }}" alt=""
+                            <img src="{{ asset('images/freelancers/profile/' . $favFreelancer->freelancer->profile_image) }}" alt=""
                                 class="inline-block relative object-cover object-center w-9 h-9 rounded-full">
                             <div>
                                 <p class="block antialiased text-sm leading-normal font-semibold"
-                                    id="dashboardProjectName">
-                                    Freelancer Name</p>
+                                    id="dashboardProjectName">{{$favFreelancer->freelancer->name}}</p>
                             </div>
                         </div>
                     </td>
                     <td class="py-3 px-5 ">
-                        <p class="block antialiased text-xs font-normal" id="dashboardProjectDescription">Web Developer
+                        <p class="block antialiased text-xs font-normal" id="dashboardProjectDescription">{{$favFreelancer->freelancer->jobTitle->name}}
                         </p>
                     </td>
                     <td class="py-3 px-5 ">
-                        <a href="/freelancers/freelancerName"
+                        <a href="{{ route('freelancerName', $favFreelancer->freelancer->id) }}" 
                             class="inline mx-1 antialiased text-xs font-semibold capitalize">profile</a>
-                        <button
-                            class="inline mx-1 antialiased text-xs font-semibold capitalize text-red-500">remove</button>
+                        <a href="{{ route('fav_freelancer.destroy', $favFreelancer->id) }}"
+                            class="inline mx-1 antialiased text-xs font-semibold capitalize text-red-500">remove</a>
                     </td>
                 </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="py-3 px-5 text-center">
+                        <p class="block antialiased text-sm font-semibold">No Favourite Talents Yet.</p>
+                    </td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

@@ -74,6 +74,7 @@ return [
     'privacy_policy' => 'Privacy Policy',
     'terms_and_conditions' => 'Terms and Conditions',
 
-
+    'action_cannot_undo' => 'This action cannot be undone',
+    'refund_message' => 'Your refund will be processed after :days days!',
 
 ];

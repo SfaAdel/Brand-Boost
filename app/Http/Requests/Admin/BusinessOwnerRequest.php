@@ -23,7 +23,7 @@ class BusinessOwnerRequest extends FormRequest
      */
     public function rules(): array
     {
-        $businessOwnerId = $this->businessOwner ? $this->businessOwner->id : null;
+        $businessOwnerId = $this->route('id');  
 
         $rules = [
             'en.name' => [

@@ -21,81 +21,81 @@ class FreelancerProfileController extends Controller
 {
     //
 
-    public function services()
-    {
-        // Fetch the specified service
-        $services = Service::all();
+    // public function services()
+    // {
+    //     // Fetch the specified service
+    //     $services = Service::all();
 
-        // Fetch settings
-        $setting = Setting::first();
+    //     // Fetch settings
+    //     $setting = Setting::first();
 
-        return view('front-end.servicespage', compact('setting', 'services'));
-    }
+    //     return view('front-end.servicespage', compact('setting', 'services'));
+    // }
 
-    public function service_details($id)
-    {
-        // Fetch the specified service
-        $service = Service::findOrFail($id);
+    // public function service_details($id)
+    // {
+    //     // Fetch the specified service
+    //     $service = Service::findOrFail($id);
 
-        // Fetch freelancers providing this service
-        $freelancers = Freelancer::whereHas('services', function ($query) use ($id) {
-            $query->where('id', $id);
-        })->get();
+    //     // Fetch freelancers providing this service
+    //     $freelancers = Freelancer::whereHas('services', function ($query) use ($id) {
+    //         $query->where('id', $id);
+    //     })->get();
 
-        // Fetch settings
-        $setting = Setting::first();
+    //     // Fetch settings
+    //     $setting = Setting::first();
 
-        return view('front-end.service-offers', compact('setting', 'service', 'freelancers'));
-    }
+    //     return view('front-end.service-offers', compact('setting', 'service', 'freelancers'));
+    // }
 
-    public function freelancers()
-    {
-        // Fetch the specified service
-        $freelancers = Freelancer::all();
-        $fields = Field::all();
-        $jobTitles = JobTitle::all();
-        // Fetch settings
-        $setting = Setting::first();
+    // public function freelancers()
+    // {
+    //     // Fetch the specified service
+    //     $freelancers = Freelancer::all();
+    //     $fields = Field::all();
+    //     $jobTitles = JobTitle::all();
+    //     // Fetch settings
+    //     $setting = Setting::first();
 
-        return view('front-end.freelancerspage', compact('jobTitles', 'fields', 'setting', 'freelancers'));
-    }
+    //     return view('front-end.freelancerspage', compact('jobTitles', 'fields', 'setting', 'freelancers'));
+    // }
 
-    public function freelancer_details($id)
-    {
-        // Fetch the specified service
-        $freelancer = Freelancer::findOrFail($id);
-
-
-        // Fetch settings
-        $setting = Setting::first();
-
-        return view('front-end.singlefreelancerpage', compact('setting', 'freelancer'));
-    }
-
-    public function freelancer_projects($id)
-    {
-        // Fetch the specified service
-        $freelancer = Freelancer::findOrFail($id);
+    // public function freelancer_details($id)
+    // {
+    //     // Fetch the specified service
+    //     $freelancer = Freelancer::findOrFail($id);
 
 
-        // Fetch settings
-        $setting = Setting::first();
+    //     // Fetch settings
+    //     $setting = Setting::first();
 
-        return view('front-end.singlefreelancerprojects', compact('setting', 'freelancer'));
-    }
+    //     return view('front-end.singlefreelancerpage', compact('setting', 'freelancer'));
+    // }
+
+    // public function freelancer_projects($id)
+    // {
+    //     // Fetch the specified service
+    //     $freelancer = Freelancer::findOrFail($id);
 
 
-    public function freelancer_service_details($id)
-    {
-        // Fetch the specified service
-        $freelancerService = FreelancerService::findOrFail($id);
+    //     // Fetch settings
+    //     $setting = Setting::first();
+
+    //     return view('front-end.singlefreelancerprojects', compact('setting', 'freelancer'));
+    // }
 
 
-        // Fetch settings
-        $setting = Setting::first();
+    // public function freelancer_service_details($id)
+    // {
+    //     // Fetch the specified service
+    //     $freelancerService = FreelancerService::findOrFail($id);
 
-        return view('front-end.offer', compact('setting', 'freelancerService'));
-    }
+
+    //     // Fetch settings
+    //     $setting = Setting::first();
+
+    //     return view('front-end.offer', compact('setting', 'freelancerService'));
+    // }
 
     public function dashboard($id)
     {
@@ -118,8 +118,8 @@ class FreelancerProfileController extends Controller
     public function talentProfile($id)
     {
         $freelancer = Freelancer::findOrFail($id);
-        $jobTitles = JobTitle::all();
-        $fields = Field::all();
+        $fields = Field::whereIn('type', ['freelancer', 'both'])->get();
+        $jobTitles = JobTitle::whereIn('type', ['freelancer', 'both'])->get();
 
         return view('front-end.dashboard.dashboard-talent-profile', compact('jobTitles','fields', 'freelancer'));
     }

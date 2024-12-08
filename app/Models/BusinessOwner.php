@@ -33,7 +33,7 @@ class BusinessOwner extends Authenticatable  implements TranslatableContract
 
     public function favorites()
     {
-        return $this->belongsToMany(Freelancer::class, 'fav_freelancers');
+        return $this->belongsToMany(Freelancer::class, 'favorite_freelancers');
     }
 
     public function orders()

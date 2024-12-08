@@ -69,20 +69,23 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
-        $status = $request->input('status');
-
-    if ($status === 'canceled') {
-        // Delete related appointments if the order is canceled
-        $order->appointments()->delete();
+        // Validate the input fields
+        $validated = $request->validate([
+            'status' => 'required|string|in:pending,complete', 
+            'description' => 'required|string|max:500', 
+            'expected_receive_date' => 'required|date|after_or_equal:today', 
+        ]);
+    
+   
+    
+        // Update the order with the validated data
+        $order->update($validated);
+    
+        return redirect()
+            ->route('admin.orders.index')
+            ->with('success', __('messages.order_updated'));
     }
-
-    // Update the order status
-    $order->update(['status' => $status]);
-
-    return redirect()->route('admin.orders.index')->with('success', __('messages.order_updated'));
-
-    }
+    
 
 
     /**
@@ -93,6 +96,6 @@ class OrderController extends Controller
         //
         $order->delete();
 
-        return redirect()->route('admin.orders.index')->with('success', __('messages.order_deleted'));
+        return redirect()->back()->with('success', __('messages.order_deleted'));
     }
 }

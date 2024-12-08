@@ -2,8 +2,13 @@
 
 @section('content')
 
+    {{-- <div class="my-3">
+        @include('front-end.includes.alerts')
+    </div> --}}
+    
 <div class="backgrounded" id="hero">
-    <section class="flex justify-center px-10">
+
+  <section class="flex justify-center px-10">
         <div class="flex-1 flex flex-col px-10 justify-around">
             <div class="relative py-10">
                 <img loading="lazy" src="{{ asset('front-end/assets/circ.svg') }}"

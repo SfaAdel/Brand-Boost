@@ -46,8 +46,11 @@
                                                 <td>{{ $order->freelancerService->freelancer->name ?? 'N/A' }}</td>
                                                 <td>{{ $order->freelancerService->price_per_unit * $order->amount ?? 'N/A' }}</td>
                                                 <td>{{ $order->freelancerService->service->name ?? 'N/A' }}</td>
-                                                <td>{{ $order->expected_receive_date }}</td>
-                                                {{-- <td>{{ $order->created_at->format('Y-m-d') }}</td> --}}
+                                                <td>
+                                                    <span class="{{ $order->status === 'pending' && \Carbon\Carbon::parse($order->expected_receive_date)->isBefore(\Carbon\Carbon::today()) ? 'text-danger' : ''  }}">
+                                                        {{ \Carbon\Carbon::parse($order->expected_receive_date)->format('Y-m-d') }}
+                                                    </span>
+                                                </td>                                               {{-- <td>{{ $order->created_at->format('Y-m-d') }}</td> --}}
                                                 <td>{{ __('forms.' . $order->status) }}</td>
 
                                                 <td>

@@ -90,7 +90,7 @@
             @elseif(auth()->guard('business_owner')->check())
                 <ul class="">
                     <li class="capitalize my-4 hover:bg-green transition {{$dashboardLink}}">
-                        <a href="/business-area/visionary" class="flex items-center gap-3 h-full w-full p-5">
+                        <a href="{{ route('business-area-b', Auth::guard('business_owner')->user()->id) }}" class="flex items-center gap-3 h-full w-full p-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="feather feather-home">
@@ -102,7 +102,7 @@
                     </li>
 
                     <li class="capitalize my-4 hover:bg-green transition {{$visionaryEditProfileLink}}">
-                        <a href="/business-area/visionary-profile" class="flex items-center gap-3 p-5">
+                        <a href="{{ route('dashboard-visionary-profile') }}" class="flex items-center gap-3 p-5">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -113,7 +113,7 @@
                     </li>
 
                     <li class="capitalize my-4 hover:bg-green transition {{$visionaryFavTalentsLink}}">
-                        <a href="/business-area/visionary-fav-freelancers" class="flex items-center gap-3 p-5">
+                        <a href="{{ route('dashboard-visionary-fav-freelancers') }}" class="flex items-center gap-3 p-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake">
@@ -129,7 +129,7 @@
                     </li>
 
                     <li class="capitalize my-4 hover:bg-green transition {{$visionaryOrdersLink}}">
-                        <a href="/business-area/visionary-orders" class="flex items-center gap-3 p-5">
+                        <a href="{{ route('dashboard-visionary-orders') }}" class="flex items-center gap-3 p-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">

@@ -18,7 +18,7 @@
             </div>
             <div class="text-right">
                 <h3 class="text-sm">Total Balance</h3>
-                <h1 class="font-bold text-3xl">$684.75</h1>
+                <h1 class="font-bold text-3xl">{{$totalBalance}} EGY</h1>
             </div>
         </div>
 
@@ -36,13 +36,13 @@
             </div>
             <div class="text-right">
                 <h3 class="text-sm">Following</h3>
-                <h1 class="font-bold text-3xl">5</h1>
+                <h1 class="font-bold text-3xl">{{$following}}</h1>
             </div>
         </div>
     </div>
 
     <div class="p-10 text-center">
-        <h2 class="text-5xl font-bold my-2 capitalize">Welcome, Business Owner</h2>
+        <h2 class="text-5xl font-bold my-2 capitalize">Welcome, {{Auth::guard('business_owner')->user()->name}}</h2>
         <p class="">Here is your dashboard, you can see your balance, services, favourite talents, and orders.</p>
         <p class="">It's your own Business area, feel free to create, edit or delete.</p>
         <p class="">If you have any question, please contact us.</p>

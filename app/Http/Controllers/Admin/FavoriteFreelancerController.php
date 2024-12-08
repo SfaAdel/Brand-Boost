@@ -62,5 +62,10 @@ class FavoriteFreelancerController extends Controller
     public function destroy(FavoriteFreelancer $favoriteFreelancer)
     {
         //
+        $favoriteFreelancer->delete();
+
+        return redirect()->route('admin.contacts.index')->with('success', __('freelancer_deleted'));
+
+    
     }
 }

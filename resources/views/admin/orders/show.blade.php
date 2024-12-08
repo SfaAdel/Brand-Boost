@@ -93,6 +93,13 @@
                                     </span>
                                 </li>
                                 <li class="orders-block__item text-success">
+                                    <i class="fa-solid fa-calendar"></i>
+                                    {{ __('forms.expected_receive_date') }}:
+                                    <span class="text-primary">
+                                        {{ \Carbon\Carbon::parse($order->expected_receive_date)->format('Y-m-d') }}
+                                    </span>
+                                </li>
+                                <li class="orders-block__item text-success">
                                     <i class="fa-solid fa-clock"></i>
                                     {{ __('forms.remaining_time') }}:
                                     <span class="text-primary">
@@ -110,7 +117,7 @@
 
                     <hr>
                     <div class="mt-4">
-                        <h5>{{ __('forms.change_status') }}</h5>
+                        <h5>{{ __('forms.update') }}</h5>
                         <form action="{{ route('admin.orders.update', $order->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
@@ -125,8 +132,26 @@
                                     </option>
                                 </select>
                             </div>
+
+                            @if ($order->status == 'pending')
+
+                             <!-- Description -->
+    <div class="mb-4">
+        <label for="description" class="block font-bold">{{ __('forms.description') }}</label>
+        <textarea name="description" id="description" class="form-control">{{ old('description', $order->description) }}</textarea>
+    </div>
+
+    <!-- Expected Receive Date -->
+    <div class="mb-4">
+        <label for="expected_receive_date" class="block font-bold">{{ __('forms.expected_receive_date') }}</label>
+        <input type="date" name="expected_receive_date" id="expected_receive_date" 
+               value="{{ old('expected_receive_date', $order->expected_receive_date ? \Carbon\Carbon::parse($order->expected_receive_date)->format('Y-m-d') : '') }}" 
+               class="form-control">
+    </div>
+    @endif
+
                             <button type="submit" class="btn btn-primary mt-3">
-                                {{ __('forms.update_status') }}
+                                {{ __('forms.update') }}
                             </button>
                         </form>
                     </div>

@@ -85,6 +85,6 @@ class ContactController extends Controller
         //
         $contact->delete();
 
-        return redirect()->route('admin.contacts.index')->with('success', __('messages.contact_deleted'));
+        return redirect()->route('dashboard-visionary-fav-freelancers')->with('success', __('messages.contact_deleted'));
     }
 }

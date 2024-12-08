@@ -68,6 +68,11 @@
 
                 </div>
 
+                <div>
+                    <h2 class="text-lg font-semibold">Freelancer</h2>
+                    <a href="{{ route('freelancerName', $order->freelancerService->freelancer->id) }}"
+                        class="text-sm text-blue">{{ $order->freelancerService->freelancer->name }}</a>
+                </div>
 
                 <!-- Description -->
                 <div>

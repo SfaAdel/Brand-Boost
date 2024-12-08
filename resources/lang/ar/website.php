@@ -74,5 +74,7 @@ return [
 'privacy_policy' => 'سياسة الخصوصية',
 'pages' => 'الصفحات',
 
+'action_cannot_undo' => 'لا يمكن التراجع عن هذا الإجراء',
+'refund_message' => 'سيتم معالجة استرداد الأموال بعد :days أيام !',
 
 ];

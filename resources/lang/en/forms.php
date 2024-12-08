@@ -205,5 +205,6 @@ return [
     'fields' => 'Skills',
     'total_price'=>'Total Price',
 
+    'expected_receive_date'=>'Expected Receive Date',
 ];
 
