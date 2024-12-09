@@ -43,8 +43,8 @@
                     <td class="py-3 px-5 ">
                         <a href="{{ route('freelancerName', $favFreelancer->freelancer->id) }}" 
                             class="inline mx-1 antialiased text-xs font-semibold capitalize">profile</a>
-                        <a href="{{ route('fav_freelancer.destroy', $favFreelancer->id) }}"
-                            class="inline mx-1 antialiased text-xs font-semibold capitalize text-red-500">remove</a>
+                        {{-- <a href="{{ route('fav_freelancer.destroy', $favFreelancer->id) }}"
+                            class="inline mx-1 antialiased text-xs font-semibold capitalize text-red-500">remove</a> --}}
                     </td>
                 </tr>
                 @empty

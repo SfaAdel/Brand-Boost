@@ -209,5 +209,7 @@ return [
 
     'expected_receive_date'=>'تاريخ الاستلام المتوقع',
 
+    'pending_orders_list' => 'قائمة الطلبات المعلقة',
+    'today_orders_list' => 'قائمة طلبات اليوم',
 ];
 

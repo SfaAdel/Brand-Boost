@@ -207,5 +207,8 @@ return [
     'total_price'=>'Total Price',
 
     'expected_receive_date'=>'Expected Receive Date',
+
+    'pending_orders_list' => 'Pending Orders List',
+    'today_orders_list' => "Today's Orders List",
 ];
 
