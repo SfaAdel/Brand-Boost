@@ -39,7 +39,7 @@
 
                     <div class="flex flex-col my-2">
                         <label for="en-name"
-                            class="font-bold text-md hepta leading-relaxed">{{ __('Name in English') }}</label>
+                            class="font-bold text-md hepta leading-relaxed">{{ __('website.name_in_english') }}</label>
                         <input type="text" name="en[name]" id="en-name"
                             value="{{ $businessOwner->translate('en')?->name }}"
                             class="p-2 border-black border-2 outline-none">
@@ -47,7 +47,7 @@
 
                     <div class="flex flex-col my-2">
                         <label for="ar-name"
-                            class="font-bold text-md hepta leading-relaxed">{{ __('Name in Arabic') }}</label>
+                            class="font-bold text-md hepta leading-relaxed">{{ __('website.name_in_arabic') }}</label>
                         <input type="text" name="ar[name]" id="ar-name"
                             value="{{ $businessOwner->translate('ar')?->name }}"
                             class="p-2 border-black border-2 outline-none">
@@ -58,7 +58,7 @@
 
                     <div class="flex flex-col my-2">
                         <label for="en-company-name"
-                            class="font-bold text-md hepta leading-relaxed">{{ __('Company Name in English') }}</label>
+                            class="font-bold text-md hepta leading-relaxed">{{ __('website.company_in_english') }}</label>
                         <input type="text" name="en[company_name]" id="en-company-name"
                             value="{{ $businessOwner->translate('en')?->company_name }}"
                             class="p-2 border-black border-2 outline-none">
@@ -66,7 +66,7 @@
 
                     <div class="flex flex-col my-2">
                         <label for="ar-company-name"
-                            class="font-bold text-md hepta leading-relaxed">{{ __('Company Name in Arabic') }}</label>
+                            class="font-bold text-md hepta leading-relaxed">{{ __('website.company_in_arabic') }}</label>
                         <input type="text" name="ar[company_name]" id="ar-company-name"
                             value="{{ $businessOwner->translate('ar')?->company_name }}"
                             class="p-2 border-black border-2 outline-none">
@@ -76,7 +76,7 @@
 
                     <div class="flex flex-col my-2">
                         <label for="phone-number"
-                            class="font-bold text-md hepta leading-relaxed">{{ __('Phone number') }}</label>
+                            class="font-bold text-md hepta leading-relaxed">{{ __('website.phone_number') }}</label>
                         <input type="text" name="phone" id="phone-number" value="{{ $businessOwner->phone }}"
                             class="p-2 border-black border-2 outline-none">
                     </div>
@@ -104,7 +104,7 @@
 
                     <div class="flex flex-col my-2">
                         <label for="Company-field"
-                            class="font-bold text-md hepta leading-relaxed">{{ __('Company Work Field') }}</label>
+                            class="font-bold text-md hepta leading-relaxed">{{ __('company_work_field') }}</label>
                         <select name="field_id" id="Company-field" class="p-2 border-black border-2 outline-none">
                             <option selected disabled>{{ __('Choose yours') }}</option>
                             @foreach ($fields as $field)
@@ -119,7 +119,7 @@
 
             <div class="w-full flex justify-center items-center py-5">
                 <button type="submit"
-                    class="uppercase hepta w-full bg-green font-semibold py-2 px-4 border-2 border-black hover:bg-emerald-500 transition">update</button>
+                    class="uppercase hepta w-full bg-green font-semibold py-2 px-4 border-2 border-black hover:bg-emerald-500 transition">{{__('website.update')}}</button>
             </div>
 
         </form>
