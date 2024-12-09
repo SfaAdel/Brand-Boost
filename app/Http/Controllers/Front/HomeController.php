@@ -69,27 +69,68 @@ class HomeController extends Controller
         $service = Service::findOrFail($id);
 
         // Fetch freelancers providing this service
-        $freelancers = Freelancer::whereHas('services', function ($query) use ($id) {
-            $query->where('id', $id);
-        })->get();
+        $freelancerServices = FreelancerService::where('service_id', $id)->get();
 
         // Fetch settings
         $setting = Setting::first();
 
-        return view('front-end.service-offers', compact('setting', 'service', 'freelancers'));
+        return view('front-end.service-offers', compact('setting', 'service', 'freelancerServices'));
     }
 
-    public function freelancers()
+    public function freelancers(Request $request)
     {
-        // Fetch the specified service
-        $freelancers = Freelancer::all();
+        // Fetch the query parameters
+        $selectedJobTitle = $request->query('job_title');
+        $selectedFields = $request->query('fields', []);
+
+        // Fetch freelancers with optional filters
+        $freelancers = Freelancer::query();
+
+        // Filter by job title if provided
+        if ($selectedJobTitle) {
+            $freelancers->where('job_title_id', $selectedJobTitle);
+        }
+
+        // Filter by fields if provided
+        if (!empty($selectedFields)) {
+            $freelancers->whereHas('fields', function ($query) use ($selectedFields) {
+                $query->whereIn('id', $selectedFields);
+            });
+        }
+
+        // Retrieve filtered results
+        $freelancers = $freelancers->get();
+
+        // Fetch settings and additional data
         $fields = Field::all();
         $jobTitles = JobTitle::all();
-        // Fetch settings
         $setting = Setting::first();
 
         return view('front-end.freelancerspage', compact('jobTitles', 'fields', 'setting', 'freelancers'));
     }
+
+
+    // public function filteration(Request $request)
+    // {
+    //     $jobTitle = $request->query('job_title');
+    //     $fields = $request->query('fields', []);
+
+    //     $freelancers = Freelancer::query();
+
+    //     if ($jobTitle) {
+    //         $freelancers->where('job_title', $jobTitle);
+    //     }
+
+    //     if (!empty($fields)) {
+    //         $freelancers->whereHas('fields', function ($query) use ($fields) {
+    //             $query->whereIn('field_name', $fields);
+    //         });
+    //     }
+
+    //     $freelancers = $freelancers->get();
+
+    //     return view('front-end.freelancerspage', compact('freelancers'));
+    // }
 
     public function freelancer_details($id)
     {
