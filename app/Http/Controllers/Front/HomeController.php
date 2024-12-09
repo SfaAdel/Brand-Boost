@@ -69,14 +69,12 @@ class HomeController extends Controller
         $service = Service::findOrFail($id);
 
         // Fetch freelancers providing this service
-        $freelancers = Freelancer::whereHas('services', function ($query) use ($id) {
-            $query->where('id', $id);
-        })->get();
+        $freelancerServices = FreelancerService::where('service_id', $id)->get();
 
         // Fetch settings
         $setting = Setting::first();
 
-        return view('front-end.service-offers', compact('setting', 'service', 'freelancers'));
+        return view('front-end.service-offers', compact('setting', 'service', 'freelancerServices'));
     }
 
     public function freelancers()
