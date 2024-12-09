@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FavoriteFreelancerController;
 use App\Http\Controllers\Admin\FreelancerProjectController;
 use App\Http\Controllers\Admin\FreelancerServiceController;
 use App\Http\Controllers\Front\AuthController;
@@ -87,7 +88,9 @@ Route::group([
         // })->name('dashboard-visionary-profile');
 
         Route::get('/business-area/visionary-fav-freelancers', [BusinessOwnerProfileController::class, 'favFreelancers'])->name('dashboard-visionary-fav-freelancers');
-        Route::get('/favorite_freelancer/{id}', [FavoriteFreelancer::class, 'destroy'])->name('fav_freelancer.destroy');
+        // Route::get('/favorite_freelancer/{id}', [FavoriteFreelancerController::class, 'destroy'])->name('fav_freelancer.destroy');
+
+        Route::post('/favorite/toggle', [BusinessOwnerProfileController::class, 'toggleFavorite'])->name('favorite.toggle');
 
         // Route::get('/business-area/visionary-fav-freelancers', function () {
         //     return view('front-end.dashboard.visionary.dashboard-visionary-fav-freelancers');
@@ -133,7 +136,10 @@ Route::group([
         // Route::view('/login', 'admin.auth.login')->name('login');
 
         Route::middleware(['admin'])->group(function () {
-            Route::view('/', 'admin.index')->name('index');
+            // Route::view('/', 'admin.index')->name('index');
+
+            Route::get('/', [DashboardController::class, 'index'])->name('index');
+
             // Admins
             Route::resource('admins', AdminController::class, ['except' => 'show']);
             Route::resource('settings', SettingController::class);

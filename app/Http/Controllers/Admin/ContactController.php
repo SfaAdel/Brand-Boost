@@ -44,6 +44,8 @@ class ContactController extends Controller
     public function show(Contact $contact)
     {
         //
+        $contact->update(['open' => true]);
+
         return view('admin.contacts.show', compact('contact'));
 
     }

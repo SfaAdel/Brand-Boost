@@ -176,6 +176,7 @@ return [
     'msg_sent_at' => 'تم إرسال الرسالة في',
     'message' => 'الرسالة',
     'status' => 'الحالة',
+    'payment_status' => 'حالة الدفع',
     'order_description' => 'وصف الطلب',
 
     'business_owner_details' => 'تفاصيل صاحب العمل',
@@ -208,5 +209,7 @@ return [
 
     'expected_receive_date'=>'تاريخ الاستلام المتوقع',
 
+    'pending_orders_list' => 'قائمة الطلبات المعلقة',
+    'today_orders_list' => 'قائمة طلبات اليوم',
 ];
 

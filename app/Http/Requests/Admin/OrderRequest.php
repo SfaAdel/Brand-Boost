@@ -25,8 +25,8 @@ class OrderRequest extends FormRequest
         return [
             //
             'description' => ['required', 'string', 'min:5', new NotEmailOrPhone],
-            'expected_receive_date' => 'required|date',
-            'amount' => 'required|numeric|min:10',
+            'expected_receive_date' => 'required|date|after:today',
+            'amount' => 'required|numeric|min:1',
           
         ];
     }

@@ -7,6 +7,7 @@ use App\Models\Advantage;
 use App\Models\Blog;
 use App\Models\Freelancer;
 use App\Models\BusinessOwner;
+use App\Models\FavoriteFreelancer;
 use App\Models\Field;
 use App\Models\FreelancerService;
 use App\Models\JobTitle;
@@ -16,6 +17,7 @@ use App\Models\Tag;
 use App\Models\Title;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 use SebastianBergmann\LinesOfCode\Counter;
 
@@ -141,7 +143,12 @@ class HomeController extends Controller
         // Fetch settings
         $setting = Setting::first();
 
-        return view('front-end.singlefreelancerpage', compact('setting', 'freelancer'));
+        $isFollowing = FavoriteFreelancer::where('freelancer_id', $freelancer->id)
+    ->where('business_owner_id', Auth::guard('business_owner')->id())
+    ->exists();
+
+
+        return view('front-end.singlefreelancerpage', compact('isFollowing','setting', 'freelancer'));
     }
 
     public function freelancer_projects($id)
@@ -149,11 +156,14 @@ class HomeController extends Controller
         // Fetch the specified service
         $freelancer = Freelancer::findOrFail($id);
 
+        $isFollowing = FavoriteFreelancer::where('freelancer_id', $freelancer->id)
+    ->where('business_owner_id', Auth::guard('business_owner')->id())
+    ->exists();
 
         // Fetch settings
         $setting = Setting::first();
 
-        return view('front-end.singlefreelancerprojects', compact('setting', 'freelancer'));
+        return view('front-end.singlefreelancerprojects', compact('isFollowing','setting', 'freelancer'));
     }
 
 

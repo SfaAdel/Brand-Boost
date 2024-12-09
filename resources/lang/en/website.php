@@ -221,4 +221,5 @@ return [
     'order_from' => 'Order From',
     'remove' => 'Remove',
     'no_fav_freelancers' => 'No Favourite Talents Yet.',
+    'unfollow' => 'Unfollow',
 ];

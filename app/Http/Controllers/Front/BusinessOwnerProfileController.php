@@ -129,4 +129,28 @@ class BusinessOwnerProfileController extends Controller
 
         return view('front-end.dashboard.visionary.dashboard-visionary-orders-order', compact('order', 'remainingTime'));
     }
+
+    public function toggleFavorite(Request $request)
+    {
+        $validated = $request->validate([
+            'freelancer_id' => 'required|exists:freelancers,id',
+            'business_owner_id' => 'required|exists:business_owners,id',
+        ]);
+
+        $favorite = FavoriteFreelancer::where('freelancer_id', $validated['freelancer_id'])
+            ->where('business_owner_id', $validated['business_owner_id'])
+            ->first();
+
+        if ($favorite) {
+            // If exists, unfollow
+            $favorite->delete();
+            return response()->json(['following' => false], 200);
+        } else {
+            // Otherwise, follow
+            FavoriteFreelancer::create($validated);
+            return response()->json(['following' => true], 201);
+        }
+
+        
+    }
 }
