@@ -50,6 +50,8 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+        $order->update(['open' => true]);
+
         return view('admin.orders.show', compact('order'));
 
     }

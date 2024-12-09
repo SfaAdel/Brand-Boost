@@ -176,6 +176,7 @@ return [
     'msg_sent_at' => 'Message Sent At',
     'message' => 'Message',
     'status' => 'Status',
+    'payment_status' => 'Payment Status',
     'order_description' => 'Order Description',
 
         'business_owner_details' => 'Business Owner Details',

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('expected_receive_date');
             $table->decimal('amount', 10, 2);
             $table->decimal('total_price', 10, 2)->default(0);
+            $table->boolean('open')->default(false);
             $table->enum('status', ['complete', 'pending'])->default('pending');
             $table->enum('payment_status', ['complete', 'pending'])->default('pending');
             $table->timestamps();

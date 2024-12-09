@@ -133,7 +133,10 @@ Route::group([
         // Route::view('/login', 'admin.auth.login')->name('login');
 
         Route::middleware(['admin'])->group(function () {
-            Route::view('/', 'admin.index')->name('index');
+            // Route::view('/', 'admin.index')->name('index');
+
+            Route::get('/', [DashboardController::class, 'index'])->name('index');
+
             // Admins
             Route::resource('admins', AdminController::class, ['except' => 'show']);
             Route::resource('settings', SettingController::class);
