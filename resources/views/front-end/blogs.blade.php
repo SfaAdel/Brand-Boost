@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="transparent-texture py-10">
-    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">Our blogs</h1>
+    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">{{__('website.our_blogs')}}</h1>
 
     <!-- Tags-Based Filtration -->
     <div class="max-w-[85rem] px-4 py-6 sm:px-6 lg:px-8 lg:py-6 mx-auto">

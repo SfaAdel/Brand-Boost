@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+<!-- dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" -->
 
 @php
     $setting = App\Models\Setting::first();
@@ -45,7 +46,7 @@
                 <li class="p-4"><a href="/freelancers">{{ __('website.talents') }}</a></li>
                 <li class="p-4"><a href="about">{{ __('website.about') }}</a></li>
                 <li class="p-4"><a href="/contact">{{ __('website.contact') }}</a></li>
-                <li class="p-4"><a href="/blogs">Blogs</a></li>
+                <li class="p-4"><a href="/blogs">{{__('website.blogs')}}</a></li>
             </ul>
 
             <div class="flex">
@@ -68,7 +69,7 @@
                 @else
                     <div id="dropdown-container" class="relative">
                         <button id="dropdown-btn" class="bg-green px-4 py-4 border-black border-s-4 border-e-4 uppercase"
-                            aria-expanded="false" aria-haspopup="true">my area</button>
+                            aria-expanded="false" aria-haspopup="true">{{__('website.my_area')}}</button>
                         <ul id="dropdown-menu"
                             class="hidden absolute border-black border-4 bg-white right-0 z-[1] w-52 capitalize transition duration-300 ease-in-out">
                             <li class="my-2 hover:bg-green transition">
@@ -77,7 +78,7 @@
                                         class="block w-full h-full px-3 py-2">Dashboard</a>
                                 @elseif (auth()->guard('freelancer')->check())
                                     <a href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}"
-                                        class="block w-full h-full px-3 py-2">Dashboard</a>
+                                        class="block w-full h-full px-3 py-2">{{__('website.dashboard')}}</a>
                                 @endif
                             </li>
                             <li class="my-2 hover:bg-green transition">
@@ -146,7 +147,7 @@
             <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
                     href="/contact" class="w-full block"> {{ __('website.contact') }}</a></li>
             <li class="uppercase border-black border-2 p-4 bg-gray-100 hover:bg-gray-50 my-2 text-black hepta"><a
-                    href="/blogs" class="w-full block">Blogs</a></li>
+                    href="/blogs" class="w-full block">{{__('website.blogs')}}</a></li>
             @if (!auth()->guard('business_owner')->check() && !auth()->guard('freelancer')->check())
                 <li class="border-black border-2 p-4 bg-sky-300 hover:bg-sky-200 my-2 text-black hepta"><a
                         href="/signin" class="w-full block"> {{ __('website.login') }} </a></li>

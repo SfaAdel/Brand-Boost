@@ -8,7 +8,7 @@
         <img class="size-full absolute top-0 start-0 object-cover"
             src="{{ asset('front-end/socialMedia/brand boost sm (4).jpg') }}" alt="Blog Image">
     </div>
-    <div>
+    <div class="bg-white py-6 px-3 border-black border-2">
         <h1 class="text-5xl font-bold hepta capitalize pt-5">First blog</h1>
         <p class="text-lg mt-5 rubikv ms-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
             exercitationem
@@ -22,5 +22,7 @@
             voluptatibus inventore ex quidem dicta ipsa repellendus, soluta sint. Eveniet aliquid optio molestias ad,
             qui mollitia sit. Quod at enim excepturi libero sapiente.</p>
     </div>
+    <a href="/blogs"
+        class="border-black border-2 py-2 px-5 bg-pink text-black block hepta text-lg uppercase font-bold text-center border-t-transparent">{{__('website.back_to_blogs')}}</a>
 </section>
 @endsection

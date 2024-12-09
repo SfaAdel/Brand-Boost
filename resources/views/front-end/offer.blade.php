@@ -45,7 +45,7 @@
                     officia quo, obcaecati porro odio? Veritatis harum atque ullam asperiores enim vero doloremque alias
                     quam inventore!
                 </p>
-                <p class="capitalize text-slate-700 text-sm my-5">i used :</p>
+                <p class="capitalize text-slate-700 text-sm my-5">{{__('website.i_used')}} :</p>
                 <p class="flex gap-5 flex-wrap">
                     <span>React</span>
                     <span>Laravel</span>
@@ -67,11 +67,10 @@
             </div>
             <div class="flex flex-col gap-3">
                 <a href="#"
-                    class="border-black border-2 uppercase flex w-full justify-center bg-pink px-3 py-1.5 text-sm/6 font-semibold text-black hover:bg-fuchsia-700 hover:text-white transition">
-                    order me</a>
+                    class="border-black border-2 uppercase flex w-full justify-center bg-pink px-3 py-1.5 text-sm/6 font-semibold text-black hover:bg-fuchsia-700 hover:text-white transition">{{__('website.order_me')}}</a>
                 <a href="/freelancers/freelancerName"
                     class="border-black border-2 uppercase flex w-full justify-center bg-green px-3 py-1.5 text-sm/6 font-semibold text-black hover:bg-emerald-600 hover:text-white transition">
-                    See my work</a>
+                    {{__('website.visit_profile')}}</a>
             </div>
         </div>
     </div>

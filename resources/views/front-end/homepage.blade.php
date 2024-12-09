@@ -2,13 +2,13 @@
 
 @section('content')
 
-    {{-- <div class="my-3">
-        @include('front-end.includes.alerts')
-    </div> --}}
-    
+{{-- <div class="my-3">
+    @include('front-end.includes.alerts')
+</div> --}}
+
 <div class="backgrounded" id="hero">
 
-  <section class="flex justify-center px-10">
+    <section class="flex justify-center px-10">
         <div class="flex-1 flex flex-col px-10 justify-around">
             <div class="relative py-10">
                 <img loading="lazy" src="{{ asset('front-end/assets/circ.svg') }}"
@@ -20,20 +20,17 @@
             <div class="relative text-center md:text-left">
                 <img loading="lazy" src="{{ asset('front-end/assets/star.svg') }}"
                     class="w-1/2 absolute top-[-90px] left-[6rem] -z-10" style="transform: rotate(160deg);">
-                <h1 class="text-5xl font-bold hepta uppercase">Super Offer</h1>
+                <h1 class="text-5xl font-bold hepta uppercase">{{__('website.super_offer')}}</h1>
                 <p class="text-md rubikv md:w-2/3 w-full mt-10 mx-auto md:mx-0">
-                    Whether you're a content creator, developer, or visionary, our platform gives you the space
-                    to shine. Build your profile, share your work, and get discovered by businesses seeking
-                    innovative solutions. Let your talent speak for itself and unlock endless opportunities.
+                    {{__('website.super_offer_details')}}
                 </p>
             </div>
             <div class="font-bold flex gap-10 mx-auto md:mx-0 my-4 md:my-0">
-                <a href="/talent-signup"
-                    class="hepta block w-[150px] py-2 bg-green text-center border-black border-4">Yes,
-                    I'm
-                    in</a>
+                <a href="/talent-signup" class="hepta block w-[150px] py-2 bg-green text-center border-black border-4">
+                    {{ __('website.super_offer_accept') }}</a>
                 <div class="rubikv block w-[150px] py-2 bg-white text-center border-black border-4 cursor-not-allowed">
-                    No</div>
+                    {{ __('website.super_offer_decline') }}
+                </div>
             </div>
             <div class="hepta font-bold text-4xl text-center md:text-left mt-5 md:mt-0">Brand BOoOoOst</div>
         </div>
@@ -42,8 +39,7 @@
             <div class="relative">
                 <div
                     class="hepta font-bold border-black border-t border-4 px-7 py-2 text-center bg-pink text-5xl absolute w-[30rem] h-[6rem] z-10 flex justify-center items-center right-0">
-                    Stop
-                    Reading!
+                    {{ __('website.stop_reading') }}
                 </div>
                 <div
                     class="hepta font-bold border-black border-4 px-7 py-2 absolute w-[30rem] h-[6rem] z-0 flex justify-center items-center top-[1rem] right-[-1rem]">
@@ -53,7 +49,7 @@
             <div class="relative right-[8rem]">
                 <div
                     class="hepta font-bold border-black border-4 px-7 py-2 text-center bg-green text-xl absolute w-[15rem] h-[3rem] z-10 flex justify-center items-center  right-0">
-                    Whatever
+                    {{__('website.whatever')}}
                 </div>
                 <div
                     class="hepta font-bold border-black border-4 px-7 py-2 absolute w-[15rem] h-[3rem] z-0 flex justify-center items-center top-[1rem] right-[-1rem]">
@@ -65,7 +61,7 @@
                     class="w-1/4 ms-auto">
                 <p
                     class="mt-16 hepta font-bold border-black ms-auto border-4 border-b px-7 py-2 text-center bg-pink text-3xl w-[15rem] h-[3rem] flex justify-center items-center">
-                    Man, Stop
+                    {{__('website.man_stop')}}
                 </p>
             </div>
 
@@ -111,17 +107,14 @@
 <div id="appearance"
     class="text-center md:text-left flex justify-center items-center bg-purple text-white p-10 h-[65rem] overflow-hidden border-black border-b-4">
     <div id="leftText" class="flex-1 flex flex-col font-extrabold items-between">
-        <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">Your Talent</span>
-        <span class="text-7xl hepta my-9" style="text-shadow: 10px 5px 0px black;">Their
-            Vision</span>
-        <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">Our Platform</span>
+        <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">{{__('website.your_talent')}}</span>
+        <span class="text-7xl hepta my-9" style="text-shadow: 10px 5px 0px black;">{{__('website.thier_vision')}}</span>
+        <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">{{__('website.our_platform')}}</span>
         <div class="mt-10 flex flex-col w-full md:w-1/2 gap-5">
             <a href="/talent-signup" class="bg-green px-4 py-4 border-black border-4 text-black hepta text-center"
-                style="box-shadow: 10px 10px 0 black;">I Have a
-                Talent</a>
+                style="box-shadow: 10px 10px 0 black;">{{__('website.i_have_a_talent')}}</a>
             <a href="/visionary-signup" class="bg-pink px-4 py-4 border-black border-4 text-black hepta text-center"
-                style="box-shadow: 10px 10px 0 black;">I Have a
-                Vision</a>
+                style="box-shadow: 10px 10px 0 black;">{{__('website.i_have_a_vision')}}</a>
         </div>
     </div>
     <div class="hidden md:flex flex-1 justify-center gap-8">
@@ -137,16 +130,14 @@
 </div>
 
 <div id="howItWorks">
-    <h2 class="text-6xl hepta font-bold text-center py-10">But, How it Works ?</h2>
+    <h2 class="text-6xl hepta font-bold text-center py-10">{{__('website.how_it_works')}}</h2>
     <div id="horizontal" class="flex overflow-x-hidden">
         <div id="horizontalContent"
             class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-green flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-full text-center md:text-left md:w-1/2">
-                    <h1 class="text-7xl hepta font-bold">Join The Community</h1>
-                    <p class="text-2xl rubikv mt-10">Sign up as a creator or a company manager to access a
-                        vibrant network of talent and opportunities. Becoming part of our platform is quick,
-                        easy, and completely free!</p>
+                    <h1 class="text-7xl hepta font-bold">{{__('website.join_the_community')}}</h1>
+                    <p class="text-2xl rubikv mt-10">{{__('website.join_the_community_description')}}</p>
                 </div>
                 <div class="block md:hidden absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/logo/PNG/Artboard 37.png') }}" alt="Brand Boost Logo" class="w-full">
@@ -161,10 +152,8 @@
             class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-pink flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-full text-center md:text-left md:w-1/2">
-                    <h1 class="text-7xl hepta font-bold">Showcase Your Work</h1>
-                    <p class="text-2xl rubikv mt-10">Creators can upload projects, add descriptions, and present
-                        their skills in the best light. Build an impressive portfolio that stands out to
-                        potential collaborators.</p>
+                    <h1 class="text-7xl hepta font-bold">{{__('website.showcase_your_work')}}</h1>
+                    <p class="text-2xl rubikv mt-10">{{__('website.showcase_your_work_description')}}</p>
                 </div>
                 <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/assets/world.svg') }}" alt="Brand Boost Logo" class="w-full">
@@ -176,10 +165,8 @@
             class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-blue flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-full text-center md:text-left md:w-1/2">
-                    <h1 class="text-7xl hepta font-bold">Connect and Collaborate</h1>
-                    <p class="text-2xl rubikv mt-10">Managers can explore projects, favorite creators, and
-                        initiate conversations directly. Discover the perfect fit for your project needs and
-                        bring your ideas to life.</p>
+                    <h1 class="text-7xl hepta font-bold">{{__('website.connect_and_collaborate')}}</h1>
+                    <p class="text-2xl rubikv mt-10">{{__('website.coonect_and_collaborate_description')}}</p>
                 </div>
                 <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/assets/at.svg') }}" alt="Brand Boost Logo" class="w-full">
@@ -191,10 +178,8 @@
             class="relative md:static border-black border-t-4 border-b-4 h-[100vh] w-[100vw] bg-purple flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-1/2 text-white">
-                    <h1 class="text-7xl hepta font-bold">Achieve Success</h1>
-                    <p class="text-2xl rubikv mt-10">With seamless communication and our support, create
-                        outstanding projects, gain recognition, and grow your network. Your success story starts
-                        here.</p>
+                    <h1 class="text-7xl hepta font-bold">{{__('website.achieve_seccess')}}</h1>
+                    <p class="text-2xl rubikv mt-10">{{__('website.achieve_seccess_description')}}</p>
                 </div>
                 <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
                     <img src="{{ asset('front-end/assets/star.svg') }}" alt="Brand Boost Logo" class="w-full">
@@ -206,10 +191,8 @@
 
 <div id="services" class="border-black border-t-4 border-b-4 hepta">
     <div class="text-center p-10 capitalize">
-        <h1 class="text-8xl font-bold">What about our services fields ?</h1>
-        <p class="text-2xl text-gray-600 mt-5">in this page we will show you a section with these four. You can
-            find all of them in the
-            services page</p>
+        <h1 class="text-8xl font-bold">{{__('website.what_about_our_services_fields')}}</h1>
+        <p class="text-2xl text-gray-600 mt-5">{{__('website.what_about_our_services_fields_description')}}</p>
     </div>
 
     <div class="bg-emerald-400 border-black border-t-4 flex flex-col gap-5 justify-center py-20">
@@ -263,7 +246,7 @@
         <div class="flex justify-center my-6">
             <a href="/services" style="box-shadow: 10px 10px 0 black;"
                 class="border-black border-4 text-3xl bg-green font-semibold py-3 px-6 capitalize">
-                See the Rest
+                {{__('website.see_the_rest')}}
             </a>
         </div>
     </div>
@@ -271,9 +254,8 @@
 
 <div id="talents" class="border-black border-t-4 border-b-4 hepta">
     <div class="text-center p-10 capitalize">
-        <h1 class="text-8xl font-bold">Did you ask about our talents ?</h1>
-        <p class="text-2xl text-gray-600 mt-5">here are some of our talents. You can find all of them in the
-            talents page</p>
+        <h1 class="text-8xl font-bold">{{__('website.did_you_ask_about_our_talent')}}</h1>
+        <p class="text-2xl text-gray-600 mt-5">{{__('website.did_you_ask_about_our_talent_description')}}</p>
     </div>
     <div class="bg-indigo-400 border-black border-t-4 flex flex-col gap-5 justify-center py-20">
         <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 p-10">
@@ -318,7 +300,7 @@
         <div class="flex justify-center">
             <a href="/freelancers" style="box-shadow: 10px 10px 0 black;"
                 class="border-black border-4 text-3xl bg-fuchsia-400 font-semibold py-3 px-6 capitalize">
-                Explore the talents
+                {{__('website.explore_the_talents')}}
             </a>
         </div>
     </div>

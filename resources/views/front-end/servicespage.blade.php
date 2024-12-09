@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="transparent-texture py-10">
-    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">Our Services</h1>
+    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">{{__('website.our_services')}}</h1>
     <div class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
         @forelse($services as $service)
             <div id="service-card" class="relative flex flex-col my-6 bg-white border-black border-4 w-96">
@@ -24,13 +24,13 @@
                     <a href="{{route('service-offers', $service->id)}}"
                         class="bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                         type="button">
-                        See the talents' services
+                        {{__('website.see_offers')}}
                     </a>
                 </div>
             </div>
         @empty
             <div>
-                <p class="py-3 px-5 text-center">No Offers found.</p>
+                <p class="py-3 px-5 text-center">{{__('website.no_services_found')}}</p>
             </div>
         @endforelse
 

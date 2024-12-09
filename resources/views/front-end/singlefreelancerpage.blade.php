@@ -4,9 +4,9 @@
 
 @section('freelancer-profile-content')
 <div class="container mx-auto py-8 px-4 bg-red-100 border-2 border-black">
-    <h2 class="text-3xl capitalize font-bold my-5">Informations</h2>
+    <h2 class="text-3xl capitalize font-bold my-5">{{__('website.informations')}}</h2>
     <div class="my-5">
-        <h4 class="capitalize font-bold my-2">About me</h4>
+        <h4 class="capitalize font-bold my-2">{{__('website.about_me')}}</h4>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio cupiditate ipsa temporibus similique tempore
             et quibusdam natus. Animi magnam quo, in ea, enim praesentium perspiciatis nihil, necessitatibus
             reprehenderit quaerat accusantium, Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
@@ -16,7 +16,7 @@
     </div>
 
     <div class="my-5">
-        <h4 class="capitalize font-bold my-2">My Skills</h4>
+        <h4 class="capitalize font-bold my-2">{{__('website.my_skills')}}</h4>
         <ul class="flex flex-wrap">
             <li class="m-2 bg-green p-2 border border-black">React</li>
             <li class="m-2 bg-green p-2 border border-black">Next</li>

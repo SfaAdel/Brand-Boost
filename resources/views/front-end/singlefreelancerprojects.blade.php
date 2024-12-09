@@ -4,7 +4,7 @@
 
 @section('freelancer-profile-content')
 <div class="container mx-auto py-8 px-4 bg-sky-100 border-2 border-black">
-    <h2 class="text-3xl capitalize font-bold my-5">Projects</h2>
+    <h2 class="text-3xl capitalize font-bold my-5">{{__('website_projects')}}</h2>
     <div class="my-5">
         <div class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
             <div class="relative flex flex-col my-6 bg-white border-black border-2 w-96">
@@ -28,7 +28,7 @@
                     <a href="/services/offers/offer"
                         class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                         type="button">
-                        Offer Details
+                        {{__('website.offer_details')}}
                     </a>
                 </div>
             </div>

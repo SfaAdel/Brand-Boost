@@ -22,21 +22,19 @@
         </div>
         <button id="follow-button" data-following="false"
             class="bg-gray-200 hover:bg-gray-50 transition p-2 mt-3.5 border-black border text-black hepta text-center text-sm">
-            <span id="follow-text">Follow</span>
-            <!-- <span>Unfollow</span> -->
+            <span id="follow-text">{{__('website.follow')}}</span>
             <span>
                 <img id="follow-icon" src="{{ asset('front-end/SVGs/heart.svg') }}" class="inline"
                     style="animation-iteration-count: 1;">
-                <!-- <img src="{{ asset('front-end/SVGs/heart-fill.svg') }}" class="inline"> -->
             </span>
         </button>
     </div>
     <div class="bg-gray-100">
         <div id="tabs" class="container bg-gray-100 mx-auto -mb-0.5">
             <a id="informations-tab" href="{{route('freelancerName', ['id' => $freelancer->id])}}"
-                class="bg-red-100 border-2 border-black {{ $isProjectsActive ? 'border-b-2' : 'border-b-red-100' }} p-2 text-xl inline-block">Informations</a>
+                class="bg-red-100 border-2 border-black {{ $isProjectsActive ? 'border-b-2' : 'border-b-red-100' }} p-2 text-xl inline-block">{{__('website.informations')}}</a>
             <a id="projects-tab" href="{{route('freelancerNameProjects', ['id' => $freelancer->id])}}"
-                class="bg-sky-100 border-2 border-black {{ $isProjectsActive ? 'border-b-sky-100' : 'border-b-2' }} p-2 text-xl inline-block">Projects</a>
+                class="bg-sky-100 border-2 border-black {{ $isProjectsActive ? 'border-b-sky-100' : 'border-b-2' }} p-2 text-xl inline-block">{{__('website.projects')}}</a>
         </div>
         @yield('freelancer-profile-content')
     </div>

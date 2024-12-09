@@ -4,7 +4,8 @@
 
 @section('content')
 <section class="transparent-texture py-10">
-    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7"> Recently Offers of {{ $service->name }} Service
+    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">{{__('website.offers_of_service')}}
+        {{ $service->name }}
     </h1>
     <p id="service-offer-description" class="text-slate-800 leading-normal text-xl hepta text-center">
         {{ $service->description }}
@@ -31,19 +32,14 @@
                     <button data-modal-open="offer-modal-{{ $freelancerService->id }}"
                         class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                         type="button">
-                        Order
+                        {{__('website.order')}}
                     </button>
-                    <!-- <a href="/services/offers/offer"
-                                                                                                        class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
-                                                                                                        type="button">
-                                                                                                        Offer Details
-                                                                                                    </a> -->
                 </div>
 
             </div>
         @empty
             <div>
-                <p class="py-3 px-5 text-center">No Offers found.</p>
+                <p class="py-3 px-5 text-center">{{__('website.no_services_found')}}</p>
             </div>
         @endforelse
 
@@ -53,17 +49,22 @@
                 <h1 class="text-5xl font-bold">{{ __('website.choose_who_you_are') }}</h1>
                 <div class="my-10 flex gap-5 flex-wrap lg:flex-nowrap">
                     <div class="flex flex-col gap-3">
-                        <h2 class="text-2xl text-slate-800">Talent : {{$freelancerService->freelancer->name}}</h2>
-                        <h2 class="text-2xl text-slate-800">Price per unit : ${{$freelancerService->price_per_unit}}
+                        <h2 class="text-2xl text-slate-800">{{__('website.talent')}} :
+                            {{$freelancerService->freelancer->name}}
                         </h2>
-                        <h2 class="text-2xl text-slate-800">Service : {{$freelancerService->service->name}}</h2>
+                        <h2 class="text-2xl text-slate-800">{{__('website.price_per_unit')}} :
+                            ${{$freelancerService->price_per_unit}}
+                        </h2>
+                        <h2 class="text-2xl text-slate-800">{{__('website.service')}} :
+                            {{$freelancerService->service->name}}
+                        </h2>
                     </div>
                 </div>
 
                 <div class="flex flex-col">
                     <form action="" class="mb-3 flex flex-col gap-3">
-                        <label for="describtion" clas="text-slate-800 capitalize">Write a Description for your
-                            order</label>
+                        <label for="describtion"
+                            clas="text-slate-800 capitalize">{{__('website.offer_description')}}</label>
                         <input type="text" name="describtion" class="outline-none border-2 border-black p-2 w-full">
                         <button href=""
                             class="font-bold bg-blue hover:bg-sky-500 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm capitalize">Order</button>

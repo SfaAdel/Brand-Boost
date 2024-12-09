@@ -4,10 +4,10 @@
 
 @section('content')
 <section class="transparent-texture py-10">
-    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">Our Talents</h1>
+    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">{{__('website.talents')}}</h1>
 
     <div>
-        <button data-modal-open="filters-modal" id="toggle-filters" class="bg-black p-2 text-white mx-auto hepta block">Filter ?</button>
+        <button data-modal-open="filters-modal" id="toggle-filters" class="bg-black p-2 text-white mx-auto hepta block">{{__('website.filter')}} ?</button>
     </div>
 
     <div id="filters-modal" class="modal-overlay hidden fixed inset-0 z-10 bg-black/75 p-10 overflow-auto">
@@ -16,7 +16,7 @@
                 <div class="w-full">
                     <label for="job-title" class="block text-sm font-medium">Job Title</label>
                     <select name="job_title" id="job-title" class="w-full p-2 border-black border-2 outline-none">
-                        <option value="">All Job Titles</option>
+                        <option value="">{{__('website.all_job_titles')}}</option>
                         @foreach ($jobTitles as $jobTitle)
                             <option value="{{ $jobTitle->id }}" {{ request('job_title') == $jobTitle->id ? 'selected' : '' }}>
                                 {{ $jobTitle->name }}
@@ -27,7 +27,7 @@
 
                 <div class="w-full">
                     <fieldset>
-                        <legend class="text-sm font-medium">Fields</legend>
+                        <legend class="text-sm font-medium">{{__('website.skills')}}</legend>
                         <div class="flex flex-wrap gap-2">
                             @foreach ($fields as $field)
                                 <label class="flex items-center">
@@ -42,10 +42,10 @@
 
                 <div class="w-full flex flex-col gap-2">
                     <button id="filter-btn" type="submit" class="block px-4 py-2 bg-black text-white font-bold hover:bg-gray-800 capitalize">
-                        Filter
+                    {{__('website.filter')}}
                     </button>
                     <button type="button" data-modal-close="filters-modal" id="close-filters" class="block px-4 py-2 bg-white text-black border-black border-2 font-bold hover:bg-gray-300 capitalize">
-                        Close
+                    {{__('website.close')}}
                     </button>
                 </div>
             </form>
@@ -78,7 +78,7 @@
                     <a href="{{route('freelancerName', ['id' => $freelancer->id])}}"
                         class="flex-1 bg-blue mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-black transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                         type="button">
-                        Visit Profile
+                        {{__('website.visit_profile')}}
                     </a>
                 </div>
             </div>

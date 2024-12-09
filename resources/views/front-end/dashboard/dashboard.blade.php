@@ -17,7 +17,7 @@
                 </svg>
             </div>
             <div class="text-right">
-                <h3 class="text-sm">Total Balance</h3>
+                <h3 class="text-sm">{{__('website.total_balance')}}</h3>
                 <h1 class="font-bold text-3xl">{{$totalBalance}} EGY</h1>
             </div>
         </div>
@@ -35,17 +35,19 @@
                 </svg>
             </div>
             <div class="text-right">
-                <h3 class="text-sm">Following</h3>
+                <h3 class="text-sm">{{__('website.following')}}</h3>
                 <h1 class="font-bold text-3xl">{{$following}}</h1>
             </div>
         </div>
     </div>
 
     <div class="p-10 text-center">
-        <h2 class="text-5xl font-bold my-2 capitalize">Welcome, {{Auth::guard('business_owner')->user()->name}}</h2>
-        <p class="">Here is your dashboard, you can see your balance, services, favourite talents, and orders.</p>
-        <p class="">It's your own Business area, feel free to create, edit or delete.</p>
-        <p class="">If you have any question, please contact us.</p>
+        <h2 class="text-5xl font-bold my-2 capitalize">{{__('website.welcome')}},
+            {{Auth::guard('business_owner')->user()->name}}
+        </h2>
+        <p class="">{{__('website.first_welcome')}}</p>
+        <p class="">{{__('website.second_welcome')}}</p>
+        <p class="">{{__('website.third_welcome')}}</p>
     </div>
 
 @else
@@ -62,7 +64,7 @@
                 </svg>
             </div>
             <div class="text-right">
-                <h3 class="text-sm">Total Balance</h3>
+                <h3 class="text-sm">{{__('website.total_balance')}}</h3>
                 <h1 class="font-bold text-3xl"> Egp {{$totalBalance}}</h1>
             </div>
         </div>
@@ -80,7 +82,7 @@
                 </svg>
             </div>
             <div class="text-right">
-                <h3 class="text-sm">Followers</h3>
+                <h3 class="text-sm">{{__('website.followers')}}</h3>
                 <h1 class="font-bold text-3xl">{{$followers ?? 'null'}}</h1>
             </div>
         </div>
@@ -96,7 +98,7 @@
                 </svg>
             </div>
             <div class="text-right">
-                <h3 class="text-sm">Projects</h3>
+                <h3 class="text-sm">{{__('website.projects')}}</h3>
                 <h1 class="font-bold text-3xl">{{$projects}}</h1>
             </div>
         </div>
@@ -104,10 +106,12 @@
     </div>
 
     <div class="p-10 text-center">
-        <h2 class="text-5xl font-bold my-2 capitalize">Welcome, {{Auth::guard('freelancer')->user()->name}}</h2>
-        <p class="">Here is your dashboard, you can see your balance, projects, services, and orders.</p>
-        <p class="">It's your own Business are, feel free to create, edit or delete.</p>
-        <p class="">If you have any question, please contact us.</p>
+        <h2 class="text-5xl font-bold my-2 capitalize">{{__('website.welcome')}},
+            {{Auth::guard('freelancer')->user()->name}}
+        </h2>
+        <p class="">{{__('website.first_welcome')}}</p>
+        <p class="">{{__('website.second_welcome')}}</p>
+        <p class="">{{__('website.third_welcome')}}</p>
     </div>
 @endif
 @endsection
