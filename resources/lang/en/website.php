@@ -216,4 +216,9 @@ return [
     'minutes' => 'minutes',
     'amount' => 'Amount',
     'total_price' => 'Total Price',
+    'profile_picture' => 'Profile Picture',
+    'new_order_warning' => "To place a new order check the services and offers of the freelancers. If an offer got your eye see it's details and order",
+    'order_from' => 'Order From',
+    'remove' => 'Remove',
+    'no_fav_freelancers' => 'No Favourite Talents Yet.',
 ];
