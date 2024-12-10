@@ -44,7 +44,7 @@
                 <li class="p-4"><a href="/">{{ __('website.home') }}</a></li>
                 <li class="p-4"><a href="/services">{{ __('website.services') }}</a></li>
                 <li class="p-4"><a href="/freelancers">{{ __('website.talents') }}</a></li>
-                <li class="p-4"><a href="about">{{ __('website.about') }}</a></li>
+                <li class="p-4"><a href="/about">{{ __('website.about') }}</a></li>
                 <li class="p-4"><a href="/contact">{{ __('website.contact') }}</a></li>
                 <li class="p-4"><a href="/blogs">{{__('website.blogs')}}</a></li>
             </ul>
@@ -188,7 +188,7 @@
                         {{ __('website.talent_description') }}
                     </p>
                     <a href="/talent-signup"
-                        class="font-bold bg-green hover:bg-emerald-600 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">I
+                        class="font-bold bg-green hover:bg-emerald-600 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">
                         {{ __('website.have_talent') }}
                     </a>
                 </div>
@@ -198,7 +198,7 @@
                         {{ __('website.visionary_description') }}
                     </p>
                     <a href="/visionary-signup"
-                        class="font-bold bg-pink hover:bg-fuchsia-400 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">I
+                        class="font-bold bg-pink hover:bg-fuchsia-400 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm">
                         {{ __('website.have_vision') }}
                     </a>
                 </div>

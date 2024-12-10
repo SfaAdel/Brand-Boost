@@ -13,13 +13,13 @@
         <img src="{{ asset('front-end/SocialMedia/brand boost sm (6).png') }}" alt="Offerer pic"
             class="w-36 h-36 rounded-full object-cover">
         <h1 class="text-4xl font-bold text-center capitalize">{{$freelancer->name}}</h1>
-        <p class="text-2xl font-bold text-center capitalize">Specialization</p>
-        <div class="flex gap-4 flex-wrap my-1">
+        <p class="text-2xl text-slate-800 text-center capitalize">{{$freelancer->jobTitle->name}}</p>
+        <!-- <div class="flex gap-4 flex-wrap my-1">
             <div class="flex items-center">
                 <img src="{{ asset('front-end/assets/position.svg') }}" class="w-5 h-5">
-                <p class="text-sm text-slate-700 capitalize">country</p>
+                <p class="text-sm text-slate-700 capitalize"></p>
             </div>
-        </div>
+        </div> -->
         @if (auth()->guard('business_owner')->check())
             <button id="follow-button-{{ $freelancer->id }}" data-following="{{ $isFollowing ? 'true' : 'false' }}"
                 data-freelancer-id="{{ $freelancer->id }}"
@@ -27,7 +27,7 @@
                 class="bg-gray-200 hover:bg-gray-50 transition p-2 mt-3.5 border-black border text-black hepta text-center text-sm">
                 <span id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
             __('website.follow')
-                            }}</span>
+                                                                                }}</span>
                 <span>
                     <img id="follow-icon-{{ $freelancer->id }}"
                         src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
