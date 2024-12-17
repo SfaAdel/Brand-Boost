@@ -17,7 +17,7 @@
                             <h4>{{ __('forms.update_advantage') }}</h4>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form action="{{ route('admin.advantages.update' , $advantage->id) }}" method="POST" class="px-3">
+                            <form action="{{ route('admin.advantages.update' , $advantage->id) }}" method="POST"  enctype="multipart/form-data" class="px-3">
                                 @csrf
                                 @method('PATCH')
 

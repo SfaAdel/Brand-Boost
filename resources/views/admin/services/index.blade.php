@@ -48,7 +48,7 @@
                                                 <td>
                                                        @if ($service->icon)
                                                            <img src="{{ asset('images/services/' . $service->icon) }}"
-                                                               alt="icon" class="mt-2" style="max-width: 5rem;">
+                                                               alt="{{ __('forms.service_icon') }}" class="mt-2" style="max-width: 5rem;">
                                                        @endif
                                                    </td>
                                                    <td>{{ $service->created_at->format('Y-m-d') }}</td>

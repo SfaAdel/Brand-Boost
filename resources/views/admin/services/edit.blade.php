@@ -17,7 +17,7 @@
                             <h4>{{ __('forms.update_service') }}</h4>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form action="{{ route('admin.services.update' , $service->id) }}" method="POST" class="px-3">
+                            <form action="{{ route('admin.services.update' , $service->id) }}" method="POST" class="px-3" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
 

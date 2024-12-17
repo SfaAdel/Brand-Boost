@@ -36,7 +36,13 @@ class FieldController extends Controller
     public function store(FieldRequest $request)
     {
         //
-         $fields = Field::create($request->all());
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/fields'), $ImageName);
+        }
+
+         $fields = Field::create($request->except('icon', '_token') +
+         ['icon' => $ImageName]);
 
         // $fields = Field::create($request->except( '_token'));
 
@@ -69,7 +75,14 @@ class FieldController extends Controller
     public function update(FieldRequest $request, Field $field)
     {
         //
-        $field->update($request->except('_token', '_method'));
+        $field->update($request->except('_token', '_method', 'icon'));
+
+         // Handle logo upload
+         if ($request->hasFile('icon')) {
+            $iconImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/fields'), $iconImageName);
+            $field->update(['icon' => $iconImageName]);
+        }
 
         return redirect()->route('admin.fields.index')->with('success', __('messages.field_updated'));
 

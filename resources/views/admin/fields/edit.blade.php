@@ -17,7 +17,7 @@
                             <h4>{{ __('forms.update_field') }}</h4>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form action="{{ route('admin.fields.update' , $field->id) }}" method="POST" class="px-3">
+                            <form action="{{ route('admin.fields.update' , $field->id) }}" method="POST" enctype="multipart/form-data" class="px-3">
                                 @csrf
                                 @method('PATCH')
 
@@ -37,6 +37,16 @@
                                 </div>
 
                  
+                                <div class="form-group mb-4">
+                                    <div class="form-group mb-4">
+                                        <label for="icon">{{ __('forms.icon') }}</label>
+                                        <input type="file" class="form-control" id="icon" name="icon">
+                                        @if ($field->icon)
+                                            <img src="{{ asset('images/fields/' . $field->icon) }}" alt="{{ __('forms.icon') }}"
+                                                class="mt-2" style="max-width: 5rem;">
+                                        @endif
+                                    </div>
+                                </div>
 
                                 <h5 class="my-3">{{ __('forms.translated_info') }} </h5>
 

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
+            $table->string('icon')->nullable();
             $table->enum('type', ['business_owner', 'freelancer', 'both']);
             $table->timestamps();
         });

@@ -47,6 +47,14 @@ class FieldRequest extends FormRequest
             ],
         ];
 
+        // Only require 'icon' for store requests (POST method)
+        if ($this->isMethod('post')) {
+            $rules['icon'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+        } else {
+            $rules['icon'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+        }
+
+
         return $rules;
     }
 
@@ -54,8 +62,10 @@ class FieldRequest extends FormRequest
     {
         return [
             'en.name' => __('forms.en_name'),
-            'ar.name' => __('forms.ar_name'),            
+            'ar.name' => __('forms.ar_name'),
             'type' => __('forms.type'),
+            'icon' => __('forms.icon'),
+
         ];
     }
 }

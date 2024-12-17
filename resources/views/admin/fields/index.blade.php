@@ -32,6 +32,7 @@
                                        <tr>
                                         <th>{{ __('forms.name') }}</th>
                                         <th>{{ __('forms.type') }}</th>
+                                        <th>{{ __('forms.icon') }}</th>
                                         <th>{{ __('forms.created_at') }}</th>
                                            <th>{{ __('forms.action') }}</th>
                                        </tr>
@@ -41,6 +42,12 @@
                                            <tr>
                                             <td>{{ $field->name }}</td>
                                             <td>{{ __('forms.' . $field->type) }}</td>
+                                            <td>
+                                                @if ($field->icon)
+                                                    <img src="{{ asset('images/fields/' . $field->icon) }}"
+                                                        alt="{{ __('forms.icon') }}" class="mt-2" style="max-width: 5rem;">
+                                                @endif
+                                            </td>
                                             <td>{{ $field->created_at->format('Y-m-d') }}</td>
 
                                                <td>

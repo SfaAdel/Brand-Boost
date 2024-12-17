@@ -8,8 +8,8 @@ use App\Models\Blog;
 use App\Models\Freelancer;
 use App\Models\BusinessOwner;
 use App\Models\FavoriteFreelancer;
-use App\Models\FreelancerProject;
 use App\Models\Field;
+use App\Models\FreelancerProject;
 use App\Models\FreelancerService;
 use App\Models\JobTitle;
 use App\Models\Service;
@@ -145,11 +145,11 @@ class HomeController extends Controller
         $setting = Setting::first();
 
         $isFollowing = FavoriteFreelancer::where('freelancer_id', $freelancer->id)
-            ->where('business_owner_id', Auth::guard('business_owner')->id())
-            ->exists();
+    ->where('business_owner_id', Auth::guard('business_owner')->id())
+    ->exists();
 
 
-        return view('front-end.singlefreelancerpage', compact('isFollowing', 'setting', 'freelancer'));
+        return view('front-end.singlefreelancerpage', compact('isFollowing','setting', 'freelancer'));
     }
 
     public function freelancer_projects($id)
@@ -158,16 +158,16 @@ class HomeController extends Controller
         $freelancer = Freelancer::findOrFail($id);
 
         $isFollowing = FavoriteFreelancer::where('freelancer_id', $freelancer->id)
-            ->where('business_owner_id', Auth::guard('business_owner')->id())
-            ->exists();
+    ->where('business_owner_id', Auth::guard('business_owner')->id())
+    ->exists();
 
-        $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
-            $query->where('freelancer_id', $id);
-        })->get();
+    $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
+        $query->where('freelancer_id', $id);
+    })->get();
         // Fetch settings
         $setting = Setting::first();
 
-        return view('front-end.singlefreelancerprojects', compact('freelancerProjects', 'isFollowing', 'setting', 'freelancer'));
+        return view('front-end.singlefreelancerprojects', compact('freelancerProjects','isFollowing','setting', 'freelancer'));
     }
 
 
