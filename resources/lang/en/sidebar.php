@@ -38,6 +38,7 @@ return [
     'contacts' => 'Contacts',
     'titles_list' => 'Titles List ',
     'contacts_list'=> 'Contacts List',
-
+'videos_list'=>'videos List',
+'hero_section_list'=>'Hero Section'
     
 ];

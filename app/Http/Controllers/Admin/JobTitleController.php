@@ -37,7 +37,7 @@ class JobTitleController extends Controller
     {
         //
                 // Create a new Tag without translations
-        $tag = JobTitle::create($request->all());
+        $tag = JobTitle::create($request->except('_token'));
 
         return redirect()->route('admin.job_titles.index')->with('success', __('messages.job_title_created'));
    

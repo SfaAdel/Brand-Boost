@@ -38,5 +38,6 @@ return [
     'contacts' => ' الرسائل',
     'titles_list' => 'قائمة العناوين',
     'contacts_list'=> 'قائمة الرسائل',
-
+'videos_list'=>'قائمة الفيديوهات',
+'hero_section_list'=>'السيكشن الرئيسي'
 ];

@@ -11,7 +11,7 @@ return [
     'error' => 'Error !',
     'success' => 'Success ! ',
 
-    'created'=>'Data Created successfully',
+    'created'=>'Data Stored successfully',
     'updated'=> 'Data Updated successfully',
     'deleted'=> 'Data Deleted successfully',
 

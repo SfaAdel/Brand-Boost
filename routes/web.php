@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FavoriteFreelancerController;
 use App\Http\Controllers\Admin\FreelancerProjectController;
 use App\Http\Controllers\Admin\FreelancerServiceController;
+use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\BusinessOwnerProfileController;
 use App\Http\Controllers\Front\FreelancerProfileController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\FavoriteFreelancer;
 use App\Models\FreelancerService;
+use App\Models\HeroSection;
 use App\Models\Order;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
@@ -155,6 +158,9 @@ Route::group([
             Route::resource('advantages', AdvantageController::class);
             Route::resource('blogs', BlogController::class);
             Route::resource('contacts', ContactController::class);
+            Route::resource('videos', VideoController::class);
+            Route::resource('hero_sections', HeroSectionController::class);
+
         });
     });
 

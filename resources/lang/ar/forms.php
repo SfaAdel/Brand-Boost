@@ -211,5 +211,17 @@ return [
 
     'pending_orders_list' => 'قائمة الطلبات المعلقة',
     'today_orders_list' => 'قائمة طلبات اليوم',
+    
+    'update_video' => 'تغيير الفيديو',
+    'videos_list'=>'قائمة الفيديوهات' ,
+    'video'=>'فيديو',
+
+    'add_new_hero_section'=>'اضافة عناصر جديدة',
+    'hero_sections_list'=>'قائمة العناصر',
+    'list'=>'القائمة',
+    'update'=>'تعديل البيانات',
+
+
+    
 ];
 

@@ -210,5 +210,15 @@ return [
 
     'pending_orders_list' => 'Pending Orders List',
     'today_orders_list' => "Today's Orders List",
+
+    'update_video'=>'Update Video',
+    'videos_list'=>'Videos List',
+    'video'=>'Video',
+
+    'add_new_hero_section'=>'Add New Titels For Hero Section',
+    'hero_sections_list'=>'List of Hero Section Titles',
+    'list'=>'Items List',
+    'update'=>'Update Data',
+
 ];
 

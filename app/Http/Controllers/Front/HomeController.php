@@ -11,11 +11,13 @@ use App\Models\FavoriteFreelancer;
 use App\Models\Field;
 use App\Models\FreelancerProject;
 use App\Models\FreelancerService;
+use App\Models\HeroSection;
 use App\Models\JobTitle;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\Title;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +53,16 @@ class HomeController extends Controller
 
         $setting = Setting::first();
 
-        return view('front-end.homepage', compact('services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
+        $heroVideo = Video::where('type', 'hero')->first();
+        $sec1Video = Video::where('type', 'sec1')->first();
+        $sec2Video = Video::where('type', 'sec2')->first();
+        $sec3Video = Video::where('type', 'sec3')->first();
+        $sec4Video = Video::where('type', 'sec4')->first();
+
+        $heroSections = HeroSection::all();
+
+
+        return view('front-end.homepage', compact('heroVideo','heroSections','sec4Video','sec3Video','sec2Video','sec1Video','services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
     }
 
 
@@ -109,7 +120,10 @@ class HomeController extends Controller
         $jobTitles = JobTitle::all();
         $setting = Setting::first();
 
-        return view('front-end.freelancerspage', compact('jobTitles', 'fields', 'setting', 'freelancers'));
+        $services = Service::all();
+
+
+        return view('front-end.freelancerspage', compact('services','jobTitles', 'fields', 'setting', 'freelancers'));
     }
 
 

@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessOwnerSeeder::class);
         $this->call(FreelancerSeeder::class);
         $this->call(ServiceSeeder::class);
+        $this->call(VideoSeeder::class);
+        
 
     }
 }

@@ -684,6 +684,22 @@
                                 <circle cx="12" cy="12" r="10"></circle>
                             </svg></span> {{ __('sidebar.setting_edit') }} </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.videos.index') }}"> <span class="icon"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-circle">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg></span> {{ __('sidebar.videos_list') }} </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.hero_sections.index') }}"> <span class="icon"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-circle">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg></span> {{ __('sidebar.hero_section_list') }} </a>
+                </li>
             </ul>
         </div>
     </div>

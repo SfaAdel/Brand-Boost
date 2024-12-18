@@ -9,9 +9,9 @@ return [
     'error' => 'خطأ ! ',
     'success' => 'نجاح ! ',
 
-    'created'=>'Data Created successfully',
-    'updated'=> 'Data Updated successfully',
-    'deleted'=> 'Data Deleted successfully',
+    'created'=>'تم حفظ البيانات بنجاح',
+    'updated'=> 'تم تعديل البيانات بنجاح',
+    'deleted'=> 'تم حذف البيانات بنجاح',
 
     'admin_created_successfully' => 'تم إنشاء المدير بنجاح.',
     'admin_created' => 'تم إنشاء المدير بنجاح',
