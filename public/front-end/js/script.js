@@ -96,47 +96,6 @@ document.addEventListener("click", (event) => {
     }
 });
 
-function truncateText(paragraph, maxLength) {
-    const text = paragraph.textContent;
-    if (text.length > maxLength) {
-        paragraph.textContent = text.slice(0, maxLength) + "...";
-    }
-}
-
-document.querySelectorAll("#service-offer-description").forEach((paragraph) => {
-    truncateText(paragraph, 180);
-});
-
-document.querySelectorAll("#service-description").forEach((paragraph) => {
-    truncateText(paragraph, 300);
-});
-
-document.querySelectorAll("#freelancer-description").forEach((paragraph) => {
-    truncateText(paragraph, 150);
-});
-
-document.querySelectorAll("#dashboardOrderDescription").forEach((paragraph) => {
-    truncateText(paragraph, 100);
-});
-
-document
-    .querySelectorAll("#dashboardProjectDescription")
-    .forEach((paragraph) => {
-        truncateText(paragraph, 100);
-    });
-
-document.querySelectorAll("#dashboardProjectName").forEach((paragraph) => {
-    truncateText(paragraph, 100);
-});
-
-document.querySelectorAll("#dashboardServiceName").forEach((paragraph) => {
-    truncateText(paragraph, 100);
-});
-
-document.querySelectorAll("#blogDescription").forEach((paragraph) => {
-    truncateText(paragraph, 100);
-});
-
 ////////////////////////////////////
 
 const button = document.getElementById("follow-button");

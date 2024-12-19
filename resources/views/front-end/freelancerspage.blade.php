@@ -10,8 +10,7 @@
         <div id="filters" class="hepta mx-auto w-[80%] py-8">
             <form id="filter-form" action="{{ route('freelancers') }}" method="GET" class="flex flex-wrap gap-4">
                 <div>
-                    <select name="service" id="service"
-                        class="w-full p-2 bg-white border rounded-lg border-gray-200 outline-none text-sm">
+                    <select name="service" id="service" class="p-2 bg-gr rounded-md outline-none text-sm">
                         <option value="">{{__('website.all')}}</option>
                         @foreach ($services as $service)
                             <option value="{{ $service->id }}" {{ request('service') == $service->id ? 'selected' : '' }}>
@@ -37,8 +36,8 @@
                         class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-72">
                         <div class="relative h-56 m-2.5 overflow-hidden text-white">
                             <img src="{{ isset($freelancer->profile_image) && $freelancer->profile_image != ''
-                ? asset('images/freelancers/profile/' . $freelancer->profile_image)
-                : asset('front-end/socialMedia/brand boost sm (8).png') }}" alt="Talent Pic"
+                    ? asset('images/freelancers/profile/' . $freelancer->profile_image)
+                    : asset('front-end/socialMedia/brand boost sm (8).png') }}" alt="Talent Pic"
                                 class="w-full h-full object-cover rounded-lg">
                         </div>
                         <div class="p-4 text-center">
@@ -48,7 +47,7 @@
                             <p class="text-slate-800 text-md font-semibold my-1">
                                 {{$freelancer->jobTitle->name}}
                             </p>
-                            <p id="freelancer-description" class="text-slate-600 text-sm leading-normal font-light mt-2">
+                            <p class="text-slate-600 text-sm leading-normal font-light mt-2 freelancer-description">
                                 {{$freelancer->bio}}
                             </p>
                         </div>

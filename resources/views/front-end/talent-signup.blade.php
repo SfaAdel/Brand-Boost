@@ -40,10 +40,10 @@
                     </div>
 
                     <div>
-                        <label for="cash-number"
+                        <label for="cash_number"
                             class="block text-sm/6 font-medium text-gray-100">{{ __('website.cash_number_label') }}</label>
                         <div class="mt-2">
-                            <input type="number" name="cash-number" id="cash-number" required
+                            <input type="number" name="cash_number" id="cash_number" required
                                 class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
                         </div>
                     </div>

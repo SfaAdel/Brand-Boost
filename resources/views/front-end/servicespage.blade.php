@@ -18,7 +18,7 @@
                     <h4 class="mb-1 text-2xl font-semibold text-slate-50 capitalize">
                         {{$service->name}}
                     </h4>
-                    <p class="text-base text-slate-200 mt-4 font-light ">
+                    <p id="service-description" class="text-base text-slate-200 mt-4 font-light ">
                         {{$service->description}}
                     </p>
                 </div>

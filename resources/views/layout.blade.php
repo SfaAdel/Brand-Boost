@@ -260,6 +260,10 @@
                         {{ __('website.copyright', ['year' => now()->year]) }}
                         {{-- <!-- -->, All Rights Reserved by Brand Boost LTD. --}}
                     </p>
+                    <br>
+                    <p class="mx-2 text-[10px] font-normal text-white md:text-[12px]">
+                        {{ __('website.developed_by') }}
+                    </p>
                 </div>
             </div>
         </footer>

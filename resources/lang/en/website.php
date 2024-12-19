@@ -231,4 +231,6 @@ return [
     'fields' => 'Fields',
     'all' => 'All',
     'no_freelancers_found' => 'No freelancers found for the selected filters.',
+    'developed_by' => 'Developed by Wikmedia Agency',
+    'no_projects_found' => 'No Projects found.',
 ];
