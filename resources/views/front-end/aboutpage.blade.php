@@ -18,7 +18,7 @@
         <p class="text-2xl mt-10">This small journy on this page will let you know more about us.</p>
     </section>
 
-    <section class="relative flex flex-col items-center min-h-96 py-24 px-[10vw] text-center bg-pink">
+    <section class="relative flex flex-col items-center min-h-96 py-24 px-[10vw] text-center bg-pi">
         <div class="absolute top-0 left-0 w-full overflow-hidden leading-none">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
                 preserveAspectRatio="none" class="relative block w-[calc(139%+1.3px)] h-[150px]">
@@ -35,7 +35,7 @@
         style="aspect-ratio: 950/300; background-image: url('{{ asset('front-end/SVGs/stacked-waves.svg') }}">
     </div>
 
-    <section class="relative flex flex-col items-center min-h-96 py-24 px-[10vw] text-center bg-purple text-white">
+    <section class="relative flex flex-col items-center min-h-96 py-24 px-[10vw] text-center bg-pr text-white">
         <h1 class="text-7xl font-bold uppercase text-center">What is<br />Brand Boost</h1>
         <p class="text-2xl mt-10">This small journy on this page will let you know more about us.</p>
     </section>

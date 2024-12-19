@@ -221,4 +221,8 @@ return [
     'order_from' => 'طلب من',
     'remove' => 'إزالة',
     'no_fav_freelancers' => 'لا توجد مواهب مفضلة حتى الآن.',
+
+    'back_home' => 'العودة للرئيسية',
+    'has_no_skills' => "ليس لديه مهارات بعد",
+    'project_details' => 'تفاصيل العرض',
 ];

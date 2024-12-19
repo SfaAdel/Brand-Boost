@@ -1,66 +1,67 @@
-// import { gsap } from "../../../node_modules/gsap/gsap-core.js";
+const navContainer = document.querySelector(".nav-container");
+const navbarButton = document.querySelector(".nav-toggle-button");
+const navbarLogo = document.querySelector("#navbar-logo");
+const listItems = document.querySelectorAll(".nav-container ul li");
+const navbarLg = document.getElementById("navbar-lg");
+const navbar = document.getElementById("navbar");
+const heroSection = document.getElementById("hero");
 
-gsap.registerPlugin(ScrollTrigger);
+function animateNavContainer(show) {
+    if (show) {
+        navContainer.style.transform = "translateY(0%)";
+        navContainer.style.opacity = "1";
+        listItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.transform = "translateX(0)";
+                item.style.opacity = "1";
+                item.style.transition = `transform 0.5s ease-out ${
+                    index * 0.1
+                }s, opacity 0.5s ease-out ${index * 0.1}s`;
+            }, 1000);
+        });
+    } else {
+        navContainer.style.transform = "translateY(-100%)";
+        navContainer.style.opacity = "0";
+        listItems.forEach((item) => {
+            item.style.transform = "translateX(-100%)";
+            item.style.opacity = "0";
+            item.style.transition = "none";
+        });
+    }
+}
 
-// Appearance
-gsap.from("#leftImgs", {
-    scrollTrigger: {
-        trigger: "#leftImgs",
-        toggleActions: "restart pause resume none",
-    },
-    x: "-50%",
-    y: "-50%",
-    opacity: 0,
-    duration: 1,
-});
-gsap.from("#rightImgs", {
-    scrollTrigger: {
-        trigger: "#leftImgs",
-        toggleActions: "restart pause resume none",
-    },
-    x: "50%",
-    y: "50%",
-    opacity: 0,
-    duration: 1,
-});
+navbarButton.addEventListener("click", (e) => {
+    const button = e.currentTarget;
+    const isActive = button.dataset.active === "true";
 
-// Horizontal
-const horizontalContents = gsap.utils.toArray("#horizontal #horizontalContent");
-gsap.to(horizontalContents, {
-    xPercent: -100 * (horizontalContents.length - 1),
-    scrollTrigger: {
-        trigger: "#horizontal",
-        pin: true,
-        scrub: 1,
-    },
-});
-
-// Services
-const services = gsap.utils.toArray("#service");
-gsap.from(services, {
-    scrollTrigger: {
-        trigger: "#service",
-        toggleActions: "restart pause resume none",
-    },
-    y: "-50%",
-    opacity: 0,
-    duration: 1.5,
-    scrub: 1,
+    if (!isActive) {
+        button.dataset.active = "true";
+        navbar.classList.remove("bg-pr");
+        animateNavContainer(true);
+    } else {
+        button.dataset.active = "false";
+        animateNavContainer(false);
+    }
 });
 
-const services_cards = gsap.utils.toArray("#service-card");
-gsap.from(services_cards, {
-    scrollTrigger: {
-        trigger: "#service-card",
-        toggleActions: "restart pause resume none",
-    },
-    y: "50%",
-    opacity: 0,
-    duration: 1.5,
-    scrub: 1,
-});
+let lastScrollTop = 0;
+window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    navbarLg.classList.add("bg-pr");
+    if (navbarButton.dataset.active === "false") {
+        navbar.classList.add("bg-pr");
+    }
 
-// //////////////////////////////////////////
+    if (scrollTop > lastScrollTop) {
+        navbarLg.classList.add("-translate-y-full");
+        navbar.classList.add("-translate-y-full");
+    } else {
+        navbarLg.classList.remove("-translate-y-full");
+        navbar.classList.remove("-translate-y-full");
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
 
 document.addEventListener("click", (event) => {
     const target = event.target;
@@ -68,25 +69,32 @@ document.addEventListener("click", (event) => {
     // Open modal
     if (target.dataset.modalOpen) {
         const modalId = target.dataset.modalOpen;
-        document.getElementById(modalId).classList.remove("hidden");
-        document.body.classList.add("overflow-hidden");
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove("hidden");
+            document.body.classList.add("overflow-hidden");
+        }
     }
 
     // Close modal
     if (target.dataset.modalClose) {
         const modalId = target.dataset.modalClose;
-        document.getElementById(modalId).classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add("hidden");
+            document.body.classList.remove("overflow-hidden");
+        }
     }
 
     // Close modal by clicking outside the modal content
-    if (target.classList.contains("modal-overlay")) {
+    if (
+        target.classList.contains("modal-overlay") &&
+        !target.contains(event.target.closest(".modal-content"))
+    ) {
         target.classList.add("hidden");
         document.body.classList.remove("overflow-hidden");
     }
 });
-
-//////////////////////////////////////
 
 function truncateText(paragraph, maxLength) {
     const text = paragraph.textContent;

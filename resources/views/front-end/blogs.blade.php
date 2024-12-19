@@ -3,30 +3,30 @@
 @section('title', 'Blogs')
 
 @section('content')
-<section class="transparent-texture py-10">
-    <h1 class="text-6xl font-bold text-center hepta uppercase pt-7">{{__('website.our_blogs')}}</h1>
+<section class="bg-pr py-20">
+    <h1 class="text-6xl font-bold text-center text-white hepta uppercase pt-7">{{__('website.our_blogs')}}</h1>
 
     <!-- Tags-Based Filtration -->
     <div class="max-w-[85rem] px-4 py-6 sm:px-6 lg:px-8 lg:py-6 mx-auto">
         <div class="flex flex-wrap gap-4 justify-center">
             <!-- Tags -->
             <button id="tag-button"
-                class="px-4 py-2 border-2 border-black text-sm font-medium bg-gray-200 hover:bg-black hover:text-white transition"
+                class="px-4 py-2 bg-gr border rounded-lg border-gray-200 text-sm font-medium hover:bg-gr hover:text-black transition"
                 data-tag="all">
                 All
             </button>
             <button id="tag-button"
-                class="px-4 py-2 border-2 border-black text-sm font-medium bg-green hover:bg-black hover:text-white transition"
+                class="px-4 py-2 bg-white border rounded-lg border-gray-200 text-sm font-medium bg-green hover:bg-gr hover:text-black transition"
                 data-tag="technology">
                 Technology
             </button>
             <button id="tag-button"
-                class="px-4 py-2 border-2 border-black text-sm font-medium bg-blue hover:bg-black hover:text-white transition"
+                class="px-4 py-2 bg-white border rounded-lg border-gray-200 text-sm font-medium bg-blue hover:bg-gr hover:text-black transition"
                 data-tag="marketing">
                 Marketing
             </button>
             <button id="tag-button"
-                class="px-4 py-2 border-2 border-black text-sm font-medium bg-pink hover:bg-black hover:text-white transition"
+                class="px-4 py-2 bg-white border rounded-lg border-gray-200 text-sm font-medium bg-pink hover:bg-gr hover:text-black transition"
                 data-tag="design">
                 Design
             </button>
@@ -34,10 +34,10 @@
     </div>
     <!-- End Tags-Based Filtration -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
+        <div id="blogs-page" class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
 
             <a data-tags="design" id="blog-item"
-                class="group block border-black border-2 overflow-hidden focus:outline-none bg-slate-50 hepta"
+                class="group block bg-gr border rounded-lg border-green-200 overflow-hidden focus:outline-none hepta"
                 href="/blogs/blog">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
                     <div class="shrink-0 relative overflow-hidden w-full sm:w-56 h-44">
@@ -49,13 +49,13 @@
                         <h3 class="text-xl font-semibold text-black group-hover:text-gray-800">
                             First Blog
                         </h3>
-                        <p id="blogDescription" class="mt-3 text-gray-600 dark:text-neutral-400">
+                        <p id="blogDescription" class="mt-3 text-gray-800">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia numquam iusto voluptatum
                             reprehenderit odio, vero alias vel excepturi ea, similique tempora! Fugit quibusdam quisquam
                             dignissimos amet doloribus tempore blanditiis ut.
                         </p>
                         <p
-                            class="mt-4 inline-flex items-center gap-x-1 text-sm text-blue decoration-2 group-hover:underline group-focus:underline font-medium dark:text-blue-500">
+                            class="mt-4 inline-flex items-center gap-x-1 text-sm text-pr decoration-2 group-hover:underline group-focus:underline font-medium">
                             Read more
                             <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -68,7 +68,7 @@
             </a>
 
             <a data-tags="technology" id="blog-item"
-                class="group block border-black border-2 overflow-hidden focus:outline-none bg-slate-50 hepta"
+                class="group block bg-gr border rounded-lg border-green-200 overflow-hidden focus:outline-none hepta"
                 href="/blogs/blog">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
                     <div class="shrink-0 relative overflow-hidden w-full sm:w-56 h-44">
@@ -80,13 +80,13 @@
                         <h3 class="text-xl font-semibold text-black group-hover:text-gray-800">
                             First Blog
                         </h3>
-                        <p id="blogDescription" class="mt-3 text-gray-600 dark:text-neutral-400">
+                        <p id="blogDescription" class="mt-3 text-gray-800">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia numquam iusto voluptatum
                             reprehenderit odio, vero alias vel excepturi ea, similique tempora! Fugit quibusdam quisquam
                             dignissimos amet doloribus tempore blanditiis ut.
                         </p>
                         <p
-                            class="mt-4 inline-flex items-center gap-x-1 text-sm text-blue decoration-2 group-hover:underline group-focus:underline font-medium dark:text-blue-500">
+                            class="mt-4 inline-flex items-center gap-x-1 text-sm text-pr decoration-2 group-hover:underline group-focus:underline font-medium">
                             Read more
                             <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -109,8 +109,10 @@
 
         tagButtons.forEach((button) => {
             button.addEventListener("click", () => {
-                tagButtons.forEach((btn) => btn.classList.remove("bg-black", "text-white"));
-                button.classList.add("bg-black", "text-white");
+                tagButtons.forEach((btn) => btn.classList.remove("bg-gr"));
+                tagButtons.forEach((btn) => btn.classList.add("bg-white"));
+                button.classList.remove("bg-white");
+                button.classList.add("bg-gr");
 
                 const tag = button.dataset.tag;
 

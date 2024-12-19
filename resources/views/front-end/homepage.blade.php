@@ -6,70 +6,38 @@
     @include('front-end.includes.alerts')
 </div> --}}
 
-<div class="backgrounded" id="hero">
-
-    <section class="flex justify-center px-10">
-        <div class="flex-1 flex flex-col px-10 justify-around">
-            <div class="relative py-10">
-                <img loading="lazy" src="{{ asset('front-end/assets/circ.svg') }}"
-                    class="w-1/2 absolute left-[150px] top-[-50px] md:left-0 -z-10">
-                <img loading="lazy" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo"
-                    class="w-1/2 mx-auto md:mx-0 relative">
-            </div>
-
-            <div class="relative text-center md:text-left">
-                <img loading="lazy" src="{{ asset('front-end/assets/star.svg') }}"
-                    class="w-1/2 absolute top-[-90px] left-[6rem] -z-10" style="transform: rotate(160deg);">
-                <h1 class="text-5xl font-bold hepta uppercase">{{__('website.super_offer')}}</h1>
-                <p class="text-md rubikv md:w-2/3 w-full mt-10 mx-auto md:mx-0">
-                    {{__('website.super_offer_details')}}
-                </p>
-            </div>
-            <div class="font-bold flex gap-10 mx-auto md:mx-0 my-4 md:my-0">
-                <a href="/talent-signup" class="hepta block w-[150px] py-2 bg-green text-center border-black border-4">
-                    {{ __('website.super_offer_accept') }}</a>
-                <div class="rubikv block w-[150px] py-2 bg-white text-center border-black border-4 cursor-not-allowed">
-                    {{ __('website.super_offer_decline') }}
-                </div>
-            </div>
-            <div class="hepta font-bold text-4xl text-center md:text-left mt-5 md:mt-0">Brand BOoOoOst</div>
-        </div>
-
-        <div class="hidden flex-1 md:flex flex-col gap-40">
-            <div class="relative">
-                <div
-                    class="hepta font-bold border-black border-t border-4 px-7 py-2 text-center bg-pink text-5xl absolute w-[30rem] h-[6rem] z-10 flex justify-center items-center right-0">
-                    {{ __('website.stop_reading') }}
-                </div>
-                <div
-                    class="hepta font-bold border-black border-4 px-7 py-2 absolute w-[30rem] h-[6rem] z-0 flex justify-center items-center top-[1rem] right-[-1rem]">
-                </div>
-            </div>
-
-            <div class="relative right-[8rem]">
-                <div
-                    class="hepta font-bold border-black border-4 px-7 py-2 text-center bg-green text-xl absolute w-[15rem] h-[3rem] z-10 flex justify-center items-center  right-0">
-                    {{__('website.whatever')}}
-                </div>
-                <div
-                    class="hepta font-bold border-black border-4 px-7 py-2 absolute w-[15rem] h-[3rem] z-0 flex justify-center items-center top-[1rem] right-[-1rem]">
-                </div>
-            </div>
-
-            <div class="mt-auto">
-                <img loading="lazy" src="{{ asset('front-end/logo/PNG/Artboard 33.png') }}" alt="Brand Boost Logo"
-                    class="w-1/4 ms-auto">
-                <p
-                    class="mt-16 hepta font-bold border-black ms-auto border-4 border-b px-7 py-2 text-center bg-pink text-3xl w-[15rem] h-[3rem] flex justify-center items-center">
-                    {{__('website.man_stop')}}
-                </p>
-            </div>
-
-        </div>
-    </section>
+<div id="loader" class="font-hepta h-full w-full fixed top-0 bg-bl z-50 flex items-center justify-center gap-4">
+    <h4 class="capitalize text-[2vw] text-white">We are,</h4>
+    <h4 class="capitalize text-[2vw] text-gr">The new way,</h4>
+    <h4 class="capitalize text-[2vw] text-pi">The reality</h4>
 </div>
 
-<div class="marquee-container bg-green border-black border-t-4 border-b-4">
+<section id="hero" class="relative">
+    <div class="relative w-[100vw] h-[100vh] overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-pr opacity-75 z-10"></div>
+        <video autoplay muted loop loading="lazy" src="{{asset('front-end/assets/v2.mp4')}}"
+            class="h-full w-full object-cover absolute"></video>
+    </div>
+    <div id="hero-content"
+        class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col md:flex-row justify-center items-center gap-1 md:gap-4 z-20">
+        <!-- <p id="hero-content-text"
+            class="opacity-0 flex-[0] md:flex-1 mb-5 md:mb-0 flex items-center justify-center text-center md:text-left font-acworth text-xl md:text-2xl w-full text-white">
+            We are
+        </p> -->
+
+        <div class="flex flex-col gap-5 text-white font-acworth">
+            <h2 class="text-8xl font-bold uppercase">We are</h2>
+            <h2 class="text-7xl font-bold uppercase">The new vision</h2>
+            <h2 class="text-6xl font-bold uppercase">Start with us</h2>
+        </div>
+        <div id="hero-content-image"
+            class="opacity-0 flex-[0] md:flex-1 flex justify-center md:justify-end items-center">
+            <img class="w-4/5 md:w-1/2" src="{{asset('front-end/logo/PNG/BB.png')}}" alt="Brand Boost Logo">
+        </div>
+        <div />
+</section>
+
+<div class="marquee-container bg-gr border-bl border-b-2 border-t-2">
     <ul>
         <li><img loading="lazy" src="{{ asset('front-end/logo/PNG/Artboard 10.png') }}" class="w-[2rem]"></li>
         <li><img loading="lazy" src="{{ asset('front-end/assets/star.svg') }}" class="w-[2rem]"></li>
@@ -104,36 +72,41 @@
     </ul>
 </div>
 
-<div id="appearance"
-    class="text-center md:text-left flex justify-center items-center bg-purple text-white p-10 h-[65rem] overflow-hidden border-black border-b-4">
-    <div id="leftText" class="flex-1 flex flex-col font-extrabold items-between">
-        <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">{{__('website.your_talent')}}</span>
-        <span class="text-7xl hepta my-9" style="text-shadow: 10px 5px 0px black;">{{__('website.thier_vision')}}</span>
-        <span class="text-9xl rubiki" style="text-shadow: 10px 5px 0px black;">{{__('website.our_platform')}}</span>
-        <div class="mt-10 flex flex-col w-full md:w-1/2 gap-5">
-            <a href="/talent-signup" class="bg-green px-4 py-4 border-black border-4 text-black hepta text-center"
-                style="box-shadow: 10px 10px 0 black;">{{__('website.i_have_a_talent')}}</a>
-            <a href="/visionary-signup" class="bg-pink px-4 py-4 border-black border-4 text-black hepta text-center"
-                style="box-shadow: 10px 10px 0 black;">{{__('website.i_have_a_vision')}}</a>
+<div id="shots" class="flex justify-center items-center h-[65rem] overflow-hidden">
+    <div id="shots-left-content"
+        class="bg-gr h-full flex-[1] flex flex-col gap-0 md:gap-14 font-extrabold items-between font-rubiki justify-center items-center">
+        <h2 class="text-pr text-5xl font-bold capitalize text-left">About us</h2>
+        <p class="text-3xl px-10 text-bl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis,
+            iure a totam dolorum
+            voluptatibus
+            quo cumque voluptatum aliquid ipsa doloremque beatae natus et sunt ipsum! Et repellat amet minus corrupti.
+        </p>
+        <div class="w-1/2">
+            <a href="/signin"
+                class="flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{__('website.login')}}</a>
         </div>
     </div>
-    <div class="hidden md:flex flex-1 justify-center gap-8">
-        <div class="flex flex-col mt-6 gap-10 items-center" id="leftImgs">
-            <img loading="lazy" src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}" class="rounded-xl">
-            <img loading="lazy" src="{{ asset('front-end/SocialMedia/brand boost sm (2).jpg') }}" class="rounded-xl">
+    <div id="shots-right-content" class="bg-bl h-full hidden md:flex flex-[1] justify-center items-center ">
+        <div class="flex flex-col mt-8 gap-10 items-center" id="leftImgs">
+            <img src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}"
+                class="shot-item-left rounded-xl w-4/5">
+            <img src="{{ asset('front-end/SocialMedia/brand boost sm (2).jpg') }}"
+                class="shot-item-left rounded-xl w-4/5">
         </div>
-        <div class="flex flex-col mb-6 gap-10 items-center" id="rightImgs">
-            <img loading="lazy" src="{{ asset('front-end/SocialMedia/brand boost sm (3).jpg') }}" class="rounded-xl">
-            <img loading="lazy" src="{{ asset('front-end/SocialMedia/brand boost sm (4).jpg') }}" class="rounded-xl">
+        <div class="flex flex-col mb-8 gap-10 items-center" id="rightImgs">
+            <img src="{{ asset('front-end/SocialMedia/brand boost sm (3).jpg') }}"
+                class="shot-item-right rounded-xl w-4/5">
+            <img src="{{ asset('front-end/SocialMedia/brand boost sm (4).jpg') }}"
+                class="shot-item-right rounded-xl w-4/5">
         </div>
     </div>
 </div>
 
 <div id="howItWorks">
-    <h2 class="text-6xl hepta font-bold text-center py-10">{{__('website.how_it_works')}}</h2>
+    <h2 class="text-6xl hepta font-bold text-center py-10 bg-bl text-white">{{__('website.how_it_works')}}</h2>
     <div id="horizontal" class="flex overflow-x-hidden">
         <div id="horizontalContent"
-            class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-green flex-shrink-0 flex items-center">
+            class="relative md:static h-[100vh] w-[100vw] bg-gr flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-full text-center md:text-left md:w-1/2">
                     <h1 class="text-7xl hepta font-bold">{{__('website.join_the_community')}}</h1>
@@ -149,7 +122,7 @@
         </div>
 
         <div id="horizontalContent"
-            class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-pink flex-shrink-0 flex items-center">
+            class="relative md:static h-[100vh] w-[100vw] bg-pi flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-full text-center md:text-left md:w-1/2">
                     <h1 class="text-7xl hepta font-bold">{{__('website.showcase_your_work')}}</h1>
@@ -162,7 +135,7 @@
         </div>
 
         <div id="horizontalContent"
-            class="relative md:static border-black border-t-4 h-[100vh] w-[100vw] bg-blue flex-shrink-0 flex items-center">
+            class="relative md:static h-[100vh] w-[100vw] bg-bu flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-full text-center md:text-left md:w-1/2">
                     <h1 class="text-7xl hepta font-bold">{{__('website.connect_and_collaborate')}}</h1>
@@ -175,7 +148,7 @@
         </div>
 
         <div id="horizontalContent"
-            class="relative md:static border-black border-t-4 border-b-4 h-[100vh] w-[100vw] bg-purple flex-shrink-0 flex items-center">
+            class="relative md:static h-[100vh] w-[100vw] bg-pr flex-shrink-0 flex items-center">
             <div class="flex items-center justify-between h-full px-20">
                 <div class="w-1/2 text-white">
                     <h1 class="text-7xl hepta font-bold">{{__('website.achieve_seccess')}}</h1>
@@ -189,120 +162,115 @@
     </div>
 </div>
 
-<div id="services" class="border-black border-t-4 border-b-4 hepta">
-    <div class="text-center p-10 capitalize">
-        <h1 class="text-8xl font-bold">{{__('website.what_about_our_services_fields')}}</h1>
-        <p class="text-2xl text-gray-600 mt-5">{{__('website.what_about_our_services_fields_description')}}</p>
-    </div>
+<div id="services" class="min-h-[100vh] w-full relative pb-[100px] px-[70px] bg-gr">
+    <h2
+        class="text-6xl hepta font-bold text-center py-10 bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 to-neutral-700">
+        {{__('website.services')}}
+    </h2>
 
-    <div class="bg-emerald-400 border-black border-t-4 flex flex-col gap-5 justify-center py-20">
-        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 p-10">
-            <div class="h-[28rem] relative my-6" id="service">
-                <div class="w-full h-full absolute bg-gradient-to-t from-gray-800/50 to-gray-600/50"></div>
-                <img src="https://images.unsplash.com/photo-1732020743205-9a1da14e36fd?q=80&w=1565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div class="w-3/4 h-1/2 bg-white p-6 shadow-lg absolute -bottom-8 left-0 right-0 mx-auto">
-                    <h5 class="text-purple font-bold text-lg leading-7 py-2">Web Development</h5>
-                    <p class="text-gray-700" id="serviceDescription">Build responsive and dynamic websites
-                        tailored to
-                        your needs.</p>
-                </div>
+    <div id="services-container" class="flex flex-wrap gap-5 justify-center pb-24 font-rubikv">
+        <div id="service" class="flex flex-col bg-pr shadow-sm border border-purple-900 rounded-lg my-6 w-96">
+            <div class="overflow-hidden rounded-md h-80 flex justify-center items-center">
+                <img class="w-full h-full object-cover"
+                    src="{{asset('front-end/SocialMedia/brand boost sm (2).jpg') }}" />
             </div>
-
-            <div class="h-[28rem] relative my-6" id="service">
-                <div class="w-full h-full absolute bg-gradient-to-t from-gray-800/50 to-gray-600/50"></div>
-                <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div class="w-3/4 h-1/2 bg-white p-6 shadow-lg absolute -bottom-8 left-0 right-0 mx-auto">
-                    <h5 class="text-purple font-bold text-lg leading-7 py-2">Graphic Design</h5>
-                    <p class="text-gray-700" id="serviceDescription">Create visually appealing designs for your
-                        brand
-                        or projects.</p>
-                </div>
+            <div class="p-6">
+                <h4 class="mb-1 text-2xl font-semibold text-slate-50 capitalize">
+                    Natalie Paisley
+                </h4>
+                <p class="text-base text-slate-200 mt-4 font-light ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione saepe minus quo. Laboriosam
+                    perspiciatis nihil obcaecati aut molestiae! Repellat aliquid tenetur soluta, ipsum qui id sapiente
+                    eaque itaque asperiores possimus!
+                </p>
             </div>
-            <div class="h-[28rem] relative my-6" id=" service">
-                <div class="w-full h-full absolute bg-gradient-to-t from-gray-800/50 to-gray-600/50"></div>
-                <img src="https://images.unsplash.com/photo-1678798694643-2b8fddcf900f?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div class="w-3/4 h-1/2 bg-white p-6 shadow-lg absolute -bottom-8 left-0 right-0 mx-auto">
-                    <h5 class="text-purple font-bold text-lg leading-7 py-2">Content Creation</h5>
-                    <p class="text-gray-700" id="serviceDescription">Produce engaging content for your audience
-                        or
-                        campaigns.</p>
-                </div>
-            </div>
-            <div class="h-[28rem] relative my-6" id=" service">
-                <div class="w-full h-full absolute bg-gradient-to-t from-gray-800/50 to-gray-600/50"></div>
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1415&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div class="w-3/4 h-1/2 bg-white p-6 shadow-lg absolute -bottom-8 left-0 right-0 mx-auto">
-                    <h5 class="text-purple font-bold text-lg leading-7 py-2">SEO Services</h5>
-                    <p class="text-gray-700" id="serviceDescription">Optimize your website to rank higher in
-                        search
-                        engines.</p>
-                </div>
+            <div class="flex justify-center p-6 pt-2 gap-7">
+                <a href="/"
+                    class="flex items-center justify-center cursor-pointer text-bl font-bold relative text-[14px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-gr to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-gr before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{__('website.about')}}</a>
             </div>
         </div>
-        <div class="flex justify-center my-6">
-            <a href="/services" style="box-shadow: 10px 10px 0 black;"
-                class="border-black border-4 text-3xl bg-green font-semibold py-3 px-6 capitalize">
-                {{__('website.see_the_rest')}}
-            </a>
+        <div id="service" class="flex flex-col bg-pr shadow-sm border border-purple-900 rounded-lg my-6 w-96">
+            <div class="overflow-hidden rounded-md h-80 flex justify-center items-center">
+                <img class="w-full h-full object-cover"
+                    src="{{asset('front-end/SocialMedia/brand boost sm (2).jpg') }}" />
+            </div>
+            <div class="p-6">
+                <h4 class="mb-1 text-2xl font-semibold text-slate-50 capitalize">
+                    Natalie Paisley
+                </h4>
+                <p class="text-base text-slate-200 mt-4 font-light ">
+                    The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where
+                    you
+                    can enjoy the main night life in Barcelona.
+                </p>
+            </div>
+            <div class="flex justify-center p-6 pt-2 gap-7">
+                <a href="/"
+                    class="flex items-center justify-center cursor-pointer text-bl font-bold relative text-[14px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-gr to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-gr before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{__('website.about')}}</a>
+            </div>
         </div>
     </div>
 </div>
 
-<div id="talents" class="border-black border-t-4 border-b-4 hepta">
-    <div class="text-center p-10 capitalize">
-        <h1 class="text-8xl font-bold">{{__('website.did_you_ask_about_our_talent')}}</h1>
-        <p class="text-2xl text-gray-600 mt-5">{{__('website.did_you_ask_about_our_talent_description')}}</p>
+<div id="talents" class="font-hepta relative w-[100vw] h-fit overflow-x-hidden bg-pr">
+    <h2
+        class="text-6xl hepta font-bold text-center py-10 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
+        {{__('website.talents')}}
+    </h2>
+    <div id="talents-container" class="flex overflow-x-hidden">
+        <div id="horizontalTalentCard"
+            class="relative md:static h-[100vh] w-[100vw] bg-pr flex-shrink-0 flex items-center">
+            <div class="mx-auto flex flex-col md:flex-row items-center w-[80%] h-[80%]">
+                <img class="h-1/2 lg:h-full w-full lg:w-[30%] rounded-xl mx-auto sm:mx-0 sm:mr-4 my-4 sm:my-0 object-cover"
+                    src="{{asset('front-end/socialMedia/brand boost sm (2).jpg')}}" alt="Developer Picture">
+                <div class="p-4 text-center sm:text-left">
+                    <h2 class="text-2xl lg:text-4xl font-semibold text-slate-100">John Doe</h2>
+                    <p class="text-slate-300 mt-2 lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Magni perferendis sit eius excepturi vel tempore error laboriosam ipsa vitae ipsum temporibus at
+                        doloribus ea cupiditate nisi aliquid sequi, facilis deserunt iste nulla!</p>
+                    <a href="/freelancers"
+                        class="mt-10 flex items-center justify-center cursor-pointer text-white font-bold relative text-[20px] w-1/2 h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-lg z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">See
+                        profile</a>
+                </div>
+            </div>
+        </div>
+        <div id="horizontalTalentCard"
+            class="relative md:static h-[100vh] w-[100vw] bg-bu flex-shrink-0 flex items-center">
+            <div class="mx-auto flex flex-col md:flex-row items-center w-[80%] h-[80%]">
+                <img class="h-1/2 lg:h-full w-full lg:w-[30%] rounded-xl mx-auto sm:mx-0 sm:mr-4 my-4 sm:my-0 object-cover"
+                    src="{{asset('front-end/socialMedia/brand boost sm (2).jpg')}}" alt="Developer Picture">
+                <div class="p-4 text-center sm:text-left">
+                    <h2 class="text-2xl lg:text-4xl font-semibold text-slate-100">John Doe</h2>
+                    <p class="text-slate-300 mt-2 lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Magni perferendis sit eius excepturi vel tempore error laboriosam ipsa vitae ipsum temporibus at
+                        doloribus ea cupiditate nisi aliquid sequi, facilis deserunt iste nulla!</p>
+                    <a href="/freelancers"
+                        class="mt-10 flex items-center justify-center cursor-pointer text-white font-bold relative text-[20px] w-1/2 h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-lg z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">See
+                        profile</a>
+                </div>
+            </div>
+        </div>
+        <div id="horizontalTalentCard"
+            class="relative md:static h-[100vh] w-[100vw] bg-gr flex-shrink-0 flex items-center">
+            <div class="mx-auto flex flex-col md:flex-row items-center w-[80%] h-[80%]">
+                <img class="h-1/2 lg:h-full w-full lg:w-[30%] rounded-xl mx-auto sm:mx-0 sm:mr-4 my-4 sm:my-0 object-cover"
+                    src="{{asset('front-end/socialMedia/brand boost sm (2).jpg')}}" alt="Developer Picture">
+                <div class="p-4 text-center sm:text-left">
+                    <h2 class="text-2xl lg:text-4xl font-semibold text-bl">John Doe</h2>
+                    <p class="text-slate-800 mt-2 lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Magni perferendis sit eius excepturi vel tempore error laboriosam ipsa vitae ipsum temporibus at
+                        doloribus ea cupiditate nisi aliquid sequi, facilis deserunt iste nulla!</p>
+                    <a href="/freelancers"
+                        class="mt-10 flex items-center justify-center cursor-pointer text-bl font-bold relative text-[20px] w-1/2 h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-lg z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">See
+                        profile</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="bg-indigo-400 border-black border-t-4 flex flex-col gap-5 justify-center py-20">
-        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 p-10">
-            <div class="h-96 relative flex justify-center border-black border-4">
-                <!-- <div class="w-full h-full absolute bg-gradient-to-t from-gray-800/50 to-gray-600/50"></div> -->
-                <img src="https://images.unsplash.com/photo-1732020743205-9a1da14e36fd?q=80&w=1565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div
-                    class="absolute bottom-0 text-center flex flex-col justify-center items-center gap-1 py-5 bg-black w-full ">
-                    <h5 class="text-white text-lg font-semibold leading-7 capitalize">Folan Ibn 3lan</h5>
-                    <p class="text-gray-700 capitalize" id="talentUsername">@Z7lan22 - Web Developer</p>
-                </div>
-            </div>
-            <div class="h-96 relative flex justify-center border-black border-4">
-                <img src="https://images.unsplash.com/photo-1732020743205-9a1da14e36fd?q=80&w=1565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div
-                    class="absolute bottom-0 text-center flex flex-col justify-center items-center gap-1 py-5 bg-black w-full ">
-                    <h5 class="text-white text-lg font-semibold leading-7 capitalize">Z3lan Trtan</h5>
-                    <p class="text-gray-700 capitalize" id="talentUsername">@Meme3 - Designer</p>
-                </div>
-            </div>
-            <div class="h-96 relative flex justify-center border-black border-4">
-                <img src="https://images.unsplash.com/photo-1732020743205-9a1da14e36fd?q=80&w=1565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div
-                    class="absolute bottom-0 text-center flex flex-col justify-center items-center gap-1 py-5 bg-black w-full ">
-                    <h5 class="text-white text-lg font-semibold leading-7 capitalize">Fr7an we Fa2dan</h5>
-                    <p class="text-gray-700 capitalize" id="talentUsername">@dramaCreator - Content Creator</p>
-                </div>
-            </div>
-            <div class="h-96 relative flex justify-center border-black border-4">
-                <img src="https://images.unsplash.com/photo-1732020743205-9a1da14e36fd?q=80&w=1565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="" class="w-full h-full object-cover">
-                <div
-                    class="absolute bottom-0 tgext-center flex flex-col justify-center items-center gap-1 py-5 bg-black w-full ">
-                    <h5 class="text-white text-lg font-semibold leading-7 capitalize">Fakis</h5>
-                    <p class="text-gray-700 capitalize" id="talentUsername">@Fakissss - Games Developer</p>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center">
-            <a href="/freelancers" style="box-shadow: 10px 10px 0 black;"
-                class="border-black border-4 text-3xl bg-fuchsia-400 font-semibold py-3 px-6 capitalize">
-                {{__('website.explore_the_talents')}}
-            </a>
-        </div>
+    <div class="w-full flex items-center justify-center bg-pr py-12">
+        <a href="/freelancers"
+            class="flex items-center justify-center cursor-pointer text-bl font-bold relative text-[16px] w-1/2 mx-auto h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">
+            {{__('website.explore_the_talents')}}</a>
     </div>
 </div>
 @endsection

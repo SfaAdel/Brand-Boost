@@ -3,27 +3,27 @@
 @section('title', 'Business Area')
 
 @php
-    $dashboardLink = Request::is('*business-area') ? 'bg-green border-y-2 border-black' : '';
-    $editProfileLink = Request::is('*talent-profile*') ? 'bg-green border-y-2 border-black' : '';
-    $servicesLink = Request::is('*talent-services*') ? 'bg-green border-y-2 border-black' : '';
-    $projectsLink = Request::is('*talent-projects*') ? 'bg-green border-y-2 border-black' : '';
-    $ordersLink = Request::is('*talent-orders*') ? 'bg-green border-y-2 border-black' : '';
+    $dashboardLink = preg_match('/business-area\/[0-9]+/', Request::path()) ? 'bg-gr rounded-lg' : '';
+    $editProfileLink = Request::is('*talent-profile*') ? 'bg-gr rounded-lg' : '';
+    $servicesLink = Request::is('*talent-services*') ? 'bg-gr rounded-lg' : '';
+    $projectsLink = Request::is('*talent-projects*') ? 'bg-gr rounded-lg' : '';
+    $ordersLink = Request::is('*talent-orders*') ? 'bg-gr rounded-lg' : '';
 
-    $visionaryEditProfileLink = Request::is('*visionary-profile*') ? 'bg-green border-y-2 border-black' : '';
-    $visionaryFavTalentsLink = Request::is('*visionary-fav-freelancers*') ? 'bg-green border-y-2 border-black' : '';
-    $visionaryOrdersLink = Request::is('*visionary-orders*') ? 'bg-green border-y-2 border-black' : '';
+    $visionaryEditProfileLink = Request::is('*visionary-profile*') ? 'bg-gr rounded-lg' : '';
+    $visionaryFavTalentsLink = Request::is('*visionary-fav-freelancers*') ? 'bg-gr rounded-lg' : '';
+    $visionaryOrdersLink = Request::is('*visionary-orders*') ? 'bg-gr rounded-lg' : '';
 @endphp
 
 
 @section('content')
-<div class="min-h-[calc(100vh-60px)] grid grid-cols-[18rem,_1fr] bg-gray-200 hepta">
+<div class="min-h-[100vh] grid grid-cols-[18rem,_1fr] bg-gray-200 hepta">
     <aside>
-        <div class="fixed h-full border-black border-r-4 bg-white w-72">
+        <div class="fixed h-full bg-white border-r border-gray-200 w-72">
             @if (auth()->guard('freelancer')->check())
                 <ul class="">
-                    <li class="capitalize my-4 hover:bg-green transition {{$dashboardLink}}">
+                    <li class="capitalize my-4 px-3">
                         <a href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}"
-                            class="flex items-center gap-3 h-full w-full p-5">
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$dashboardLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="feather feather-home">
@@ -34,9 +34,9 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 hover:bg-green transition {{$editProfileLink}}">
+                    <li class="capitalize my-4 px-3">
                         <a href="{{ route('dashboard-talent-profile', Auth::guard('freelancer')->user()->id) }}"
-                            class="flex items-center gap-3 p-5">
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$editProfileLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -46,9 +46,9 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 hover:bg-green transition {{$servicesLink}}">
+                    <li class="capitalize my-4 px-3">
                         <a href="{{ route('dashboard-talent-services', Auth::guard('freelancer')->user()->id) }}"
-                            class="flex items-center gap-3 p-5">
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$servicesLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake">
@@ -63,9 +63,9 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 hover:bg-green transition {{$projectsLink}}">
+                    <li class="capitalize my-4 px-3">
                         <a href=" {{ route('dashboard-talent-projects', Auth::guard('freelancer')->user()->id) }} "
-                            class="flex items-center gap-3 p-5">
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$projectsLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="feather feather-star">
@@ -77,9 +77,9 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 hover:bg-green transition {{$ordersLink}}">
+                    <li class="capitalize my-4 px-3">
                         <a href="{{ route('dashboard-talent-orders', Auth::guard('freelancer')->user()->id) }}"
-                            class="flex items-center gap-3 p-5">
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$ordersLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
@@ -92,12 +92,27 @@
                             <span class="font-bold">{{__('website.orders')}}</span>
                         </a>
                     </li>
+
+                    <li class="capitalize my-4 px-3">
+                        <a href="/"
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryOrdersLink}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 12l14 0" />
+                                <path d="M5 12l4 4" />
+                                <path d="M5 12l4 -4" />
+                            </svg>
+                            <span class="font-bold">{{__('website.back_home')}}</span>
+                        </a>
+                    </li>
                 </ul>
             @elseif(auth()->guard('business_owner')->check())
                 <ul class="">
-                    <li class="capitalize my-4 hover:bg-green transition {{$dashboardLink}}">
+                    <li class="capitalize my-4 px-3">
                         <a href="{{ route('business-area-b', Auth::guard('business_owner')->user()->id) }}"
-                            class="flex items-center gap-3 h-full w-full p-5">
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$dashboardLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="feather feather-home">
@@ -108,8 +123,9 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 hover:bg-green transition {{$visionaryEditProfileLink}}">
-                        <a href="{{ route('dashboard-visionary-profile') }}" class="flex items-center gap-3 p-5">
+                    <li class="capitalize my-4 px-3 ">
+                        <a href="{{ route('dashboard-visionary-profile') }}"
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryEditProfileLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -119,8 +135,9 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 hover:bg-green transition {{$visionaryFavTalentsLink}}">
-                        <a href="{{ route('dashboard-visionary-fav-freelancers') }}" class="flex items-center gap-3 p-5">
+                    <li class="capitalize my-4 px-3 ">
+                        <a href="{{ route('dashboard-visionary-fav-freelancers') }}"
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryFavTalentsLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake">
@@ -135,8 +152,9 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 hover:bg-green transition {{$visionaryOrdersLink}}">
-                        <a href="{{ route('dashboard-visionary-orders') }}" class="flex items-center gap-3 p-5">
+                    <li class="capitalize my-4 px-3">
+                        <a href="{{ route('dashboard-visionary-orders') }}"
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryOrdersLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
@@ -149,13 +167,63 @@
                             <span class="font-bold">{{__('website.orders')}}</span>
                         </a>
                     </li>
+
+                    <li class="capitalize my-4 px-3">
+                        <a href="/"
+                            class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryOrdersLink}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 12l14 0" />
+                                <path d="M5 12l4 4" />
+                                <path d="M5 12l4 -4" />
+                            </svg>
+                            <span class="font-bold">{{__('website.back_home')}}</span>
+                        </a>
+                    </li>
                 </ul>
             @endif
         </div>
     </aside>
 
-    <div class="p-5">
+    <div class="p-5 bg-gray-100">
         @yield('business-area-content')
     </div>
 </div>
+
+<script>
+    document.addEventListener("click", (event) => {
+        const target = event.target;
+
+        // Open modal
+        if (target.dataset.modalOpen) {
+            const modalId = target.dataset.modalOpen;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove("hidden");
+                document.body.classList.add("overflow-hidden");
+            }
+        }
+
+        // Close modal
+        if (target.dataset.modalClose) {
+            const modalId = target.dataset.modalClose;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add("hidden");
+                document.body.classList.remove("overflow-hidden");
+            }
+        }
+
+        // Close modal by clicking outside the modal content
+        if (
+            target.classList.contains("modal-overlay") &&
+            !target.contains(event.target.closest(".modal-content"))
+        ) {
+            target.classList.add("hidden");
+            document.body.classList.remove("overflow-hidden");
+        }
+    });
+</script>
 @endsection

@@ -3,93 +3,118 @@
 @section('title', __('Visionary Signup'))
 
 @section('content')
-<div class="bg-green acworth px-5 bg-pink">
-    <div class="py-5 text-center md:text-justify">
-        <h1 class="text-5xl font-bold hepta uppercase">{{ __('website.welcome_visionary') }}</h1>
-        <p class="text-md rubikv text-gray-800">{{ __('website.fill_form') }}</p>
+<div class="flex min-h-[100vh] flex-col justify-center px-6 pt-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo">
+        <h2 class="mt-4 font-hepta text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+            {{ __('website.welcome_visionary') }}
+        </h2>
+        <p class="text-center block text-gray-700">{{ __('website.fill_form') }}</p>
     </div>
 
-    <div class="my-3">
+    <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
         @include('front-end.includes.alerts')
     </div>
 
-    <div>
-        <form action="{{ route('business_owner.register') }}" method="POST">
+    <div class="mt-4 sm:mx-auto sm:w-full px-10 md:px-32 pb-10">
+        <form class="space-y-6 font-rubikv" action="{{ route('business_owner.register') }}" method="POST">
             @csrf
-            <div class="flex justify-between gap-5 flex-wrap">
-                <div class="flex-1">
-                    <div class="flex flex-col my-2">
+            <div class="w-full h-full flex flex-col md:flex-row gap-2 md:gap-10">
+                <div class="flex-1 flex flex-col gap-2">
+                    <div>
                         <label for="en-name"
-                            class="font-bold text-md rubikv leading-relaxed">{{ __('website.name_in_english') }}</label>
-                        <input type="text" name="en[name]" id="en-name" class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.name_in_english') }}</label>
+                        <div class="mt-2">
+                            <input type="text" name="en[name]" id="en-name" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="ar-name"
-                            class="font-bold text-md rubikv leading-relaxed">{{ __('website.name_in_arabic') }}</label>
-                        <input type="text" name="ar[name]" id="ar-name" class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.name_in_arabic') }}</label>
+                        <div class="mt-2">
+                            <input type="text" name="ar[name]" id="ar-name" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="email"
-                            class="font-bold text-md rubikv leading-relaxed">{{ __('website.email_label') }}</label>
-                        <input type="email" name="email" id="email" class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.email_label') }}</label>
+                        <div class="mt-2">
+                            <input type="email" name="email" id="email" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="password"
-                            class="font-bold text-md rubikv leading-relaxed">{{ __('website.password_label') }}</label>
-                        <input type="password" name="password" id="password"
-                            class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.password_label') }}</label>
+                        <div class="mt-2">
+                            <input type="password" name="password" id="password" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1">
-                    <div class="flex flex-col my-2">
+                <div class="flex-1 flex flex-col gap-2">
+                    <div>
                         <label for="en-company-name"
-                            class="font-bold text-md rubikv leading-relaxed">{{ __('website.company_in_english') }}</label>
-                        <input type="text" name="en[company_name]" id="en-company-name"
-                            class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.company_in_english') }}</label>
+                        <div class="mt-2">
+                            <input type="text" name="en[company_name]" id="en-company-name" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="ar-company-name"
-                            class="font-bold text-md rubikv leading-relaxed">{{ __('website.company_in_arabic') }}</label>
-                        <input type="text" name="ar[company_name]" id="ar-company-name"
-                            class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.company_in_arabic') }}</label>
+                        <div class="mt-2">
+                            <input type="text" name="ar[company_name]" id="ar-company-name" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="phone-number"
-                            class="font-bold text-md rubikv leading-relaxed">{{ __('website.phone_number') }}</label>
-                        <input type="text" name="phone" id="phone-number"
-                            class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.phone_number') }}</label>
+                        <div class="mt-2">
+                            <input type="text" name="phone" id="phone-number" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="Company-field"
+                            class="block text-sm/6 font-medium text-gray-900">{{ __('website.company_work_field') }}</label>
+                        <div class="mt-2">
+                            <select name="field_id" id="Company-field"
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                                <option selected disabled>{{ __('Choose yours') }}</option>
+
+                                @foreach ($fields as $field)
+                                    <option value="{{ $field->id }}">{{ $field->name }}</option>
+                                @endforeach
+                            </select>
+                            <small class="text-gray-500">{{ __('website.fields_help') }}</small>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flex flex-col my-2">
-                <label for="Company-field"
-                    class="font-bold text-md rubikv leading-relaxed">{{ __('website.company_work_field') }}</label>
-                <select name="field_id" id="Company-field" class="p-2 border-black border-2 outline-none">
-                    <option selected disabled>{{ __('Choose yours') }}</option>
-
-                    @foreach ($fields as $field)
-                        <option value="{{ $field->id }}">{{ $field->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="w-full flex justify-center items-center py-5">
+            <div>
                 <button type="submit"
-                    class="text-3xl uppercase hepta w-1/2 mx-auto bg-fuchsia-700 text-white font-semibold py-2 px-4 border-2 border-black hover:bg-fuchsia-500 transition"
-                    style="box-shadow: -5px 10px 0 black;">{{ __('website.signup_button') }}</button>
+                    class="flex w-full justify-center rounded-xl bg-bu px-3 py-2 text-sm/6 font-semibold text-white shadow-sm transition hover:bg-blue-400">{{__('website.signin')}}</button>
             </div>
         </form>
 
-        <div class="text-sm md:text-lg uppercase flex gap-5 items-center w-full justify-center">
-            <p class="rubikv">{{ __('website.already_signed?') }}</p>
-            <a href="/signin"
-                class="hepta bg-fuchsia-700 text-white py-1 px-2 border-2 border-black">{{ __('website.login_here') }}</a>
+        <div class="mt-4">
+            <p class="text-center">{{__('website.already_have_account')}}</p>
+            <div class="text-center text-sm/6 flex flex-col gap-2">
+                <a href="/signin"
+                    class="flex w-full justify-center rounded-xl bg-pi px-3 py-2 text-sm/6 font-semibold text-black shadow-sm transition hover:bg-pink-400">{{__('website.have_talent')}}</a>
+            </div>
         </div>
     </div>
 </div>

@@ -8,39 +8,38 @@
 @endphp
 
 @section('content')
-<section class="transparent-texture hepta">
-    <div class="bg-gray-100 flex flex-col items-center py-16 px-[10vw] text-center">
-        <img src="{{ asset('front-end/SocialMedia/brand boost sm (6).png') }}" alt="Offerer pic"
-            class="w-36 h-36 rounded-full object-cover">
-        <h1 class="text-4xl font-bold text-center capitalize">{{$freelancer->name}}</h1>
-        <p class="text-2xl text-slate-800 text-center capitalize">{{$freelancer->jobTitle->name}}</p>
-        <!-- <div class="flex gap-4 flex-wrap my-1">
-            <div class="flex items-center">
-                <img src="{{ asset('front-end/assets/position.svg') }}" class="w-5 h-5">
-                <p class="text-sm text-slate-700 capitalize"></p>
-            </div>
-        </div> -->
-        @if (auth()->guard('business_owner')->check())
-            <button id="follow-button-{{ $freelancer->id }}" data-following="{{ $isFollowing ? 'true' : 'false' }}"
-                data-freelancer-id="{{ $freelancer->id }}"
-                data-business-owner-id="{{ Auth::guard('business_owner')->id() }}"
-                class="bg-gray-200 hover:bg-gray-50 transition p-2 mt-3.5 border-black border text-black hepta text-center text-sm">
-                <span id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
-            __('website.follow')
-                                                                                }}</span>
-                <span>
-                    <img id="follow-icon-{{ $freelancer->id }}"
-                        src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
-                        class="inline">
-                </span>
-            </button>
-        @endif
-
-
-
-
+<section class="bg-pr hepta pt-20">
+    <div class="relative bg-pr h-[70vh]">
+        <div class="w-full bg-no-repeat bg-center bg-cover"
+            style="aspect-ratio: 950/300; background-image: url('{{ asset('front-end/SVGs/blob-haikei.svg') }}">
+        </div>
+        <div class="absolute top-0 left-0 w-full text-white flex flex-col items-center py-16 px-[10vw] text-center">
+            @if (!empty($freelancer->profile_image))
+                <img src="{{ asset('images/freelancers/profile/' . $freelancer->profile_image) }}" alt="Offerer pic"
+                    class="w-36 h-36 rounded-full object-cover">
+            @endif
+            <h1 class="text-5xl font-bold text-center capitalize">{{$freelancer->name}}</h1>
+            <p class="text-2xl text-slate-300 text-center capitalize">{{$freelancer->jobTitle->name}}</p>
+            @if (auth()->guard('business_owner')->check())
+                    <button id="follow-button-{{ $freelancer->id }}" data-following="{{ $isFollowing ? 'true' : 'false' }}"
+                        data-freelancer-id="{{ $freelancer->id }}"
+                        data-business-owner-id="{{ Auth::guard('business_owner')->id() }}"
+                        class="bg-gray-200 hover:bg-gray-50 transition p-2 mt-3.5 border-black border text-black hepta text-center text-sm">
+                        <span
+                            id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
+                __('website.follow')
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
+                        <span>
+                            <img id="follow-icon-{{ $freelancer->id }}"
+                                src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
+                                class="inline">
+                        </span>
+                    </button>
+            @endif
+        </div>
     </div>
-    <div class="bg-gray-100">
+
+    <!-- <div class="bg-gray-100">
         <div id="tabs" class="container bg-gray-100 mx-auto -mb-0.5">
             <a id="informations-tab" href="{{route('freelancerName', ['id' => $freelancer->id])}}"
                 class="bg-red-100 border-2 border-black {{ $isProjectsActive ? 'border-b-2' : 'border-b-red-100' }} p-2 text-xl inline-block">{{__('website.informations')}}</a>
@@ -48,7 +47,123 @@
                 class="bg-sky-100 border-2 border-black {{ $isProjectsActive ? 'border-b-sky-100' : 'border-b-2' }} p-2 text-xl inline-block">{{__('website.projects')}}</a>
         </div>
         @yield('freelancer-profile-content')
-    </div>
+    </div> -->
+
+    <section class="py-20 px-[10vw] bg-gr">
+        <div>
+            <h4 class="capitalize text-5xl font-bold">{{__('website.about_me')}}</h4>
+            <p class="p-5 text-xl">{{$freelancer->bio}}</p>
+        </div>
+        <div class="my-5">
+            <h4 class="capitalize font-bold my-2">{{__('website.skills')}}</h4>
+            <ul class="flex flex-wrap">
+                @forelse ($freelancer->fields as $field)
+                    <li class="m-2 p-2 border border-slate-200 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
+                            stroke="#520a70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-accessible-off mx-auto">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10 16.5l2 -3l2 3m-2 -3v-1.5m2.627 -1.376l.373 -.124m-6 0l2.231 .744" />
+                            <path d="M20.042 16.045a9 9 0 0 0 -12.087 -12.087m-2.318 1.677a9 9 0 1 0 12.725 12.73" />
+                            <path d="M12 8a.5 .5 0 1 0 -.5 -.5" />
+                            <path d="M3 3l18 18" />
+                        </svg>
+                        <span>{{$field->name}}</span>
+                    </li>
+                @empty
+                    <li class="m-2 p-2 border border-slate-200 rounded-lg bg-white capitalize">{{$freelancer->name}}
+                        {{__('website.has_no_skills')}}
+                    </li>
+                @endforelse
+            </ul>
+        </div>
+    </section>
+    <section class="py-20 px-[10vw] bg-gr">
+        <h2 class="text-3xl capitalize font-bold my-5">{{__('website.projects')}}</h2>
+        <div class="my-5 flex flex-wrap lg:flex-nowrap justify-center items-center">
+            <div class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
+                <div class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-96">
+                    <div class="relative h-56 m-2.5 overflow-hidden text-white">
+                        <img src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}" alt="card-image"
+                            class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                    <div class="p-4">
+                        <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+                            Development
+                        </h6>
+                        <p id="service-offer-description" class="text-slate-600 leading-normal font-light text-sm">
+                            Development involves creating robust and scalable software solutions tailored to your needs.
+                            From
+                            websites to mobile applications, we focus on building seamless, high-performance digital
+                            experiences
+                            using cutting-edge technologies.
+                        </p>
+                    </div>
+                    <div class="px-4 pb-4 pt-0 mt-auto flex">
+                        <a href="/services/offers/offer"
+                            class="px-3 flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu"
+                            type="button">
+                            {{__('website.project_details')}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
+                <div class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-96">
+                    <div class="relative h-56 m-2.5 overflow-hidden text-white">
+                        <img src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}" alt="card-image"
+                            class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                    <div class="p-4">
+                        <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+                            Development
+                        </h6>
+                        <p id="service-offer-description" class="text-slate-600 leading-normal font-light text-sm">
+                            Development involves creating robust and scalable software solutions tailored to your needs.
+                            From
+                            websites to mobile applications, we focus on building seamless, high-performance digital
+                            experiences
+                            using cutting-edge technologies.
+                        </p>
+                    </div>
+                    <div class="px-4 pb-4 pt-0 mt-auto flex">
+                        <a href="/services/offers/offer"
+                            class="px-3 flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu"
+                            type="button">
+                            {{__('website.project_details')}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
+                <div class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-96">
+                    <div class="relative h-56 m-2.5 overflow-hidden text-white">
+                        <img src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}" alt="card-image"
+                            class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                    <div class="p-4">
+                        <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+                            Development
+                        </h6>
+                        <p id="service-offer-description" class="text-slate-600 leading-normal font-light text-sm">
+                            Development involves creating robust and scalable software solutions tailored to your needs.
+                            From
+                            websites to mobile applications, we focus on building seamless, high-performance digital
+                            experiences
+                            using cutting-edge technologies.
+                        </p>
+                    </div>
+                    <div class="px-4 pb-4 pt-0 mt-auto flex">
+                        <a href="/services/offers/offer"
+                            class="px-3 flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu"
+                            type="button">
+                            {{__('website.project_details')}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </section>
 
 <script>
