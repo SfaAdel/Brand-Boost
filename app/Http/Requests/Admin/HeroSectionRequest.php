@@ -22,58 +22,58 @@ class HeroSectionRequest extends FormRequest
      */
     public function rules(): array
     {
-        $heroSectionId = $this->route('hero_section') ? $this->route('hero_section')->id : null; // Get job title ID if updating
+        $heroSectionId = $this->route('hero_sections') ? $this->route('hero_sections')->id : null; // Get job title ID if updating
 
         $rules = [
             'en.h1' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('hero_section_translations', 'h1')
-                    ->ignore($heroSectionId, 'hero_section_id')
-                    ->where('locale', 'en')
+                // Rule::unique('hero_section_translations', 'h1')
+                //     ->ignore($heroSectionId, 'hero_section_id')
+                //     ->where('locale', 'en')
             ],
             'ar.h1' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('hero_section_translations', 'h1')
-                    ->ignore($heroSectionId, 'hero_section_id')
-                    ->where('locale', 'ar')
+                // Rule::unique('hero_section_translations', 'h1')
+                //     ->ignore($heroSectionId, 'hero_section_id')
+                //     ->where('locale', 'ar')
             ],
 
             'en.h2' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('hero_section_translations', 'h2')
-                    ->ignore($heroSectionId, 'hero_section_id')
-                    ->where('locale', 'en')
+                // Rule::unique('hero_section_translations', 'h2')
+                //     ->ignore($heroSectionId, 'hero_section_id')
+                //     ->where('locale', 'en')
             ],
             'ar.h2' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('hero_section_translations', 'h2')
-                    ->ignore($heroSectionId, 'hero_section_id')
-                    ->where('locale', 'ar')
+                // Rule::unique('hero_section_translations', 'h2')
+                //     ->ignore($heroSectionId, 'hero_section_id')
+                //     ->where('locale', 'ar')
             ],
 
             'en.p' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('hero_section_translations', 'p')
-                    ->ignore($heroSectionId, 'hero_section_id')
-                    ->where('locale', 'en')
+                // Rule::unique('hero_section_translations', 'p')
+                //     ->ignore($heroSectionId, 'hero_section_id')
+                //     ->where('locale', 'en')
             ],
             'ar.p' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('hero_section_translations', 'p')
-                    ->ignore($heroSectionId, 'hero_section_id')
-                    ->where('locale', 'ar')
+                // Rule::unique('hero_section_translations', 'p')
+                //     ->ignore($heroSectionId, 'hero_section_id')
+                //     ->where('locale', 'ar')
             ],
 
         ];

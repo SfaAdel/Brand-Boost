@@ -17,7 +17,7 @@
                             <h4>{{ __('forms.update') }}</h4>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form action="{{ route('admin.hero_sections.update' , $heroSection->id) }}" method="POST" class="px-3">
+                            <form action="{{ route('admin.hero_sections.update', $heroSection->id) }}" method="POST" class="px-3">
                                 @csrf
                                 @method('PATCH')
 

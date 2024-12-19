@@ -226,4 +226,9 @@ return [
     'back_home' => 'Back Home',
     'has_no_skills' => "Has no skills yet.",
     'project_details' => 'Project Details',
+
+    'all_services' => 'All Services',
+    'fields' => 'Fields',
+    'all' => 'All',
+    'no_freelancers_found' => 'No freelancers found for the selected filters.',
 ];

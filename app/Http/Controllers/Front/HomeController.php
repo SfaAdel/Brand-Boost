@@ -35,10 +35,10 @@ class HomeController extends Controller
 
         $titles = Title::latest()->limit(4)->get();
 
-        $services = Service::latest()->limit(6)->get();
+        $services = Service::latest()->limit(4)->get();
         $serviceSection = Title::where('section', 'services')->first();
 
-        $advantages = Advantage::latest()->limit(6)->get();
+        $advantages = Advantage::latest()->limit(4)->get();
         $advantageSection = Title::where('section', 'advantages')->first();
 
         $blogs = Blog::latest()->limit(4)->get();
@@ -50,6 +50,7 @@ class HomeController extends Controller
         $contactSection = Title::where('section', 'contacts')->first();
         $aboutSection = Title::where('section', 'about_us')->first();
         $mainSection = Title::where('section', 'main')->first();
+        $joinSection = Title::where('section', 'join')->first();
 
         $setting = Setting::first();
 
@@ -59,10 +60,12 @@ class HomeController extends Controller
         $sec3Video = Video::where('type', 'sec3')->first();
         $sec4Video = Video::where('type', 'sec4')->first();
 
-        $heroSections = HeroSection::all();
+        $heroSection1 = HeroSection::where('id', 1)->first();
+        $heroSection2 = HeroSection::where('id', 2)->first();
+        $heroSection3 = HeroSection::where('id', 3)->first();
 
 
-        return view('front-end.homepage', compact('heroVideo','heroSections','sec4Video','sec3Video','sec2Video','sec1Video','services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
+        return view('front-end.homepage', compact('joinSection','heroSection2','heroSection3', 'heroVideo','heroSection1','sec4Video','sec3Video','sec2Video','sec1Video','services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
     }
 
 
@@ -93,38 +96,40 @@ class HomeController extends Controller
 
     public function freelancers(Request $request)
     {
-        // Fetch the query parameters
-        $selectedJobTitle = $request->query('job_title');
-        $selectedFields = $request->query('fields', []);
-
-        // Fetch freelancers with optional filters
+        // Fetch the selected service from the request query
+        $selectedService = $request->query('service');
+        
+        // Start the query for freelancers
         $freelancers = Freelancer::query();
-
-        // Filter by job title if provided
-        if ($selectedJobTitle) {
-            $freelancers->where('job_title_id', $selectedJobTitle);
-        }
-
-        // Filter by fields if provided
-        if (!empty($selectedFields)) {
-            $freelancers->whereHas('fields', function ($query) use ($selectedFields) {
-                $query->whereIn('id', $selectedFields);
+    
+        // Filter by services if a service is selected
+        if ($selectedService) {
+            $freelancers->whereHas('services', function ($query) use ($selectedService) {
+                $query->where('services.id', $selectedService);
             });
         }
-
-        // Retrieve filtered results
-        $freelancers = $freelancers->get();
-
-        // Fetch settings and additional data
-        $fields = Field::all();
-        $jobTitles = JobTitle::all();
-        $setting = Setting::first();
-
+    
+        // Retrieve filtered freelancers
+        $freelancers = $freelancers->with('jobTitle', 'fields', 'services')->get();
+    
+        // Fetch available services and other necessary data
         $services = Service::all();
-
-
-        return view('front-end.freelancerspage', compact('services','jobTitles', 'fields', 'setting', 'freelancers'));
+        $setting = Setting::first();
+        
+        // Check if no freelancers are found
+        $noFreelancersMessage = $freelancers->isEmpty() 
+            ? __('website.no_freelancers_found') 
+            : null;
+    
+        return view('front-end.freelancerspage', compact(
+            'services',
+            'selectedService',
+            'setting',
+            'freelancers',
+            'noFreelancersMessage'
+        ));
     }
+    
 
 
     // public function filteration(Request $request)
@@ -155,6 +160,7 @@ class HomeController extends Controller
         $freelancer = Freelancer::findOrFail($id);
 
 
+
         // Fetch settings
         $setting = Setting::first();
 
@@ -162,8 +168,15 @@ class HomeController extends Controller
     ->where('business_owner_id', Auth::guard('business_owner')->id())
     ->exists();
 
+    $freelancerServices = FreelancerService::where('freelancer_id', $id)->get();
 
-        return view('front-end.singlefreelancerpage', compact('isFollowing','setting', 'freelancer'));
+
+    $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
+        $query->where('freelancer_id', $id);
+    })->get();
+
+
+        return view('front-end.singlefreelancerpage', compact('isFollowing','setting', 'freelancer' ,'freelancerServices' , 'freelancerProjects'));
     }
 
     public function freelancer_projects($id)

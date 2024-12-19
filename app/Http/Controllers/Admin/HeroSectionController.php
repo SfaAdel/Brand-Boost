@@ -54,7 +54,7 @@ class HeroSectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HeroSectionRequest $heroSection)
+    public function edit( HeroSection  $heroSection)
     {
         //
         return view('admin.hero_sections.edit', compact('heroSection'));
@@ -64,7 +64,7 @@ class HeroSectionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, HeroSection $heroSection)
+    public function update( HeroSectionRequest $request, HeroSection $heroSection)
     {
         //
         $heroSection->update($request->except('_token', '_method')); 
