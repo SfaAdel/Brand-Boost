@@ -4,3 +4,52 @@
 
 /* Import Font Awesome */
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+@layer base {
+    @font-face {
+        font-family: "hepta";
+        src: url("/front-end/fonts/HeptaSlab-VariableFont_wght.ttf")
+            format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "acworth";
+        src: url("front-end/fonts/acworth-bold.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "rubiki";
+        src: url("/front-end/fonts/Rubik-Italic-VariableFont_wght.ttf")
+            format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "rubikv";
+        src: url("/front-end/fonts/Rubik-VariableFont_wght.ttf")
+            format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+.hepta {
+    font-family: "hepta", sans-serif;
+}
+
+.acworth {
+    font-family: "acworth", sans-serif;
+}
+
+.rubiki {
+    font-family: "rubiki", sans-serif;
+}
+
+.rubikv {
+    font-family: "rubikv", sans-serif;
+}

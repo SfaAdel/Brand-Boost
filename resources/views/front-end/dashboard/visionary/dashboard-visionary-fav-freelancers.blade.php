@@ -3,9 +3,11 @@
 @section('title', 'Favourite Freelancers')
 
 @section('business-area-content')
-<a href="/freelancers"
-    class="bg-green border-2 border-black py-3 px-5 text-xs font-semibold capitalize">{{__('website.explore_the_talents')}}</a>
-<div class="border-black border-2 bg-slate-50 h-full">
+<div class="mb-5">
+    <a href="/freelancers"
+        class="bg-gr border rounded-lg border-gray-500 py-3 px-5 text-xs capitalize">{{__('website.explore_the_talents')}}</a>
+</div>
+<div class="bg-white border rounded-lg border-gray-200 h-full">
     <div class="p-6 px-0 pt-0 pb-2">
         <table class="w-full min-w-[640px] table-auto">
             <thead>

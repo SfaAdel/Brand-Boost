@@ -3,7 +3,7 @@
 @section('title', 'Edit Project')
 
 @section('business-area-content')
-<div class="border-black border-2 bg-slate-50 h-full p-5">
+<div class="bg-white border rounded-lg border-gray-200 h-full p-5">
 
     <div class="my-3">
         @include('front-end.includes.alerts')
@@ -17,7 +17,8 @@
             <!-- Project Picture -->
             <div class="flex flex-col gap-2">
                 <label for="picture" class="text-xs font-semibold uppercase">{{__('website.project_picture')}}</label>
-                <input type="file" name="image" id="picture" class="border-2 border-black px-3 py-2">
+                <input type="file" name="image" id="picture"
+                    class="bg-white border rounded-lg border-gray-200 px-3 py-2">
                 @if($freelancerProject->image)
                     <img src="{{ asset('images/' . Auth::guard('freelancer')->user()->name . '_projects_images/' . $freelancerProject->image) }}"
                         alt="Project Image" class="w-20 mt-2">
@@ -27,7 +28,8 @@
             <!-- Project Video -->
             <div class="flex flex-col gap-2">
                 <label for="video" class="text-xs font-semibold uppercase">{{__('website.project_video')}}</label>
-                <input type="file" name="video" id="video" accept="video/*" class="border-2 border-black px-3 py-2">
+                <input type="file" name="video" id="video" accept="video/*"
+                    class="bg-white border rounded-lg border-gray-200 px-3 py-2">
                 @if($freelancerProject->video)
                     <video class="mt-2 w-40" controls>
                         <source
@@ -41,7 +43,8 @@
             <!-- Service Selection -->
             <div class="flex flex-col gap-2">
                 <label for="service" class="text-xs font-semibold uppercase">{{_('website.service')}}</label>
-                <select name="freelancer_service_id" id="service" class="border-2 border-black px-3 py-2">
+                <select name="freelancer_service_id" id="service"
+                    class="bg-white border rounded-lg border-gray-200 px-3 py-2">
                     <option value="" disabled>Select Service</option>
                     @foreach($freelancerServices as $freelancerService)
                         <option value="{{ $freelancerService->id }}" {{ $freelancerService->id == $freelancerProject->freelancer_service_id ? 'selected' : '' }}>
@@ -60,7 +63,7 @@
 
                 <input type="text" name="en[title]" id="en_title"
                     value="{{ $freelancerProject->translate('en')?->title }}"
-                    class="p-2 border-black border-2 outline-none">
+                    class="p-2 bg-white border rounded-lg border-gray-200 outline-none">
 
                 @error('en.title')
                     <small class="text-red-500">{{ $message }}</small>
@@ -74,7 +77,7 @@
                 </label>
                 <input type="text" name="ar[title]" id="ar_title"
                     value="{{ $freelancerProject->translate('ar')?->title }}"
-                    class="p-2 border-black border-2 outline-none">
+                    class="p-2 bg-white border rounded-lg border-gray-200 outline-none">
 
                 @error('ar.title')
                     <small class="text-red-500">{{ $message }}</small>
@@ -88,7 +91,7 @@
                     {{ __('website.description_en_label') }}
                 </label>
                 <textarea rows="3" cols="50" name="en[description]" id="en_description"
-                    class="p-2 border-black border-2 outline-none">
+                    class=" bg-white border rounded-lg border-gray-200 outline-none">
                     {{ old('en.description', $freelancerProject->translate('en')?->description) }}
                 </textarea>
                 @error('en.description')
@@ -102,7 +105,7 @@
                     {{ __('website.description_ar_label') }}
                 </label>
                 <textarea rows="3" cols="50" name="ar[description]" id="ar_description"
-                    class="p-2 border-black border-2 outline-none">
+                    class=" bg-white border rounded-lg border-gray-200 outline-none">
                     {{ old('ar.description', $freelancerProject->translate('ar')?->description) }}
                 </textarea>
                 @error('ar.description')
@@ -114,7 +117,7 @@
         <!-- Submit Button -->
         <div class="flex justify-center mt-5">
             <button type="submit"
-                class="bg-green border-2 border-black py-3 px-5 text-sm font-semibold capitalize w-full hover:bg-emerald-300 transition">
+                class="bg-gr border rounded-lg border-gray-200 py-3 px-5 text-sm font-semibold capitalize w-full hover:bg-green-400 transition">
                 Update Project
             </button>
         </div>

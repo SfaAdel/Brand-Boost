@@ -3,137 +3,164 @@
 @section('title', __('website.talent_signup_title'))
 
 @section('content')
-<div class="bg-green acworth px-5 bg-green">
-    <div class="py-5 text-center md:text-justify">
-        <h1 class="text-5xl font-bold hepta uppercase">{{ __('website.talent_signup_header') }}</h1>
-        <p class="text-md rubikv text-gray-800">{{ __('website.talent_signup_subheader') }}</p>
+<div class="flex min-h-[100vh] flex-col justify-center px-6 pt-12 lg:px-8 bg-pr text-white">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo">
+        <h2 class="mt-4 font-hepta text-center text-2xl/9 font-bold tracking-tight text-gray-100">
+            {{ __('website.talent_signup_header') }}
+        </h2>
+        <p class="text-center block text-gray-300">{{ __('website.talent_signup_subheader') }}</p>
     </div>
 
-    <div class="my-3">
+    <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
         @include('front-end.includes.alerts')
     </div>
 
-    <div>
-        <form action="{{ route('freelancer.register') }}" method="POST" enctype="multipart/form-data">
+    <div class="mt-4 sm:mx-auto sm:w-full px-10 md:px-32 pb-10">
+        <form class="space-y-6 font-rubikv" action="{{ route('freelancer.register') }}" method="POST">
             @csrf
-            <div class="flex justify-between gap-5 flex-wrap">
-                <div class="flex-1">
-                    <div class="flex flex-col my-2">
+            <div class="w-full h-full flex flex-col md:flex-row gap-2 md:gap-10">
+                <div class="flex-1 flex flex-col gap-2">
+                    <div>
                         <label for="name_en"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.name_in_english') }}</label>
-                        <input type="text" name="en[name]" id="name_en" class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.name_in_english') }}</label>
+                        <div class="mt-2">
+                            <input type="text" name="en[name]" id="name_en" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="name_ar"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.name_in_arabic') }}</label>
-                        <input type="text" name="ar[name]" id="name_ar" class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.name_in_arabic') }}</label>
+                        <div class="mt-2">
+                            <input type="text" name="ar[name]" id="name_ar" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
-                        <label for="email"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.email_label') }}</label>
-                        <input type="email" name="email" id="email" class="p-2 border-black border-2 outline-none">
-                    </div>
-
-                    <div class="flex flex-col my-2">
-                        <label for="password"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.password_label') }}</label>
-                        <input type="password" name="password" id="password"
-                            class="p-2 border-black border-2 outline-none">
-                    </div>
-                </div>
-                <div class="flex-1">
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="cash-number"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.cash_number_label') }}</label>
-                        <input type="number" name="cash_number" id="cash-number"
-                            class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.cash_number_label') }}</label>
+                        <div class="mt-2">
+                            <input type="number" name="cash-number" id="cash-number" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="phone-number"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.phone_number_label') }}</label>
-                        <input type="number" name="phone" id="phone-number"
-                            class="p-2 border-black border-2 outline-none">
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.phone_number_label') }}</label>
+                        <div class="mt-2">
+                            <input type="number" name="phone" id="phone-number" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="date_of_birth"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.date_of_birth_label') }}</label>
-                        <input type="date" name="date_of_birth" id="date_of_birth"
-                            class="p-2 border-black border-2 outline-none" required>
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.date_of_birth_label') }}</label>
+                        <div class="mt-2">
+                            <input type="date" name="date_of_birth" id="date_of_birth" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col gap-2">
+                    <div>
+                        <label for="email"
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.email_label') }}</label>
+                        <div class="mt-2">
+                            <input type="email" name="email" id="email" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
 
-
-
-                    <div class="flex flex-col my-2">
+                    <div>
                         <label for="job-title"
-                            class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.job_title_label') }}</label>
-                        <select name="job_title_id" id="job-title" class="p-2 border-black border-2 outline-none">
-                            <option selected disabled>{{ __('website.job_title_placeholder') }}</option>
-                            @foreach ($jobTitles as $jobTitle)
-                                <option value="{{ $jobTitle->id }}">{{ $jobTitle->name }}</option>
-                            @endforeach
-                        </select>
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.job_title_label') }}</label>
+                        <div class="mt-2">
+                            <select name="job_title_id" id="job-title" required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                                <option selected disabled>{{ __('website.job_title_placeholder') }}</option>
+                                @foreach ($jobTitles as $jobTitle)
+                                    <option value="{{ $jobTitle->id }}">{{ $jobTitle->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="gender"
+                            class="block text-sm font-bold text-gray-900">{{ __('website.gender_label') }}</label>
+                        <div class="flex items-center space-x-4 mt-2">
+                            <label for="male" class="flex items-center">
+                                <input type="radio" id="male" name="gender" value="male" required class="mr-2">
+                                {{ __('website.male') }}
+                            </label>
+                            <label for="female" class="flex items-center">
+                                <input type="radio" id="female" name="gender" value="female" required class="mr-2">
+                                {{ __('website.female') }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="fields"
+                            class="block text-sm/6 font-medium text-gray-100">{{ __('website.fields_label') }}</label>
+                        <div class="mt-2">
+                            <select name="fields[]" id="skills" multiple
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                                @foreach ($fields as $field)
+                                    <option value="{{ $field->id }}">{{ $field->name }}</option>
+                                @endforeach
+                            </select>
+                            <small class="text-gray-500">{{ __('website.fields_help') }}</small>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="password"
+                            class="block text-sm/6 font-medium text-gray-100">{{__('website.password_label')}}</label>
+                        <div class="mt-2">
+                            <input type="password" name="password" id="password" autocomplete="current-password"
+                                required
+                                class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flex flex-col my-2 font-thin">
-                <label for="gender"
-                    class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.gender_label') }}</label>
-                <div class="flex gap-5">
-                    <div class="flex-1 items-center radio">
-                        <input type="radio" id="male" name="gender" value="male" class="hidden peer">
-                        <label for="male"
-                            class="block bg-sky-200 border-black border-2 text-gray-600 p-2 cursor-pointer hover:bg-sky-400 hover:text-white peer-checked:bg-sky-400 peer-checked:text-white">{{ __('website.male') }}</label>
-                    </div>
-                    <div class="flex-1 items-center radio">
-                        <input type="radio" id="female" name="gender" value="female" class="hidden peer">
-                        <label for="female"
-                            class="block bg-fuchsia-200 border-black border-2 text-gray-600 p-2 cursor-pointer hover:bg-fuchsia-400 hover:text-white peer-checked:bg-fuchsia-400 peer-checked:text-white">{{ __('website.female') }}</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col my-2">
-                <label for="fields"
-                    class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.fields_label') }}</label>
-                <select name="fields[]" id="skills" multiple class="p-2 border-black border-2 outline-none">
-                    @foreach ($fields as $field)
-                        <option value="{{ $field->id }}">{{ $field->name }}</option>
-                    @endforeach
-                </select>
-                <small class="text-gray-500">{{ __('website.fields_help') }}</small>
-            </div>
-
-            <div class="flex flex-col my-2">
+            <div>
                 <label for="en_bio"
-                    class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.bio_en_label') }}</label>
-                <textarea rows="3" cols="50" name="en[bio]" id="en_bio"
-                    class="p-2 border-black border-2 outline-none"></textarea>
+                    class="block text-sm/6 font-medium text-gray-100">{{ __('website.bio_en_label') }}</label>
+                <div class="mt-2">
+                    <textarea rows="3" cols="50" name="en[bio]" id="en_bio" required
+                        class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6"></textarea>
+                </div>
             </div>
-            <div class="flex flex-col my-2">
+
+            <div>
                 <label for="ar_bio"
-                    class="text-gray-600 text-md rubikv leading-relaxed">{{ __('website.bio_ar_label') }}</label>
-                <textarea rows="3" cols="50" name="ar[bio]" id="ar_bio"
-                    class="p-2 border-black border-2 outline-none"></textarea>
+                    class="block text-sm/6 font-medium text-gray-100">{{ __('website.bio_ar_label') }}</label>
+                <div class="mt-2">
+                    <textarea rows="3" cols="50" name="ar[bio]" id="ar_bio" required
+                        class="block w-full rounded-xl bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6"></textarea>
+                </div>
             </div>
 
-            <div class="w-full flex justify-center items-center py-5">
+            <div>
                 <button type="submit"
-                    class="text-3xl uppercase hepta w-1/2 mx-auto bg-emerald-400 font-semibold py-2 px-4 border-2 border-black hover:bg-emerald-500 transition"
-                    style="box-shadow: -5px 10px 0 black;">{{ __('website.signup_button') }}</button>
+                    class="flex w-full justify-center rounded-xl bg-bu px-3 py-2 text-sm/6 font-semibold text-white shadow-sm transition hover:bg-blue-400">{{__('website.signin')}}</button>
             </div>
-
-
         </form>
-        <div class="text-sm md:text-lg uppercase flex gap-5 items-center w-full justify-center">
-            <p class="rubikv">{{ __('website.already_have_account') }}</p>
-            <a href="/signin"
-                class="hepta bg-emerald-400 py-1 px-2 border-2 border-black">{{ __('website.login_link') }}</a>
+
+        <div class="mt-4">
+            <p class="text-center">{{__('website.already_have_account')}}</p>
+            <div class="text-center text-sm/6 flex flex-col gap-2">
+                <a href="/signin"
+                    class="flex w-full justify-center rounded-xl bg-gr px-3 py-2 text-sm/6 font-semibold text-black shadow-sm transition hover:bg-green-400">{{__('website.have_talent')}}</a>
+            </div>
         </div>
     </div>
 </div>

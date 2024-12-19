@@ -222,4 +222,8 @@ return [
     'remove' => 'Remove',
     'no_fav_freelancers' => 'No Favourite Talents Yet.',
     'unfollow' => 'Unfollow',
+
+    'back_home' => 'Back Home',
+    'has_no_skills' => "Has no skills yet.",
+    'project_details' => 'Project Details',
 ];
