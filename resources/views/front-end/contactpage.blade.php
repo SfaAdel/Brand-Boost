@@ -3,8 +3,8 @@
 @section('title', 'Contact Us')
 
 @section('content')
-<div id="contact-page" class="bg-pr flex justify-center">
-    <div class=" bg-gr border border-green-200 w-1/2 mx-auto my-20 px-6 py-16 lg:px-8 hepta rounded-lg">
+<div id="contact-page" class="bg-pr flex items-center justify-center relative">
+    <div class=" bg-gr border border-green-200 my-20 px-6 py-16 lg:px-8 hepta rounded-lg">
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl uppercase">
                 {{__('website.contact_us')}}
@@ -68,6 +68,112 @@
             </div>
         </form>
     </div>
+    <div
+        class="hidden lg:block bg-bu my-20 px-6 py-16 lg:px-8 hepta {{app()->getLocale() === 'ar' ? 'lg:rounded-l-lg' : 'lg:rounded-r-lg'}}">
+        <div class="max-w-2xl text-center text-white flex flex-col gap-5">
+            <div class="flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <img src="{{ asset('front-end/assets/phone.svg') }}" alt="call">
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <p class="font-hepta text-[12px] font-medium text-white">
+                        {{ __('website.support_number') }}
+                    </p>
+                    <a href="tel:{{ $setting->phone }}" class="font-hepta text-[14px] font-medium text-white">
+                        {{ $setting->phone }}
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <img src="{{ asset('front-end/assets/mail.svg') }}" alt="mail">
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <p class="font-hepta text-[12px] font-medium text-[#fff]">
+                        {{ __('website.support_email') }}
+                    </p>
+                    <a href="mailto:{{ $setting->email }}"
+                        class="font-hepta text-[14px] font-medium text-[#fff]">{{ $setting->email }}</a>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <img src="{{ asset('front-end/assets/location.svg') }}" alt="location">
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <p class="font-hepta text-[12px] font-medium text-white">{{ __('website.address') }}</p>
+                    <p class="font-hepta text-[14px] font-medium text-[#fff]">
+                        {{ $setting->address }}
+                    </p>
+
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                    </svg>
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <a href="{{ $setting->x }}"
+                        class="font-hepta text-[14px] font-medium text-[#fff]">{{ $setting->x }}</a>
+
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                    </svg>
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <a href="{{ $setting->facebook }}"
+                        class="font-hepta text-[14px] font-medium text-[#fff]">{{ $setting->facebook }}</a>
+
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" />
+                        <path d="M10 9l5 3l-5 3z" />
+                    </svg>
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <a href="{{ $setting->youtube }}"
+                        class="font-hepta text-[14px] font-medium text-[#fff]">{{ $setting->youtube }}</a>
+
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tiktok">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" />
+                    </svg>
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <a href="{{ $setting->tiktok }}"
+                        class="font-hepta text-[14px] font-medium text-[#fff]">{{ $setting->tiktok }}</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <script>

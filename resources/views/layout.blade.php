@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale()}}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
 <!-- dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" -->
 
 @php
@@ -190,7 +190,7 @@
                         <div class="mt-[23px] flex">
 
                             <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
-                                <img src="{{ asset('front-end/assets/mail.svg') }}" alt="call">
+                                <img src="{{ asset('front-end/assets/mail.svg') }}" alt="mail">
                             </div>
                             <div class="ml-[18px]">
                                 <a href="mailto:{{ $setting->email }}"
@@ -202,7 +202,7 @@
                         </div>
                         <div class="mt-[23px] flex">
                             <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
-                                <img src="{{ asset('front-end/assets/location.svg') }}" alt="call">
+                                <img src="{{ asset('front-end/assets/location.svg') }}" alt="location">
                             </div>
                             <div class="ml-[18px]">
                                 <a href="#" class="font-Inter text-[14px] font-medium text-[#fff]">

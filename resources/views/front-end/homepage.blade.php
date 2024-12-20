@@ -106,16 +106,18 @@
     </div>
 </div>
 
-<div id="howItWorks">
+<div id="howItWorks" style="direction: ltr">
     <h2 class="text-6xl hepta font-bold text-center py-10 bg-bl text-white">{{$joinSection->title }}</h2>
     <div id="horizontal" class="flex overflow-x-hidden">
         @foreach ($advantages as $index => $advantage)
             <div id="horizontalContent"
                 class="relative md:static h-[100vh] w-[100vw] 
-                                                                                                                                                            {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
-                                                                                                                                                            flex-shrink-0 flex items-center">
+                                                                                                                {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
+                                                                                                                flex-shrink-0 flex items-center"
+                style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
                 <div class="flex items-center justify-between h-full px-20">
-                    <div class="w-full text-center md:text-left md:w-1/2">
+                    <div
+                        class="w-full text-center {{ app()->getLocale() === 'ar' ? 'md:text-right' : 'md:text-left' }} md:w-1/2">
                         <h1 class="text-7xl hepta font-bold">{{ $advantage->title }}</h1>
                         <p class="text-2xl rubikv mt-10">{{ $advantage->description }}</p>
                     </div>
@@ -130,62 +132,6 @@
                 </div>
             </div>
         @endforeach
-
-        {{--
-        <div id="horizontalContent"
-            class="relative md:static h-[100vh] w-[100vw] bg-gr flex-shrink-0 flex items-center">
-            <div class="flex items-center justify-between h-full px-20">
-                <div class="w-full text-center md:text-left md:w-1/2">
-                    <h1 class="text-7xl hepta font-bold">{{ $advantage->title }}</h1>
-                    <p class="text-2xl rubikv mt-10">{{ $advantage->description }}</p>
-                </div>
-                <div class="block md:hidden absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
-                    <img src="{{ asset('advantages/'.$advantage->icon) }}" alt="Brand Boost Logo" class="w-full">
-                </div>
-                <div class="hidden md:block absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
-                    <img src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo" class="w-full">
-                </div>
-            </div>
-        </div>
-
-        <div id="horizontalContent"
-            class="relative md:static h-[100vh] w-[100vw] bg-pi flex-shrink-0 flex items-center">
-            <div class="flex items-center justify-between h-full px-20">
-                <div class="w-full text-center md:text-left md:w-1/2">
-                    <h1 class="text-7xl hepta font-bold">{{ __('website.showcase_your_work') }}</h1>
-                    <p class="text-2xl rubikv mt-10">{{ __('website.showcase_your_work_description') }}</p>
-                </div>
-                <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
-                    <img src="{{ asset('front-end/assets/world.svg') }}" alt="Brand Boost Logo" class="w-full">
-                </div>
-            </div>
-        </div>
-
-        <div id="horizontalContent"
-            class="relative md:static h-[100vh] w-[100vw] bg-bu flex-shrink-0 flex items-center">
-            <div class="flex items-center justify-between h-full px-20">
-                <div class="w-full text-center md:text-left md:w-1/2">
-                    <h1 class="text-7xl hepta font-bold">{{ __('website.connect_and_collaborate') }}</h1>
-                    <p class="text-2xl rubikv mt-10">{{ __('website.coonect_and_collaborate_description') }}</p>
-                </div>
-                <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
-                    <img src="{{ asset('front-end/assets/at.svg') }}" alt="Brand Boost Logo" class="w-full">
-                </div>
-            </div>
-        </div>
-
-        <div id="horizontalContent"
-            class="relative md:static h-[100vh] w-[100vw] bg-pr flex-shrink-0 flex items-center">
-            <div class="flex items-center justify-between h-full px-20">
-                <div class="w-1/2 text-white">
-                    <h1 class="text-7xl hepta font-bold">{{ __('website.achieve_seccess') }}</h1>
-                    <p class="text-2xl rubikv mt-10">{{ __('website.achieve_seccess_description') }}</p>
-                </div>
-                <div class="bg-white rounded-[60px] absolute left-[30%] -z-10 opacity-45 md:static md:opacity-100">
-                    <img src="{{ asset('front-end/assets/star.svg') }}" alt="Brand Boost Logo" class="w-full">
-                </div>
-            </div>
-        </div> --}}
     </div>
 </div>
 
@@ -212,7 +158,7 @@
                 </div>
                 <div class="flex justify-center p-6 pt-2 gap-7">
                     <a href="{{route('service-offers', $service->id)}}"
-                        class="flex items-center justify-center cursor-pointer text-bl font-bold relative text-[14px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-gr to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-gr before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{ __('website.about') }}</a>
+                        class="mt-auto flex items-center justify-center cursor-pointer text-bl font-bold relative text-[14px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-gr to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-gr before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{ __('website.about') }}</a>
                 </div>
             </div>
         @empty
@@ -223,83 +169,21 @@
     </div>
 </div>
 
-{{-- <div id="talents" class="font-hepta relative w-[100vw] h-fit overflow-x-hidden bg-pr">
-    <h2
-        class="text-6xl hepta font-bold text-center py-10 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
-        {{ $favFreelancersSection->title }}
-    </h2>
-    <div id="talents-container" class="flex overflow-x-hidden">
-        <div id="horizontalTalentCard"
-            class="relative md:static h-[100vh] w-[100vw] bg-pr flex-shrink-0 flex items-center">
-            <div class="mx-auto flex flex-col md:flex-row items-center w-[80%] h-[80%]">
-                <img class="h-1/2 lg:h-full w-full lg:w-[30%] rounded-xl mx-auto sm:mx-0 sm:mr-4 my-4 sm:my-0 object-cover"
-                    src="{{ asset('front-end/socialMedia/brand boost sm (2).jpg') }}" alt="Developer Picture">
-                <div class="p-4 text-center sm:text-left">
-                    <h2 class="text-2xl lg:text-4xl font-semibold text-slate-100">John Doe</h2>
-                    <p class="text-slate-300 mt-2 lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Magni perferendis sit eius excepturi vel tempore error laboriosam ipsa vitae ipsum temporibus at
-                        doloribus ea cupiditate nisi aliquid sequi, facilis deserunt iste nulla!</p>
-                    <a href="/freelancers"
-                        class="mt-10 flex items-center justify-center cursor-pointer text-white font-bold relative text-[20px] w-1/2 h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-lg z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">See
-                        profile</a>
-                </div>
-            </div>
-        </div>
-        <div id="horizontalTalentCard"
-            class="relative md:static h-[100vh] w-[100vw] bg-bu flex-shrink-0 flex items-center">
-            <div class="mx-auto flex flex-col md:flex-row items-center w-[80%] h-[80%]">
-                <img class="h-1/2 lg:h-full w-full lg:w-[30%] rounded-xl mx-auto sm:mx-0 sm:mr-4 my-4 sm:my-0 object-cover"
-                    src="{{ asset('front-end/socialMedia/brand boost sm (2).jpg') }}" alt="Developer Picture">
-                <div class="p-4 text-center sm:text-left">
-                    <h2 class="text-2xl lg:text-4xl font-semibold text-slate-100">John Doe</h2>
-                    <p class="text-slate-300 mt-2 lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Magni perferendis sit eius excepturi vel tempore error laboriosam ipsa vitae ipsum temporibus at
-                        doloribus ea cupiditate nisi aliquid sequi, facilis deserunt iste nulla!</p>
-                    <a href="/freelancers"
-                        class="mt-10 flex items-center justify-center cursor-pointer text-white font-bold relative text-[20px] w-1/2 h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-lg z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">See
-                        profile</a>
-                </div>
-            </div>
-        </div>
-        <div id="horizontalTalentCard"
-            class="relative md:static h-[100vh] w-[100vw] bg-gr flex-shrink-0 flex items-center">
-            <div class="mx-auto flex flex-col md:flex-row items-center w-[80%] h-[80%]">
-                <img class="h-1/2 lg:h-full w-full lg:w-[30%] rounded-xl mx-auto sm:mx-0 sm:mr-4 my-4 sm:my-0 object-cover"
-                    src="{{ asset('front-end/socialMedia/brand boost sm (2).jpg') }}" alt="Developer Picture">
-                <div class="p-4 text-center sm:text-left">
-                    <h2 class="text-2xl lg:text-4xl font-semibold text-bl">John Doe</h2>
-                    <p class="text-slate-800 mt-2 lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Magni perferendis sit eius excepturi vel tempore error laboriosam ipsa vitae ipsum temporibus at
-                        doloribus ea cupiditate nisi aliquid sequi, facilis deserunt iste nulla!</p>
-                    <a href="/freelancers"
-                        class="mt-10 flex items-center justify-center cursor-pointer text-bl font-bold relative text-[20px] w-1/2 h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-lg z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">See
-                        profile</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="w-full flex items-center justify-center bg-pr py-12">
-        <a href="/freelancers"
-            class="flex items-center justify-center cursor-pointer text-bl font-bold relative text-[16px] w-1/2 mx-auto h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">
-            {{ __('website.explore_the_talents') }}</a>
-    </div>
-</div> --}}
-
 @if(!empty($favFreelancers))
-    <div id="talents" class="font-hepta relative w-[100vw] h-fit overflow-x-hidden bg-pr">
+    <div id="talents" style="direction: ltr" class="font-hepta relative w-[100vw] h-fit overflow-x-hidden bg-pr">
         <h2
             class="text-6xl hepta font-bold text-center py-10 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
             {{ $favFreelancersSection->title }}
         </h2>
         <div id="talents-container" class="flex overflow-x-hidden">
             @foreach($favFreelancers as $favFreelancer)
-                <div id="horizontalTalentCard"
+                <div id="horizontalTalentCard" style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};"
                     class="relative md:static h-[100vh] w-[100vw] bg-pr flex-shrink-0 flex items-center">
                     <div class="mx-auto flex flex-col md:flex-row items-center w-[80%] h-[80%]">
                         <img class="h-1/2 lg:h-full w-full lg:w-[30%] rounded-xl mx-auto sm:mx-0 sm:mr-4 my-4 sm:my-0 object-cover"
                             src="{{ asset('images/freelancers/profile/' . $favFreelancer->profile_image) }}"
                             alt="Developer Picture">
-                        <div class="p-4 text-center sm:text-left">
+                        <div class="p-4 text-center {{ app()->getLocale() === 'ar' ? 'sm:text-right' : 'sm:text-left' }}">
                             <h2 class="text-2xl lg:text-4xl font-semibold text-slate-100">{{$favFreelancer->name}}</h2>
                             <p class="text-slate-300 mt-2 lg:text-xl">{{$favFreelancer->bio}}</p>
                             <a href="{{route('freelancerName', ['id' => $favFreelancer->id])}}"
