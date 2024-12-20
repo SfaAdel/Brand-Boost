@@ -23,7 +23,7 @@
                         <span
                             id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
                 __('website.follow')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
                         <span>
                             <img id="follow-icon-{{ $freelancer->id }}"
                                 src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
@@ -67,74 +67,49 @@
         <h2 class="text-3xl capitalize font-bold my-5">{{__('website.projects')}}</h2>
         <div class="my-5 flex flex-wrap lg:flex-nowrap justify-center items-center">
             @forelse($freelancerProjects as $freelancerProject)
-                <!-- project videos -->
-                <!-- <div>
-                        <div>
-                            <video src="{{ asset('front-end/assets/v2.mp4') }}" controls class="rounded-lg"></video>
-                        </div>
-                        <h2 class="my-4 text-5xl capitalize">Project Title</h2>
-                    </div> -->
-
-                <div class="card flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
-                    <div class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-96">
-                        <div class="relative h-56 m-2.5 overflow-hidden text-white">
-                            <img src="{{ asset('images/' . $freelancerProject->freelancerService->freelancer->name . '_projects_images') . $freelancerProject->image }}"
-                                alt="card-image" class="w-full h-full object-cover rounded-lg" />
-                        </div>
-                        <div class="p-4">
-                            <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-                                {{$freelancerProject->title}}
-                            </h6>
-                            <p id="service-offer-description" class="text-slate-600 leading-normal font-light text-sm">
-                                {{$freelancerProject->description}}
-                            </p>
-                        </div>
-                        <div class="px-4 pb-4 pt-0 mt-auto flex">
-                            <a href="/services/offers/offer"
-                                class="px-3 flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu"
-                                type="button">
-                                {{__('website.project_details')}}
-                            </a>
-                        </div>
+                <div>
+                    <div>
+                        <video src="{{ asset('front-end/assets/v2.mp4') }}" controls class="rounded-lg"></video>
                     </div>
+                    <h2 class="my-4 text-5xl capitalize">Project Title</h2>
                 </div>
-
             @empty
                 <div>
                     <p class="py-3 px-5 text-center">{{__('website.no_projects_found')}}</p>
                 </div>
             @endforelse
-
-            <!-- @forelse($freelancerProjects as $freelancerProject)
-                <div class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
-                    <div class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-96">
-                        <div class="relative h-56 m-2.5 overflow-hidden text-white">
-                            <img src="{{ asset('images/' . $freelancerProject->freelancerService->freelancer->name . '_projects_images') . $freelancerProject->image }}"
-                                alt="card-image" class="w-full h-full object-cover rounded-lg" />
+        </div>
+    </section>
+    <section class="py-20 px-[10vw] bg-gr">
+        <h2 class="text-3xl capitalize font-bold my-5">{{__('website.services')}}</h2>
+        <div class="my-5 flex flex-wrap lg:flex-nowrap justify-center items-center">
+            @forelse($freelancerServices as $freelancerService)
+                <div class="card flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
+                    <div class="relative flex flex-col my-6 bg-pr border rounded-lg border-purple-200 w-96">
+                        <div class="relative h-56 m-2.5 overflow-hidden">
+                            <img src="{{ asset('front-end/socialMedia/brand boost sm (1).jpg') }}" alt="card-image"
+                                class="w-full h-full object-cover rounded-lg" />
                         </div>
                         <div class="p-4">
-                            <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-                                {{$freelancerProject->title}}
+                            <h6 class="mb-2 text-white text-xl font-semibold">
+                                {{$freelancerService->service->name}}
                             </h6>
-                            <p id="service-offer-description" class="text-slate-600 leading-normal font-light text-sm">
-                                {{$freelancerProject->description}}
-                            </p>
+                            <p class="text-white">50 EGP</p>
                         </div>
                         <div class="px-4 pb-4 pt-0 mt-auto flex">
-                            <a href="/services/offers/offer"
-                                class="px-3 flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu"
+                            <button
+                                class="capitalize px-3 flex items-center justify-center cursor-pointer text-purple-800 hover:text-bl transition font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu"
                                 type="button">
-                                {{__('website.project_details')}}
-                            </a>
+                                {{__('website.order_now')}}
+                                </butt>
                         </div>
                     </div>
                 </div>
-
             @empty
                 <div>
-                    <p class="py-3 px-5 text-center">{{__('website.no_projects_found')}}</p>
+                    <p class="py-3 px-5 text-center">{{__('website.no_services_found')}}</p>
                 </div>
-            @endforelse -->
+            @endforelse
         </div>
     </section>
 </section>

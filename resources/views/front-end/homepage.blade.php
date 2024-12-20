@@ -121,8 +121,8 @@
         @foreach ($advantages as $index => $advantage)
             <div id="horizontalContent"
                 class="relative md:static h-[100vh] w-[100vw] 
-                                                                                                                                                                                                                                                                        {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
-                                                                                                                                                                                                                                                                        flex-shrink-0 flex items-center"
+                                                                                                                                                                                                                                                                                    {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
+                                                                                                                                                                                                                                                                                    flex-shrink-0 flex items-center"
                 style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
                 <div class="flex items-center justify-between h-full px-20">
                     <div
@@ -165,9 +165,9 @@
                         {{$service->description}}
                     </p>
                 </div>
-                <div class="flex justify-center p-6 pt-2 gap-7">
+                <div class="flex justify-center p-6 pt-2 gap-7 mt-auto">
                     <a href="{{route('service-offers', $service->id)}}"
-                        class="mt-auto flex items-center justify-center cursor-pointer text-bl font-bold relative text-[14px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-gr to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-gr before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{ __('website.about') }}</a>
+                        class=" flex items-center justify-center cursor-pointer text-bl font-bold relative text-[14px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-bu from-10% via-pi via-30% to-gr to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-bu before:from-10% before:via-pi before:via-30% before:to-gr before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{ __('website.about') }}</a>
                 </div>
             </div>
         @empty
