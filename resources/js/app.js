@@ -33,9 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
         onComplete: () => {
             document.querySelector("#loader").style.display = "none";
             // Hero
-            gsap.to("#hero-content-text", {
+            gsap.timeline().to(".heroText", {
                 opacity: 1,
+                y: 0,
                 duration: 1,
+                ease: "power2.out",
+                stagger: 0.5,
             });
 
             gsap.to("#hero-content-image", {
@@ -228,5 +231,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll("#blogDescription").forEach((paragraph) => {
         truncateText(paragraph, 100);
+    });
+
+    const tiltCards = document.querySelectorAll(".card");
+    tiltCards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            const rotateX = (y - 0.5) * 20; // Adjust for tilt intensity
+            const rotateY = (x - 0.5) * -20;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "rotateX(0deg) rotateY(0deg)";
+        });
     });
 });

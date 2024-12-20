@@ -22,21 +22,25 @@
 
     </div>
     <div id="hero-content"
-        class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col md:flex-row justify-center items-center gap-1 md:gap-4 z-20">
-        <!-- <p id="hero-content-text"
-                class="opacity-0 flex-[0] md:flex-1 mb-5 md:mb-0 flex items-center justify-center text-center md:text-left font-acworth text-xl md:text-2xl w-full text-white">
-                We are
-            </p> -->
+        class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col lg:flex-row justify-center items-center gap-1 md:gap-4 z-20">
+        <div class="flex flex-col gap-5 text-white font-acworth text-center lg:text-start">
 
-        <div class="flex flex-col gap-5 text-white font-acworth">
-
-            <h2 class="text-8xl font-bold uppercase">{{ $heroSection1->h2 }}</h2>
-            <h2 class="text-7xl font-bold uppercase">{{ $heroSection2->h2 }}</h2>
-            <h2 class="text-6xl font-bold uppercase">{{ $heroSection3->h2 }}</h2>
+            <h2
+                class="heroText opacity-0 translate-y-52 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase">
+                {{ $heroSection1->h2 }}
+            </h2>
+            <h2
+                class="heroText opacity-0 translate-y-52 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase">
+                {{ $heroSection2->h2 }}
+            </h2>
+            <h2
+                class="heroText opacity-0 translate-y-52 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase">
+                {{ $heroSection3->h2 }}
+            </h2>
         </div>
         <div id="hero-content-image"
-            class="opacity-0 flex-[0] md:flex-1 flex justify-center md:justify-end items-center">
-            <img class="w-4/5 md:w-1/2" src="{{ asset('front-end/logo/PNG/BB.png') }}" alt="Brand Boost Logo">
+            class="opacity-0 flex-[0] lg:flex-1 flex justify-center lg:justify-end items-center mt-5 lg:mt-0">
+            <img class="w-[30vw] lg:w-1/2" src="{{ asset('front-end/logo/PNG/BB.png') }}" alt="Brand Boost Logo">
         </div>
     </div>
 </section>
@@ -80,7 +84,7 @@
     <div id="shots-left-content"
         class="bg-gr h-full flex-[1] flex flex-col gap-0 md:gap-14 font-extrabold items-between font-rubiki justify-center items-center">
         <h2 class="text-pr text-5xl font-bold capitalize text-left">{{$aboutSection->title}}</h2>
-        <p class="text-3xl px-10 text-bl">{{$aboutSection->short_description}}</p>
+        <p class="text-3xl px-10 my-5 text-bl">{{$aboutSection->short_description}}</p>
         <div class="w-1/2">
             <a href="/signin"
                 class="flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{ __('website.login') }}</a>
@@ -106,9 +110,10 @@
     <h2 class="text-6xl hepta font-bold text-center py-10 bg-bl text-white">{{$joinSection->title }}</h2>
     <div id="horizontal" class="flex overflow-x-hidden">
         @foreach ($advantages as $index => $advantage)
-            <div id="horizontalContent" class="relative md:static h-[100vh] w-[100vw] 
-            {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
-            flex-shrink-0 flex items-center">
+            <div id="horizontalContent"
+                class="relative md:static h-[100vh] w-[100vw] 
+                                                                                                                                                            {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
+                                                                                                                                                            flex-shrink-0 flex items-center">
                 <div class="flex items-center justify-between h-full px-20">
                     <div class="w-full text-center md:text-left md:w-1/2">
                         <h1 class="text-7xl hepta font-bold">{{ $advantage->title }}</h1>
@@ -193,7 +198,7 @@
     <div id="services-container" class="flex flex-wrap gap-5 justify-center pb-24 font-rubikv">
         @forelse($services as $service)
 
-            <div id="service" class="flex flex-col bg-pr shadow-sm border border-purple-900 rounded-lg my-6 w-96">
+            <div id="service" class="card flex flex-col bg-pr shadow-sm border border-purple-900 rounded-lg my-6 w-96">
                 <div class="overflow-hidden rounded-md h-80 flex justify-center items-center">
                     <img class="w-full h-full object-cover" src="{{ asset('images/services/' . $service->icon) }}" />
                 </div>

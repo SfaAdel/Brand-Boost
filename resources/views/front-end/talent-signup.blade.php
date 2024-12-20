@@ -5,7 +5,9 @@
 @section('content')
 <div class="flex min-h-[100vh] flex-col justify-center px-6 pt-12 lg:px-8 bg-pr text-white">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo">
+        <a href="/">
+            <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/BB.png') }}" alt="Brand Boost Logo">
+        </a>
         <h2 class="mt-4 font-hepta text-center text-2xl/9 font-bold tracking-tight text-gray-100">
             {{ __('website.talent_signup_header') }}
         </h2>

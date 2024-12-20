@@ -166,7 +166,7 @@
             <div class="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
                 <div class="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">
                     <div class="md:w-[316px]">
-                        <img src="{{ asset('front-end/logo/PNG/Artboard 37.png') }}" loading="lazy" class="w-1/2"
+                        <img src="{{ asset('front-end/logo/PNG/BB.png') }}" loading="lazy" class="w-1/2"
                             alt="Brand Boost Logo">
                         <p class="mt-[18px] text-[15px] font-normal text-white/[80%]">
                             {{ __('website.footer_description') }}

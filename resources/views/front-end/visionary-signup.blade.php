@@ -3,9 +3,12 @@
 @section('title', __('Visionary Signup'))
 
 @section('content')
-<div class="flex min-h-[100vh] flex-col justify-center px-6 pt-12 lg:px-8">
+<div class="bg-gr flex min-h-[100vh] flex-col justify-center px-6 pt-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo">
+        <a href="/">
+            <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}"
+                alt="Brand Boost Logo">
+        </a>
         <h2 class="mt-4 font-hepta text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             {{ __('website.welcome_visionary') }}
         </h2>
@@ -113,7 +116,7 @@
             <p class="text-center">{{__('website.already_have_account')}}</p>
             <div class="text-center text-sm/6 flex flex-col gap-2">
                 <a href="/signin"
-                    class="flex w-full justify-center rounded-xl bg-pi px-3 py-2 text-sm/6 font-semibold text-black shadow-sm transition hover:bg-pink-400">{{__('website.have_talent')}}</a>
+                    class="flex w-full justify-center rounded-xl bg-pr px-3 py-2 text-sm/6 font-semibold text-white shadow-sm transition hover:bg-pink-400">{{__('website.have_talent')}}</a>
             </div>
         </div>
     </div>

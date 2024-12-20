@@ -8,7 +8,7 @@
     <div id="services-page" class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
         @forelse($services as $service)
             <div id="service-card-inpage"
-                class="flex flex-col bg-pr shadow-sm border border-purple-900 rounded-lg my-6 w-96">
+                class="card flex flex-col bg-pr shadow-sm border border-purple-900 rounded-lg my-6 w-96">
                 <div class="overflow-hidden rounded-md h-80 flex justify-center items-center">
                     <img class="w-full h-full object-cover"
                         src="{{$service->icon ? asset('images/services/' . $service->icon) : asset('front-end/SocialMedia/brand boost sm (8).png') }}"
