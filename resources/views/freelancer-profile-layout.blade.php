@@ -23,7 +23,7 @@
                         <span
                             id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
                 __('website.follow')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }}</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
                         <span>
                             <img id="follow-icon-{{ $freelancer->id }}"
                                 src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
@@ -69,11 +69,11 @@
             @forelse($freelancerProjects as $freelancerProject)
                 <!-- project videos -->
                 <!-- <div>
-                                            <div>
-                                                <video src="{{ asset('front-end/assets/v2.mp4') }}" controls class="rounded-lg"></video>
-                                            </div>
-                                            <h2 class="my-4 text-5xl capitalize">Project Title</h2>
-                                        </div> -->
+                        <div>
+                            <video src="{{ asset('front-end/assets/v2.mp4') }}" controls class="rounded-lg"></video>
+                        </div>
+                        <h2 class="my-4 text-5xl capitalize">Project Title</h2>
+                    </div> -->
 
                 <div class="card flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
                     <div class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-96">
