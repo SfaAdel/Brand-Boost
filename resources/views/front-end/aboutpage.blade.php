@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="hepta overflow-x-hidden">
-    <section class="relative flex flex-col items-center min-h-96 py-24 px-[10vw] text-center bg-emerald-500">
+    <section class="relative flex flex-col items-center min-h-96 py-36 px-[10vw] text-center bg-emerald-500">
         <h1 class="text-7xl font-bold uppercase text-center">What is<br />Brand Boost</h1>
         <p class="text-2xl mt-10">This small journy on this page will let you know more about us.</p>
     </section>
