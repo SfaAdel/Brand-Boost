@@ -23,7 +23,7 @@
                         <span
                             id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
                 __('website.follow')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
                         <span>
                             <img id="follow-icon-{{ $freelancer->id }}"
                                 src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
@@ -44,7 +44,7 @@
             <ul class="flex flex-wrap">
                 @forelse ($freelancer->fields as $field)
                     <li class="m-2 p-2 border border-slate-200 rounded-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
                             stroke="#520a70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-accessible-off mx-auto">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -67,6 +67,14 @@
         <h2 class="text-3xl capitalize font-bold my-5">{{__('website.projects')}}</h2>
         <div class="my-5 flex flex-wrap lg:flex-nowrap justify-center items-center">
             @forelse($freelancerProjects as $freelancerProject)
+                <!-- project videos -->
+                <!-- <div>
+                                        <div>
+                                            <video src="{{ asset('front-end/assets/v2.mp4') }}" controls class="rounded-lg"></video>
+                                        </div>
+                                        <h2 class="my-4 text-5xl capitalize">Project Title</h2>
+                                    </div> -->
+
                 <div class="flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
                     <div class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-96">
                         <div class="relative h-56 m-2.5 overflow-hidden text-white">

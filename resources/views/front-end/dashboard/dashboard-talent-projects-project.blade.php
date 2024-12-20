@@ -1,6 +1,6 @@
 @extends('businessarea')
 
-@section('title', 'Project Details')
+@section('title', $freelancerProject->title)
 
 @section('business-area-content')
 <div class="bg-white border rounded-lg border-gray-200 h-full pb-5">

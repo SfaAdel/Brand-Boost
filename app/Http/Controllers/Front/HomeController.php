@@ -65,7 +65,7 @@ class HomeController extends Controller
         $heroSection3 = HeroSection::where('id', 3)->first();
 
 
-        return view('front-end.homepage', compact('joinSection','heroSection2','heroSection3', 'heroVideo','heroSection1','sec4Video','sec3Video','sec2Video','sec1Video','services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
+        return view('front-end.homepage', compact('joinSection', 'heroSection2', 'heroSection3', 'heroVideo', 'heroSection1', 'sec4Video', 'sec3Video', 'sec2Video', 'sec1Video', 'services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
     }
 
 
@@ -98,29 +98,29 @@ class HomeController extends Controller
     {
         // Fetch the selected service from the request query
         $selectedService = $request->query('service');
-        
+
         // Start the query for freelancers
         $freelancers = Freelancer::query();
-    
+
         // Filter by services if a service is selected
         if ($selectedService) {
             $freelancers->whereHas('services', function ($query) use ($selectedService) {
                 $query->where('services.id', $selectedService);
             });
         }
-    
+
         // Retrieve filtered freelancers
         $freelancers = $freelancers->with('jobTitle', 'fields', 'services')->get();
-    
+
         // Fetch available services and other necessary data
         $services = Service::all();
         $setting = Setting::first();
-        
+
         // Check if no freelancers are found
-        $noFreelancersMessage = $freelancers->isEmpty() 
-            ? __('website.no_freelancers_found') 
+        $noFreelancersMessage = $freelancers->isEmpty()
+            ? __('website.no_freelancers_found')
             : null;
-    
+
         return view('front-end.freelancerspage', compact(
             'services',
             'selectedService',
@@ -129,7 +129,7 @@ class HomeController extends Controller
             'noFreelancersMessage'
         ));
     }
-    
+
 
 
     // public function filteration(Request $request)
@@ -165,18 +165,18 @@ class HomeController extends Controller
         $setting = Setting::first();
 
         $isFollowing = FavoriteFreelancer::where('freelancer_id', $freelancer->id)
-    ->where('business_owner_id', Auth::guard('business_owner')->id())
-    ->exists();
+            ->where('business_owner_id', Auth::guard('business_owner')->id())
+            ->exists();
 
-    $freelancerServices = FreelancerService::where('freelancer_id', $id)->get();
-
-
-    $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
-        $query->where('freelancer_id', $id);
-    })->get();
+        $freelancerServices = FreelancerService::where('freelancer_id', $id)->get();
 
 
-        return view('front-end.singlefreelancerpage', compact('isFollowing','setting', 'freelancer' ,'freelancerServices' , 'freelancerProjects'));
+        $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
+            $query->where('freelancer_id', $id);
+        })->get();
+
+
+        return view('freelancer-profile-layout', compact('isFollowing', 'setting', 'freelancer', 'freelancerServices', 'freelancerProjects'));
     }
 
     public function freelancer_projects($id)
@@ -185,16 +185,16 @@ class HomeController extends Controller
         $freelancer = Freelancer::findOrFail($id);
 
         $isFollowing = FavoriteFreelancer::where('freelancer_id', $freelancer->id)
-    ->where('business_owner_id', Auth::guard('business_owner')->id())
-    ->exists();
+            ->where('business_owner_id', Auth::guard('business_owner')->id())
+            ->exists();
 
-    $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
-        $query->where('freelancer_id', $id);
-    })->get();
+        $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
+            $query->where('freelancer_id', $id);
+        })->get();
         // Fetch settings
         $setting = Setting::first();
 
-        return view('front-end.singlefreelancerprojects', compact('freelancerProjects','isFollowing','setting', 'freelancer'));
+        return view('front-end.singlefreelancerprojects', compact('freelancerProjects', 'isFollowing', 'setting', 'freelancer'));
     }
 
 

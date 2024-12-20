@@ -1,6 +1,6 @@
 @extends('businessarea')
 
-@section('title', 'Order')
+@section('title', 'Order' . $order->id)
 
 @section('business-area-content')
 <div class="bg-white border rounded-lg border-gray-200 h-full">

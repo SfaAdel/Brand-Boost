@@ -21,7 +21,7 @@
 </head>
 
 <body class="overflow-x-hidden">
-    @unless (Str::contains(request()->path(), ['talent-signup', 'visionary-signup', 'signin', 'business-area', 'freelancer-services/create', 'freelancer-projects/create', 'freelancer-projects']))
+    @unless (Str::contains(request()->path(), ['talent-signup', 'visionary-signup', 'signin', 'business-area', 'freelancer-services/create', 'freelancer-projects/create', 'freelancer-projects', 'freelancer-services', 'talent-orders']))
         <nav id="navbar-lg"
             class="hidden transition-all lg:flex font-hepta uppercase fixed z-40 w-full px-10 py-5 items-center justify-between">
             <div id="nav-logo" class="w-[50px]">
@@ -161,7 +161,7 @@
         use Illuminate\Support\Str;
     @endphp
 
-    @unless (Str::contains(request()->path(), ['talent-signup', 'visionary-signup', 'signin', 'business-area', 'freelancer-services/create', 'freelancer-projects/create', 'freelancer-projects']))
+    @unless (Str::contains(request()->path(), ['talent-signup', 'visionary-signup', 'signin', 'business-area', 'freelancer-services/create', 'freelancer-projects/create', 'freelancer-projects', 'freelancer-services', 'talent-orders']))
         <footer class="bg-pr pt-9 rubikv w-full">
             <div class="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
                 <div class="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">

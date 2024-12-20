@@ -223,8 +223,8 @@
     padding: 15px;
     display: flex;
     gap: 10px;
-    width: 50%;
     margin: auto;
+    width: 100%;
 }
 
 .alert-danger {
