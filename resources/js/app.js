@@ -151,6 +151,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     gsap.fromTo(
+        ".contact-info-item",
+        { opacity: 0, yPercent: 100 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            duration: 0.5,
+            ease: "power1.out",
+            stagger: { each: 0.25, from: "start" },
+        }
+    );
+
+    gsap.fromTo(
         "#blog-item",
         { opacity: 0, yPercent: 100 },
         {

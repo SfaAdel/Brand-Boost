@@ -162,7 +162,7 @@
     @endphp
 
     @unless (Str::contains(request()->path(), ['talent-signup', 'visionary-signup', 'signin', 'business-area', 'freelancer-services/create', 'freelancer-projects/create', 'freelancer-projects', 'freelancer-services', 'talent-orders']))
-        <footer class="bg-pr pt-9 rubikv w-full">
+        <footer class="bg-pr pt-9 rubikv w-[100vw]">
             <div class="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
                 <div class="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">
                     <div class="md:w-[316px]">

@@ -4,6 +4,48 @@
 
 @section('content')
 <div id="contact-page" class="bg-pr flex items-center justify-center relative">
+    <div
+        class="hidden lg:block h-[50vh] bg-bl my-20 px-6 py-16 lg:px-8 hepta {{app()->getLocale() === 'ar' ? 'lg:rounded-r-lg' : 'lg:rounded-l-lg'}}">
+        <div class="max-w-2xl text-center text-white flex flex-col gap-5">
+            <div class="contact-info-item flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <img src="{{ asset('front-end/assets/phone.svg') }}" alt="call">
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <p class="font-hepta text-[12px] font-medium text-white">
+                        {{ __('website.support_number') }}
+                    </p>
+                    <a href="tel:{{ $setting->phone }}" class="font-hepta text-[14px] font-medium text-white">
+                        {{ $setting->phone }}
+                    </a>
+                </div>
+            </div>
+            <div class="contact-info-item flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <img src="{{ asset('front-end/assets/mail.svg') }}" alt="mail">
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <p class="font-hepta text-[12px] font-medium text-[#fff]">
+                        {{ __('website.support_email') }}
+                    </p>
+                    <a href="mailto:{{ $setting->email }}" class="font-hepta text-[14px] font-medium text-[#fff]">{{ $setting->email
+            }}</a>
+                </div>
+            </div>
+            <div class="contact-info-item flex items-center">
+                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+                    <img src="{{ asset('front-end/assets/location.svg') }}" alt="location">
+                </div>
+                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
+                    <p class="font-hepta text-[12px] font-medium text-white">{{ __('website.address') }}</p>
+                    <p class="font-hepta text-[14px] font-medium text-[#fff]">
+                        {{ $setting->address }}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class=" bg-gr border border-green-200 my-20 px-6 py-16 lg:px-8 hepta rounded-lg">
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl uppercase">
@@ -69,46 +111,9 @@
         </form>
     </div>
     <div
-        class="hidden lg:block bg-bu my-20 px-6 py-16 lg:px-8 hepta {{app()->getLocale() === 'ar' ? 'lg:rounded-l-lg' : 'lg:rounded-r-lg'}}">
+        class="hidden lg:block h-[50vh] bg-bl my-20 px-6 py-16 lg:px-8 hepta {{app()->getLocale() === 'ar' ? 'lg:rounded-l-lg' : 'lg:rounded-r-lg'}}">
         <div class="max-w-2xl text-center text-white flex flex-col gap-5">
-            <div class="flex items-center">
-                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
-                    <img src="{{ asset('front-end/assets/phone.svg') }}" alt="call">
-                </div>
-                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
-                    <p class="font-hepta text-[12px] font-medium text-white">
-                        {{ __('website.support_number') }}
-                    </p>
-                    <a href="tel:{{ $setting->phone }}" class="font-hepta text-[14px] font-medium text-white">
-                        {{ $setting->phone }}
-                    </a>
-                </div>
-            </div>
-            <div class="flex items-center">
-                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
-                    <img src="{{ asset('front-end/assets/mail.svg') }}" alt="mail">
-                </div>
-                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
-                    <p class="font-hepta text-[12px] font-medium text-[#fff]">
-                        {{ __('website.support_email') }}
-                    </p>
-                    <a href="mailto:{{ $setting->email }}"
-                        class="font-hepta text-[14px] font-medium text-[#fff]">{{ $setting->email }}</a>
-                </div>
-            </div>
-            <div class="flex items-center">
-                <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
-                    <img src="{{ asset('front-end/assets/location.svg') }}" alt="location">
-                </div>
-                <div class="{{app()->getLocale() === 'ar' ? 'text-right' : 'text-left'}}">
-                    <p class="font-hepta text-[12px] font-medium text-white">{{ __('website.address') }}</p>
-                    <p class="font-hepta text-[14px] font-medium text-[#fff]">
-                        {{ $setting->address }}
-                    </p>
-
-                </div>
-            </div>
-            <div class="flex items-center">
+            <div class="contact-info-item flex items-center">
                 <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -124,7 +129,7 @@
 
                 </div>
             </div>
-            <div class="flex items-center">
+            <div class="contact-info-item flex items-center">
                 <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -139,7 +144,7 @@
 
                 </div>
             </div>
-            <div class="flex items-center">
+            <div class="contact-info-item flex items-center">
                 <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -155,7 +160,7 @@
 
                 </div>
             </div>
-            <div class="flex items-center">
+            <div class="contact-info-item flex items-center">
                 <div class="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
