@@ -3,7 +3,7 @@
 @section('title', 'Orders')
 
 @section('business-area-content')
-<div class="bg-white border rounded-lg border-gray-200 h-full">
+<div class="bg-pr text-white border rounded-lg border-gray-200 h-full">
     <div class="p-6 px-0 pt-0 pb-2">
         <table class="w-full min-w-[640px] table-auto border-collapse border-spacing-0">
             <thead>
@@ -47,8 +47,8 @@
                         <td class="py-3 px-5">
                             <div
                                 class="relative grid items-center uppercase whitespace-nowrap select-none 
-                                                                                    {{ $order->status === 'complete' ? 'bg-gradient-to-tr from-emerald-600 to-emerald-400' : 'bg-gradient-to-tr from-yellow-600 to-yellow-400' }} 
-                                                                                    text-white py-0.5 px-2 text-[11px] font-medium w-fit">
+                                                                                                    {{ $order->status === 'complete' ? 'bg-gradient-to-tr from-emerald-600 to-emerald-400' : 'bg-gradient-to-tr from-yellow-600 to-yellow-400' }} 
+                                                                                                    text-white py-0.5 px-2 text-[11px] font-medium w-fit">
                                 <span>{{ $order->status }}</span>
                             </div>
                         </td>

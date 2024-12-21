@@ -3,7 +3,7 @@
 @section('title', 'Order')
 
 @section('business-area-content')
-<div class="bg-white border rounded-lg border-gray-200 h-full">
+<div class="bg-pr text-white border rounded-lg border-gray-200 h-full">
     <div class="p-5 flex flex-col gap-5">
         <h1 class="text-2xl font-bold">#{{ $order->id }} {{__('website.details')}}</h1>
         <div class="grid grid-cols-2 gap-5">

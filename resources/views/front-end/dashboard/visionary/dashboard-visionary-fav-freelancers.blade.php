@@ -7,7 +7,7 @@
     <a href="/freelancers"
         class="bg-gr border rounded-lg border-gray-500 py-3 px-5 text-xs capitalize">{{__('website.explore_the_talents')}}</a>
 </div>
-<div class="bg-white border rounded-lg border-gray-200 h-full">
+<div class="bg-pr text-white border rounded-lg border-gray-200 h-full">
     <div class="p-6 px-0 pt-0 pb-2">
         <table class="w-full min-w-[640px] table-auto">
             <thead>

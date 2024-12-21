@@ -3,7 +3,7 @@
 @section('title', 'New Serice')
 
 @section('business-area-content')
-<div class="bg-white border rounded-lg border-gray-200 h-full p-5">
+<div class="bg-pr text-white border rounded-lg border-gray-200 h-full p-5">
 
     <div class="my-3">
         @include('front-end.includes.alerts')
@@ -40,7 +40,7 @@
         </div>
         <div class="flex justify-center mt-5">
             <button type="submit"
-                class="bg-gr border rounded-lg border-gray-200 py-3 px-5 text-sm font-semibold capitalize w-full hover:bg-green-400 transition">{{__('website.add_service')}}</button>
+                class="bg-gr border text-bl rounded-lg border-gray-200 py-3 px-5 text-sm font-semibold capitalize w-full hover:bg-green-400 transition">{{__('website.add_service')}}</button>
         </div>
     </form>
 </div>

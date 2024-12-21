@@ -3,7 +3,7 @@
 @section('title', 'Edit Project')
 
 @section('business-area-content')
-<div class="bg-white border rounded-lg border-gray-200 h-full p-5">
+<div class="bg-pr border rounded-lg border-gray-200 h-full p-5">
 
     <div class="my-3">
         @include('front-end.includes.alerts')
