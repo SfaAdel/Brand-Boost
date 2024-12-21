@@ -111,7 +111,6 @@
                     autoplay muted loop></video>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -121,8 +120,8 @@
         @foreach ($advantages as $index => $advantage)
             <div id="horizontalContent"
                 class="relative md:static h-[100vh] w-[100vw] 
-                                                                                                                                                                                                                                                                                    {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
-                                                                                                                                                                                                                                                                                    flex-shrink-0 flex items-center"
+                                                                                                                                                                                                                                                                                                                                            {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
+                                                                                                                                                                                                                                                                                                                                            flex-shrink-0 flex items-center"
                 style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
                 <div class="flex items-center justify-between h-full px-20">
                     <div
