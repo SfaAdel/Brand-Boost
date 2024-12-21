@@ -23,46 +23,46 @@ class FreelancerProjectRequest extends FormRequest
      */
     public function rules(): array
     {
-        $projectId = $this->route('id');        
+        $projectId = $this->route('id');
 
         $rules = [
             'en.title' => [
-                'required',
+                'nullable',
                 'string',
                 'min:3',
                 'max:32',
                 new NotEmailOrPhone,
             ],
             'ar.title' => [
-                'required',
+                'nullable',
                 'string',
                 'min:3',
                 'max:32',
                 new NotEmailOrPhone,
             ],
             'ar.description' => [
-                'required',
+                'nullable',
                 'min:10',
                 new NotEmailOrPhone,
             ],
             'en.description' => [
-                'required',
+                'nullable',
                 'min:10',
                 new NotEmailOrPhone,
             ],
 
-     
 
-            'video' => 'mimes:mp4,mov,avi,wmv|max:20480',
+
+            'video' => 'required|mimes:mp4,mov,avi,wmv',
 
             // Only require 'icon' and 'banner' for store requests (POST method)
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240' ,
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ];
 
         return $rules;
     }
 
-       /**
+    /**
      * Custom attribute names for validation errors.
      *
      * @return array
