@@ -168,8 +168,10 @@ class HomeController extends Controller
             ->where('business_owner_id', Auth::guard('business_owner')->id())
             ->exists();
 
-        $freelancerServices = FreelancerService::where('freelancer_id', $id)->get();
-
+            $freelancerServices = FreelancerService::where('freelancer_id', $id)
+            ->where('active', 1)
+            ->get();
+        
 
         $freelancerProjects = FreelancerProject::whereHas('freelancerService', function ($query) use ($id) {
             $query->where('freelancer_id', $id);

@@ -90,24 +90,49 @@
                 class="flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{ __('website.login') }}</a>
         </div>
     </div>
-    <div id="shots-right-content" class="bg-pr h-full hidden lg:flex flex-[1] justify-center items-center w-[100vw]">
+    {{-- <div id="shots-right-content"
+        class="bg-pr h-full hidden lg:flex flex-[1] justify-center items-center w-[100vw]">
         <div class="flex flex-col mt-8 gap-10 items-center mx-5">
             <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('front-end/assets/v2.mp4') }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/'.$sec1Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
             <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('front-end/assets/v2.mp4') }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/'.$sec2Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
         </div>
         <div class="flex flex-col mb-8 gap-10 items-center mx-5">
             <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('front-end/assets/v2.mp4') }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/'.$sec3Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
             <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('front-end/assets/v2.mp4') }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/'.$sec4Video) }}" class="w-full h-full rounded-xl object-cover"
+                    autoplay muted loop></video>
+            </div>
+        </div>
+
+    </div> --}}
+
+    <div id="shots-right-content" class="bg-pr h-full hidden lg:flex flex-[1] justify-center items-center w-[100vw]">
+        <div class="flex flex-col mt-8 gap-10 items-center mx-5">
+            <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
+                <video src="{{ asset('videos/home/' . $sec1Video) }}" class="w-full h-full rounded-xl object-cover"
+                    autoplay muted loop></video>
+            </div>
+            <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
+                <video src="{{ asset('videos/home/' . $sec2Video) }}" class="w-full h-full rounded-xl object-cover"
+                    autoplay muted loop></video>
+            </div>
+        </div>
+        <div class="flex flex-col mb-8 gap-10 items-center mx-5">
+            <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
+                <video src="{{ asset('videos/home/' . $sec3Video) }}" class="w-full h-full rounded-xl object-cover"
+                    autoplay muted loop></video>
+            </div>
+            <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
+                <video src="{{ asset('videos/home/' . $sec4Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
         </div>
@@ -120,8 +145,8 @@
         @foreach ($advantages as $index => $advantage)
             <div id="horizontalContent"
                 class="relative md:static h-[100vh] w-[100vw] 
-                                                                                                                                                                                                                                                                                                                                            {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
-                                                                                                                                                                                                                                                                                                                                            flex-shrink-0 flex items-center"
+                                                                                                                                                                                                                                                                                                                                                {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
+                                                                                                                                                                                                                                                                                                                                                flex-shrink-0 flex items-center"
                 style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
                 <div class="flex items-center justify-between h-full px-20">
                     <div

@@ -69,9 +69,9 @@
             @forelse($freelancerProjects as $freelancerProject)
                 <div>
                     <div>
-                        <video src="{{ asset('front-end/assets/v2.mp4') }}" controls class="rounded-lg"></video>
+                        <video src="{{ asset('images/'.$freelancerProject->freelancerService->freelancer->name.'_projects_videos/'. $freelancerProject->video) }}" controls class="rounded-lg"></video>
                     </div>
-                    <h2 class="my-4 text-5xl capitalize">Project Title</h2>
+                    <h2 class="my-4 text-5xl capitalize">{{$freelancerProject->title}}</h2>
                 </div>
             @empty
                 <div>
@@ -87,14 +87,14 @@
                 <div class="card flex flex-wrap justify-center gap-6 px-4 py-8 hepta">
                     <div class="relative flex flex-col my-6 bg-pr border rounded-lg border-purple-200 w-96">
                         <div class="relative h-56 m-2.5 overflow-hidden">
-                            <img src="{{ asset('front-end/socialMedia/brand boost sm (1).jpg') }}" alt="card-image"
+                            <img src="{{ asset('images/services/' . $freelancerService->service->icon) }}" alt="card-image"
                                 class="w-full h-full object-cover rounded-lg" />
                         </div>
                         <div class="p-4">
                             <h6 class="mb-2 text-white text-xl font-semibold">
                                 {{$freelancerService->service->name}}
                             </h6>
-                            <p class="text-white">50 EGP</p>
+                            <p class="text-white"> {{$freelancerService->price_per_unit}} EGP - {{$freelancerService->service->unit_of_price}} </p>
                         </div>
                         <div class="px-4 pb-4 pt-0 mt-auto flex">
                             <button
