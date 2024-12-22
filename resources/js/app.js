@@ -261,4 +261,41 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.transform = "rotateX(0deg) rotateY(0deg)";
         });
     });
+
+    //dashboard
+    gsap.fromTo(
+        ".table-row",
+        { opacity: 0, yPercent: 100 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            duration: 1,
+            ease: "power1.out",
+            stagger: { each: 0.2, from: "start" },
+        }
+    );
+
+    gsap.fromTo(
+        ".dashboard-link",
+        { opacity: 0, yPercent: 100 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            duration: 1,
+            ease: "power1.out",
+            stagger: { each: 0.2, from: "start" },
+        }
+    );
+
+    gsap.fromTo(
+        ".dashboard-field",
+        { opacity: 0, yPercent: 100 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            duration: 1,
+            ease: "power1.out",
+            stagger: { each: 0.2, from: "start" },
+        }
+    );
 });

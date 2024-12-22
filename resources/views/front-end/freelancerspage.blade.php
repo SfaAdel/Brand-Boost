@@ -33,7 +33,7 @@
             @else
                 @foreach ($freelancers as $freelancer)
                     <div id="freelancer-card-inpage"
-                        class="relative flex flex-col my-6 bg-white border rounded-lg border-gray-200 w-72">
+                        class="card relative flex flex-col my-6 bg-gr border rounded-lg border-gray-200 w-72">
                         <div class="relative h-56 m-2.5 overflow-hidden text-white">
                             <img src="{{ isset($freelancer->profile_image) && $freelancer->profile_image != ''
                     ? asset('images/freelancers/profile/' . $freelancer->profile_image)
