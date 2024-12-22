@@ -31,7 +31,7 @@
             </div>
             <div class="control">
                 <label class="radio">
-                    <input type="radio" name="active" value="1"> {{_('website.active')}}
+                    <input type="radio" name="active" value="1"> {{__('website.active')}}
                 </label>
                 <label class="radio">
                     <input type="radio" name="active" value="0"> {{__('website.not_active')}}

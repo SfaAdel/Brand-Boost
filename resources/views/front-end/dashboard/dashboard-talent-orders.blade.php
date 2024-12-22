@@ -21,7 +21,7 @@
                         <p class="block antialiased text-[11px] font-bold uppercase">{{__('website.status')}}</p>
                     </th>
                     <th class="border-b border-blue-50 py-3 px-5 text-left">
-                        <p class="block antialiased text-[11px] font-bold uppercase">{{_('website.actions')}}</p>
+                        <p class="block antialiased text-[11px] font-bold uppercase">{{__('website.actions')}}</p>
                     </th>
                 </tr>
             </thead>

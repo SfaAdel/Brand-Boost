@@ -36,13 +36,13 @@
             </div>
             <div class="flex flex-col gap-2">
                 <label for="ar_title"
-                    class="text-xs font-semibold uppercase">__{{__('website.project_title_english')}}</label>
+                    class="text-xs font-semibold uppercase">{{__('website.project_title_english')}}</label>
                 <input type="text" name="en[title]" id="ar_title"
                     class="bg-white border rounded-lg border-gray-300 px-3 py-2">
             </div>
             <div class="flex flex-col gap-2">
                 <label for="ar_title"
-                    class="text-xs font-semibold uppercase">{{_('website.project_title_arabic')}}</label>
+                    class="text-xs font-semibold uppercase">{{__('website.project_title_arabic')}}</label>
                 <input type="text" name="ar[title]" id="ar_title"
                     class="bg-white border rounded-lg border-gray-300 px-3 py-2">
             </div>

@@ -20,7 +20,7 @@ return [
     'signup_button' => 'Sign Up',
     'already_have_account' => 'Do you have an account already?',
     'login_link' => 'Login here',
-    'gender_label' => 'Gender',
+    // 'gender_label' => 'Gender',
     'male' => 'Male',
     'female' => 'Female',
     'date_of_birth_label' => 'Date of Birth',
@@ -71,8 +71,8 @@ return [
     'footer_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugit non. Incidunt dolorum adipisci, tempore asperiores nemo odio facere                            officiis enim animi placeat eaque nesciunt alias beatae id, at dicta.',
     'talent_signup' => 'Talent Signup',
     'visionary_signup' => 'Visionary Signup',
-    'privacy_policy' => 'Privacy Policy',
-    'terms_and_conditions' => 'Terms and Conditions',
+    // 'privacy_policy' => 'Privacy Policy',
+    // 'terms_and_conditions' => 'Terms and Conditions',
 
     'action_cannot_undo' => 'This action cannot be undone',
     'refund_message' => 'Your refund will be processed after :days days!',
@@ -234,4 +234,10 @@ return [
     'developed_by' => 'Developed by Wikmedia Agency',
     'no_projects_found' => 'No Projects found.',
     'order_now' => 'Order now',
+
+    'name_en_label'=>'Name In English',
+    'name_ar_label'=>'Name In Arabic',
+    'password_help'=>'Leave blank to keep the existing password',
+    'image_label'=>'Image',
+
 ];

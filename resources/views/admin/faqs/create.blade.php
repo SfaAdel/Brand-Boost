@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', __('sidebar.dashboard') . ' - ' . __('forms.add_new_job_title'))
+@section('title', __('sidebar.dashboard') . ' - ' . __('forms.add_new_faq'))
 
 @section('content')
    
