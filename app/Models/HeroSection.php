@@ -13,7 +13,7 @@ class HeroSection extends Model implements TranslatableContract
     use HasFactory, Translatable;
 
     // Specify translatable attributes
-    public $translatedAttributes = ['h1','h2','p'];
+    public $translatedAttributes = ['h11','h21','h12','h22','h13','h23','p'];
 
     // Guard the primary key field and other fields as needed
     protected $guarded = ['id'];

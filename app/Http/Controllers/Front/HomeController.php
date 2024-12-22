@@ -38,7 +38,7 @@ class HomeController extends Controller
         $services = Service::latest()->limit(4)->get();
         $serviceSection = Title::where('section', 'services')->first();
 
-        $advantages = Advantage::latest()->limit(4)->get();
+        $advantages = Advantage::latest()->get();
         $advantageSection = Title::where('section', 'advantages')->first();
 
         $blogs = Blog::latest()->limit(4)->get();
@@ -61,11 +61,13 @@ class HomeController extends Controller
         $sec4Video = Video::where('type', 'sec4')->first();
 
         $heroSection1 = HeroSection::where('id', 1)->first();
-        $heroSection2 = HeroSection::where('id', 2)->first();
-        $heroSection3 = HeroSection::where('id', 3)->first();
+        // $heroSection2 = HeroSection::where('id', 2)->first();
+        // $heroSection3 = HeroSection::where('id', 3)->first();
+
+        $heroSections = HeroSection::all();
 
 
-        return view('front-end.homepage', compact('joinSection', 'heroSection2', 'heroSection3', 'heroVideo', 'heroSection1', 'sec4Video', 'sec3Video', 'sec2Video', 'sec1Video', 'services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
+        return view('front-end.homepage', compact('heroSections','joinSection', 'heroVideo', 'heroSection1', 'sec4Video', 'sec3Video', 'sec2Video', 'sec1Video', 'services', 'favFreelancersSection', 'favFreelancers', 'setting', 'mainSection', 'contactSection', 'aboutSection', 'blogSection', 'advantageSection', 'serviceSection', 'titles', 'advantages', 'blogs'));
     }
 
 

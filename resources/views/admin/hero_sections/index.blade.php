@@ -8,7 +8,8 @@
        @section('content')
 
 
-           <a href="{{ route('admin.hero_sections.create') }}" class="btn  m-3 btn-success ">{{ __('forms.add_new_hero_section') }}</a>
+           <a href="{{ route('admin.hero_sections.create') }}"
+               class="btn  m-3 btn-success ">{{ __('forms.add_new_hero_section') }}</a>
 
            <!--  BEGIN CONTENT AREA  -->
 
@@ -27,11 +28,45 @@
                    <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
                        <div class="widget-content widget-content-area br-6">
                            <div class="table-responsive mb-4 mt-4">
-                               <table id="html5-extension" class="table table-hover non-hover" style="width:100%">
+                               <!-- First Table -->
+                               <h4>{{ __('forms.special_row') }}</h4>
+                               <table id="special-row-table" class="table table-hover non-hover" style="width:100%">
                                    <thead>
                                        <tr>
-                                           <th>{{ __('forms.h1') }}</th>
-                                           <th>{{ __('forms.h2') }}</th>
+                                          
+                                           <th>{{ __('forms.h11') }}</th>
+                                           <th>{{ __('forms.h12') }}</th>
+                                           <th>{{ __('forms.h13') }}</th>
+                                           <th>{{ __('forms.created_at') }}</th>
+                                           <th>{{ __('forms.action') }}</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                       @if ($heroSections->first() && $heroSections->first()->h11 && $heroSections->first()->h12 && $heroSections->first()->h13)
+                                           <tr>
+                                            
+                                               <td>{{ $heroSections->first()->h11 }}</td>
+                                               <td>{{ $heroSections->first()->h12 }}</td>
+                                               <td>{{ $heroSections->first()->h13 }}</td>
+                                               <td>{{ $heroSections->first()->created_at->format('Y-m-d') }}</td>
+                                               <td>
+                                                   <a href="{{ route('admin.hero_sections.edit', $heroSections->first()->id) }}"
+                                                       class="btn btn-primary btn-sm">{{ __('forms.edit') }}</a>
+                                                   <!-- No delete button for the first row -->
+                                               </td>
+                                           </tr>
+                                       @endif
+                                   </tbody>
+                               </table>
+
+                               <!-- Second Table -->
+                               <h4>{{ __('forms.other_rows') }}</h4>
+                               <table id="other-rows-table" class="table table-hover non-hover" style="width:100%">
+                                   <thead>
+                                       <tr>
+                                           <th>{{ __('forms.h21') }}</th>
+                                           <th>{{ __('forms.h22') }}</th>
+                                           <th>{{ __('forms.h23') }}</th>
                                            <th>{{ __('forms.p') }}</th>
                                            <th>{{ __('forms.created_at') }}</th>
                                            <th>{{ __('forms.action') }}</th>
@@ -40,36 +75,34 @@
                                    <tbody>
                                        @foreach ($heroSections as $heroSection)
                                            <tr>
-                                            <td>{{ $heroSection->h1 }}</td>
-                                            <td>{{ $heroSection->h2 }}</td>
-                                            <td>{{ $heroSection->p }}</td>
-                                            <td>{{ $heroSection->created_at->format('Y-m-d') }}</td>
-
+                                               <td>{{ $heroSection->h21 }}</td>
+                                               <td>{{ $heroSection->h22 }}</td>
+                                               <td>{{ $heroSection->h23 }}</td>
+                                               <td>{{ $heroSection->p }}</td>
+                                               <td>{{ $heroSection->created_at->format('Y-m-d') }}</td>
                                                <td>
                                                    <a href="{{ route('admin.hero_sections.edit', $heroSection->id) }}"
-                                                       class="btn btn-primary mb-2 mr-2 btn-sm">{{ __('forms.edit') }}</a>
-
-                                                   <!-- Button to open the modal, with a unique modal ID -->
-                                                   <button type="button" class="btn btn-danger mb-2 mr-2 btn-sm"
-                                                       data-toggle="modal" data-target="#deleteModal{{ $heroSection->id }}">
+                                                       class="btn btn-primary btn-sm">{{ __('forms.edit') }}</a>
+                                                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                       data-target="#deleteModal{{ $heroSection->id }}">
                                                        {{ __('forms.delete') }}
                                                    </button>
-
-                                                   <!-- Include the Delete Modal with a unique ID -->
+                                                   <!-- Include Delete Modal -->
                                                    @include('admin.components.delete-modal', [
                                                        'modalId' => 'deleteModal' . $heroSection->id,
-                                                       'formAction' => route('admin.hero_sections.destroy', $heroSection->id),
-                                                       'itemName' => $heroSection->h1,
+                                                       'formAction' => route(
+                                                           'admin.hero_sections.destroy',
+                                                           $heroSection->id),
+                                                       'itemName' => $heroSection->h21,
                                                    ])
                                                </td>
                                            </tr>
                                        @endforeach
-
                                    </tbody>
                                </table>
-                               <!-- Pagination Links -->
-                               {{ $heroSections->links() }}
                            </div>
+
+
                        </div>
                    </div>
                </div>
@@ -79,5 +112,3 @@
 
            <!--  END CONTENT AREA  -->
        @endsection
-
-

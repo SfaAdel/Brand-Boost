@@ -215,10 +215,19 @@ return [
     'videos_list'=>'Videos List',
     'video'=>'Video',
 
-    'add_new_hero_section'=>'Add New Titels For Hero Section',
+    'add_new_hero_section'=>'Add New Heading 2 For Hero Section',
     'hero_sections_list'=>'List of Hero Section Titles',
     'list'=>'Items List',
     'update'=>'Update Data',
 
+    'other_rows'=>'Hero Section h2 & p',
+    'special_row'=>'Hero Section h1',
+    'h11'=>'Heading 1 Part 1',
+    'h12'=>'Heading 1 Part 2',
+    'h13'=>'Heading 1 Part 3',
+    'h21'=>'Heading 2 Part 1',
+    'h22'=>'Heading 2 Part 2',
+    'h23'=>'Heading 2 Part 3',
+    'p'=>'Paragraph',
 ];
 

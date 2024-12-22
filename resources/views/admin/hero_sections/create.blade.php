@@ -42,21 +42,27 @@
                                              id="{{ $key }}" role="tabpanel" aria-labelledby="home-tab">
     
                                             <div class="form-group mt-3 col-md-12">
-                                                <label>H1 - {{ $lang }} </label>
-                                                <input type="text" name="{{ $key }}[h1]" class="form-control"
-                                                       placeholder="h1">
+                                                <label>{{ __('forms.h21') }} - {{ $lang }} </label>
+                                                <input type="text" name="{{ $key }}[h21]" class="form-control"
+                                                       placeholder="{{ __('forms.h21') }}">
                                             </div>
 
                                             <div class="form-group mt-3 col-md-12">
-                                                <label>H2 - {{ $lang }} </label>
-                                                <input type="text" name="{{ $key }}[h2]" class="form-control"
-                                                       placeholder="h2">
+                                                <label>{{ __('forms.h22') }} - {{ $lang }} </label>
+                                                <input type="text" name="{{ $key }}[h22]" class="form-control"
+                                                       placeholder="{{ __('forms.h22') }}">
                                             </div>
 
                                             <div class="form-group mt-3 col-md-12">
-                                                <label> P - {{ $lang }} </label>
+                                                <label>{{ __('forms.h23') }} - {{ $lang }} </label>
+                                                <input type="text" name="{{ $key }}[h23]" class="form-control"
+                                                       placeholder="{{ __('forms.h23') }}">
+                                            </div>
+
+                                            <div class="form-group mt-3 col-md-12">
+                                                <label> {{ __('forms.p') }} - {{ $lang }} </label>
                                                 <input type="text" name="{{ $key }}[p]" class="form-control"
-                                                       placeholder="p">
+                                                       placeholder="{{ __('forms.p') }}">
                                             </div>
 
                                         </div>

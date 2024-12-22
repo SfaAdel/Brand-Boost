@@ -15,9 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('hero_section_id')->constrained('hero_sections')->onDelete('cascade');
             $table->string('locale');
-            $table->string('h1')->unique();
-            $table->string('h2')->unique();
-            $table->string('p')->unique();
+            $table->string('h11')->nullable();
+            $table->string('h21');
+            $table->string('h12')->nullable();
+            $table->string('h22');
+            $table->string('h13')->nullable();
+            $table->string('h23');
+            $table->string('p')->nullable();
             $table->unique(['hero_section_id', 'locale']);
             $table->timestamps();
         });

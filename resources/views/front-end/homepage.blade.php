@@ -6,9 +6,9 @@
 </div> --}}
 
 <div id="loader" class="font-hepta h-full w-full fixed top-0 bg-bl z-50 flex items-center justify-center gap-4">
-    <h4 class="capitalize text-[2vw] text-white">{{ $heroSection1->h1 }}</h4>
-    <h4 class="capitalize text-[2vw] text-gr">{{ $heroSection2->h1 }}</h4>
-    <h4 class="capitalize text-[2vw] text-pi">{{ $heroSection3->h1 }}</h4>
+    <h4 class="capitalize text-[2vw] text-white">{{ $heroSection1->h11 }}</h4>
+    <h4 class="capitalize text-[2vw] text-gr">{{ $heroSection1->h12 }}</h4>
+    <h4 class="capitalize text-[2vw] text-pi">{{ $heroSection1->h13 }}</h4>
 </div>
 
 <section id="hero" class="relative">
@@ -24,19 +24,20 @@
     <div id="hero-content"
         class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col lg:flex-row justify-center items-center gap-1 md:gap-4 z-20">
         <div class="flex flex-col gap-5 text-white font-acworth text-center lg:text-start">
-
-            <h2
-                class="heroText opacity-0 translate-y-52 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase">
-                {{ $heroSection1->h2 }}
-            </h2>
-            <h2
-                class="heroText opacity-0 translate-y-52 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase">
-                {{ $heroSection2->h2 }}
-            </h2>
-            <h2
-                class="heroText opacity-0 translate-y-52 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase">
-                {{ $heroSection3->h2 }}
-            </h2>
+            @forEach($heroSections as $heroSection)
+                <h2
+                    class="heroText opacity-0 translate-y-52 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase">
+                    {{ $heroSection->h21 }}
+                </h2>
+                <h2
+                    class="heroText opacity-0 translate-y-52 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase">
+                    {{ $heroSection->h22 }}
+                </h2>
+                <h2
+                    class="heroText opacity-0 translate-y-52 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase">
+                    {{ $heroSection->h23 }}
+                </h2>
+            @endforeach
         </div>
         <div id="hero-content-image"
             class="opacity-0 flex-[0] lg:flex-1 flex justify-center lg:justify-end items-center mt-5 lg:mt-0">
@@ -119,28 +120,34 @@
     <h2 class="text-6xl hepta font-bold text-center py-10 bg-pr text-white w-[100vw]">{{$joinSection->title }}</h2>
     <div id="horizontal" class="flex overflow-x-hidden">
         @foreach ($advantages as $index => $advantage)
-            <div id="horizontalContent"
-                class="relative md:static h-[100vh] w-[100vw] 
-                                                                                                                                                                                                                                                                                                                                                        {{ $index == 0 ? 'bg-gr' : ($index == 1 ? 'bg-pi' : ($index == 2 ? 'bg-bu' : 'bg-pr text-white')) }} 
-                                                                                                                                                                                                                                                                                                                                                        flex-shrink-0 flex items-center"
-                style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
-                <div class="flex items-center justify-between h-full px-20">
-                    <div
-                        class="w-full text-center {{ app()->getLocale() === 'ar' ? 'md:text-right' : 'md:text-left' }} md:w-1/2">
-                        <h1 class="text-7xl hepta font-bold">{{ $advantage->title }}</h1>
-                        <p class="text-2xl rubikv mt-10">{{ $advantage->description }}</p>
-                    </div>
-                    <div class="block md:hidden absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
-                        <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Icon"
-                            class="w-full">
-                    </div>
-                    <div class="hidden md:block absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
-                        <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Logo"
-                            class="w-full">
+                @php
+                    // Define the repeating background colors
+                    $bgColors = ['bg-gr', 'bg-pi', 'bg-bu', 'bg-pr text-white'];
+                    // Determine the background color based on the index
+                    $bgColor = $bgColors[$index % count($bgColors)];
+                @endphp
+
+                <div id="horizontalContent" class="relative md:static h-[100vh] w-[100vw] 
+                    {{ $bgColor }} 
+                    flex-shrink-0 flex items-center" style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                    <div class="flex items-center justify-between h-full px-20">
+                        <div
+                            class="w-full text-center {{ app()->getLocale() === 'ar' ? 'md:text-right' : 'md:text-left' }} md:w-1/2">
+                            <h1 class="text-7xl hepta font-bold">{{ $advantage->title }}</h1>
+                            <p class="text-2xl rubikv mt-10">{{ $advantage->description }}</p>
+                        </div>
+                        <div class="block md:hidden absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
+                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Icon"
+                                class="w-full">
+                        </div>
+                        <div class="hidden md:block absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
+                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Logo"
+                                class="w-full">
+                        </div>
                     </div>
                 </div>
-            </div>
         @endforeach
+
     </div>
 </div>
 

@@ -19,49 +19,27 @@ class HeroSectionSeeder extends Seeder
 
                 'translations' => [
                     'ar' => [
-                        'h1' => 'نحن ،',
-                        'h2' => 'نحن',
+                        'h11' => 'نحن ،',
+                        'h21' => 'نحن',
+                        'h12' => 'الطريقة الجديدة,',
+                        'h22' => 'الرؤية الجديدة',
+                        'h13' =>  'الواقع',
+                        'h23' => 'ابدأ معنا',
                         'p' => '-',
                     ],
                     'en' => [
-                        'h1' => 'We are,',
-                        'h2' => 'We are',
+                        'h11' => 'We are,',
+                        'h21' => 'We are',
+                        'h12' => 'The new way,',
+                        'h22' => 'The new vision',
+                        'h13' => 'The reality',
+                        'h23' => 'Start with us',
                         'p' => 'p1',
                     ],
                 ],
             ],
 
-            [
-
-                'translations' => [
-                    'ar' => [
-                        'h1' => 'الطريقة الجديدة,',
-                        'h2' => 'الرؤية الجديدة',
-                        'p' => '--',
-                    ],
-                    'en' => [
-                        'h1' => 'The new way,',
-                        'h2' => 'The new vision',
-                        'p' => 'p2',
-                    ],
-                ],
-            ],
-
-            [
-
-                'translations' => [
-                    'ar' => [
-                        'h1' => 'الواقع',
-                        'h2' => 'ابدأ معنا',
-                        'p' => '---',
-                    ],
-                    'en' => [
-                        'h1' => 'The reality',
-                        'h2' => 'Start with us',
-                        'p' => 'p3',
-                    ],
-                ],
-            ],
+          
 
 
         ];
