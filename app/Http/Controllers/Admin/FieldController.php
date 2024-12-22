@@ -75,7 +75,7 @@ class FieldController extends Controller
     public function update(FieldRequest $request, Field $field)
     {
         //
-        $field->update($request->except('_token', '_method', 'icon'));
+        $field->update(attributes: $request->except('_token', '_method', 'icon'));
 
          // Handle logo upload
          if ($request->hasFile('icon')) {

@@ -15,7 +15,7 @@
         @method('PATCH') <!-- Use PATCH for updates -->
         <div class="flex flex-col gap-5">
             <!-- Project Picture -->
-            <div class="flex flex-col gap-2">
+            {{-- <div class="flex flex-col gap-2">
                 <label for="picture" class="text-xs font-semibold uppercase">{{__('website.project_picture')}}</label>
                 <input type="file" name="image" id="picture"
                     class="bg-white border rounded-lg border-gray-200 px-3 py-2">
@@ -23,7 +23,7 @@
                     <img src="{{ asset('images/' . Auth::guard('freelancer')->user()->name . '_projects_images/' . $freelancerProject->image) }}"
                         alt="Project Image" class="w-20 mt-2">
                 @endif
-            </div>
+            </div> --}}
 
             <!-- Project Video -->
             <div class="flex flex-col gap-2">
@@ -86,7 +86,7 @@
             </div>
 
             <!-- English Description -->
-            <div class="flex flex-col my-2">
+            {{-- <div class="flex flex-col my-2">
                 <label for="en_description" class="text-gray-600 text-md rubikv leading-relaxed">
                     {{ __('website.description_en_label') }}
                 </label>
@@ -97,10 +97,10 @@
                 @error('en.description')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
-            </div>
+            </div> --}}
 
             <!-- Arabic Description -->
-            <div class="flex flex-col my-2">
+            {{-- <div class="flex flex-col my-2">
                 <label for="ar_description" class="text-gray-600 text-md rubikv leading-relaxed">
                     {{ __('website.description_ar_label') }}
                 </label>
@@ -111,7 +111,7 @@
                 @error('ar.description')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
-            </div>
+            </div> --}}
         </div>
 
         <!-- Submit Button -->

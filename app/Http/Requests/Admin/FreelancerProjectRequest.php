@@ -27,14 +27,14 @@ class FreelancerProjectRequest extends FormRequest
 
         $rules = [
             'en.title' => [
-                'nullable',
+                'required',
                 'string',
                 'min:3',
                 'max:32',
                 new NotEmailOrPhone,
             ],
             'ar.title' => [
-                'nullable',
+                'required',
                 'string',
                 'min:3',
                 'max:32',
@@ -52,12 +52,15 @@ class FreelancerProjectRequest extends FormRequest
             ],
 
 
-
-            'video' => 'required|mimes:mp4,mov,avi,wmv',
-
             // Only require 'icon' and 'banner' for store requests (POST method)
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ];
+
+        if ($this->isMethod('post')) {
+            $rules['video'] = 'required|mimes:mp4,mov,avi,wmv';
+        } else {
+            $rules['video'] = 'nullable|mimes:mp4,mov,avi,wmv';;
+        }
 
         return $rules;
     }

@@ -210,6 +210,28 @@
             </li>
 
             <li class="menu">
+                <a href="#faqs" data-active="true" class="menu-toggle">
+                    <div class="base-menu">
+                        <div class="base-icons">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-star">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                </polygon>
+                            </svg>
+                        </div>
+                        <span>{{ __('sidebar.faqs') }}</span>
+                    </div>
+                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-chevron-left">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </li>
+
+            <li class="menu">
                 <a href="#blogs" data-active="true" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
@@ -590,6 +612,37 @@
                             <polyline points="2 12 12 17 22 12"></polyline>
                         </svg>
                         {{ __('sidebar.advantages_list') }}
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="submenu" id="faqs">
+            <ul class="submenu-list" data-parent-element="#app">
+                <li>
+                    <a href="{{ route('admin.faqs.create') }}">
+                        <!-- Icon: Plus (Add New Admin) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-plus">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        {{ __('sidebar.add_new_faq') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.faqs.index') }}">
+                        <!-- Icon: Layers (All Admins) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-layers">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                        {{ __('sidebar.faqs_list') }}
                     </a>
                 </li>
 

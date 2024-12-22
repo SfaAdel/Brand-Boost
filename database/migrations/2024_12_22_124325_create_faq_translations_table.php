@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('freelancer_projects', function (Blueprint $table) {
+        Schema::create('faq_translations', function (Blueprint $table) {
             $table->id();
-            $table->string('video');
-            $table->string('image')->nullable();
-            $table->foreignId('freelancer_service_id')->constrained('freelancer_services')->onDelete('cascade');        
+            $table->foreignId('faq_id')->constrained('faqs')->onDelete('cascade');
+            $table->string('locale');
+            $table->string('question');
+            $table->text('answer');
+            $table->unique(['faq_id', 'locale'], 'faq_id_locale_unique');        
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('freelancer_projects');
+        Schema::dropIfExists('faq_translations');
     }
 };

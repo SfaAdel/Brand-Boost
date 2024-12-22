@@ -7,6 +7,7 @@ use App\Models\Advantage;
 use App\Models\Blog;
 use App\Models\Freelancer;
 use App\Models\BusinessOwner;
+use App\Models\Faq;
 use App\Models\FavoriteFreelancer;
 use App\Models\Field;
 use App\Models\FreelancerProject;
@@ -257,10 +258,13 @@ class HomeController extends Controller
         $services = Service::latest()->limit(6)->get();
         $serviceSection = Title::where('section', 'services')->first();
 
+        $faqs = Faq::latest()->get();
+
+
         $setting = Setting::first();
 
 
-        return view('front-end.aboutpage', compact('setting', 'advantages', 'advantageSection', 'contactSection', 'aboutSection'));
+        return view('front-end.aboutpage', compact('faqs','setting', 'advantages', 'advantageSection', 'contactSection', 'aboutSection'));
     }
 
     public function blog()

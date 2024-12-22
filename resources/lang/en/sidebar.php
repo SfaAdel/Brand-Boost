@@ -8,11 +8,11 @@ return [
     'settings' => 'Settings',
     'add_new_admin' => 'Add New Admin',
     'all_admins' => 'All Admins',
-    'setting_list'=> 'Website Setting',
-    'setting_edit'=> 'Edit Website Setting',
-    'tags'=> 'Tags',
-    'tag_list'=> 'Tags List',
-    'add_new_tag'=> 'Add New Tag',
+    'setting_list' => 'Website Setting',
+    'setting_edit' => 'Edit Website Setting',
+    'tags' => 'Tags',
+    'tag_list' => 'Tags List',
+    'add_new_tag' => 'Add New Tag',
     'add_new_field' => 'Add New Field',
     'fields_list' => 'Fields List',
     'add_new_job_title' => 'Add New Job Title',
@@ -37,8 +37,12 @@ return [
     'titles' => 'Titles',
     'contacts' => 'Contacts',
     'titles_list' => 'Titles List ',
-    'contacts_list'=> 'Contacts List',
-'videos_list'=>'videos List',
-'hero_section_list'=>'Hero Section'
-    
+    'contacts_list' => 'Contacts List',
+    'videos_list' => 'videos List',
+    'hero_section_list' => 'Hero Section',
+
+    'faqs_list' => 'FAQ List',
+    'faqs' => 'FAQ',
+    'add_new_faq' => 'Add New FAQ',
+
 ];

@@ -21,11 +21,11 @@
                         <p class="block antialiased text-[11px] font-bold uppercase">{{__('website.project_name')}}
                         </p>
                     </th>
-                    <th class="border-b border-blue-50 py-3 px-5 text-left">
+                    {{-- <th class="border-b border-blue-50 py-3 px-5 text-left">
                         <p class="block antialiased text-[11px] font-bold uppercase">
                             {{__('website.description')}}
                         </p>
-                    </th>
+                    </th> --}}
                     <th class="border-b border-blue-50 py-3 px-5 text-left">
                         <p class="block antialiased text-[11px] font-bold uppercase">{{__('website.actions')}}</p>
                     </th>
@@ -36,19 +36,19 @@
                     <tr>
                         <td class="py-3 px-5 ">
                             <div class="flex items-center gap-4">
-                                <img src="{{ asset('images/' . Auth::guard('freelancer')->user()->name . '_projects_images/' . $freelancerProject->image) }}"
-                                    alt="" class="inline-block relative object-cover object-center w-9 h-9 rounded-full">
+                                {{-- <img src="{{ asset('images/' . Auth::guard('freelancer')->user()->name . '_projects_images/' . $freelancerProject->image) }}"
+                                    alt="" class="inline-block relative object-cover object-center w-9 h-9 rounded-full"> --}}
                                 <div>
                                     <p class="block antialiased text-sm leading-normal font-semibold"
                                         id="dashboardProjectName"> {{ $freelancerProject->title }} </p>
                                 </div>
                             </div>
                         </td>
-                        <td class="py-3 px-5 ">
+                        {{-- <td class="py-3 px-5 ">
                             <p class="block antialiased text-xs font-normal" id="dashboardProjectDescription">
                                 {{ $freelancerProject->description }}
                             </p>
-                        </td>
+                        </td> --}}
                         <td class="py-3 px-5 ">
                             <a href="{{ route('freelancer-projects.show', $freelancerProject->id) }}"
                                 class="inline mx-1 antialiased text-xs font-semibold capitalize">{{__('website.open')}}</a>

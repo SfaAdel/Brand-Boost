@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('freelancer_project_id')->constrained('freelancer_projects')->onDelete('cascade');
             $table->string('locale');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->unique(['freelancer_project_id', 'locale'], 'freelancer_proj_id_locale_unique');        
             $table->timestamps();

@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('freelancer_projects', function (Blueprint $table) {
+        Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->string('video');
-            $table->string('image')->nullable();
-            $table->foreignId('freelancer_service_id')->constrained('freelancer_services')->onDelete('cascade');        
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('freelancer_projects');
+        Schema::dropIfExists('faqs');
     }
 };
