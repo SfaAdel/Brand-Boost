@@ -88,7 +88,7 @@
                     </div>
                 @empty
                     <tr>
-                        <td colspan="3" class="py-3 px-5 text-center">{{__('website.no_projects')}}</td>
+                        <td colspan="3" class="py-3 px-5 text-center">{{__('website.no_projects_found')}}</td>
                     </tr>
                 @endforelse
             </tbody>

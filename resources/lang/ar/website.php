@@ -246,4 +246,14 @@ return [
     'our_vision' => 'رؤيتنا',
     'faqs' => 'الأسئلة الشائعة',
     'q' => 'س',
+
+    // service offers
+
+    'recently_offers_of_service' => 'العروض الأخيرة للخدمة',
+    'service_description' => 'وصف الخدمة',
+    'create_account_as_business_owner' => 'أنشئ حسابًا كمالك أعمال لطلب الخدمة',
+    'start_order' => 'ابدأ طلبك',
+    'expected_receive_date' => 'تاريخ الاستلام المتوقع',
+    'write_order_description' => 'اكتب وصفًا لطلبك',
+    'no_offers_found' => 'لم يتم العثور على عروض',
 ];

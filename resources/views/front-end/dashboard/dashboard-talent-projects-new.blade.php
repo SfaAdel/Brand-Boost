@@ -36,7 +36,7 @@
                     @endforeach
                 </select>
             </div>
-            <<<<<<< HEAD <div class="flex flex-col gap-2">
+             <div class="flex flex-col gap-2">
                 <label for="ar_title"
                     class="text-xs font-semibold uppercase">{{__('website.project_title_english')}}</label>
                 <input type="text" name="en[title]" id="ar_title"
@@ -59,8 +59,7 @@
             <input type="text" name="ar[description]" id="ar_description"
                 class="bg-white border rounded-lg border-gray-300 px-3 py-2">
         </div> --}}
-        =======
-        >>>>>>> front-end
+   
 </div>
 <div class="flex justify-center mt-5">
     <button type="submit"

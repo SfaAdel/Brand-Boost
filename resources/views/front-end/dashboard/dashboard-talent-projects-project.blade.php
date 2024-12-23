@@ -9,12 +9,12 @@
             <h2 class="font-bold text-4xl capitalize">{{$freelancerProject->title}}</h2>
             <p class="text-slate-800">{{$freelancerProject->description}}</p>
         </div>
-        <div class="px-48">
+        {{-- <div class="px-48">
             <div class="flex flex-col my-2">
                 <img src="{{ asset('images/' . Auth::guard('freelancer')->user()->name . '_projects_images/' . $freelancerProject->image) }}"
                     class="object-cover">
             </div>
-        </div>
+        </div> --}}
         <div class="px-48">
             <div class="flex flex-col my-2">
                 <video controls>

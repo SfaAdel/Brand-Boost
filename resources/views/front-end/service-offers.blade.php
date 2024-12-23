@@ -1,10 +1,10 @@
 @extends('layout')
 
-@section('title', 'Service Offers')
+@section('title', $service->name)
 
 @section('content')
     <section class="bg-pr py-24 text-white">
-        <h1 class="text-6xl font-bold text-center hepta capitalize pt-7"> Recently Offers of {{ $service->name }} Service
+        <h1 class="text-6xl font-bold text-center hepta capitalize pt-7"> {{ __('website.recently_offers_of_service') }} : {{ $service->name }} 
         </h1>
         <p id="service-offer-description" class="text-slate-200 leading-normal text-xl hepta text-center">
             {{ $service->description }}
@@ -29,7 +29,7 @@
                             </a>
                         </div>
                         <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-                            ${{ $freelancerService->price_per_unit . ' - ' . $freelancerService->service->unit_of_price }}
+                            Egy {{ $freelancerService->price_per_unit . ' - ' . $freelancerService->service->unit_of_price }}
                         </h6>
 
                     </div>
@@ -40,13 +40,14 @@
                             <button data-modal-open="offer-modal-{{ $freelancerService->id }}"
                                 class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                                 type="button">
-                                Order
+                                {{ __('website.order') }}
+
                             </button>
                         @else
                             <a href="{{ route('visionary-signup') }}"
                                 class="flex-1 bg-purple mt-auto font-bold uppercase py-2 px-4 border-black border-2 text-center text-sm text-white transition-all hover:bg-sky-800 disabled:pointer-events-none disabled:opacity-50"
                                 type="button">
-                                Create Account as a Business Owner to Order The Service
+                                {{ __('website.create_account_as_business_owner') }}
                             </a>
                         @endif
                     </div>
@@ -57,16 +58,16 @@
                     <div id="offer-modal-{{ $freelancerService->id }}"
                         class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
                         <div class="bg-white w-3/4 m-auto p-10 border-black border-4 acworth">
-                            <h1 class="text-5xl font-bold">Start Your Order</h1>
+                            <h1 class="text-5xl font-bold"> {{ __('website.start_order') }} </h1>
                             <div class="my-10 flex gap-5 flex-wrap lg:flex-nowrap">
                                 <div class="flex flex-col gap-3">
-                                    <h2 class="text-2xl text-slate-800">Talent : {{ $freelancerService->freelancer->name }}
+                                    <h2 class="text-2xl text-slate-800">{{ __('website.talent') }} : {{ $freelancerService->freelancer->name }}
                                     </h2>
-                                    <h2 class="text-2xl text-slate-800">Price
+                                    <h2 class="text-2xl text-slate-800">{{ __('website.price') }}
                                         {{ $freelancerService->service->unit_of_price }} :
                                         {{ $freelancerService->price_per_unit }} Egy
                                     </h2>
-                                    <h2 class="text-2xl text-slate-800">Service : {{ $freelancerService->service->name }}
+                                    <h2 class="text-2xl text-slate-800">{{ __('website.service') }} : {{ $freelancerService->service->name }}
                                     </h2>
                                 </div>
                             </div>
@@ -94,27 +95,25 @@
                                     <input type="number" hidden name="business_owner_id"
                                         value="{{ Auth::guard('business_owner')->user()->id }}">
 
-                                    <label for="expected_receive_date" class="text-slate-800 capitalize">Expected Receive
-                                        Date</label>
+                                    <label for="expected_receive_date" class="text-slate-800 capitalize"> {{ __('website.expected_receive_date') }}</label>
                                     <input type="date" name="expected_receive_date"
                                         class="outline-none border-2 border-black p-2 w-full">
 
-                                    <label for="description" class="text-slate-800 capitalize">Write a Description for your
-                                        order</label>
+                                    <label for="description" class="text-slate-800 capitalize"> {{ __('website.write_order_description') }}</label>
                                     <input type="text" name="description"
                                         class="outline-none border-2 border-black p-2 w-full">
 
-                                    <label for="amount" class="text-slate-800 capitalize">Amount</label>
+                                    <label for="amount" class="text-slate-800 capitalize"> {{ __('website.amount') }}</label>
                                     <input type="number" name="amount" id="amount" min="1"
                                         class="outline-none border-2 border-black p-2 w-full" required>
 
-                                    <label for="total_price" class="text-slate-800 capitalize">Total Price</label>
+                                    <label for="total_price" class="text-slate-800 capitalize"> {{ __('website.total_price') }}</label>
                                     <input type="number" id="total_price" name="total_price" disabled
                                         class="outline-none border-2 border-black p-2 w-full">
 
                                     <button type="submit"
                                         class="font-bold bg-blue hover:bg-sky-500 transition p-2 mt-5 border-black border-2 text-black hepta text-center text-sm capitalize">
-                                        Order
+                                         {{ __('website.order') }}
                                     </button>
                                 </form>
                                 <button data-modal-close="offer-modal-{{ $freelancerService->id }}"
@@ -128,7 +127,7 @@
 
                 @empty
                     <div>
-                        <p class="py-3 px-5 text-center">No Offers found.</p>
+                        <p class="py-3 px-5 text-center">{{__('website.no_offers_found')}}</p>
                     </div>
                 @endforelse
 

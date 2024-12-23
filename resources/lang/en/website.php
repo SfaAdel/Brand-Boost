@@ -247,4 +247,14 @@ return [
     'our_vision' => 'Our Vision',
     'faqs' => 'FAQs',
     'q' => 'Q',
+
+    // service offers
+
+    'recently_offers_of_service' => 'Offers of Service',
+    'service_description' => 'Service Description',
+    'create_account_as_business_owner' => 'Create Account as a Business Owner to Order the Service',
+    'start_order' => 'Start Your Order',
+    'expected_receive_date' => 'Expected Receive Date',
+    'write_order_description' => 'Write a Description for your Order',
+    'no_offers_found' => 'No Offers Found',
 ];

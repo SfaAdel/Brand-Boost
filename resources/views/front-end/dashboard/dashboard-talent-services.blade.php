@@ -141,7 +141,7 @@
                 </div>
             @empty
                 <tr>
-                    <td colspan="3" class="py-3 px-5 text-center">{{__('website.no_services')}}</td>
+                    <td colspan="3" class="py-3 px-5 text-center">{{__('website.no_services_found')}}</td>
                 </tr>
             @endforelse
         </div>

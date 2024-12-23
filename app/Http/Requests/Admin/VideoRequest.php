@@ -24,7 +24,7 @@ class VideoRequest extends FormRequest
     {
         return [
             //
-            'video' => 'mimes:mp4,mov,avi,wmv|max:20480',
+            'video' => 'mimes:mp4,mov,avi,wmv',
             'type' => [
                 Rule::in(['hero', 'sec1', 'sec2','sec3','sec4']),
             ],
