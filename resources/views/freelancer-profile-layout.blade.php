@@ -3,11 +3,11 @@
 @section('title', $freelancer->name)
 
 @section('content')
-<section class="bg-pr hepta pt-20">
-    <div class="relative bg-pr h-[70vh]">
-        <div class="w-full bg-no-repeat bg-center bg-cover"
+<section class=" hepta pt-20" style="background: url({{asset('front-end/SVGs/pattern.svg')}});">
+    <div class="relative h-[70vh]">
+        <!-- <div class="w-full bg-no-repeat bg-center bg-cover"
             style="aspect-ratio: 950/300; background-image: url('{{ asset('front-end/SVGs/blob-haikei.svg') }}">
-        </div>
+        </div> -->
         <div class="absolute top-0 left-0 w-full text-white flex flex-col items-center py-16 px-[10vw] text-center">
             @if (!empty($freelancer->profile_image))
                 <img src="{{ asset('images/freelancers/profile/' . $freelancer->profile_image) }}" alt="Offerer pic"
@@ -16,20 +16,18 @@
             <h1 class="text-5xl font-bold text-center capitalize">{{$freelancer->name}}</h1>
             <p class="text-2xl text-slate-300 text-center capitalize">{{$freelancer->jobTitle->name}}</p>
             @if (auth()->guard('business_owner')->check())
-                    <button id="follow-button-{{ $freelancer->id }}" data-following="{{ $isFollowing ? 'true' : 'false' }}"
-                        data-freelancer-id="{{ $freelancer->id }}"
-                        data-business-owner-id="{{ Auth::guard('business_owner')->id() }}"
-                        class="bg-gray-200 hover:bg-gray-50 transition p-2 mt-3.5 border-black border text-black hepta text-center text-sm">
-                        <span
-                            id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
-                __('website.follow')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
-                        <span>
-                            <img id="follow-icon-{{ $freelancer->id }}"
-                                src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
-                                class="inline">
-                        </span>
-                    </button>
+                <button id="follow-button-{{ $freelancer->id }}" data-following="{{ $isFollowing ? 'true' : 'false' }}"
+                    data-freelancer-id="{{ $freelancer->id }}"
+                    data-business-owner-id="{{ Auth::guard('business_owner')->id() }}"
+                    class="bg-gray-200 hover:bg-gray-50 transition p-2 mt-3.5 border-black border text-black hepta text-center text-sm">
+                    <span
+                        id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') : __('website.follow')}}</span>
+                    <span>
+                        <img id="follow-icon-{{ $freelancer->id }}"
+                            src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
+                            class="inline">
+                    </span>
+                </button>
             @endif
         </div>
     </div>
@@ -63,9 +61,34 @@
             </ul>
         </div>
     </section>
-    <section class="py-20 px-[10vw] bg-gr">
-        <h2 class="text-3xl capitalize font-bold my-5">{{__('website.projects')}}</h2>
-        <div class="my-5 flex flex-wrap lg:flex-nowrap">
+    <section class="py-20 bg-gr">
+        <h2 class="px-[10vw] text-3xl capitalize font-bold my-5">{{__('website.projects')}}</h2>
+
+        <div id="talents-container" class="flex overflow-x-hidden">
+            @forelse($freelancerProjects as $freelancerProject)
+                <div id="horizontalTalentCard"
+                    class="relative md:static h-[100vh] w-[100vw] bg-pr flex-shrink-0 flex items-center">
+                    <div class="mx-auto flex flex-col md:flex-row items-center justify-center gap-10 w-[90%] h-[80%]">
+                        <div class="w-[250px] h-[420px] max-w-xs">
+                            <video
+                                src="{{ asset('images/' . $freelancerProject->freelancerService->freelancer->name . '_projects_videos/' . $freelancerProject->video) }}"
+                                class=" w-full h-full rounded-xl object-cover" controls></video>
+                        </div>
+                        <div
+                            class="p-4 text-center w-1/2 {{ app()->getLocale() === 'ar' ? 'sm:text-right' : 'sm:text-left' }}">
+                            <h2 class="text-2xl lg:text-4xl font-semibold text-slate-100">{{$freelancerProject->title}}</h2>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="w-full">
+                    <p class="py-3 text-center">{{__('website.no_projects_found')}}</p>
+                </div>
+            @endforelse
+        </div>
+
+
+        <!-- <div class="my-5 flex flex-wrap lg:flex-nowrap">
             @forelse($freelancerProjects as $freelancerProject)
                 <div>
                     <div class="w-[180px] h-[420px] max-w-xs mx-auto">
@@ -80,7 +103,7 @@
                     <p class="py-3 px-5 text-center">{{__('website.no_projects_found')}}</p>
                 </div>
             @endforelse
-        </div>
+        </div> -->
     </section>
     <section class="py-20 px-[10vw] bg-gr">
         <h2 class="text-3xl capitalize font-bold my-5">{{__('website.services')}}</h2>

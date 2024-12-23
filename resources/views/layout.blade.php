@@ -25,7 +25,7 @@
         <nav id="navbar-lg"
             class="hidden transition-all lg:flex font-hepta uppercase fixed z-40 w-full px-10 py-5 items-center justify-between">
             <div id="nav-logo" class="w-[50px]">
-                <img id="navbar-logo" src="{{ asset('front-end/logo/PNG/Artboard 19.png') }}" alt="Brand Boost Logo"
+                <img id="navbar-logo" src="{{ asset('front-end/SVGs/white-green-logo.svg') }}" alt="Brand Boost Logo"
                     class="w-full">
             </div>
             <ul class="flex gap-6 items-center">
@@ -101,7 +101,7 @@
         </nav>
         <nav id="navbar" class="lg:hidden fixed z-40 w-full px-5 py-4 flex items-center justify-between">
             <div id="nav-logo" class="w-[50px]">
-                <img id="navbar-logo" src="{{ asset('front-end/logo/PNG/Artboard 19.png') }}" alt="Brand Boost Logo"
+                <img id="navbar-logo" src="{{ asset('front-end/SVGs/white-green-logo.svg') }}" alt="Brand Boost Logo"
                     class="w-full">
             </div>
             <div class="flex gap-5">
