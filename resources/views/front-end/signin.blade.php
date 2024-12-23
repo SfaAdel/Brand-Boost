@@ -5,8 +5,11 @@
 @section('content')
 <div class="flex min-h-[100vh] flex-col justify-center px-6 pt-12 lg:px-8 bg-[#f2f4f7]">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}" alt="Brand Boost Logo">
-        <!-- <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">{{__('website.welcome_back')}}</h2> -->
+        <a href="/">
+            <img class="mx-auto h-10 w-auto" src="{{ asset('front-end/logo/PNG/Artboard 15.png') }}"
+                alt="Brand Boost Logo">
+            <!-- <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">{{__('website.welcome_back')}}</h2> -->
+        </a>
     </div>
 
     <div class="my-3">

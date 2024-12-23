@@ -247,13 +247,18 @@ return [
     'faqs' => 'الأسئلة الشائعة',
     'q' => 'س',
 
+    'start_order' => 'ابدأ بالطلب',
+    'expected_receive_date' => 'تاريخ الاستلام المتوقع',
+    'order_description' => 'أكتب وصف لطلبك',
+    'not_logged_in_to_order_phrase' => 'يجب عليك امتلاك حساب صاحب رؤية لتتمكن من الطلب',
+
     // service offers
 
     'recently_offers_of_service' => 'العروض الأخيرة للخدمة',
     'service_description' => 'وصف الخدمة',
     'create_account_as_business_owner' => 'أنشئ حسابًا كمالك أعمال لطلب الخدمة',
     'start_order' => 'ابدأ طلبك',
-    'expected_receive_date' => 'تاريخ الاستلام المتوقع',
+    // 'expected_receive_date' => 'تاريخ الاستلام المتوقع',
     'write_order_description' => 'اكتب وصفًا لطلبك',
     'no_offers_found' => 'لم يتم العثور على عروض',
 ];
