@@ -22,26 +22,28 @@
 
     </div>
     <div id="hero-content"
-        class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col lg:flex-row justify-center items-center gap-1 md:gap-4 z-20">
-        <div class="flex flex-col gap-5 text-white font-acworth text-center lg:text-start">
+        class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col lg:flex-row justify-center items-center gap-[5em] md:gap-4 z-20">
+        <div class="flex justify-center items-center text-white font-acworth text-center lg:text-start">
             @forEach($heroSections as $heroSection)
-                <h2
-                    class="heroText opacity-0 translate-y-52 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase">
-                    {{ $heroSection->h21 }}
-                </h2>
-                <h2
-                    class="heroText opacity-0 translate-y-52 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase">
-                    {{ $heroSection->h22 }}
-                </h2>
-                <h2
-                    class="heroText opacity-0 translate-y-52 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase">
-                    {{ $heroSection->h23 }}
-                </h2>
+                <div class="lg:ms-4 mb-10 lg:mb-0 absolute lg:inset-0 flex flex-col justify-center w-1/2">
+                    <h2
+                        class=" heroText opacity-0 translate-y-52 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase">
+                        {{ $heroSection->h21 }}
+                    </h2>
+                    <h2
+                        class=" heroText opacity-0 translate-y-52 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase">
+                        {{ $heroSection->h22 }}
+                    </h2>
+                    <h2
+                        class=" heroText opacity-0 translate-y-52 text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold uppercase">
+                        {{ $heroSection->h23 }}
+                    </h2>
+                </div>
             @endforeach
         </div>
         <div id="hero-content-image"
             class="opacity-0 flex-[0] lg:flex-1 flex justify-center lg:justify-end items-center mt-5 lg:mt-0">
-            <img class="w-[30vw] lg:w-1/2" src="{{ asset('front-end/logo/PNG/BB.png') }}" alt="Brand Boost Logo">
+            <img class="w-[30vw] lg:w-1/3" src="{{ asset('front-end/logo/PNG/BB.png') }}" alt="Brand Boost Logo">
         </div>
     </div>
 </section>
@@ -127,9 +129,11 @@
                     $bgColor = $bgColors[$index % count($bgColors)];
                 @endphp
 
-                <div id="horizontalContent" class="relative md:static h-[100vh] w-[100vw] 
-                    {{ $bgColor }} 
-                    flex-shrink-0 flex items-center" style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                <div id="horizontalContent"
+                    class="relative md:static h-[100vh] w-[100vw] 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $bgColor }} 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            flex-shrink-0 flex items-center"
+                    style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
                     <div class="flex items-center justify-between h-full px-20">
                         <div
                             class="w-full text-center {{ app()->getLocale() === 'ar' ? 'md:text-right' : 'md:text-left' }} md:w-1/2">
