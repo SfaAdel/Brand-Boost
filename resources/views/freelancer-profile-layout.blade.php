@@ -67,7 +67,7 @@
         <div id="talents-container" class="flex overflow-x-hidden">
             @forelse($freelancerProjects as $freelancerProject)
                 <div id="horizontalTalentCard"
-                    class="relative md:static h-[100vh] w-[100vw] bg-pr flex-shrink-0 flex items-center">
+                    class="relative md:static h-[100vh] w-[100vw] bg-gr flex-shrink-0 flex items-center">
                     <div class="mx-auto flex flex-col md:flex-row items-center justify-center gap-10 w-[90%] h-[80%]">
                         <div class="w-[250px] h-[420px] max-w-xs">
                             <video
@@ -76,7 +76,7 @@
                         </div>
                         <div
                             class="p-4 text-center w-1/2 {{ app()->getLocale() === 'ar' ? 'sm:text-right' : 'sm:text-left' }}">
-                            <h2 class="text-2xl lg:text-4xl font-semibold text-slate-100">{{$freelancerProject->title}}</h2>
+                            <h2 class="text-2xl lg:text-4xl font-semibold text-bl">{{$freelancerProject->title}}</h2>
                         </div>
                     </div>
                 </div>
@@ -124,12 +124,95 @@
                             </p>
                         </div>
                         <div class="px-4 pb-4 pt-0 mt-auto flex">
-                            <button
+                            <button data-modal-open="offer-modal-{{ $freelancerService->id }}"
                                 class="capitalize px-3 flex items-center justify-center cursor-pointer text-purple-800 hover:text-bl transition font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu"
                                 type="button">
                                 {{__('website.order_now')}}
                                 </butt>
                         </div>
+                    </div>
+                </div>
+
+                <div id="offer-modal-{{ $freelancerService->id }}"
+                    class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
+                    <div class="bg-pr w-3/4 m-auto p-10 font-acworth rounded-lg">
+                        @if (auth()->guard('business_owner')->check())
+                            <h1 class="text-5xl font-bold text-white">{{__('website.start_order')}}</h1>
+                            <div class="my-10 flex gap-5 flex-wrap lg:flex-nowrap">
+                                <div class="flex flex-col gap-3">
+                                    <h2 class="text-2xl text-slate-200">{{__('website.freelancer')}} :
+                                        {{ $freelancerService->freelancer->name }}
+                                    </h2>
+                                    <h2 class="text-2xl text-slate-200">{{__('website.price_per_unit')}}
+                                        {{ $freelancerService->service->unit_of_price }} :
+                                        {{ $freelancerService->price_per_unit }} Egy
+                                    </h2>
+                                    <h2 class="text-2xl text-slate-200">{{__('website.service')}} :
+                                        {{ $freelancerService->service->name }}
+                                    </h2>
+                                </div>
+                            </div>
+
+                            <script>
+                                // Price per unit from server-side variable
+                                const pricePerUnit = {{ $freelancerService->price_per_unit }};
+
+                                // Elements
+                                const amountInput = document.getElementById('amount');
+                                const totalPriceInput = document.getElementById('total_price');
+
+                                // Update total price on amount input change
+                                amountInput.addEventListener('input', () => {
+                                    const amount = parseFloat(amountInput.value) || 0; // Default to 0 if empty
+                                    totalPriceInput.value = (amount * pricePerUnit).toFixed(2); // Format to 2 decimal places
+                                });
+                            </script>
+
+                            <div class="flex flex-col">
+                                <form action="{{ route('orders.store') }}" method="POST" class="mb-3 flex flex-col gap-3">
+                                    @csrf
+                                    <input type="number" hidden name="freelancer_service_id"
+                                        value="{{ $freelancerService->id }}">
+                                    <input type="number" hidden name="business_owner_id"
+                                        value="{{ Auth::guard('business_owner')->user()->id }}">
+
+                                    <label for="expected_receive_date"
+                                        class="text-slate-200 capitalize">{{__('website.expected_receive_date')}}</label>
+                                    <input type="date" name="expected_receive_date" class="bg-white text-bl rounded-full">
+
+                                    <label for="description"
+                                        class="text-slate-200 capitalize">{{__('website.order_description')}}</label>
+                                    <input type="text" name="description" class="bg-white text-bl rounded-full">
+
+                                    <label for="amount" class="text-slate-200 capitalize">Amount</label>
+                                    <input type="number" name="amount" id="amount" min="1" class="bg-white text-bl rounded-full"
+                                        required>
+
+                                    <label for="total_price" class="text-slate-200 capitalize">Total Price</label>
+                                    <input type="number" id="total_price" name="total_price" disabled
+                                        class="bg-slate-300 text-bl rounded-full">
+
+                                    <button type="submit" class="mt-5 capitalize px-3 flex items-center justify-center cursor-pointer text-bl transition
+                                                        font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi
+                                                        via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%]
+                                                        before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px]
+                                                        before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30%
+                                                        before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl
+                                                        before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu
+                                                        focus:ring-bu">
+                                        Order
+                                    </button>
+                                </form>
+                                <button data-modal-close="offer-modal-{{ $freelancerService->id }}"
+                                    class="capitalize px-3 flex items-center justify-center cursor-pointer text-white transition rounded-full font-bold text-[16px] w-full mx-auto h-[2em] text-center bg-bl hover:bg-gray-800">
+                                    {{ __('website.close') }}
+                                </button>
+                            </div>
+                        @else
+                            <h1 class="text-5xl font-bold">{{__('website.not_logged_in_to_order_phrase')}}</h1>
+                            <a href="{{ route('visionary-signup') }}"
+                                class="block rounded-full bg-pr hover:bg-pi hover:text-bl transitions px-3 py-4 text-white w-1/2 text-center font-hepta mx-auto mt-5">{{__('website.have_vision')}}</a>
+                        @endif
                     </div>
                 </div>
             @empty

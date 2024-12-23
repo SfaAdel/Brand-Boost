@@ -36,8 +36,10 @@
                     <tr>
                         <td class="py-3 px-5 ">
                             <div class="flex items-center gap-4">
-                                {{-- <img src="{{ asset('images/' . Auth::guard('freelancer')->user()->name . '_projects_images/' . $freelancerProject->image) }}"
-                                    alt="" class="inline-block relative object-cover object-center w-9 h-9 rounded-full"> --}}
+                                {{-- <img
+                                    src="{{ asset('images/' . Auth::guard('freelancer')->user()->name . '_projects_images/' . $freelancerProject->image) }}"
+                                    alt="" class="inline-block relative object-cover object-center w-9 h-9 rounded-full">
+                                --}}
                                 <div>
                                     <p class="block antialiased text-sm leading-normal font-semibold"
                                         id="dashboardProjectName"> {{ $freelancerProject->title }} </p>
@@ -88,7 +90,7 @@
                     </div>
                 @empty
                     <tr>
-                        <td colspan="3" class="py-3 px-5 text-center">{{__('website.no_projects')}}</td>
+                        <td colspan="3" class="py-3 px-5 text-center">{{__('website.no_projects_found')}}</td>
                     </tr>
                 @endforelse
             </tbody>

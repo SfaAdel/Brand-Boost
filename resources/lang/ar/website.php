@@ -246,4 +246,9 @@ return [
     'our_vision' => 'رؤيتنا',
     'faqs' => 'الأسئلة الشائعة',
     'q' => 'س',
+
+    'start_order' => 'ابدأ بالطلب',
+    'expected_receive_date' => 'تاريخ الاستلام المتوقع',
+    'order_description' => 'أكتب وصف لطلبك',
+    'not_logged_in_to_order_phrase' => 'يجب عليك امتلاك حساب صاحب رؤية لتتمكن من الطلب',
 ];

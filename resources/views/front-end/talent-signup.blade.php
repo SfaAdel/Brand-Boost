@@ -93,8 +93,7 @@
                     </div>
 
                     <div>
-                        <label for="gender"
-                            class="block text-sm font-bold text-gray-900">{{ __('website.gender_label') }}</label>
+                        <label for="gender" class="block text-sm text-white">{{ __('website.gender_label') }}</label>
                         <div class="flex items-center space-x-4 mt-2">
                             <label for="male" class="flex items-center">
                                 <input type="radio" id="male" name="gender" value="male" required class="mr-2">

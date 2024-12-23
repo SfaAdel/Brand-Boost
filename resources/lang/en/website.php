@@ -247,4 +247,9 @@ return [
     'our_vision' => 'Our Vision',
     'faqs' => 'FAQs',
     'q' => 'Q',
+
+    'start_order' => 'Start Your Order',
+    'expected_receive_date' => 'Expected Receive Date',
+    'order_description' => 'Write a Description for your order',
+    'not_logged_in_to_order_phrase' => 'Create Account as a Business Owner to Order The Service',
 ];
