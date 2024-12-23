@@ -3,13 +3,13 @@
 @section('title', $freelancerService->service->name)
 
 @section('business-area-content')
-<div class="bg-white border rounded-lg border-gray-200 h-full pb-5">
+<div class="bg-pr text-white border rounded-lg border-gray-200 h-full pb-5">
     <!-- <div>
         <img src="{{ asset('images/services/'. $freelancerService->service->icon ) }}" class="object-cover">
     </div> -->
     <div class="flex flex-col gap-5 p-5">
         <h2 class="font-bold text-4xl"> {{$freelancerService->service->name}}</h2>
-        <p class="text-slate-800">{{$freelancerService->service->description}}</p>
+        <p class="text-slate-200">{{$freelancerService->service->description}}</p>
         <h4 class="font-bold">
             {{$freelancerService->price_per_unit . ' Egy - ' . $freelancerService->service->unit_of_price}}
         </h4>

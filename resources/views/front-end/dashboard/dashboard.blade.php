@@ -6,7 +6,7 @@
 @if (auth()->guard('business_owner')->check())
     <div class="mb-7 flex justify-around items-center flex-col md:flex-row">
         <div
-            class="w-full sm:w-[10rem] md:w-[13rem] bg-white border rounded-lg border-gray-200 p-5 flex justify-between items-center">
+            class="dashboard-field w-full sm:w-[10rem] md:w-[13rem] bg-gr border rounded-lg border-gray-200 p-5 flex justify-between items-center">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
@@ -24,7 +24,7 @@
         </div>
 
         <div
-            class="w-full sm:w-[10rem] md:w-[13rem] bg-white border rounded-lg border-gray-200 p-5 flex justify-between items-center">
+            class="dashboard-field w-full sm:w-[10rem] md:w-[13rem] bg-gr border rounded-lg border-gray-200 p-5 flex justify-between items-center">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="p-10 text-center">
+    <div class="dashboard-field p-10 text-center">
         <h2 class="text-5xl font-bold my-2 capitalize">{{__('website.welcome')}},
             {{Auth::guard('business_owner')->user()->name}}
         </h2>
@@ -55,7 +55,7 @@
 @else
     <div class="mb-7 flex justify-around items-center flex-col md:flex-row">
         <div
-            class="w-full sm:w-[10rem] md:w-[13rem] bg-white border rounded-lg border-gray-200 p-5 flex justify-between items-center">
+            class="dashboard-field w-full sm:w-[10rem] md:w-[13rem] bg-gr border rounded-lg border-gray-200 p-5 flex justify-between items-center">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
@@ -73,7 +73,7 @@
         </div>
 
         <div
-            class="w-full sm:w-[10rem] md:w-[13rem] bg-white border rounded-lg border-gray-200 p-5 flex justify-between items-center">
+            class="dashboard-field w-full sm:w-[10rem] md:w-[13rem] bg-gr border rounded-lg border-gray-200 p-5 flex justify-between items-center">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
@@ -92,7 +92,7 @@
         </div>
 
         <div
-            class="w-full sm:w-[10rem] md:w-[13rem] bg-white border rounded-lg border-gray-200 p-5 flex justify-between items-center">
+            class="dashboard-field w-full sm:w-[10rem] md:w-[13rem] bg-gr border rounded-lg border-gray-200 p-5 flex justify-between items-center">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
@@ -110,7 +110,7 @@
 
     </div>
 
-    <div class="p-10 text-center">
+    <div class="dashboard-field p-10 text-center">
         <h2 class="text-5xl font-bold my-2 capitalize">{{__('website.welcome')}},
             {{Auth::guard('freelancer')->user()->name}}
         </h2>

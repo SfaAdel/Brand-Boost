@@ -23,7 +23,7 @@
                         <span
                             id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') :
                 __('website.follow')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }}</span>
                         <span>
                             <img id="follow-icon-{{ $freelancer->id }}"
                                 src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
@@ -65,13 +65,15 @@
     </section>
     <section class="py-20 px-[10vw] bg-gr">
         <h2 class="text-3xl capitalize font-bold my-5">{{__('website.projects')}}</h2>
-        <div class="my-5 flex flex-wrap lg:flex-nowrap justify-center items-center">
+        <div class="my-5 flex flex-wrap lg:flex-nowrap">
             @forelse($freelancerProjects as $freelancerProject)
                 <div>
-                    <div>
-                        <video src="{{ asset('images/'.$freelancerProject->freelancerService->freelancer->name.'_projects_videos/'. $freelancerProject->video) }}" controls class="rounded-lg"></video>
+                    <div class="w-[180px] h-[420px] max-w-xs mx-auto">
+                        <video
+                            src="{{ asset('images/' . $freelancerProject->freelancerService->freelancer->name . '_projects_videos/' . $freelancerProject->video) }}"
+                            controls class="w-full h-full rounded-xl object-cover"></video>
                     </div>
-                    <h2 class="my-4 text-5xl capitalize">{{$freelancerProject->title}}</h2>
+                    <h2 class="my-4 text-3xl capitalize">{{$freelancerProject->title}}</h2>
                 </div>
             @empty
                 <div>
@@ -94,7 +96,9 @@
                             <h6 class="mb-2 text-white text-xl font-semibold">
                                 {{$freelancerService->service->name}}
                             </h6>
-                            <p class="text-white"> {{$freelancerService->price_per_unit}} EGP - {{$freelancerService->service->unit_of_price}} </p>
+                            <p class="text-white"> {{$freelancerService->price_per_unit}} EGP -
+                                {{$freelancerService->service->unit_of_price}}
+                            </p>
                         </div>
                         <div class="px-4 pb-4 pt-0 mt-auto flex">
                             <button

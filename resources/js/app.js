@@ -28,18 +28,43 @@ document.addEventListener("DOMContentLoaded", () => {
         stagger: 0.2,
     });
 
-    tl.to("#loader", {
+    const heroTexts = document.querySelectorAll(".heroText");
+    const groupSize = 3;
+    let currentIndex = 0;
+
+    function animateGroup() {
+        const currentGroup = Array.from(heroTexts).slice(
+            currentIndex,
+            currentIndex + groupSize
+        );
+
+        // Show the current group
+        const showGroup = gsap.timeline();
+        showGroup.to(currentGroup, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.5,
+        });
+
+        // Hide the current group and move to the next group
+        showGroup.to(currentGroup, {
+            opacity: 0,
+            duration: 1,
+            delay: 3, // Keep the group visible for 3 seconds
+            onComplete: () => {
+                currentIndex = (currentIndex + groupSize) % heroTexts.length;
+                animateGroup();
+            },
+        });
+    }
+
+    gsap.to("#loader", {
         opacity: 0,
         onComplete: () => {
             document.querySelector("#loader").style.display = "none";
-            // Hero
-            gsap.timeline().to(".heroText", {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-                stagger: 0.5,
-            });
+            animateGroup();
 
             gsap.to("#hero-content-image", {
                 opacity: 1,
@@ -261,4 +286,41 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.transform = "rotateX(0deg) rotateY(0deg)";
         });
     });
+
+    //dashboard
+    gsap.fromTo(
+        ".table-row",
+        { opacity: 0, yPercent: 100 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            duration: 1,
+            ease: "power1.out",
+            stagger: { each: 0.2, from: "start" },
+        }
+    );
+
+    gsap.fromTo(
+        ".dashboard-link",
+        { opacity: 0, yPercent: 100 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            duration: 1,
+            ease: "power1.out",
+            stagger: { each: 0.2, from: "start" },
+        }
+    );
+
+    gsap.fromTo(
+        ".dashboard-field",
+        { opacity: 0, yPercent: 100 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            duration: 1,
+            ease: "power1.out",
+            stagger: { each: 0.2, from: "start" },
+        }
+    );
 });

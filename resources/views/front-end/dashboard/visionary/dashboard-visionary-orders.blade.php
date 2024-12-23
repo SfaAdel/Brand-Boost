@@ -9,7 +9,7 @@
     @include('front-end.includes.alerts')
 </div>
 
-<div class="bg-white border rounded-lg border-gray-200 h-full">
+<div class="bg-pr text-white border rounded-lg border-gray-200 h-full">
     <div class="p-6 px-0 pt-0 pb-2">
         <table class="w-full min-w-[640px] table-auto">
             <thead>
@@ -47,11 +47,11 @@
             </thead>
             <tbody>
                 @forelse ($orders as $order)
-                    <tr>
+                    <tr class="table-row hover:bg-gr hover:text-bl transition">
                         <td class="py-3 px-5 ">
                             <div class="flex items-center gap-4">
                                 <!-- <img src="" alt=""
-                                                                                                                                                            class="inline-block relative object-cover object-center w-9 h-9 rounded-md"> -->
+                                                                                                                                                                                                class="inline-block relative object-cover object-center w-9 h-9 rounded-md"> -->
                                 <div>
                                     <p class="block antialiased text-sm leading-normal font-semibold">
                                         {{ $order->id }}
@@ -78,8 +78,8 @@
                         <td class="py-3 px-5">
                             <div
                                 class="relative grid items-center uppercase whitespace-nowrap select-none 
-                                                                                                                                                {{ $order->status === 'complete' ? 'bg-gradient-to-tr from-emerald-600 to-emerald-400' : 'bg-gradient-to-tr from-yellow-600 to-yellow-400' }} 
-                                                                                                                                                text-white py-0.5 px-2 text-[11px] font-medium w-fit">
+                                                                                                                                                                                    {{ $order->status === 'complete' ? 'bg-gradient-to-tr from-emerald-600 to-emerald-400' : 'bg-gradient-to-tr from-yellow-600 to-yellow-400' }} 
+                                                                                                                                                                                    text-white py-0.5 px-2 text-[11px] font-medium w-fit">
                                 <span>{{ $order->status }}</span>
                             </div>
                         </td>

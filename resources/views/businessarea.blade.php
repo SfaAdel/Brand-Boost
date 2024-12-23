@@ -3,25 +3,25 @@
 @section('title', 'Business Area')
 
 @php
-    $dashboardLink = preg_match('/business-area\/[0-9]+/', Request::path()) ? 'bg-gr rounded-lg' : '';
-    $editProfileLink = Request::is('*talent-profile*') ? 'bg-gr rounded-lg' : '';
-    $servicesLink = Request::is('*talent-services*') ? 'bg-gr rounded-lg' : '';
-    $projectsLink = Request::is('*talent-projects*') ? 'bg-gr rounded-lg' : '';
-    $ordersLink = Request::is('*talent-orders*') ? 'bg-gr rounded-lg' : '';
+    $dashboardLink = preg_match('/business-area\/[0-9]+/', Request::path()) ? 'bg-gr text-bl rounded-lg' : '';
+    $editProfileLink = Request::is('*talent-profile*') ? 'bg-gr text-bl rounded-lg' : '';
+    $servicesLink = Request::is('*talent-services*') ? 'bg-gr text-bl rounded-lg' : '';
+    $projectsLink = Request::is('*talent-projects*') ? 'bg-gr text-bl rounded-lg' : '';
+    $ordersLink = Request::is('*talent-orders*') ? 'bg-gr text-bl rounded-lg' : '';
 
-    $visionaryEditProfileLink = Request::is('*visionary-profile*') ? 'bg-gr rounded-lg' : '';
-    $visionaryFavTalentsLink = Request::is('*visionary-fav-freelancers*') ? 'bg-gr rounded-lg' : '';
-    $visionaryOrdersLink = Request::is('*visionary-orders*') ? 'bg-gr rounded-lg' : '';
+    $visionaryEditProfileLink = Request::is('*visionary-profile*') ? 'bg-gr text-bl rounded-lg' : '';
+    $visionaryFavTalentsLink = Request::is('*visionary-fav-freelancers*') ? 'bg-gr text-bl rounded-lg' : '';
+    $visionaryOrdersLink = Request::is('*visionary-orders*') ? 'bg-gr text-bl rounded-lg' : '';
 @endphp
 
 
 @section('content')
 <div class="min-h-[100vh] grid grid-cols-[18rem,_1fr] bg-gray-200 hepta">
     <aside>
-        <div class="fixed h-full bg-white border-r border-gray-200 w-72">
+        <div class="fixed h-full bg-pr border-r border-gray-200 w-72">
             @if (auth()->guard('freelancer')->check())
                 <ul class="">
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="{{ route('business-area', Auth::guard('freelancer')->user()->id) }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$dashboardLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -34,7 +34,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="{{ route('dashboard-talent-profile', Auth::guard('freelancer')->user()->id) }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$editProfileLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -46,7 +46,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="{{ route('dashboard-talent-services', Auth::guard('freelancer')->user()->id) }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$servicesLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -63,7 +63,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href=" {{ route('dashboard-talent-projects', Auth::guard('freelancer')->user()->id) }} "
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$projectsLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -77,7 +77,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="{{ route('dashboard-talent-orders', Auth::guard('freelancer')->user()->id) }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$ordersLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -93,7 +93,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="/"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryOrdersLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -110,7 +110,7 @@
                 </ul>
             @elseif(auth()->guard('business_owner')->check())
                 <ul class="">
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="{{ route('business-area-b', Auth::guard('business_owner')->user()->id) }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$dashboardLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -123,7 +123,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3 ">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl ">
                         <a href="{{ route('dashboard-visionary-profile') }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryEditProfileLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -135,7 +135,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3 ">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl ">
                         <a href="{{ route('dashboard-visionary-fav-freelancers') }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryFavTalentsLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -152,7 +152,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="{{ route('dashboard-visionary-orders') }}"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryOrdersLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -168,7 +168,7 @@
                         </a>
                     </li>
 
-                    <li class="capitalize my-4 px-3">
+                    <li class="capitalize my-4 px-3 text-white hover:text-bl">
                         <a href="/"
                             class="flex items-center gap-3 h-full w-full p-3 hover:bg-gr hover:rounded-lg transition {{$visionaryOrdersLink}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -187,7 +187,7 @@
         </div>
     </aside>
 
-    <div class="p-5 bg-gray-100">
+    <div class="p-5 bg-pi">
         @yield('business-area-content')
     </div>
 </div>

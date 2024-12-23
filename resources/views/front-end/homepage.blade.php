@@ -22,26 +22,28 @@
 
     </div>
     <div id="hero-content"
-        class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col lg:flex-row justify-center items-center gap-1 md:gap-4 z-20">
-        <div class="flex flex-col gap-5 text-white font-acworth text-center lg:text-start">
+        class="w-full h-[60vh] px-10 md:px-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col lg:flex-row justify-center items-center gap-[5em] md:gap-4 z-20">
+        <div class="flex justify-center items-center text-white font-acworth text-center lg:text-start">
             @forEach($heroSections as $heroSection)
-            <h2
-                class="heroText opacity-0 translate-y-52 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase">
-                {{ $heroSection->h21 }}
-            </h2>
-            <h2
-                class="heroText opacity-0 translate-y-52 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase">
-                {{ $heroSection->h22 }}
-            </h2>
-            <h2
-                class="heroText opacity-0 translate-y-52 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase">
-                {{ $heroSection->h23 }}
-            </h2>
+                <div class="lg:ms-4 mb-10 lg:mb-0 absolute lg:inset-0 flex flex-col justify-center w-1/2">
+                    <h2
+                        class=" heroText opacity-0 translate-y-52 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase">
+                        {{ $heroSection->h21 }}
+                    </h2>
+                    <h2
+                        class=" heroText opacity-0 translate-y-52 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase">
+                        {{ $heroSection->h22 }}
+                    </h2>
+                    <h2
+                        class=" heroText opacity-0 translate-y-52 text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold uppercase">
+                        {{ $heroSection->h23 }}
+                    </h2>
+                </div>
             @endforeach
         </div>
         <div id="hero-content-image"
             class="opacity-0 flex-[0] lg:flex-1 flex justify-center lg:justify-end items-center mt-5 lg:mt-0">
-            <img class="w-[30vw] lg:w-1/2" src="{{ asset('front-end/logo/PNG/BB.png') }}" alt="Brand Boost Logo">
+            <img class="w-[30vw] lg:w-1/3" src="{{ asset('front-end/logo/PNG/BB.png') }}" alt="Brand Boost Logo">
         </div>
     </div>
 </section>
@@ -91,48 +93,25 @@
                 class="flex items-center justify-center cursor-pointer text-white font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-pr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-pr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">{{ __('website.login') }}</a>
         </div>
     </div>
-    {{-- <div id="shots-right-content" class="bg-pr h-full hidden lg:flex flex-[1] justify-center items-center w-[100vw]">
-        <div class="flex flex-col mt-8 gap-10 items-center mx-5">
-            <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec1Video) }}" class="w-full h-full rounded-xl object-cover"
-                    autoplay muted loop></video>
-            </div>
-            <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec2Video) }}" class="w-full h-full rounded-xl object-cover"
-                    autoplay muted loop></video>
-            </div>
-        </div>
-        <div class="flex flex-col mb-8 gap-10 items-center mx-5">
-            <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec3Video) }}" class="w-full h-full rounded-xl object-cover"
-                    autoplay muted loop></video>
-            </div>
-            <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec4Video) }}" class="w-full h-full rounded-xl object-cover"
-                    autoplay muted loop></video>
-            </div>
-        </div>
-
-    </div> --}}
 
     <div id="shots-right-content" class="bg-pr h-full hidden lg:flex flex-[1] justify-center items-center w-[100vw]">
         <div class="flex flex-col mt-8 gap-10 items-center mx-5">
             <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec1Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/' . $sec1Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
             <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec2Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/' . $sec2Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
         </div>
         <div class="flex flex-col mb-8 gap-10 items-center mx-5">
             <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec3Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/' . $sec3Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
             <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/'.$sec4Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/' . $sec4Video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
         </div>
@@ -143,36 +122,36 @@
     <h2 class="text-6xl hepta font-bold text-center py-10 bg-pr text-white w-[100vw]">{{$joinSection->title }}</h2>
     <div id="horizontal" class="flex overflow-x-hidden">
         @foreach ($advantages as $index => $advantage)
-        @php
-            // Define the repeating background colors
-            $bgColors = ['bg-gr', 'bg-pi', 'bg-bu', 'bg-pr text-white'];
-            // Determine the background color based on the index
-            $bgColor = $bgColors[$index % count($bgColors)];
-        @endphp
-    
-        <div id="horizontalContent"
-            class="relative md:static h-[100vh] w-[100vw] 
-            {{ $bgColor }} 
-            flex-shrink-0 flex items-center"
-            style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
-            <div class="flex items-center justify-between h-full px-20">
-                <div
-                    class="w-full text-center {{ app()->getLocale() === 'ar' ? 'md:text-right' : 'md:text-left' }} md:w-1/2">
-                    <h1 class="text-7xl hepta font-bold">{{ $advantage->title }}</h1>
-                    <p class="text-2xl rubikv mt-10">{{ $advantage->description }}</p>
+                @php
+                    // Define the repeating background colors
+                    $bgColors = ['bg-gr', 'bg-pi', 'bg-bu', 'bg-pr text-white'];
+                    // Determine the background color based on the index
+                    $bgColor = $bgColors[$index % count($bgColors)];
+                @endphp
+
+                <div id="horizontalContent"
+                    class="relative md:static h-[100vh] w-[100vw] 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $bgColor }} 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            flex-shrink-0 flex items-center"
+                    style="direction:{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }};">
+                    <div class="flex items-center justify-between h-full px-20">
+                        <div
+                            class="w-full text-center {{ app()->getLocale() === 'ar' ? 'md:text-right' : 'md:text-left' }} md:w-1/2">
+                            <h1 class="text-7xl hepta font-bold">{{ $advantage->title }}</h1>
+                            <p class="text-2xl rubikv mt-10">{{ $advantage->description }}</p>
+                        </div>
+                        <div class="block md:hidden absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
+                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Icon"
+                                class="w-full">
+                        </div>
+                        <div class="hidden md:block absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
+                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Logo"
+                                class="w-full">
+                        </div>
+                    </div>
                 </div>
-                <div class="block md:hidden absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
-                    <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Icon"
-                        class="w-full">
-                </div>
-                <div class="hidden md:block absolute left-[5%] -z-10 opacity-45 md:static md:opacity-100">
-                    <img src="{{ asset('images/advantages/' . $advantage->icon) }}" alt="Brand Boost Logo"
-                        class="w-full">
-                </div>
-            </div>
-        </div>
-    @endforeach
-    
+        @endforeach
+
     </div>
 </div>
 

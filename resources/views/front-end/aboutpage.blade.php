@@ -8,11 +8,6 @@
         <h1 class="text-7xl font-bold uppercase text-center">What is<br />Brand Boost</h1>
         <p class="text-2xl mt-10">This small journy on this page will let you know more about us.</p>
     </section>
-
-    <div class="w-full bg-no-repeat bg-center bg-cover"
-        style="aspect-ratio: 950/300; background-image: url('{{ asset('front-end/SVGs/stacked-peaks-haikei.svg') }}">
-    </div>
-
     <section class="relative flex flex-col items-center min-h-96 py-24 px-[10vw] text-center bg-sky-600">
         <h1 class="text-7xl font-bold uppercase text-center">What is<br />Brand Boost</h1>
         <p class="text-2xl mt-10">This small journy on this page will let you know more about us.</p>
