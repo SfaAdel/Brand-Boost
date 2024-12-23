@@ -235,9 +235,16 @@ return [
     'no_projects_found' => 'No Projects found.',
     'order_now' => 'Order now',
 
-    'name_en_label'=>'Name In English',
-    'name_ar_label'=>'Name In Arabic',
-    'password_help'=>'Leave blank to keep the existing password',
-    'image_label'=>'Image',
+    'name_en_label' => 'Name In English',
+    'name_ar_label' => 'Name In Arabic',
+    'password_help' => 'Leave blank to keep the existing password',
+    'image_label' => 'Image',
 
+    //About
+    'what_is' => 'What is',
+    'about_journey' => 'This small journy on this page will let you know more about us.',
+    'our_mission' => 'Our Mission',
+    'our_vision' => 'Our Vision',
+    'faqs' => 'FAQs',
+    'q' => 'Q',
 ];

@@ -323,4 +323,72 @@ document.addEventListener("DOMContentLoaded", () => {
             stagger: { each: 0.2, from: "start" },
         }
     );
+
+    //faqs
+
+    const accordions = document.querySelectorAll(".accordion");
+
+    accordions.forEach((accordion) => {
+        const toggle = accordion.querySelector(".accordion-toggle");
+        const content = accordion.querySelector(".accordion-content");
+        const icon = toggle.querySelector(".icon");
+        const heading = toggle.querySelector("h5");
+
+        toggle.addEventListener("click", () => {
+            const isOpen = accordion.classList.contains("active");
+
+            if (isOpen) {
+                gsap.to(content, {
+                    maxHeight: 0,
+                    duration: 0.5,
+                    ease: "power3.out",
+                });
+                gsap.to(icon, {
+                    rotate: 360,
+                    duration: 0.3,
+                    ease: "power1.out",
+                });
+                accordion.classList.remove("active");
+            } else {
+                accordions.forEach((otherAccordion) => {
+                    const otherContent =
+                        otherAccordion.querySelector(".accordion-content");
+                    const otherIcon = otherAccordion.querySelector(".icon");
+                    otherAccordion.classList.remove("active");
+                    gsap.to(otherContent, {
+                        maxHeight: 0,
+                        duration: 0.5,
+                        ease: "power3.out",
+                    });
+                    gsap.to(otherIcon, {
+                        rotate: 0,
+                        duration: 0.3,
+                        ease: "power1.out",
+                    });
+                });
+
+                // Open the current accordion
+                gsap.to(content, {
+                    maxHeight: content.scrollHeight,
+                    duration: 0.5,
+                    ease: "power3.out",
+                });
+                gsap.to(icon, {
+                    rotate: 180,
+                    duration: 0.3,
+                    ease: "power1.out",
+                });
+                accordion.classList.add("active");
+            }
+
+            // Update styles based on active state
+            if (accordion.classList.contains("active")) {
+                heading.style.color = "#4f46e5"; // Indigo color
+                icon.style.stroke = "#4f46e5";
+            } else {
+                heading.style.color = "#1f2937"; // Default gray color
+                icon.style.stroke = "#1f2937";
+            }
+        });
+    });
 });
