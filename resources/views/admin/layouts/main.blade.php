@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>@yield('title', 'CORK Admin Template')</title>
-
-    <link rel="icon" type="image/x-icon" href="{{ asset('admin/assets/img/favicon.ico') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('front-end/logo/PNG/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('front-end/logo/PNG/favicon-16x16.png') }}">
+    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('admin/assets/img/favicon.ico') }}" /> --}}
 
     <!-- Load RTL or LTR CSS based on locale -->
     @if (app()->getLocale() == 'ar')

@@ -4,10 +4,10 @@
 
 @section('content')
 <section class="bg-pr py-24">
-    <h1 class="text-6xl font-bold text-center hepta capitalize pt-7 text-slate-50"> {{ __('website.recently_offers_of_service') }} :
+    <h1 class="text-6xl font-bold text-center hepta capitalize pt-7 text-slate-50"> {{ __('website.service_name') }} 
         {{ $service->name }} 
     </h1>
-    <p id="service-offer-description" class="text-slate-200 leading-normal text-xl hepta text-center">
+    <p id="service-offer-description" class="text-slate-200 leading-normal text-xl hepta text-center mt-10 ">
         {{ $service->description }}
     </p>
 
@@ -21,7 +21,7 @@
             <div
                 class="card relative flex flex-col my-6 bg-gr border rounded-lg border-purple-200 hover:border-bu w-96 p-5">
                 <div class="flex items-center gap-3 mb-5">
-                    <img src="{{ asset('front-end/SocialMedia/brand boost sm (1).jpg') }}" alt="Offerer pic"
+                    <img src="{{ asset('images/freelancers/profile/'.$freelancerService->freelancer->profile_image) }}" alt="Offerer pic"
                         class="w-12 h-12 rounded-full">
                     <a href="/freelancers/freelancerName">
                         <p class="text-sm font-bold">{{ $freelancerService->freelancer->name }}</p>

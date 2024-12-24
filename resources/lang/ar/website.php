@@ -133,6 +133,7 @@ return [
 
     //Single Freelancer Page
     'follow' => 'متابعة',
+    'unfollow' => 'الغاء المتابعة',
     'informations' => 'معلومات',
     'projects' => 'المشاريع',
     'about_me' => 'عني',
@@ -257,8 +258,9 @@ return [
     'recently_offers_of_service' => 'العروض الأخيرة للخدمة',
     'service_description' => 'وصف الخدمة',
     'create_account_as_business_owner' => 'أنشئ حسابًا كمالك أعمال لطلب الخدمة',
-    'start_order' => 'ابدأ طلبك',
-    // 'expected_receive_date' => 'تاريخ الاستلام المتوقع',
     'write_order_description' => 'اكتب وصفًا لطلبك',
     'no_offers_found' => 'لم يتم العثور على عروض',
+
+    'service_name' => 'خدمة',
+
 ];

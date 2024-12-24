@@ -19,7 +19,7 @@
 
         <!-- <video autoplay muted loop loading="lazy" src="{{ asset('videos/home/' . $heroVideo) }}"
             class="h-full w-full object-cover absolute"></video> -->
-        <video autoplay muted loop loading="lazy" src="{{ asset('videos/home/' . $heroVideo) }}"
+        <video autoplay muted loop loading="lazy" src="{{ asset('videos/home/' . $heroVideo->video) }}"
             class="h-full w-full object-cover absolute"></video>
 
     </div>
@@ -99,21 +99,21 @@
     <div id="shots-right-content" class="bg-pr h-full hidden lg:flex flex-[1] justify-center items-center w-[100vw]">
         <div class="flex flex-col mt-8 gap-10 items-center mx-5">
             <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/' . $sec1Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/'.$sec1Video->video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
             <div class="shot-item-left w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/' . $sec2Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/' . $sec2Video->video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
         </div>
         <div class="flex flex-col mb-8 gap-10 items-center mx-5">
             <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/' . $sec3Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/' . $sec3Video->video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
             <div class="shot-item-right w-[180px] h-[420px] max-w-xs mx-auto">
-                <video src="{{ asset('videos/home/' . $sec4Video) }}" class="w-full h-full rounded-xl object-cover"
+                <video src="{{ asset('videos/home/' . $sec4Video->video) }}" class="w-full h-full rounded-xl object-cover"
                     autoplay muted loop></video>
             </div>
         </div>

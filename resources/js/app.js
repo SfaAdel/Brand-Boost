@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    gsap.to("#loader", {
+    tl.to("#loader", {
         opacity: 0,
         onComplete: () => {
             document.querySelector("#loader").style.display = "none";

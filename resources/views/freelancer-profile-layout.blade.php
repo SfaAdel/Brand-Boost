@@ -15,21 +15,30 @@
             @endif
             <h1 class="text-5xl font-bold text-center capitalize">{{$freelancer->name}}</h1>
             <p class="text-2xl text-slate-300 text-center capitalize">{{$freelancer->jobTitle->name}}</p>
-            @if (auth()->guard('business_owner')->check())
-                <button id="follow-button-{{ $freelancer->id }}" data-following="{{ $isFollowing ? 'true' : 'false' }}"
-                    data-freelancer-id="{{ $freelancer->id }}"
-                    data-business-owner-id="{{ Auth::guard('business_owner')->id() }}"
-                    class="bg-gray-200 hover:bg-gray-50 transition p-2 mt-3.5 border-black border text-black hepta text-center text-sm">
-                    <span
-                        id="follow-text-{{ $freelancer->id }}">{{ $isFollowing ? __('website.unfollow') : __('website.follow')}}</span>
-                    <span>
-                        <img id="follow-icon-{{ $freelancer->id }}"
-                            src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}"
-                            class="inline">
-                    </span>
-                </button>
-            @endif
+           @if (auth()->guard('business_owner')->check())
+    <button 
+        id="follow-button-{{ $freelancer->id }}" 
+        data-following="{{ $isFollowing ? 'true' : 'false' }}"
+        data-freelancer-id="{{ $freelancer->id }}"
+        data-business-owner-id="{{ Auth::guard('business_owner')->id() }}"
+        class="bg-gray-200 hover:bg-bu rounded-full transition p-2 mt-3.5 text-black hepta text-center text-sm">
+        <span id="follow-text-{{ $freelancer->id }}">
+            {{ $isFollowing ? __('website.unfollow') : __('website.follow') }}
+        </span>
+        <span>
+            <img 
+                id="follow-icon-{{ $freelancer->id }}" 
+                src="{{ asset($isFollowing ? 'front-end/SVGs/heart-fill.svg' : 'front-end/SVGs/heart.svg') }}" 
+                class="inline">
+        </span>
+    </button>
+@endif
+
         </div>
+    </div>
+
+    <div class="my-3">
+        @include('front-end.includes.alerts')
     </div>
 
     <section class="py-20 px-[10vw] bg-gr flex">
@@ -77,6 +86,7 @@
                         <div
                             class="p-4 text-center w-1/2 {{ app()->getLocale() === 'ar' ? 'sm:text-right' : 'sm:text-left' }}">
                             <h2 class="text-2xl lg:text-4xl font-semibold text-bl">{{$freelancerProject->title}}</h2>
+                            <p class="text-slate-800 text-capitalize mt-2">{{$freelancerProject->freelancerService->service->name}}</p>
                         </div>
                     </div>
                 </div>
@@ -113,7 +123,7 @@
                     <div class="relative flex flex-col my-6 bg-pr border rounded-lg border-purple-200 w-96">
                         <div class="relative h-56 m-2.5 overflow-hidden">
                             <img src="{{ asset('images/services/' . $freelancerService->service->icon) }}" alt="card-image"
-                                class="w-full h-full object-cover rounded-lg" />
+                                class="w-full h-full object-contain rounded-lg" />
                         </div>
                         <div class="p-4">
                             <h6 class="mb-2 text-white text-xl font-semibold">
@@ -137,70 +147,70 @@
                     class="modal-overlay hidden fixed inset-0 z-50 bg-black/75 p-10 overflow-auto">
                     <div class="bg-pr w-3/4 m-auto p-10 font-acworth rounded-lg">
                         @if (auth()->guard('business_owner')->check())
-                            <h1 class="text-5xl font-bold text-white">{{__('website.start_order')}}</h1>
+                            <h1 class="text-5xl font-bold text-white">{{ __('website.start_order') }}</h1>
                             <div class="my-10 flex gap-5 flex-wrap lg:flex-nowrap">
                                 <div class="flex flex-col gap-3">
-                                    <h2 class="text-2xl text-slate-200">{{__('website.freelancer')}} :
+                                    <h2 class="text-2xl text-slate-200">{{ __('website.freelancer') }}:
                                         {{ $freelancerService->freelancer->name }}
                                     </h2>
-                                    <h2 class="text-2xl text-slate-200">{{__('website.price_per_unit')}}
-                                        {{ $freelancerService->service->unit_of_price }} :
+                                    <h2 class="text-2xl text-slate-200">{{ __('website.price_per_unit') }}
+                                        {{ $freelancerService->service->unit_of_price }}:
                                         {{ $freelancerService->price_per_unit }} Egy
                                     </h2>
-                                    <h2 class="text-2xl text-slate-200">{{__('website.service')}} :
+                                    <h2 class="text-2xl text-slate-200">{{ __('website.service') }}:
                                         {{ $freelancerService->service->name }}
                                     </h2>
                                 </div>
                             </div>
-
+                
                             <script>
-                                // Price per unit from server-side variable
-                                const pricePerUnit = {{ $freelancerService->price_per_unit }};
-
-                                // Elements
-                                const amountInput = document.getElementById('amount');
-                                const totalPriceInput = document.getElementById('total_price');
-
-                                // Update total price on amount input change
-                                amountInput.addEventListener('input', () => {
-                                    const amount = parseFloat(amountInput.value) || 0; // Default to 0 if empty
-                                    totalPriceInput.value = (amount * pricePerUnit).toFixed(2); // Format to 2 decimal places
+                                // Wait for DOM content to load to avoid issues
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    // Select elements with unique IDs based on freelancerService ID
+                                    const amountInput = document.getElementById('amount-{{ $freelancerService->id }}');
+                                    const totalPriceInput = document.getElementById('total_price-{{ $freelancerService->id }}');
+                                    
+                                    // Ensure elements exist to prevent errors
+                                    if (amountInput && totalPriceInput) {
+                                        const pricePerUnit = {{ $freelancerService->price_per_unit }};
+                                        
+                                        // Update total price on input
+                                        amountInput.addEventListener('input', () => {
+                                            const amount = parseFloat(amountInput.value) || 0; // Default to 0 if empty
+                                            totalPriceInput.value = (amount * pricePerUnit).toFixed(2); // Format to 2 decimal places
+                                        });
+                                    }
                                 });
                             </script>
-
+                
                             <div class="flex flex-col">
                                 <form action="{{ route('orders.store') }}" method="POST" class="mb-3 flex flex-col gap-3">
                                     @csrf
-                                    <input type="number" hidden name="freelancer_service_id"
-                                        value="{{ $freelancerService->id }}">
+                                    <input type="number" hidden name="freelancer_service_id" value="{{ $freelancerService->id }}">
                                     <input type="number" hidden name="business_owner_id"
                                         value="{{ Auth::guard('business_owner')->user()->id }}">
-
-                                    <label for="expected_receive_date"
-                                        class="text-slate-200 capitalize">{{__('website.expected_receive_date')}}</label>
+                
+                                    <label for="expected_receive_date" class="text-slate-200 capitalize">
+                                        {{ __('website.expected_receive_date') }}
+                                    </label>
                                     <input type="date" name="expected_receive_date" class="bg-white text-bl rounded-full">
-
-                                    <label for="description"
-                                        class="text-slate-200 capitalize">{{__('website.order_description')}}</label>
+                
+                                    <label for="description" class="text-slate-200 capitalize">
+                                        {{ __('website.order_description') }}
+                                    </label>
                                     <input type="text" name="description" class="bg-white text-bl rounded-full">
-
-                                    <label for="amount" class="text-slate-200 capitalize">Amount</label>
-                                    <input type="number" name="amount" id="amount" min="1" class="bg-white text-bl rounded-full"
-                                        required>
-
-                                    <label for="total_price" class="text-slate-200 capitalize">Total Price</label>
-                                    <input type="number" id="total_price" name="total_price" disabled
+                
+                                    <label for="amount-{{ $freelancerService->id }}" class="text-slate-200 capitalize">Amount</label>
+                                    <input type="number" name="amount" id="amount-{{ $freelancerService->id }}" min="1"
+                                        class="bg-white text-bl rounded-full" required>
+                
+                                    <label for="total_price-{{ $freelancerService->id }}" class="text-slate-200 capitalize">Total Price</label>
+                                    <input type="number" id="total_price-{{ $freelancerService->id }}" name="total_price" disabled
                                         class="bg-slate-300 text-bl rounded-full">
-
-                                    <button type="submit" class="mt-5 capitalize px-3 flex items-center justify-center cursor-pointer text-bl transition
-                                                        font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi
-                                                        via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%]
-                                                        before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px]
-                                                        before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30%
-                                                        before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl
-                                                        before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu
-                                                        focus:ring-bu">
-                                        Order
+                
+                                    <button type="submit"
+                                        class="mt-5 capitalize px-3 flex items-center justify-center cursor-pointer text-bl transition font-bold relative text-[16px] w-full mx-auto h-[2em] text-center bg-gradient-to-r from-gr from-10% via-pi via-30% to-bu to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-gr before:from-10% before:via-pi before:via-30% before:to-bu before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-bu focus:ring-bu">
+                                        {{ __('website.order') }}
                                     </button>
                                 </form>
                                 <button data-modal-close="offer-modal-{{ $freelancerService->id }}"
@@ -209,12 +219,15 @@
                                 </button>
                             </div>
                         @else
-                            <h1 class="text-5xl font-bold">{{__('website.not_logged_in_to_order_phrase')}}</h1>
+                            <h1 class="text-5xl font-bold">{{ __('website.not_logged_in_to_order_phrase') }}</h1>
                             <a href="{{ route('visionary-signup') }}"
-                                class="block rounded-full bg-pr hover:bg-pi hover:text-bl transitions px-3 py-4 text-white w-1/2 text-center font-hepta mx-auto mt-5">{{__('website.have_vision')}}</a>
+                                class="block rounded-full bg-pr hover:bg-pi hover:text-bl transitions px-3 py-4 text-white w-1/2 text-center font-hepta mx-auto mt-5">
+                                {{ __('website.have_vision') }}
+                            </a>
                         @endif
                     </div>
                 </div>
+                
             @empty
                 <div>
                     <p class="py-3 px-5 text-center">{{__('website.no_services_found')}}</p>
@@ -249,12 +262,12 @@
 
                     if (data.following) {
                         this.setAttribute('data-following', 'true');
-                        followText.textContent = 'Unfollow';
+                        followText.textContent = "{{__('website.follow')}}";
                         followIcon.src = "{{ asset('front-end/SVGs/heart-fill.svg') }}";
                         this.classList.replace('bg-gray-200', 'bg-red-200');
                     } else {
                         this.setAttribute('data-following', 'false');
-                        followText.textContent = 'Follow';
+                        followText.textContent = "{{__('website.unfollow')}}";
                         followIcon.src = "{{ asset('front-end/SVGs/heart.svg') }}";
                         this.classList.replace('bg-red-200', 'bg-gray-200');
                     }
